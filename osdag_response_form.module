@@ -1,20 +1,36 @@
 <?php
 global $base_url; // Will point to http://www.example.com
 /**
- * Defines total number of form steps.
- */
-define('ddcl_osdag_response_form_TOTAL_STEPS', 7);
-/**
  * Implements hook_menu().
  */
 function osdag_response_form_menu()
 {
 	$items = array();
 	// Form page.
-	$items['ddcl-osdag-response/form'] = array(
-		'title' => t('Test Form'),
+	$items['ddcl-osdag-response/form/step1'] = array(
+		'title' => t('DDCL - Web Response Form'),
 		'page callback' => 'ddcl_osdag_response_form_page',
 		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		)
+	);
+	$items['ddcl-osdag-response/form/step2'] = array(
+		'title' => t('DDCL - Web Response Form'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_osdag_response_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		)
+	);
+	$items['ddcl-osdag-response/form/step3'] = array(
+		'title' => t('DDCL - Web Response Form'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_osdag_response_step3_form'
+		),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		)
@@ -44,7 +60,7 @@ function osdag_response_form_permission()
  */
 function ddcl_osdag_response_form_page()
 {
-	return drupal_get_form('ddcl_osdag_response_form');
+	return drupal_get_form('ddcl_osdag_response_step1_form');
 }
 /**
  * Displays simple confirmation page after finishing the whole process.
@@ -56,735 +72,215 @@ function test_success()
 /**
  * Generates the form.
  */
-function ddcl_osdag_response_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_osdag_response_step1_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	global $base_url;
+	// All the real form fields.
+	$query = db_select('ddcl_osdag_response_form_step1_feedback');
+	$query->fields('ddcl_osdag_response_form_step1_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step1_data = $query->execute();
+	if ($form_step1_data)
+	{
+		if ($step1_data = $form_step1_data->fetchObject())
+		{
+			/* everything ok */
+		} //$step1_data = $form_step1_data->fetchObject()
+		else
+		{
+			drupal_set_message(t('Invalid form selected. Please try again.'), 'error');
+			//drupal_goto('lab_migration/manage_proposal');
+			return;
+		}
+	} //$form_step1_data
+	$form = array();
+	$form['step1_field1_name'] = array(
+		'#title' => 'Name',
+		'#type' => 'textfield',
+		'#default_value' => $step1_data->name
+	);
+	$form['step1_field2_email_id'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Email'),
+		'#size' => 30,
+		'#value' => $user->mail,
+		'#disabled' => TRUE
+		//'#default_value' => $form_state['storage']['values'][1]['step1_field2_email_id']
+	);
+	$form['step1_field3_institute'] = array(
+		'#title' => 'Institute / Company',
+		'#type' => 'textfield',
+		'#default_value' => $step1_data->name
+	);
+	$form['step1_field4_current_position'] = array(
+		'#title' => 'Current position',
+		'#type' => 'textfield',
+		'#default_value' => $step1_data->current_position
+	);
+	$form["step1_page_id"] = array(
+		"#type" => "hidden",
+		"#value" => "step1"
+	);
+	$form['next1'] = array(
+		'#type' => 'submit',
+		'#value' => 'Next',
+		'#submit' => array(
+			'ddcl_osdag_response_step1_form_submit'
+		)
+	);
+	return $form;
+}
+function ddcl_osdag_response_step1_form_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$query = "INSERT INTO {ddcl_osdag_response_form_step1_feedback} (uid, name, email_id, institute, current_position, data_reletion) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_reletion)";
+	$args = array(
+		":uid" => $user->uid,
+		":name" => $form_state['values']['step1_field1_name'],
+		":email_id" => $form_state['values']['step1_field2_email_id'],
+		":institute" => $form_state['values']['step1_field3_institute'],
+		":current_position" => $form_state['values']['step1_field4_current_position'],
+		":data_reletion" => "step1"
+	);
+	db_query($query, $args);
+	$form_state['redirect'] = 'ddcl-osdag-response/form/step2/' . $user->uid;
+}
+function ddcl_osdag_response_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
-	// Set current step to 1 if user just starts the process.
+	global $user;
+	// All the real form fields.
+	$query = db_select('ddcl_osdag_response_form_step2_feedback');
+	$query->fields('ddcl_osdag_response_form_step2_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step2_data = $query->execute();
+	if ($form_step2_data)
+	{
+		if ($step2_data = $form_step2_data->fetchObject())
+		{
+			/* everything ok */
+		} //$step2_data = $form_step2_data->fetchObject()
+		else
+		{
+			drupal_set_message(t('Invalid form selected. Please try again.'), 'error');
+			//drupal_goto('lab_migration/manage_proposal');
+			return;
+		}
+	} //$form_step2_data
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	if (!isset($form_state['storage']['step']))
-	{
-		$form_state['storage']['step'] = 1;
-	} //!isset($form_state['storage']['step'])
-	switch ($form_state['storage']['step'])
-	{
-		case 1:
-			// Custom page title.
-			drupal_set_title('Step 1');
-			// All the real form fields.
-			$form['step1_field1_name'] = array(
-				'#title' => 'Name',
-				'#type' => 'textfield',
-				'#default_value' => $form_state['storage']['values'][1]['step1_field1_name']
-			);
-			$form['step1_field2_institute'] = array(
-				'#title' => 'Institute / Company',
-				'#type' => 'textfield',
-				'#default_value' => $form_state['storage']['values'][1]['step1_field2_institute']
-			);
-			$form['step1_field3_current_position'] = array(
-				'#title' => 'Current position',
-				'#type' => 'textfield',
-				'#default_value' => $form_state['storage']['values'][1]['step1_field3_current_position']
-			);
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 2:
-			// Custom page title.
-			drupal_set_title('Step 2');
-			$step2_options = array(
-				'100mm' => '100mm' . '
+	$step2_options = array(
+		'100mm' => '100mm' . '
 					<p>Reference: The connected leg is so chosen that at least two horizontal rows
 of bolts can be accommodated. Hence, the assumed angle should have a leg
 length of 100 mm or more. (Ref I - page 369 - Point 4 of 5.7.4)
 </p>
 					<img src="' . $img_path . '/100mm.png" />',
-				'150mm' => '150mm' . '<p>Reference: The connected length is adopted in such a way that at least
+		'150mm' => '150mm' . '<p>Reference: The connected length is adopted in such a way that at least
 three horizontal rows of rivets can be accommodated. In general, it is 150
 mm or more (Ref II - Time 9:00)</p>
 <img src="' . $img_path . '/150mm.png" width="70%" />',
-				'Any other recommendation' => 'Any other recommendation'
-			);
-			if (empty($form_state['step2_num_comment']))
-			{
-				$form_state['step1_num_comment'] = 1;
-			} //empty($form_state['step1_num_comment'])
-			$form['step2_field1_fieldset'] = array(
-				'#type' => 'fieldset',
-				'#tree' => TRUE,
-				'#prefix' => '<div id="step2-field1-fieldset-wrapper">',
-				'#suffix' => '</div>'
-			);
-			$form['step2_field1_fieldset']['step2_field1_what_should_be_the_minimum_length_of_the_connected_leg_of_the_seated_angle'] = array(
-				'#title' => '<strong>a. What should be the minimum length of the connected leg (to the support) of the seated angle?</strong>',
-				'#type' => 'radios',
-				'#options' => $step2_options,
-				'#default_value' => $form_state['storage']['values'][2]['step2_field1_what_should_be_the_minimum_length_of_the_connected_leg_of_the_seated_angle']
-			);
-			$form['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'] = array(
-				'#title' => 'Reasoning (including reference from literature):',
-				'#type' => 'textarea',
-				'#default_value' => $form_state['storage']['values'][1]['step2_field2_reasoning_including_reference_from_literature'],
-				'#states' => array(
-					'visible' => array(
-						':input[name="step2_field1_fieldset\\[step2_field1_what_should_be_the_minimum_length_of_the_connected_leg_of_the_seated_angle\\]"]' => array(
-							array(
-								'value' => t('Any other recommendation')
-							)
-						)
+		'Any other recommendation' => 'Any other recommendation'
+	);
+	$form = array();
+	$form['step2_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step2-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$form['step2_field1_fieldset']['step2_field1_question1'] = array(
+		'#title' => 'What should be the minimum length of the connected leg (to the support) of the seated angle?',
+		'#type' => 'radios',
+		'#options' => $step2_options,
+		'#default_value' => $step2_data->question1
+	);
+	$form['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'] = array(
+		'#title' => 'Reasoning (including reference from literature):',
+		'#type' => 'textarea',
+		'#default_value' => $step2_data->any_other_recommendation,
+		'#states' => array(
+			'visible' => array(
+				':input[name="step2_field1_fieldset\\[step2_field1_question1\\]"]' => array(
+					array(
+						'value' => t('Any other recommendation')
 					)
 				)
-			);
-			$step2_temp = 0;
-			for ($step2_i = 0; $step2_i < $form_state['step2_num_comment']; $step2_i++)
-			{
-				$step2_temp1 = $step2_i;
-				$form['step2_field1_fieldset'][$step2_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step2_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form["step2_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step2_temp1
-			);
-			$form['step2_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step2_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step2_comment_add_more_callback',
-					'wrapper' => 'step2-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step2_num_comment'] > 1)
-			{
-				$form['step2_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step2_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step2_comment_add_more_callback',
-						'wrapper' => 'step2-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step2_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step2_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step2_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 3:
-			// Custom page title.
-			drupal_set_title('Step 3');
-			// All the real form fields.
-			$form['step3_field1_what_should_be_the_minimum_thickness_of_the_seated_angle'] = array(
-				'#title' => '<strong>b. What should be the minimum thickness of the seated angle?</strong>',
-				'#type' => 'textfield',
-				'#default_value' => $form_state['storage']['values'][3]['step3_field1_what_should_be_the_minimum_thickness_of_the_seated_angle']
-			);
-			$form['step3_field2_what_code_provision_reference_text_should_be_referred_for_this'] = array(
-				'#title' => 'What code provision(/s)/ reference text should be referred for this?',
-				'#type' => 'textarea',
-				'#default_value' => $form_state['storage']['values'][3]['step3_field2_what_code_provision_reference_text_should_be_referred_for_this'],
-				'#states' => array(
-					'visible' => array(
-						':input[name="step3_field1_what_should_be_the_minimum_thickness_of_the_seated_angle"]' => array(
-							array(
-								'filled' => true
-							)
-						)
-					)
-				)
-			);
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 4:
-			// Custom page title.
-			drupal_set_title('Step 4');
-			// All the real form fields.
-			$step4_options = array(
-				'Plastic Moment Capacity (with Plastic Section Modulus)' => 'Plastic Moment Capacity (with Plastic Section Modulus)<p>Argument: The full available plastic moment capacity of the outstanding leg should be utilized to resist the moment. In the event that the connection fails in other limit states, the failure would be brittle. It would not make sense to add significantly more conservatism in the moment resistance than the other limit states.
-				<img src="' . $img_path . '/Elastic_Moment_Capacity.png" />',
-				'Elastic Moment Capacity (with Elastic Section Modulus)' => 'Elastic Moment Capacity (with Elastic Section Modulus)<p>Reference: (Ref I - Example 5.14 - page 407 )</p>
-				<img src="' . $img_path . '/Reference-Ref-II-10-52min.png" />'
-			);
-			if (empty($form_state['step4_num_comment']))
-			{
-				$form_state['step4_num_comment'] = 1;
-			} //empty($form_state['step4_num_comment'])
-			$form['step4_field1_fieldset'] = array(
-				'#type' => 'fieldset',
-				'#tree' => TRUE,
-				'#prefix' => '<div id="step4-field1-fieldset-wrapper">',
-				'#suffix' => '</div>'
-			);
-			$form['step4_field1_fieldset']['step4_field1_the_moment_capacity_of_the_outstanding_leg_should_be_based_on'] = array(
-				'#title' => '<strong>c. The moment capacity of the outstanding leg should be based on</strong>',
-				'#type' => 'radios',
-				'#options' => $step4_options,
-				'#default_value' => $form_state['storage']['values'][4]['step4_field1_the_moment_capacity_of_the_outstanding_leg_should_be_based_on']
-			);
-			$step4_temp = 0;
-			for ($step4_i = 0; $step4_i < $form_state['step4_num_comment']; $step4_i++)
-			{
-				$step4_temp1 = $step4_i;
-				$form['step4_field1_fieldset'][$step4_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step4_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form["step4_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step4_temp1
-			);
-			$form['step4_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step4_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step4_comment_add_more_callback',
-					'wrapper' => 'step4-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step4_num_comment'] > 1)
-			{
-				$form['step4_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step4_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step4_comment_add_more_callback',
-						'wrapper' => 'step4-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step4_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step4_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 5:
-			// Custom page title.
-			drupal_set_title('Step 5');
-			// All the real form fields.
-			$step5_options = array(
-				'Yes' => 'Yes',
-				'No' => 'No'
-			);
-			if (empty($form_state['step5_num_comment']))
-			{
-				$form_state['step5_num_comment'] = 1;
-			} //empty($form_state['step4_num_comment'])
-			$form['step5_field1_fieldset'] = array(
-				'#type' => 'fieldset',
-				'#tree' => TRUE,
-				'#prefix' => '<div id="step5-field1-fieldset-wrapper">',
-				'#suffix' => '</div>'
-			);
-			$form['step5_field1_fieldset']['step5_field1_should_the_vertical_leg_of_the_seated_angle_be_checked_against_buckling'] = array(
-				'#title' => '<strong>c. Should the vertical leg of the seated angle be checked against buckling</strong>',
-				'#type' => 'radios',
-				'#options' => $step5_options,
-				'#default_value' => $form_state['storage']['values'][4]['step5_field1_should_the_vertical_leg_of_the_seated_angle_be_checked_against_buckling']
-			);
-			$form['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'] = array(
-				'#title' => 'If yes, what IS code clauses and references should be followed?',
-				'#type' => 'textarea',
-				'#default_value' => $form_state['storage']['values'][1]['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
-				'#states' => array(
-					'visible' => array(
-						':input[name="step5_field1_fieldset\\[step5_field1_should_the_vertical_leg_of_the_seated_angle_be_checked_against_buckling\\]"]' => array(
-							array(
-								'value' => t('Yes')
-							)
-						)
-					)
-				)
-			);
-			$step5_temp = 0;
-			for ($step5_i = 0; $step5_i < $form_state['step5_num_comment']; $step5_i++)
-			{
-				$step5_temp1 = $step5_i;
-				$form['step5_field1_fieldset'][$step5_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step5_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form["step5_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step5_temp1
-			);
-			$form['step5_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment / reference'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step5_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step5_comment_add_more_callback',
-					'wrapper' => 'step5-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step5_num_comment'] > 1)
-			{
-				$form['step5_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step5_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step5_comment_add_more_callback',
-						'wrapper' => 'step5-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step5_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step5_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step5_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 6:
-			$step6_options = array(
-				'ISA 100 65x6 (include exact dim)' => 'ISA 100 65x6 (include exact dim)',
-				'ISA 100 65x8 (include exact dim)' => 'ISA 100 65x8 (include exact dim)',
-				'Any other recommendation' => t('Any other recommendation')
-			);
-			$step6_field2_options = array(
-				'10mm' => '10mm<p>Reference: Assume "gap" of 10 mm (Ref II - 12:00 min)</p><img src="' . $img_path . '/Reference-Assume-gap-of-10mm-Ref-II-12.png" /><p>Reference: The clearance between the end of the beam and flanges of the
-column should be minimum (between 2 and 5 mm) so that maximum
-bearing length is available (Ref I - 5.7.3 page 367)</p><img src="' . $img_path . '/angle-seat-connections.png" />',
-				'Any other' => 'Any other'
-			);
-			// Custom page title.
-			drupal_set_title('Step 6');
-			// All the real form fields.
-			if (empty($form_state['step6_num_comment']))
-			{
-				$form_state['step6_num_comment'] = 1;
-			} //empty($form_state['step4_num_comment'])
-			$form['step6_field1_fieldset'] = array(
-				'#type' => 'fieldset',
-				'#tree' => TRUE,
-				'#prefix' => '<div id="step6-field1-fieldset-wrapper">',
-				'#suffix' => '</div>'
-			);
-			$form['step6_field1_fieldset']['step6_field1_need_guidelines_for_specifying_nominal_size_of_top_cleata_angle'] = array(
-				'#title' => '<strong>e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle</strong><br><br>
-				<p><b>AISC suggests</b> : (Ref III - Page 10-84)<br>
-						A 1/4-in.-thick angle with a 4-in, vertical leg dimension will generally be adequate 
-							This translates to 6.35 mm thick angle with a 101.6 mm vertical leg Can use ISA 100 65x6 or ISA 100 65x8</p>
-				<img src="' . $img_path . '/need-guidelines-for-specifying-nominal-size-of-top-cleat.png" />',
-				'#type' => 'radios',
-				'#options' => $step6_options,
-				'#default_value' => $form_state['storage']['values'][6]['step6_field1_need_guidelines_for_specifying_nominal_size_of_top_cleata_angle']
-			);
-			$form['step6_field1_fieldset']['step5_field2_anyother'] = array(
-				'#type' => 'textarea',
-				'#default_value' => $form_state['storage']['values'][1]['step5_field2_anyother'],
-				'#states' => array(
-					'visible' => array(
-						':input[name="step6_field1_fieldset\\[step6_field1_need_guidelines_for_specifying_nominal_size_of_top_cleata_angle\\]"]' => array(
-							array(
-								'value' => t('Any other recommendation')
-							)
-						)
-					)
-				)
-			);
-			$form['step6_field1_fieldset']['step6_field2_the_assumed_clearance_tolerance_between_the_beam_and_supporting'] = array(
-				'#title' => '<hr><strong> The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
-be taken as input from the user. What should be the minimum value for this? <br>Ref II takes clearance = 10 mm<br>
-Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]</strong>',
-				'#type' => 'radios',
-				'#options' => $step6_field2_options,
-				'#default_value' => $form_state['storage']['values'][6]['step6_field2_need_guidelines_for_specifying_nominal_size_of_top_cleata_angle']
-			);
-			$form['step6_field1_fieldset']['step5_field2_sub_anyother'] = array(
-				'#type' => 'textarea',
-				'#default_value' => $form_state['storage']['values'][1]['step5_field2_sub_anyother'],
-				'#states' => array(
-					'visible' => array(
-						':input[name="step6_field1_fieldset\\[step6_field2_the_assumed_clearance_tolerance_between_the_beam_and_supporting\\]"]' => array(
-							array(
-								'value' => t('Any other')
-							)
-						)
-					)
-				)
-			);
-			$step6_temp = 0;
-			for ($step6_i = 0; $step6_i < $form_state['step6_num_comment']; $step6_i++)
-			{
-				$step6_temp1 = $step6_i;
-				$form['step6_field1_fieldset'][$step6_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step6_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form["step5_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step6_temp1
-			);
-			$form['step6_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment / reference'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step6_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step6_comment_add_more_callback',
-					'wrapper' => 'step6-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step6_num_comment'] > 1)
-			{
-				$form['step6_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step6_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step6_comment_add_more_callback',
-						'wrapper' => 'step6-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step6_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step6_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step6_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-		case 7:
-			// Custom page title.
-			drupal_set_title('Step 7');
-			// All the real form fields.
-			if (empty($form_state['step7_num_comment']))
-			{
-				$form_state['step7_num_comment'] = 1;
-			} //empty($form_state['step4_num_comment'])
-			$form['step7_field1_fieldset'] = array(
-				'#type' => 'fieldset',
-				'#title' => "Any other recommendation",
-				'#tree' => TRUE,
-				'#prefix' => '<div id="step7-field1-fieldset-wrapper">',
-				'#suffix' => '</div>'
-			);
-			$step7_temp = 0;
-			for ($step7_i = 0; $step7_i < $form_state['step7_num_comment']; $step7_i++)
-			{
-				$step7_temp1 = $step7_i;
-				$form['step7_field1_fieldset'][$step7_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step7_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form["step7_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step7_temp1
-			);
-			$form['step7_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment / reference'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step7_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step7_comment_add_more_callback',
-					'wrapper' => 'step7-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step7_num_comment'] > 1)
-			{
-				$form['step7_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step7_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step7_comment_add_more_callback',
-						'wrapper' => 'step7-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step7_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step7_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step7_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			// Add submit button(s).
-			$form += _test_add_submit_buttons($form_state);
-			// Not important - used only for displaying values posted so far.
-			$form['posted_values'] = array(
-				'#type' => 'markup',
-				'#value' => _test_display_posted_values($form_state)
-			);
-			break;
-	} //$form_state['storage']['step']
+			)
+		)
+	);
+	$form["step1_page_id"] = array(
+		"#type" => "hidden",
+		"#value" => "step1"
+	);
+	$form['previous1'] = array(
+		'#type' => 'submit',
+		'#value' => 'Previous',
+		'#submit' => array(
+			'ddcl_osdag_response_step2_form_previous_submit'
+		)
+	);
+	$form['next2'] = array(
+		'#type' => 'submit',
+		'#value' => 'Next',
+		'#submit' => array(
+			'ddcl_osdag_response_step2_form_next_submit'
+		)
+	);
 	return $form;
 }
-/**
- * Handles submitted form.
- */
-function ddcl_osdag_response_form_submit($form, &$form_state)
+function ddcl_osdag_response_step2_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
-	// Save all posted values for $form_state['storage']
-	// to make them available in all other steps.
-	$form_state['storage']['values'][$form_state['storage']['step']] = $form_state['values'];
-	// Deal with current step based on which submit button was clicked.
-	switch ($form_state['clicked_button']['#id'])
-	{
-		case 'edit-next':
-			// Do not finally submit the form yet, rebuild it instead.
-			$form_state['rebuild'] = TRUE;
-			// Go to next step.
-			$form_state['storage']['step']++;
-			break;
-		case 'edit-prev':
-			// Do not finally submit the form yet, rebuild it instead.
-			$form_state['rebuild'] = TRUE;
-			// Go to previous step.
-			$form_state['storage']['step']--;
-			break;
-		case 'edit-finish':
-			// Do something with all form values ($form_state['storage']) before unsetting it.
-			//
-			$query = "INSERT INTO {ddcl_osdag_response_form_result} (name,institute,current_position) VALUES (:name,:institute,:current_position)";
-			$args = array(
-				":name" => $form_state['storage']['values'][1]['step1_field1_name'],
-				":institute" => $form_state['storage']['values'][1]['step1_field2_institute'],
-				":current_position" => $form_state['storage']['values'][1]['step1_field3_current_position']
-			);
-			db_query($query, $args);
-			// And then unset it.
-			unset($form_state['storage']);
-			// This was the final step, so redirect to success page.
-			//$form['#submit'][] = 'ddcl_osdag_response_form_storage_submit';
-			$form_state['redirect'] = 'ddcl-osdag-response/success';
-			break;
-	} //$form_state['clicked_button']['#id']
+	global $user;
+	$form_state['redirect'] = 'ddcl-osdag-response/form/step1/' . $user->uid;
 }
-/**
- * Adds relevant submit buttons based on current step.
- */
-function _test_add_submit_buttons($form_state)
+function ddcl_osdag_response_step2_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
-	$buttons = array();
-	// Display 'Prev' button on all steps excluding first.
-	if ($form_state['storage']['step'] > 1)
+	global $user;
+	$query = db_select('ddcl_osdag_response_form_step2_feedback');
+	$query->fields('ddcl_osdag_response_form_step2_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step2_data = $query->execute();
+	if ($form_step2_data)
 	{
-		$buttons['prev'] = array(
-			'#type' => 'submit',
-			'#value' => 'Prev'
+		if ($step2_data = $form_step2_data->fetchObject())
+		{
+			/* everything ok */
+		} //$step2_data = $form_step2_data->fetchObject()
+		else
+		{
+			drupal_set_message(t('Invalid form selected. Please try again.'), 'error');
+			//drupal_goto('lab_migration/manage_proposal');
+			return;
+		}
+	} //$form_step2_data
+	if ($form_step2_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step2_feedback SET question1=:question1, any_other_recommendation=:any_other_recommendation, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $form_state['values']['step2_field1_fieldset']['step2_field1_question1'],
+			":any_other_recommendation" => $form_state['values']['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'],
+			":data_relation" => "step2"
 		);
-	} //$form_state['storage']['step'] > 1
-	// Display 'Next' button on all steps excluding last.
-	if ($form_state['storage']['step'] < ddcl_osdag_response_form_TOTAL_STEPS)
+		db_query($query, $args);
+	} //$form_step2_data
+	else
 	{
-		$buttons['next'] = array(
-			'#type' => 'submit',
-			'#value' => 'Next'
+		$query = "INSERT INTO {ddcl_osdag_response_form_step2_feedback} (uid, question1, any_other_recommendation, data_relation) VALUES (:uid,:question1,:any_other_recommendation, :data_relation)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $form_state['values']['step2_field1_fieldset']['step2_field1_question1'],
+			":any_other_recommendation" => $form_state['values']['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'],
+			":data_relation" => "step2"
 		);
-	} //$form_state['storage']['step'] < ddcl_osdag_response_form_TOTAL_STEPS
-	// Display 'Finish' button on the last step.
-	if ($form_state['storage']['step'] == ddcl_osdag_response_form_TOTAL_STEPS)
-	{
-		$buttons['finish'] = array(
-			'#type' => 'submit',
-			'#value' => 'Finish'
-		);
-	} //$form_state['storage']['step'] == ddcl_osdag_response_form_TOTAL_STEPS
-	return $buttons;
+		db_query($query, $args);
+	}
+	$form_state['redirect'] = 'ddcl-osdag-response/form/step3/' . $user->uid;
 }
-/**
- * Displays values posted so far beneath the form.
- */
-function _test_display_posted_values($form_state)
+function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
-	$output = '<p>Posted values:</p>';
-	$output .= '<p>Step 1 field 1: ' . $form_state['storage']['values'][1]['step1_field1_name'] . '</p>';
-	$output .= '<p>Step 2 field 1: ' . $form_state['storage']['values'][2]['step2_field1_what_should_be_the_minimum_length_of_the_connected_leg_of_the_seated_angle'] . '</p>';
-	$output .= '<p>Step 3 field 1: ' . $form_state['storage']['values'][3]['step3_field2_what_code_provision_reference_text_should_be_referred_for_this'] . '</p>';
-	$output .= '<p>Step 4 field 1: ' . $form_state['storage']['values'][4]['step4_field1_the_moment_capacity_of_the_outstanding_leg_should_be_based_on'] . '</p>';
-	$output .= '<p>Step 5 field 1: ' . $form_state['storage']['values'][5]['step5_field1_should_the_vertical_leg_of_the_seated_angle_be_checked_against_buckling'] . '</p>';
-	return $output;
+	global $base_url;
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	return $form;
 }
-function step2_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step2_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step2_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step2_num_comment'] > 1)
-	{
-		$form_state['step2_num_comment']--;
-	} //$form_state['step2_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step2_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step2_field1_fieldset'];
-}
-/***************************************/
-function step4_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step4_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step4_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step4_num_comment'] > 1)
-	{
-		$form_state['step4_num_comment']--;
-	} //$form_state['step4_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step4_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step4_field1_fieldset'];
-}
-/***************************************/
-function step5_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step5_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step5_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step5_num_comment'] > 1)
-	{
-		$form_state['step5_num_comment']--;
-	} //$form_state['step5_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step5_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step5_field1_fieldset'];
-}
-/***************************************/
-function step6_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step6_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step6_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step6_num_comment'] > 1)
-	{
-		$form_state['step6_num_comment']--;
-	} //$form_state['step5_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step6_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step6_field1_fieldset'];
-}
-/***************************************/
-function step7_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step7_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step7_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step7_num_comment'] > 1)
-	{
-		$form_state['step7_num_comment']--;
-	} //$form_state['step5_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step7_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step7_field1_fieldset'];
-}
-/***************************************/
