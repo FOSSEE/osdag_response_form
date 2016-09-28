@@ -3002,7 +3002,7 @@ function _fetch_exsiting_comments_result_csv($step_id, $data_relation)
 function ddcl_result_generate_csv()
 {
 	global $user;
-	if (!$user->uid)
+	if ($user->uid !=NULL)
 	{
 		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-response-form-result/{$user->uid}/";
 		if (!file_exists($result_dir))
