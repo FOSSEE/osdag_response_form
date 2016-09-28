@@ -111,6 +111,14 @@ function osdag_response_form_menu()
 			'access osdag_feedback_form'
 		)
 	);
+	$items['ddcl-osdag-response/form/result/download'] = array(
+		'title' => t('DDCL - Web Response Form'),
+		'page callback' => 'ddcl_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		)
+	);
 	return $items;
 }
 function osdag_response_form_permission()
@@ -119,6 +127,10 @@ function osdag_response_form_permission()
 		"access osdag_feedback_form" => array(
 			"title" => t("osdag feedback form"),
 			"description" => t("Allows users to view osdag feedback form")
+		),
+		"access osdag_feedback_form_result" => array(
+			"title" => t("osdag feedback form"),
+			"description" => t("Allows users to view osdag feedback form result")
 		)
 	);
 }
@@ -234,7 +246,7 @@ function ddcl_osdag_response_step1_form($form, &$form_state, $no_js_use = FALSE)
 	);
 	$form['next1'] = array(
 		'#type' => 'submit',
-		'#value' => 'Next',
+		'#value' => 'Save & Next',
 		'#submit' => array(
 			'ddcl_osdag_response_step1_form_submit'
 		)
@@ -336,7 +348,7 @@ mm or more (Ref II - Time 9:00)</p>
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_comments($step2_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -414,7 +426,7 @@ mm or more (Ref II - Time 9:00)</p>
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step2_form_next_submit'
 				)
@@ -509,7 +521,7 @@ mm or more (Ref II - Time 9:00)</p>
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step2_form_next_submit'
 				)
@@ -686,7 +698,7 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_comments($step3_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -760,7 +772,7 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next3'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step3_form_next_submit'
 				)
@@ -850,7 +862,7 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step3_form_next_submit'
 				)
@@ -1022,7 +1034,7 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => $step4_data->question1,
 				'#required' => true
 			);
-			$earlier_comments = _fetch_exsiting_comments($step4_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -1100,7 +1112,7 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step4_form_next_submit'
 				)
@@ -1181,7 +1193,7 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step4_form_next_submit'
 				)
@@ -1363,7 +1375,7 @@ function ddcl_osdag_response_step5_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_comments($step5_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -1441,7 +1453,7 @@ function ddcl_osdag_response_step5_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step5_form_next_submit'
 				)
@@ -1536,7 +1548,7 @@ function ddcl_osdag_response_step5_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step5_form_next_submit'
 				)
@@ -1744,7 +1756,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_comments($step6_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -1822,7 +1834,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step6_form_next_submit'
 				)
@@ -1935,7 +1947,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step6_form_next_submit'
 				)
@@ -2131,7 +2143,7 @@ Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_comments($step7_data->id);
+			$earlier_comments = _fetch_exsiting_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
 			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
@@ -2209,7 +2221,7 @@ Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step7_form_next_submit'
 				)
@@ -2305,7 +2317,7 @@ Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Next',
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_osdag_response_step7_form_next_submit'
 				)
@@ -2689,12 +2701,12 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 			'return' => Database::RETURN_INSERT_ID
 		));
 		$queryfinish = "UPDATE ddcl_osdag_response_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args = array(
+		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($query, $args, array(
+		$resultfinish = db_query($queryfinish, $$args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -2765,14 +2777,155 @@ function _field_sentence_case($string)
 	} //array( '-', '\'' ) as $delimiter
 	return $string;
 }
-function _fetch_exsiting_comments($step_id = NULL)
+
+function ddcl_osdag_response_result_page()
 {
-	$query_for_comment = db_query("SELECT * FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id ORDER BY number ASC", array(
-		':step1_form_id' => $step_id
+	/* get pending proposals to be approved */
+	$output .= "";
+	$output .= l("Download All Result in CSV", "ddcl-osdag-response/form/result/download");
+	$feedback_rows = array();
+	$feedback_q = db_query('
+
+select
+
+step1.uid as "step1_uid",
+step1.name as "step1_name",
+step1.inserted_on as "step1_date",
+
+step2.id as "step2_id",
+step2.data_relation as "step2_data_relation",
+step2.question1 as "step2_question1", 
+step2.any_other_recommendation as "step2_any_other",
+
+step3.id as "step3_id",
+step3.data_relation as "step3_data_relation",
+step3.question1 as "step3_question1", 
+step3.question2 as "step3_question2",
+
+step4.id as "step4_id",
+step4.data_relation as "step4_data_relation",
+step4.question1 as "step4_question1",
+
+step5.id as "step5_id",
+step5.data_relation as "step5_data_relation",
+step5.question1 as "step5_question1", 
+step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
+
+step6.id as "step6_id",
+step6.data_relation as "step6_data_relation",
+step6.question1 as "step6_question1", 
+step6.sub_option2 as "step6_question2",
+step6.based_on_reasoning_comment as "step6_question3",
+
+step7.id as "step7_id",
+step7.data_relation as "step7_data_relation",
+step7.question1 as "step7_question1",
+step7.any_other_recommendation as "step7_question2",
+
+step8.id as "step8_id",
+step8.data_relation as "step8_data_relation",
+step8.question1 as "step8_question1"
+
+from ddcl_osdag_response_form_step1_feedback step1
+
+join ddcl_osdag_response_form_step2_feedback step2 on step1.uid=step2.uid
+join ddcl_osdag_response_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_osdag_response_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_osdag_response_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_osdag_response_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_osdag_response_form_step7_feedback step7 on step6.uid=step7.uid
+join ddcl_osdag_response_form_step8_feedback step8 on step7.uid=step8.uid
+	');
+	$i = 1;
+	
+	while ($feedback_data = $feedback_q->fetchObject())
+	{
+
+		$feedback_rows[$feedback_data->uid] = array(
+			$i,
+
+			$feedback_data->step1_date,
+			$feedback_data->step1_name,
+
+			$feedback_data->step2_question1,
+			$feedback_data->step2_any_other,
+			_fetch_exsiting_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+
+			$feedback_data->step3_question1,
+			$feedback_data->step3_question2,
+			_fetch_exsiting_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+
+			$feedback_data->step4_question1,
+			_fetch_exsiting_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+
+			$feedback_data->step5_question1,
+			$feedback_data->step5_question2,
+			_fetch_exsiting_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+
+			$feedback_data->step6_question1,
+			$feedback_data->step6_question2,
+			$feedback_data->step6_question3,
+			_fetch_exsiting_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
+
+			$feedback_data->step7_question1,
+			$feedback_data->step7_question2,
+			_fetch_exsiting_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
+
+			$feedback_data->step8_question1,
+			_fetch_exsiting_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation)
+		);
+		$i++;
+	} //$pending_data = $pending_q->fetchObject()
+	/* check if there are any pending proposals */
+	if (!$feedback_rows)
+	{
+		drupal_set_message(t('There are no results.'), 'status');
+		return '';
+	} //!$pending_rows
+	$data_header = array(
+		'No.',
+
+		'Date of Submission',
+		'User',
+
+		'a. What should be the minimum length of the connected leg (to the support) of the seated angle?',
+		'Reasoning (including reference from literature):',
+		'comments',
+		'b. What should be the minimum thickness of the seated angle?',
+		'What code provision(/s)/ reference text should be referred for this?',
+		'comments',
+		'c. The moment capacity of the outstanding leg should be based on',
+		'comments',
+		'd. Should the vertical leg of the seated angle be checked against buckling?',
+		'If yes, what IS code clauses and references should be followed?',
+		'comments',
+		'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
+		'Based on Reasoning',
+		'Comments /references',
+		'comments',
+		'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
+be taken as input from the user. What should be the minimum value for this?',
+		'Any other',
+		'comments',
+		'Any other recomendation',
+		'comments'
+	);
+	$output .= theme('table', array(
+		'header' => $data_header,
+		'rows' => $feedback_rows,
+		'sticky' => FALSE
+	));
+	return $output;
+}
+function _fetch_exsiting_comments($step_id, $data_relation)
+{
+	$query_for_comment = db_query("SELECT * FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
 	));
 	$comment = array();
 	$i = 0;
-	if ($query_for_comment == NULL)
+	if ($query_for_comment != NULL)
 	{
 		while ($row = $query_for_comment->fetchObject())
 		{
@@ -2786,141 +2939,235 @@ function _fetch_exsiting_comments($step_id = NULL)
 	}
 	return $comment;
 }
-function ddcl_osdag_response_result_page()
+function _fetch_exsiting_comments_result($step_id, $data_relation)
 {
-	/* get pending proposals to be approved */
-	$feedback_rows = array();
-	$feedback_q = db_query('
-	
+
+	$query_for_comment = db_query("SELECT * FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+
+	$text = "";
+	$i = 0;
+
+	while ($row = $query_for_comment->fetchObject())
+	{
+
+		if (strlen($row->comment) != 0)
+		{
+			
+			$text .= $i + 1 . ") " . $row->comment . "<br>";
+		} //strlen($row->comment) != 0
+		else
+		{
+
+			$text .= 'No earlier comments';
+		}
+		$i++;
+	} //$row = $query_for_comment->fetchObject()
+	//$query_for_comment == NULL
+	return $text;
+}
+
+function _fetch_exsiting_comments_result_csv($step_id, $data_relation)
+{
+
+	$query_for_comment = db_query("SELECT * FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+
+	$text = "";
+	$i = 0;
+
+	while ($row = $query_for_comment->fetchObject())
+	{
+
+		if (strlen($row->comment) != 0)
+		{
+
+			$text .= $i + 1 . ") " . $row->comment . "\n";
+		} //strlen($row->comment) != 0
+		else
+		{
+
+			$text .= 'No earlier comments';
+		}
+		$i++;
+	} //$row = $query_for_comment->fetchObject()
+	//$query_for_comment == NULL
+	return $text;
+}
+
+function ddcl_result_generate_csv()
+{
+	global $user;
+	if (!$user->uid)
+	{
+		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-response-form-result/{$user->uid}/";
+		if (!file_exists($result_dir))
+		{
+			mkdir($result_dir, 0755, TRUE);
+		} //!file_exists($result_dir)
+		$result_file = $result_dir . "ddcl-result-{$user->uid}" . ".csv";
+		$csv_file = "ddcl-result-{$user->uid}" . ".csv";
+		$fp = fopen($result_file, "w");
+		/* making the first row */
+		$item = array(
+
+			'No.',
+			
+			'Date of Submission',
+			'User',
+			'Company / Institute',
+			'Current Position',
+
+			'a. What should be the minimum length of the connected leg (to the support) of the seated angle?',
+			'Reasoning (including reference from literature):',
+			'comments',
+			'b. What should be the minimum thickness of the seated angle?',
+			'What code provision(/s)/ reference text should be referred for this?',
+			'comments',
+			'c. The moment capacity of the outstanding leg should be based on',
+			'comments',
+			'd. Should the vertical leg of the seated angle be checked against buckling?',
+			'If yes, what IS code clauses and references should be followed?',
+			'comments',
+			'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
+			'Based on Reasoning',
+			'Comments /references',
+			'comments',
+			'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
+be taken as input from the user. What should be the minimum value for this?',
+			'Any other',
+			'comments',
+			'Any other recomendation',
+			'comments'
+
+		);
+		fputcsv($fp, $item);
+		$query = '
+
 select
 
 step1.uid as "step1_uid",
 step1.name as "step1_name",
+step1.institute as "step1_institute",
+step1.current_position as "step1_current_position",
+step1.inserted_on as "step1_date",
 
-step2.id as "step2_id", 
+step2.id as "step2_id",
+step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
 step2.any_other_recommendation as "step2_any_other",
 
 step3.id as "step3_id",
+step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
 step3.question2 as "step3_question2",
 
 step4.id as "step4_id",
+step4.data_relation as "step4_data_relation",
 step4.question1 as "step4_question1",
 
 step5.id as "step5_id",
+step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
 step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
 
 step6.id as "step6_id",
+step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1", 
 step6.sub_option2 as "step6_question2",
 step6.based_on_reasoning_comment as "step6_question3",
 
 step7.id as "step7_id",
+step7.data_relation as "step7_data_relation",
 step7.question1 as "step7_question1",
 step7.any_other_recommendation as "step7_question2",
 
 step8.id as "step8_id",
+step8.data_relation as "step8_data_relation",
 step8.question1 as "step8_question1"
 
-from ddcl_osdag_response_form_step1_feedback step1 
+from ddcl_osdag_response_form_step1_feedback step1
 
 join ddcl_osdag_response_form_step2_feedback step2 on step1.uid=step2.uid
-join ddcl_osdag_response_form_step3_feedback step3 on step2.uid=step3.uid 
-join ddcl_osdag_response_form_step4_feedback step4 on step3.uid=step4.uid 
-join ddcl_osdag_response_form_step5_feedback step5 on step4.uid=step5.uid 
-join ddcl_osdag_response_form_step6_feedback step6 on step5.uid=step6.uid 
-join ddcl_osdag_response_form_step7_feedback step7 on step6.uid=step7.uid 
+join ddcl_osdag_response_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_osdag_response_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_osdag_response_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_osdag_response_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_osdag_response_form_step7_feedback step7 on step6.uid=step7.uid
 join ddcl_osdag_response_form_step8_feedback step8 on step7.uid=step8.uid
-	');
-	while ($feedback_data = $feedback_q->fetchObject())
-	{
-		$feedback_rows[$feedback_data->uid] = array(
-			$i,
-			$feedback_data->step1_date,
-			$feedback_data->step1_name,
-			$feedback_data->step2_question1,
-			$feedback_data->step2_any_other,
-			'comment need to display',
-			$feedback_data->step3_question1,
-			$feedback_data->step3_question2,
-			'comment need to display',
-			$feedback_data->step4_question1,
-			'comment need to display',
-			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
-			'Comment',
-			$feedback_data->step6_question1,
-			$feedback_data->step6_question2,
-			$feedback_data->step6_question3,
-			'Comment',
-			$feedback_data->step7_question1,
-			$feedback_data->step7_question2,
-			'Comment',
-			$feedback_data->step8_question1,
-			'Comment'
-		);
-		$i++;
-	} //$pending_data = $pending_q->fetchObject()
-	/* check if there are any pending proposals */
-	if (!$feedback_rows)
-	{
-		drupal_set_message(t('There are no results.'), 'status');
-		return '';
-	} //!$pending_rows
-	$data_header = array(
-		'No.',
-		'Date of Submission',
-		'User',
-		'a. What should be the minimum length of the connected leg (to the support) of the seated angle?',
-		'Reasoning (including reference from literature):',
-		'comments',
-		'b. What should be the minimum thickness of the seated angle?',
-		'What code provision(/s)/ reference text should be referred for this?',
-		'c. The moment capacity of the outstanding leg should be based on',
-		'comments',
-		'd. Should the vertical leg of the seated angle be checked against buckling?',
-		'If yes, what IS code clauses and references should be followed?',
-		'comments',
-		'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
-		'Based on Reasoning',
-		'comments',
-		'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
-be taken as input from the user. What should be the minimum value for this?',
-		'Any other',
-		'comments',
-		'Any other recomendation',
-		'comments'
-	);
-	$output = theme('table', array(
-		'header' => $data_header,
-		'rows' => $feedback_rows,
-		array(
-			'id' => 'ddcl-form-table',
-			'class' => 'ddcl-form-table-result'
-		)
-	));
-	return $output;
-}
-function _fetch_exsiting_comments_result($step_id = NULL)
-{
-	$query_for_comment = db_query("SELECT * FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id ORDER BY number ASC", array(
-		':step1_form_id' => $step_id
-	));
-	$comment = array();
-	$i = 0;
-	if ($query_for_comment == NULL)
-	{
-		while ($row = $query_for_comment->fetchObject())
+			';
+		// $args = array(');
+		$result = db_query($query);
+
+		$i = 1;
+		while ($feedback_data = $result->fetchObject())
 		{
-			$comment[$i] = $i + 1 . ") " . $row->comment . "<br>";
-			$i++;
-		} //$row = $query_for_comment->fetchObject()
-	} //$query_for_comment == NULL
+			$item = array(
+
+				$i,
+
+				$feedback_data->step1_date,
+				$feedback_data->step1_name,
+				$feedback_data->step1_institute,
+				$feedback_data->step1_current_position,
+				
+				$feedback_data->step2_question1,
+				$feedback_data->step2_any_other,
+				_fetch_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				
+				$feedback_data->step3_question1,
+				$feedback_data->step3_question2,
+				_fetch_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				
+				$feedback_data->step4_question1,
+				_fetch_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				
+				$feedback_data->step5_question1,
+				$feedback_data->step5_question2,
+				_fetch_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+				
+				$feedback_data->step6_question1,
+				$feedback_data->step6_question2,
+				$feedback_data->step6_question3,
+				_fetch_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+				
+				$feedback_data->step7_question1,
+				$feedback_data->step7_question2,
+				_fetch_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+				
+				$feedback_data->step8_question1,
+				_fetch_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation)
+			);
+			fputcsv($fp, $item);
+		} //$feedback_data = $result->fetchObject()
+		$i++;
+		fclose($fp);
+
+		$file = $result_file;
+
+		if (file_exists($file))
+		{
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename=' . basename($file));
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($file));
+			ob_clean();
+			flush();
+			readfile($file);
+			unlink($file);
+			exit;
+		} //file_exists($file)
+	} //!$user->uid
 	else
 	{
-		$comment[$i] = 'No earlier comments';
+		drupal_set_message(t('You do not have permission to access this page.'), 'error');
+		drupal_goto('');
 	}
-	return $comment;
 }
