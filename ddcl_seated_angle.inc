@@ -1057,7 +1057,7 @@ function ddcl_seated_angle_step4_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step4_data->id
 		));
 		$form_step4_comment_data = $query->fetchObject();
@@ -1067,7 +1067,7 @@ function ddcl_seated_angle_step4_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1110,7 +1110,7 @@ function ddcl_seated_angle_step4_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1402,7 +1402,7 @@ function ddcl_seated_angle_step5_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step5_data->id
 		));
 		$form_step5_comment_data = $query->fetchObject();
@@ -1412,7 +1412,7 @@ function ddcl_seated_angle_step5_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1455,7 +1455,7 @@ function ddcl_seated_angle_step5_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1736,7 +1736,7 @@ function ddcl_seated_angle_step6_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step6_data->id
 		));
 		$form_step6_comment_data = $query->fetchObject();
@@ -1746,7 +1746,7 @@ function ddcl_seated_angle_step6_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1789,7 +1789,7 @@ function ddcl_seated_angle_step6_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2090,7 +2090,7 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step7_data->id
 		));
 		$form_step7_comment_data = $query->fetchObject();
@@ -2100,7 +2100,7 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2143,7 +2143,7 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2428,7 +2428,7 @@ function ddcl_seated_angle_step8_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step8_data->id
 		));
 		$form_step8_comment_data = $query->fetchObject();
@@ -2438,7 +2438,7 @@ function ddcl_seated_angle_step8_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2481,7 +2481,7 @@ function ddcl_seated_angle_step8_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2749,7 +2749,7 @@ function ddcl_seated_angle_step9_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step9_data->id
 		));
 		$form_step9_comment_data = $query->fetchObject();
@@ -2759,7 +2759,7 @@ function ddcl_seated_angle_step9_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2802,7 +2802,7 @@ function ddcl_seated_angle_step9_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3078,7 +3078,7 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step10_data->id
 		));
 		$form_step10_comment_data = $query->fetchObject();
@@ -3088,7 +3088,7 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3131,7 +3131,7 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3408,7 +3408,7 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step11_data->id
 		));
 		$form_step11_comment_data = $query->fetchObject();
@@ -3418,7 +3418,7 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3461,7 +3461,7 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3726,9 +3726,9 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	$query = db_select('ddcl_seated_angle_form_step12_feedback');
 	$query->fields('ddcl_seated_angle_form_step12_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step12_data = $query->execute()->fetchObject();
-	//var_dump($form_step12_data);die;
-	if ($form_step12_data)
+	$form_step7_data = $query->execute()->fetchObject();
+	//var_dump($form_step7_data);die;
+	if ($form_step7_data)
 	{
 		$query = "UPDATE ddcl_seated_angle_form_step12_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -3741,24 +3741,24 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step12_data->id
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step7_data->id
 		));
-		$form_step12_comment_data = $query->fetchObject();
+		$form_step7_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
 		{
 			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step12_data->id,
-					":number" => $i + $form_step12_comment_data->max + 1,
+					":step1_form_id" => $form_step7_data->id,
+					":number" => $i + $form_step7_comment_data->max + 1,
 					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step12",
 					":inserted_on" => date('Y-m-d')
@@ -3773,7 +3773,7 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 				} //$commentresult != 0
 			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
-	} //$form_step12_data
+	} //$form_step7_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -3787,6 +3787,15 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $$args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
 		/* For adding comments */
 		$comments = 0;
 		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
@@ -3794,7 +3803,7 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_feedback_form_comment
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3817,7 +3826,7 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-seated-angle/form/step13/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-seated-angle/success';
 }
 /***************************************/
 function step12_comment_add_more_add_one($form, &$form_state)
