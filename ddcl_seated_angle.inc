@@ -153,35 +153,6 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '<strong> a. Seated Angle</strong><br> <p><strong>i. Bearing width</strong> of seated angle = width of beam [based on general practice]</p>
 	
 	
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mrow>
-    <mi>x</mi>
-    <mo>=</mo>
-    <mfrac>
-      <mrow>
-        <mo>&#x2212;</mo>
-        <mi>b</mi>
-        <mo>&#xB1;</mo>
-        <msqrt>
-          <mrow>
-            <msup>
-              <mi>b</mi>
-              <mn>2</mn>
-            </msup>
-            <mo>&#x2212;</mo>
-            <mn>4</mn>
-            <mi>a</mi>
-            <mi>c</mi>
-          </mrow>
-        </msqrt>
-      </mrow>
-      <mrow>
-        <mn>2</mn>
-        <mi>a</mi>
-      </mrow>
-    </mfrac>
-  </mrow>
-</math>
 	
 	<hr>';
 	$form = array();
@@ -502,21 +473,92 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;"><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supporting beam</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seat angle is calculated on the basis of web crippling of the beam. The seat leg length is kept more than the calculated bearing length given by [Cl</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">8.7.4]</p>
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seat angle is calculated on the basis of web crippling of the beam. The seat leg length is kept more than the calculated bearing length given by [Cl 8.7.4]</p>
+
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">formula</p>
+<p style="margin-bottom: 0cm; line-height: 100%;">
+
+<div style="font-size:20px;">
+	<center>
+	<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>b</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mi>R</mi>
+    <mrow>
+      <msub>
+        <mi>t</mi>
+        <mi>w</mi>
+      </msub>
+      <mfrac>
+        <msub>
+          <mi>f</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>y</mi>
+            <mi>w</mi>
+          </mrow>
+        </msub>
+        <msub>
+          <mi>&#x03B3;<!-- γ --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>m</mi>
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mfrac>
+    </mrow>
+  </mfrac>
+</math>
+</center>
+	</div>
+
+</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">Where,</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is the reaction from the beam,</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is the thickness of the web of the beam,</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is the yield strength of the web of the beam</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is the partial safety factor for material = 1.10</p>
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>R</mi>
+</math> is the reaction from the beam,</p>
+
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>t</mi>
+    <mi>w</mi>
+  </msub>
+</math> is the thickness of the web of the beam,</p>
+
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>f</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>y</mi>
+      <mi>w</mi>
+    </mrow>
+  </msub>
+</math> is the yield strength of the web of the beam</p>
+
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mn>0</mn>
+    </mrow>
+  </msub>
+</math> is the partial safety factor for material = 1.10</p>
+
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">A dispersion of 45 o is taken from the bearing on the cleat to the root line [Cl 8.7.1.3]</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp; [Cl 8.7.4] Bearing Stiffeners</p><hr>';
+
+<p style="margin-bottom: 0cm; line-height: 100%;">A dispersion of 45° is taken from the bearing on the cleat to the root line [Cl 8.7.1.3]</p>
+
+';
+
+$markup_text1 = 'Bearing stiffeners should be provided for webs where forces applied through a flange
+by loads or reactions exceeding the local capacity of the web at its connection to the
+flange given by (equation form modified in the preceding paras)';
+
+$tooltip1='[Cl 8.7.4] Bearing Stiffeners';
+
 	// All the real form fields.
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
@@ -536,10 +578,21 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
+			
+			$form['step3_field1_fieldset']['tooltip1'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip1,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step3_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
+				'#markup' => $markup_text1
+			);
+			
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -827,20 +880,166 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by shear <strong>yielding and flexural yielding of angle</strong><br />
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity of the outstanding leg</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the factored design shear force, , does not exceed 0.6<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the factored design shear force, 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>V</mi>
+</math>
+
+, does not exceed 0.6 <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mi>d</mi>
+  </msub>
+</math><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; is the design shear strength of the cross-section (see 8.4), the design bending strength, ABc shall be taken as:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; formula</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+
+ is the design shear strength of the cross-section (see 8.4), the design bending strength, <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+  shall be taken as:<br />
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mi>b</mi>
+  </msub>
+  <msub>
+    <mi>Z</mi>
+    <mi>p</mi>
+  </msub>
+  <msub>
+    <mi>f</mi>
+    <mi>y</mi>
+  </msub>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo>/</mo>
+  </mrow>
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mn>0</mn>
+    </mrow>
+  </msub>
+</math>
+
+</p>
 
 <p><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avoid irreversible deformation under serviceability loads in cantilever beams, M d shall be less than 1.5<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avoid irreversible deformation under serviceability loads in cantilever beams,
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+ shall be less than 
+ 
+ <br />
+ <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mfrac>
+    <mrow>
+      <mn>1.5</mn>
+      <msub>
+        <mi>Z</mi>
+        <mi>e</mi>
+      </msub>
+      <msub>
+        <mi>f</mi>
+        <mi>y</mi>
+      </msub>
+    </mrow>
+    <msub>
+      <mi>&#x03B3;<!-- γ --></mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>m</mi>
+        <mn>0</mn>
+      </mrow>
+    </msub>
+  </mfrac>
+</math>
+ <br />
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.0 for plastic and compact sections;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; = / for semi-compact sections;<br />
-,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = plastic and elastic section moduli of the cross-section, respectively;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = yield stress of the material; and<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = yield stress of the material; and<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = partial safety factor for material</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mi>b</mi>
+  </msub>
+</math>
+= 1.0 for plastic and compact sections;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mi>b</mi>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>Z</mi>
+    <mi>e</mi>
+  </msub>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo>/</mo>
+  </mrow>
+  <msub>
+    <mi>Z</mi>
+    <mi>p</mi>
+  </msub>
+</math>
+ for semi-compact sections;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>Z</mi>
+    <mi>p</mi>
+  </msub>
+  <mo>,</mo>
+  <msub>
+    <mi>Z</mi>
+    <mi>e</mi>
+  </msub>
+</math>
+= plastic and elastic section moduli of the cross-section, respectively;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>f</mi>
+    <mi>y</mi>
+  </msub>
+</math>
+= yield stress of the material; and<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mn>0</mn>
+    </mrow>
+  </msub>
+</math>
+
+
+ = partial safety factor for material</p>
 
 <hr>
 ';
@@ -1162,30 +1361,253 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	$markup_text = '<p>b) [CL 8.2.1.3]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the design shear force (factored), V , exceeds 0.6 vd<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the design shear force (factored), 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>V</mi>
+</math>
+ , exceeds 0.6 
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+ 
+ <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vd is the design shear strength of the cross-section (see 8.4) the design bending strength, Md shall be taken as Mdv (= design bending strength under high shear<br />
-as defined in 9.2)</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+ is the design shear strength of the cross-section (see 8.4) the design bending strength, 
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+  shall be taken as 
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>v</mi>
+    </mrow>
+  </msub>
+</math>
+   (= design bending strength under high shear as defined in 9.2)</p>
 
 <p>[Cl 9.2.2]<br />
 When the factored value of the applied shear force is high (exceeds the limit specified in Cl 9.2.1), the factored moment of the section should be less than the moment<br />
-capacity of the section under higher shear force, Mdv , for plastic or compact section is calculated as given below:</p>
+capacity of the section under higher shear force, 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>v</mi>
+    </mrow>
+  </msub>
+</math>
+ , for plastic or compact section is calculated as given below:</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formula</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>v</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mi>m</mi>
+  <mi>i</mi>
+  <mi>n</mi>
+  <mo fence="false" stretchy="false">{</mo>
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+  <mo>&#x2212;</mo>
+  <mi>&#x03B2;<!-- β --></mi>
+  <mo stretchy="false">(</mo>
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+  <mo>&#x2212;</mo>
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>f</mi>
+      <mi>d</mi>
+    </mrow>
+  </msub>
+  <mo stretchy="false">)</mo>
+  <mo>,</mo>
+  <mfrac>
+    <mrow>
+      <mn>1.2</mn>
+      <msub>
+        <mi>Z</mi>
+        <mi>e</mi>
+      </msub>
+      <msub>
+        <mi>f</mi>
+        <mi>y</mi>
+      </msub>
+    </mrow>
+    <msub>
+      <mi>&#x03B3;<!-- γ --></mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>m</mi>
+        <mn>0</mn>
+      </mrow>
+    </msub>
+  </mfrac>
+  <mo fence="false" stretchy="false">}</mo>
+</math>
 
-<p>[#Assuming, Mdf = 0, as the shear resisting area and moment resisting area are the same for the cross section of the outstanding leg] =</p>
+<p>[#Assuming, 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>f</mi>
+    </mrow>
+  </msub>
+</math>
+= 0, as the shear resisting area and moment resisting area are the same for the cross section of the outstanding leg] =</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formula</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mo>=</mo>
+  <mi>m</mi>
+  <mi>i</mi>
+  <mi>n</mi>
+  <mo fence="false" stretchy="false">{</mo>
+  <mo stretchy="false">(</mo>
+  <mn>1</mn>
+  <mo>&#x2212;</mo>
+  <mi>&#x03B2;<!-- β --></mi>
+  <mo stretchy="false">)</mo>
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+  <mo>,</mo>
+  <mfrac>
+    <mrow>
+      <mn>1.2</mn>
+      <msub>
+        <mi>Z</mi>
+        <mi>e</mi>
+      </msub>
+      <msub>
+        <mi>f</mi>
+        <mi>y</mi>
+      </msub>
+    </mrow>
+    <msub>
+      <mi>&#x03B3;<!-- γ --></mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>m</mi>
+        <mn>0</mn>
+      </mrow>
+    </msub>
+  </mfrac>
+  <mo fence="false" stretchy="false">}</mo>
+</math>
 
 <p>Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formula<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = design bending strength under high shear<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = plastic design moment of the whole section disregarding high shear force effect (see 8.2.1.2) considering web buckling effects (see 8.2.1.1)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = factored applied shear force as governed by web yielding or web buckling<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = design shear strength as governed by web yielding or web buckling (see 8.4.1 or 8.4.2)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = plastic design strength of the area of the cross-section excluding the shear area, considering partial safety factor, and<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = elastic section modulus of the whole section</p>
-
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>&#x03B2;<!-- β --></mi>
+  <mo>=</mo>
+  <mo stretchy="false">(</mo>
+  <mfrac>
+    <mrow>
+      <mn>2</mn>
+      <mi>V</mi>
+    </mrow>
+    <msub>
+      <mi>V</mi>
+      <mi>d</mi>
+    </msub>
+  </mfrac>
+  <mo>&#x2212;</mo>
+  <mn>1</mn>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mn>2</mn>
+  </msup>
+</math><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>v</mi>
+    </mrow>
+  </msub>
+</math>
+ = design bending strength under high shear<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+    </mrow>
+  </msub>
+</math>
+ = plastic design moment of the whole section disregarding high shear force effect (see 8.2.1.2) considering web buckling effects (see 8.2.1.1)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>V</mi>
+</math>
+= factored applied shear force as governed by web yielding or web buckling<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+ = design shear strength as governed by web yielding or web buckling (see 8.4.1 or 8.4.2)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>f</mi>
+      <mi>d</mi>
+    </mrow>
+  </msub>
+</math>
+= plastic design strength of the area of the cross-section excluding the shear area, considering partial safety factor 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mn>0</mn>
+    </mrow>
+  </msub>
+</math>
+, and<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>Z</mi>
+    <mi>e</mi>
+  </msub>
+</math>
+= elastic section modulus of the whole section</p>
 
 <hr>
 ';
@@ -1508,14 +1930,116 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	$markup_text = '<p><strong>2) Shear capacity of the outstanding leg of cleat</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formula<br />
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>p</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msub>
+        <mi>A</mi>
+        <mi>v</mi>
+      </msub>
+      <msub>
+        <mi>f</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>y</mi>
+          <mi>w</mi>
+        </mrow>
+      </msub>
+    </mrow>
+    <mrow>
+      <msqrt>
+        <mn>3</mn>
+      </msqrt>
+      <mo>&#x2217;<!-- ∗ --></mo>
+      <msub>
+        <mi>&#x03B3;<!-- γ --></mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>m</mi>
+          <mn>0</mn>
+        </mrow>
+      </msub>
+    </mrow>
+  </mfrac>
+</math>
+<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Vdp = design plastic shear resistance under pure shear<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Av= A = data(#this formula is for a plate, assuming clear horizontal leg of the seated angle is a plate) [Cl 8.4.1.1]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; da= bearing width of seated angle<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ta = thickness of seated angle<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fyw = yield strength of the web<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ymo= partial safety factor<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>p</mi>
+    </mrow>
+  </msub>
+</math>
+ = design plastic shear resistance under pure shear<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>A</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>v</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mi>A</mi>
+  <mo>=</mo>
+  <msub>
+    <mi>d</mi>
+    <mi>a</mi>
+  </msub>
+  <msub>
+    <mi>t</mi>
+    <mi>a</mi>
+  </msub>
+</math>
+
+(#this formula is for a plate, assuming clear horizontal leg of the seated angle is a plate) [Cl 8.4.1.1]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>d</mi>
+    <mi>a</mi>
+  </msub>
+</math>
+= bearing width of seated angle<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>t</mi>
+    <mi>a</mi>
+  </msub>
+</math>
+= thickness of seated angle<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>f</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>y</mi>
+      <mi>w</mi>
+    </mrow>
+  </msub>
+</math> = yield strength of the web<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mn>0</mn>
+    </mrow>
+  </msub>
+</math>
+= partial safety factor<br />
 &nbsp;&nbsp; b) [Cl 8.4.2] [Resistance to shear buckling]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [#This clause check does not need to be implemented as the outstanding leg of the seated angle will not buckle due to the low slenderness ratio]</p>
 
@@ -1843,40 +2367,421 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '<p><strong>b. Bolt<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bolt value and number of bolts</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>i.</strong> [Cl. 10.3.3] <strong>Shear capacity of bolt</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) formula<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #currently, conservatively assuming NnAnb = 0 that is, all shear planes pass through the threads.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>s</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msub>
+        <mi>f</mi>
+        <mi>u</mi>
+      </msub>
+      <mo stretchy="false">(</mo>
+      <msub>
+        <mi>n</mi>
+        <mi>s</mi>
+      </msub>
+      <msub>
+        <mi>A</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>b</mi>
+        </mrow>
+      </msub>
+      <mo>+</mo>
+      <msub>
+        <mi>n</mi>
+        <mi>n</mi>
+      </msub>
+      <msub>
+        <mi>A</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>n</mi>
+          <mi>b</mi>
+        </mrow>
+      </msub>
+      <mo stretchy="false">)</mo>
+    </mrow>
+    <mrow>
+      <msqrt>
+        <mn>3</mn>
+      </msqrt>
+      <msub>
+        <mi>&#x03B3;<!-- γ --></mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>m</mi>
+          <mi>b</mi>
+        </mrow>
+      </msub>
+    </mrow>
+  </mfrac>
+</math>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #currently, conservatively assuming &nbsp;  
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>n</mi>
+    <mi>n</mi>
+  </msub>
+  <msub>
+    <mi>A</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mn>0</mn>
+</math>
+ &nbsp;that is, all shear planes pass through the threads.<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The option to specify this as an input from the user is being implemented.<br />
 Thus,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formula<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>s</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msub>
+        <mi>f</mi>
+        <mi>u</mi>
+      </msub>
+      <msub>
+        <mi>n</mi>
+        <mi>n</mi>
+      </msub>
+      <msub>
+        <mi>A</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>n</mi>
+          <mi>b</mi>
+        </mrow>
+      </msub>
+    </mrow>
+    <mrow>
+      <msqrt>
+        <mn>3</mn>
+      </msqrt>
+      <msub>
+        <mi>&#x03B3;<!-- γ --></mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>m</mi>
+          <mi>b</mi>
+        </mrow>
+      </msub>
+    </mrow>
+  </mfrac>
+</math>
+<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vdsb = design strength of bolt, as governed by shear strength<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fu = ultimate tensile strength of a bolt<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ns = number of shear planes without threads intercepting the shear plane<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; asb = nominal plain shank area of the bolt<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nn = number of shear planes with threads intercepting the shear plane<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; anb = net shear area of the bolt at threads, may be taken as the area corresponding to root diameter at the thread<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ymb = partial safety factor for bolt</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>s</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+ = design strength of bolt, as governed by shear strength<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>f</mi>
+    <mi>u</mi>
+  </msub>
+</math>
+ = ultimate tensile strength of a bolt<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>n</mi>
+    <mi>s</mi>
+  </msub>
+</math>
+ = number of shear planes without threads intercepting the shear plane<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>A</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>s</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+ = nominal plain shank area of the bolt<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>n</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+    </mrow>
+  </msub>
+</math> 
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) [Cl 10.3.3.1] Reduction factor for long joints [#assuming that this does not apply]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the length of joint, l j , of a splice or end connection in a compression or tension element containing more than two bolts (that is the distance between the first and last rows of bolts in the joint, measure in the direction of the load transfer) exceeds 15d in the direction of load, the nominal shear capacity (see 10.3.2) Vdb shall be reduced by the factor Blj, given by:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equation<br />
+= number of shear planes with threads intercepting the shear plane<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>A</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>n</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+
+= net shear area of the bolt at threads, may be taken as the area corresponding to root diameter at the thread<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B3;<!-- γ --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>m</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+= partial safety factor for bolt</p>
+
+';
+	$markup_text1 = '
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the length of joint, 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>I</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>j</mi>
+    </mrow>
+  </msub>
+</math>
+, of a splice or end connection in a compression or tension element containing more than two bolts (that is the distance between the first and last rows of bolts in the joint, measure in the direction of the load transfer) exceeds 15d in the direction of load, the nominal shear capacity (see 10.3.2)&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+&nbsp;shall be reduced by the factor&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>j</mi>
+    </mrow>
+  </msub>
+</math>
+, given by:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>&#x3B2;</mo>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>j</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mn>1.075</mn>
+  <mo>&#x2212;</mo>
+  <msub>
+    <mi>l</mi>
+    <mi>j</mi>
+  </msub>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo>/</mo>
+  </mrow>
+  <mn>200</mn>
+  <mi>d</mi>
+</math>
+&nbsp;
+but
+&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>0.75</mn>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo>&#x3B2;</mo>
+    </mrow>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>j</mi>
+    </mrow>
+  </msub>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <mn>1.0</mn>
+</math>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo>=</mo>
+  <mn>1.075</mn>
+  <mo>&#x2212;</mo>
+  <mn>0.005</mn>
+  <mfrac>
+    <msub>
+      <mi>l</mi>
+      <mi>j</mi>
+    </msub>
+    <mi>d</mi>
+  </mfrac>
+</math>
+<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d = nominal diameter of the fastener<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>d</mi>
+</math> = nominal diameter of the fastener<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Note: This provision does not apply when the distribution of shear over the length of joint is uniform, as in the connection of web of a section to the flanges</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) [Cl 10.3.3.2] Reduction factor for large grip lengths [#assuming that this does not apply]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the grip length, l g , (equal to the total thickness of the connected plates), exceeds 5 times the diameter, d of the bolts, the design shear capacity shall be reduced by a factor given by:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equation<br />
+';
+	$markup_text2 = '
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the grip length, 
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>l</mi>
+    <mi>g</mi>
+  </msub>
+</math>
+
+, (equal to the total thickness of the connected plates), exceeds 5 times the diameter, d of the bolts, the design shear capacity shall be reduced by a factor given by:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>g</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mn>8</mn>
+      <mi>d</mi>
+    </mrow>
+    <mrow>
+      <mn>3</mn>
+      <mi>d</mi>
+      <mo>+</mo>
+      <msub>
+        <mi>l</mi>
+        <mi>g</mi>
+      </msub>
+    </mrow>
+  </mfrac>
+</math>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mo>=</mo>
+  <mfrac>
+    <mn>8</mn>
+    <mrow>
+      <mn>3</mn>
+      <mo>+</mo>
+      <msub>
+        <mi>l</mi>
+        <mi>g</mi>
+      </msub>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>/</mo>
+      </mrow>
+      <mi>d</mi>
+    </mrow>
+  </mfrac>
+</math>
+
+<br />
 shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case be greater than 8d</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4) [Cl 10.3.3.3] Reduction factor for packing plates [#assuming that this does not apply]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The design shear capacity of bolts carrying shear through a packing plate in excess of 6 mm shall be decreased by a factor, Bij , given by:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bpk= 1 − 0.0125<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tpk = thickness of the thicker packing, in mm</p>
-
-<hr>
 ';
+	$markup_text3 = '
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The design shear capacity of bolts carrying shear through a packing plate in excess of 6 mm shall be decreased by a factor, 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>j</mi>
+    </mrow>
+  </msub>
+</math>
+, given by:
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>p</mi>
+      <mi>k</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mn>1</mn>
+  <mo>&#x2212;</mo>
+  <mn>0.0125</mn>
+  <msub>
+    <mi>t</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>p</mi>
+      <mi>k</mi>
+    </mrow>
+  </msub>
+</math>
+
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>t</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>p</mi>
+      <mi>k</mi>
+    </mrow>
+  </msub>
+</math>
+ = thickness of the thicker packing, in mm</p>
+
+
+';
+	$tooltip1 = '2) [Cl 10.3.3.1] Reduction factor for long joints [#assuming that this does not apply]';
+	$tooltip2 = '3) [Cl 10.3.3.2] Reduction factor for large grip lengths [#assuming that this does not apply]';
+	$tooltip3 = '4) [Cl 10.3.3.3] Reduction factor for packing plates [#assuming that this does not apply]';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
@@ -1894,8 +2799,34 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 		if ($step7_data = $form_step7_data->fetchObject())
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#markup' => $markup_text,
-				'#options' => $step7_options
+				'#markup' => $markup_text
+			);
+			$form['step7_field1_fieldset']['tooltip1'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip1,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
+				'#markup' => $markup_text1
+			);
+			$form['step7_field1_fieldset']['tooltip2'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip2,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip2']['tooltip2_text'] = array(
+				'#markup' => $markup_text2
+			);
+			$form['step7_field1_fieldset']['tooltip3'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip2,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip3']['tooltip3_text'] = array(
+				'#markup' => $markup_text3
 			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
@@ -1986,6 +2917,33 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step7_options
+			);
+			$form['step7_field1_fieldset']['tooltip1'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip1,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
+				'#markup' => $markup_text1
+			);
+			$form['step7_field1_fieldset']['tooltip2'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip2,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip2']['tooltip2_text'] = array(
+				'#markup' => $markup_text2
+			);
+			$form['step7_field1_fieldset']['tooltip3'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip2,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step7_field1_fieldset']['tooltip3']['tooltip3_text'] = array(
+				'#markup' => $markup_text3
 			);
 			if (empty($form_state['step7_num_comment']))
 			{
@@ -2196,18 +3154,146 @@ function ddcl_seated_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	$markup_text = '<p><strong>ii. Bearing capacity of bolt</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) [Cl. 10.3.4] Bolt bearing on the seat angle (and column)<br />
-The design bearing strength of a bolt on any plate, Vdp , as governed by bearing is given by:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equation<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kb is smaller of<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equation<br />
+The design bearing strength of a bolt on any plate, 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>p</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
+, as governed by bearing is given by:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>V</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>s</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mn>2.5</mn>
+  <msub>
+    <mi>k</mi>
+    <mi>b</mi>
+  </msub>
+  <mi>d</mi>
+  <mi>t</mi>
+  <msub>
+    <mi>f</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>u</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+</math>
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e,p = end and pitch distances of the fastener along bearing direction;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d0 = diameter of the hole<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fubfu = ultimate tensile stress of the bolt and the ultimate tensile stress of the plate, respectively;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d = nominal diameter of the bolt,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t = summation of the thicknesses of the connected plates experiencing bearing stress in the same direction, or if the bolts are countersunk, the thickness of the plate&nbsp; minus one half of the depth of countersinking.<br />
-t shall be minimum of {thickness of seat angle, thickness of support}</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>k</mi>
+    <mi>b</mi>
+  </msub>
+</math>
+
+is smaller of<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mo fence="false" stretchy="false">{</mo>
+  <mfrac>
+    <mi>e</mi>
+    <mrow>
+      <mn>3</mn>
+      <msub>
+        <mi>d</mi>
+        <mn>0</mn>
+      </msub>
+    </mrow>
+  </mfrac>
+  <mo>,</mo>
+  <mfrac>
+    <mi>p</mi>
+    <mrow>
+      <mn>3</mn>
+      <msub>
+        <mi>d</mi>
+        <mn>0</mn>
+      </msub>
+    </mrow>
+  </mfrac>
+  <mo>&#x2212;</mo>
+  <mn>0.25</mn>
+  <mo>,</mo>
+  <mfrac>
+    <msub>
+      <mi>f</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>u</mi>
+        <mi>b</mi>
+      </mrow>
+    </msub>
+    <msub>
+      <mi>f</mi>
+      <mi>u</mi>
+    </msub>
+  </mfrac>
+  <mo>,</mo>
+  <mn>1.0</mn>
+  <mo fence="false" stretchy="false">}</mo>
+</math>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>e</mi>
+  <mo>,</mo>
+  <mi>p</mi>
+</math>
+ = end and pitch distances of the fastener along bearing direction;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>d</mi>
+    <mn>0</mn>
+  </msub>
+</math>
+ = diameter of the hole<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>f</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>u</mi>
+      <mi>b</mi>
+    </mrow>
+  </msub>
+  <mo>,</mo>
+  <msub>
+    <mi>f</mi>
+    <mi>u</mi>
+  </msub>
+</math>
+= ultimate tensile stress of the bolt and the ultimate tensile stress of the plate, respectively;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>d</mi>
+</math>
+= nominal diameter of the bolt,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>t</mi>
+</math>
+= summation of the thicknesses of the connected plates experiencing bearing stress in the same direction, or if the bolts are countersunk, the thickness of the plate&nbsp; minus one half of the depth of countersinking.<br />
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>t</mi>
+</math>
+shall be minimum of {thickness of seat angle, thickness of support}</p>
 
 <p>#assuming standard clearance holes; hence, reduction factors for long slotted holes<br />
 and over size, and short slotted holes as given in [Cl 10.3.4] do not apply</p>
@@ -2860,7 +3946,100 @@ diameter of the fastener<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii. [Cl 10.2.3.1] <strong>Maximum spacing</strong><br />
 The distance between the centres of any two adjacent fasteners shall not exceed 32t or<br />
 300mm, whichever is less, where t is the thickness of the thinner plate.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equation</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>B</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>t</mi>
+  <mi>p</mi>
+  <mi>i</mi>
+  <mi>t</mi>
+  <mi>c</mi>
+  <mi>h</mi>
+  <mo stretchy="false">(</mo>
+  <mi>m</mi>
+  <mi>m</mi>
+  <mo stretchy="false">)</mo>
+  <mo>&#x2265;<!-- ≥ --></mo>
+  <mn>2.5</mn>
+  <mo>&#x2217;<!-- ∗ --></mo>
+  <mo stretchy="false">(</mo>
+  <mi>b</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>t</mi>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>a</mi>
+  <mi>m</mi>
+  <mi>e</mi>
+  <mi>t</mi>
+  <mi>e</mi>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+  <mo>,</mo>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <mi>m</mi>
+  <mi>i</mi>
+  <mi>n</mi>
+  <mo stretchy="false">(</mo>
+  <mn>32</mn>
+  <mo>&#x2217;<!-- ∗ --></mo>
+  <mi>t</mi>
+  <mo>,</mo>
+  <mn>300</mn>
+  <mo stretchy="false">)</mo>
+</math>
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>B</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>t</mi>
+  <mi>g</mi>
+  <mi>a</mi>
+  <mi>u</mi>
+  <mi>g</mi>
+  <mi>e</mi>
+  <mo stretchy="false">(</mo>
+  <mi>m</mi>
+  <mi>m</mi>
+  <mo stretchy="false">)</mo>
+  <mo>&#x2265;<!-- ≥ --></mo>
+  <mn>2.5</mn>
+  <mo>&#x2217;<!-- ∗ --></mo>
+  <mo stretchy="false">(</mo>
+  <mi>b</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>t</mi>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>a</mi>
+  <mi>m</mi>
+  <mi>e</mi>
+  <mi>t</mi>
+  <mi>e</mi>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+  <mo>,</mo>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <mi>m</mi>
+  <mi>i</mi>
+  <mi>n</mi>
+  <mo stretchy="false">(</mo>
+  <mn>32</mn>
+  <mo>&#x2217;<!-- ∗ --></mo>
+  <mi>t</mi>
+  <mo>,</mo>
+  <mn>300</mn>
+  <mo stretchy="false">)</mo>
+</math>
+
+</p>
+
 
 
 <hr>
@@ -3182,16 +4361,128 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p>iii. [Cl 10.2.4] <strong>Edge and end distances</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.2]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges.</p>
+	$markup_text = '
+	
+	<p class="rtejustify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>iii. [Cl 10.2.4] Edge and end distances</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.2]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges.</p>
 
-<p><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.3]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 12 , where = 250/ and t is the thickness of the thinner outer plate.</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Equation</p>
 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.3]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>12</mn>
+  <mi>t</mi>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+  <mo>,</mo>
+  <mi>w</mi>
+  <mi>h</mi>
+  <mi>e</mi>
+  <mi>r</mi>
+  <mi>e</mi>
+  <mtext>&#xA0;</mtext>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+  <mo>=</mo>
+  <msqrt>
+    <mfrac>
+      <mn>250</mn>
+      <msub>
+        <mi>f</mi>
+        <mi>y</mi>
+      </msub>
+    </mfrac>
+  </msqrt>
+</math>
+ is the thickness of the thinner outer plate.</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>E</mi>
+  <mi>n</mi>
+  <mi>d</mi>
+  <mtext>&#xA0;</mtext>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>s</mi>
+  <mi>t</mi>
+  <mi>a</mi>
+  <mi>n</mi>
+  <mi>c</mi>
+  <mi>e</mi>
+  <mo stretchy="false">(</mo>
+  <mi>m</mi>
+  <mi>m</mi>
+  <mo stretchy="false">)</mo>
+  <mtext>&#xA0;</mtext>
+  <mo>&#x2265;<!-- ≥ --></mo>
+  <mn>1.7</mn>
+  <mo>&#x2217;</mo>
+  <mo stretchy="false">(</mo>
+  <mi>h</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>e</mi>
+  <mtext>&#xA0;</mtext>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>a</mi>
+  <mi>m</mi>
+  <mi>e</mi>
+  <mi>t</mi>
+  <mi>e</mi>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+  <mo>,</mo>
+  <mtext>&#xA0;</mtext>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <mn>12</mn>
+  <mo>&#x2217;</mo>
+  <mi>t</mi>
+</math>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>E</mi>
+  <mi>d</mi>
+  <mi>g</mi>
+  <mi>e</mi>
+  <mtext>&#xA0;</mtext>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>s</mi>
+  <mi>t</mi>
+  <mi>a</mi>
+  <mi>n</mi>
+  <mi>c</mi>
+  <mi>e</mi>
+  <mo stretchy="false">(</mo>
+  <mi>m</mi>
+  <mi>m</mi>
+  <mo stretchy="false">)</mo>
+  <mtext>&#xA0;</mtext>
+  <mo>&#x2265;<!-- ≥ --></mo>
+  <mn>1.7</mn>
+  <mo>&#x2217;</mo>
+  <mo stretchy="false">(</mo>
+  <mi>h</mi>
+  <mi>o</mi>
+  <mi>l</mi>
+  <mi>e</mi>
+  <mtext>&#xA0;</mtext>
+  <mi>d</mi>
+  <mi>i</mi>
+  <mi>a</mi>
+  <mi>m</mi>
+  <mi>e</mi>
+  <mi>t</mi>
+  <mi>e</mi>
+  <mi>r</mi>
+  <mo stretchy="false">)</mo>
+  <mo>,</mo>
+  <mtext>&#xA0;</mtext>
+  <mo>&#x2264;<!-- ≤ --></mo>
+  <mn>12</mn>
+  <mo>&#x2217;</mo>
+  <mi>t</mi>
+</math>
 
 <hr>
 ';
@@ -3723,12 +5014,18 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	global $user;
 	$v = $form_state['values'];
 	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_seated_angle_form_step12_feedback');
+	/*$query = db_select('ddcl_seated_angle_form_step12_feedback');
 	$query->fields('ddcl_seated_angle_form_step12_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
+	$form_step7_data_count = $form_step7_data->rowCount();*/
+	
+	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$args = array(":uid"=>$user->uid);
+	$form_step7_data = db_query($query,$args);
+	$form_step7_data_count = $form_step7_data->rowCount();
 	//var_dump($form_step7_data);die;
-	if ($form_step7_data)
+	if ($form_step7_data_count != 0)
 	{
 		$query = "UPDATE ddcl_seated_angle_form_step12_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -3738,6 +5035,15 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3776,6 +5082,7 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step7_data
 	else
 	{
+		die;
 		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
@@ -3787,13 +5094,13 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
