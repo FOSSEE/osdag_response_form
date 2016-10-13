@@ -2503,12 +2503,18 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 {
 	global $user;
 	$v = $form_state['values'];
-	$query = db_select('ddcl_osdag_response_form_step8_feedback');
+	
+	/*$query = db_select('ddcl_osdag_response_form_step8_feedback');
 	$query->fields('ddcl_osdag_response_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$args = array(":uid"=>$user->uid);
+	$form_step7_data = db_query($query,$args);
+	$form_step7_data_count = $form_step7_data->rowCount();
 	//var_dump($form_step7_data);die;
-	if ($form_step7_data)
+	if ($form_step7_data_count != 0)
 	{
 		$query = "UPDATE ddcl_osdag_response_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2518,6 +2524,15 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_osdag_response_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $$args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
