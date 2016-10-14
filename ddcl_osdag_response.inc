@@ -2513,6 +2513,7 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 	$args = array(":uid"=>$user->uid);
 	$form_step7_data = db_query($query,$args);
 	$form_step7_data_count = $form_step7_data->rowCount();
+	$form_step7_data = $form_step7_data->fetchObject();
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data_count != 0)
 	{
