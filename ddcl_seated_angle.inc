@@ -552,13 +552,10 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 <p style="margin-bottom: 0cm; line-height: 100%;">A dispersion of 45° is taken from the bearing on the cleat to the root line [Cl 8.7.1.3]</p>
 
 ';
-
-$markup_text1 = 'Bearing stiffeners should be provided for webs where forces applied through a flange
+	$markup_text1 = 'Bearing stiffeners should be provided for webs where forces applied through a flange
 by loads or reactions exceeding the local capacity of the web at its connection to the
 flange given by (equation form modified in the preceding paras)';
-
-$tooltip1='[Cl 8.7.4] Bearing Stiffeners';
-
+	$tooltip1 = '[Cl 8.7.4] Bearing Stiffeners';
 	// All the real form fields.
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
@@ -578,7 +575,6 @@ $tooltip1='[Cl 8.7.4] Bearing Stiffeners';
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			
 			$form['step3_field1_fieldset']['tooltip1'] = array(
 				'#type' => 'fieldset',
 				'#title' => $tooltip1,
@@ -588,7 +584,6 @@ $tooltip1='[Cl 8.7.4] Bearing Stiffeners';
 			$form['step3_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
 				'#markup' => $markup_text1
 			);
-			
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
@@ -5014,17 +5009,13 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	global $user;
 	$v = $form_state['values'];
 	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
-	/*$query = db_select('ddcl_seated_angle_form_step12_feedback');
-	$query->fields('ddcl_seated_angle_form_step12_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
-	$form_step7_data_count = $form_step7_data->rowCount();*/
-	
 	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
-	$args = array(":uid"=>$user->uid);
-	$form_step7_data = db_query($query,$args);
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step7_data = db_query($query, $args);
 	$form_step7_data_count = $form_step7_data->rowCount();
-	//var_dump($form_step7_data);die;
+	$form_step7_data = $form_step7_data->fetchObject();
 	if ($form_step7_data_count != 0)
 	{
 		$query = "UPDATE ddcl_seated_angle_form_step12_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
@@ -5082,7 +5073,6 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step7_data
 	else
 	{
-		die;
 		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
@@ -5164,4 +5154,361 @@ function ddcl_seated_angle_success()
 	$data .= drupal_set_message(t('You have successfully submitted the feedback.'), 'status');
 	$data .= drupal_goto('home');
 	return $data;
+}
+/**********************************************/
+function ddcl_seated_angle_response_result_page()
+{
+	/* get pending proposals to be approved */
+	$output .= "";
+	$output .= l("Download All Result in CSV", "ddcl-seated-angle/form/result/download");
+	$feedback_rows = array();
+	$feedback_q = db_query('
+
+select
+
+step1.uid as "step1_uid",
+step1.name as "step1_name",
+step1.inserted_on as "step1_date",
+step1.institute as "step1_institute",
+step1.current_position as "step1_current_position",
+
+step2.id as "step2_id",
+step2.data_relation as "step2_data_relation",
+step2.question1 as "step2_question1",
+
+
+step3.id as "step3_id",
+step3.data_relation as "step3_data_relation",
+step3.question1 as "step3_question1",
+
+
+step4.id as "step4_id",
+step4.data_relation as "step4_data_relation",
+step4.question1 as "step4_question1",
+
+step5.id as "step5_id",
+step5.data_relation as "step5_data_relation",
+step5.question1 as "step5_question1",
+
+
+step6.id as "step6_id",
+step6.data_relation as "step6_data_relation",
+step6.question1 as "step6_question1",
+
+step7.id as "step7_id",
+step7.data_relation as "step7_data_relation",
+step7.question1 as "step7_question1",
+
+
+step8.id as "step8_id",
+step8.data_relation as "step8_data_relation",
+step8.question1 as "step8_question1",
+
+step9.id as "step9_id",
+step9.data_relation as "step9_data_relation",
+step9.question1 as "step9_question1",
+
+step10.id as "step10_id",
+step10.data_relation as "step10_data_relation",
+step10.question1 as "step10_question1",
+
+step11.id as "step11_id",
+step11.data_relation as "step11_data_relation",
+step11.question1 as "step11question1",
+
+step12.id as "step12_id",
+step12.data_relation as "step12_data_relation",
+step12.question1 as "step12_question1"
+
+from ddcl_seated_angle_form_step1_feedback step1
+
+join ddcl_seated_angle_form_step2_feedback step2 on step1.uid=step2.uid
+join ddcl_seated_angle_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_seated_angle_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_seated_angle_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_seated_angle_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_seated_angle_form_step7_feedback step7 on step6.uid=step7.uid
+join ddcl_seated_angle_form_step8_feedback step8 on step7.uid=step8.uid
+join ddcl_seated_angle_form_step9_feedback step9 on step8.uid=step9.uid
+join ddcl_seated_angle_form_step10_feedback step10 on step9.uid=step10.uid
+join ddcl_seated_angle_form_step11_feedback step11 on step10.uid=step11.uid
+join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
+	');
+	$i = 1;
+	while ($feedback_data = $feedback_q->fetchObject())
+	{
+		$feedback_rows[$feedback_data->uid] = array(
+			$i,
+			$feedback_data->step1_date,
+			$feedback_data->step1_name,
+			$feedback_data->step1_institute,
+			$feedback_data->step1_current_position,
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation)
+		);
+		$i++;
+	} //$pending_data = $pending_q->fetchObject()
+	/* check if there are any pending proposals */
+	if (!$feedback_rows)
+	{
+		drupal_set_message(t('There are no results.'), 'status');
+		return '';
+	} //!$pending_rows
+	$data_header = array(
+		'No.',
+		'Date of Submission',
+		'Name',
+		'Institute / Company',
+		'Current Position',
+		'Page 2 comments',
+		'Page 3 comments',
+		'Page 4 comments',
+		'Page 5 comments',
+		'Page 6 comments',
+		'Page 7 comments',
+		'Page 8 comments',
+		'Page 9 comments',
+		'Page 10 comments',
+		'Page 11 comments',
+		'Page 12 comments'
+	);
+	$output .= theme('table', array(
+		'header' => $data_header,
+		'rows' => $feedback_rows,
+		'sticky' => FALSE
+	));
+	return $output;
+}
+function _fetch_ddcl_seated_angle_exsiting_comments($step_id, $data_relation)
+{
+	$query_for_comment = db_query("SELECT * FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+	$comment = array();
+	$i = 0;
+	if ($query_for_comment != NULL)
+	{
+		while ($row = $query_for_comment->fetchObject())
+		{
+			$comment[$i] = $i + 1 . ") " . $row->comment . "<br><h6 style='text-align: right;'>" . $row->inserted_on . "</h6><br>";
+			$i++;
+		} //$row = $query_for_comment->fetchObject()
+	} //$query_for_comment == NULL
+	else
+	{
+		$comment[$i] = 'No earlier comments';
+	}
+	return $comment;
+}
+function _fetch_ddcl_seated_angle_exsiting_comments_result($step_id, $data_relation)
+{
+	$query_for_comment = db_query("SELECT * FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+	$text = "";
+	$i = 0;
+	while ($row = $query_for_comment->fetchObject())
+	{
+		if (strlen($row->comment) != 0)
+		{
+			$text .= $i + 1 . ") " . $row->comment . "<br>";
+		} //strlen($row->comment) != 0
+		else
+		{
+			$text .= 'No earlier comments';
+		}
+		$i++;
+	} //$row = $query_for_comment->fetchObject()
+	//$query_for_comment == NULL
+	return $text;
+}
+function _fetch_ddcl_seated_angle_exsiting_comments_result_csv($step_id, $data_relation)
+{
+	$query_for_comment = db_query("SELECT * FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+	$text = "";
+	$i = 0;
+	while ($row = $query_for_comment->fetchObject())
+	{
+		if (strlen($row->comment) != 0)
+		{
+			$text .= $i + 1 . ") " . $row->comment . "\n";
+		} //strlen($row->comment) != 0
+		else
+		{
+			$text .= 'No earlier comments';
+		}
+		$i++;
+	} //$row = $query_for_comment->fetchObject()
+	//$query_for_comment == NULL
+	return $text;
+}
+function ddcl_seated_angle_result_generate_csv()
+{
+	global $user;
+	if ($user->uid != NULL)
+	{
+		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "ddcl-seated-angle-form-result/{$user->uid}/";
+		if (!file_exists($result_dir))
+		{
+			mkdir($result_dir, 0755, TRUE);
+		} //!file_exists($result_dir)
+		$result_file = $result_dir . "ddcl-seated-angle-result-{$user->uid}" . ".csv";
+		$csv_file = "ddcl-seated-angle-result-{$user->uid}" . ".csv";
+		$fp = fopen($result_file, "w");
+		/* making the first row */
+		$item = array(
+			'No.',
+			'Date of Submission',
+			'Name',
+			'Institute / Company',
+			'Current Position',
+			'Page 1 comments',
+			'Page 2 comments',
+			'Page 3 comments',
+			'Page 4 comments',
+			'Page 5 comments',
+			'Page 6 comments',
+			'Page 7 comments',
+			'Page 8 comments',
+			'Page 9 comments',
+			'Page 10 comments',
+			'Page 11 comments',
+			'Page 12 comments'
+		);
+		fputcsv($fp, $item);
+		$query = '
+
+select
+
+step1.uid as "step1_uid",
+step1.name as "step1_name",
+step1.inserted_on as "step1_date",
+step1.institute as "step1_institute",
+step1.current_position as "step1_current_position",
+
+step2.id as "step2_id",
+step2.data_relation as "step2_data_relation",
+step2.question1 as "step2_question1", 
+
+
+step3.id as "step3_id",
+step3.data_relation as "step3_data_relation",
+step3.question1 as "step3_question1", 
+
+
+step4.id as "step4_id",
+step4.data_relation as "step4_data_relation",
+step4.question1 as "step4_question1",
+
+step5.id as "step5_id",
+step5.data_relation as "step5_data_relation",
+step5.question1 as "step5_question1", 
+
+
+step6.id as "step6_id",
+step6.data_relation as "step6_data_relation",
+step6.question1 as "step6_question1", 
+
+step7.id as "step7_id",
+step7.data_relation as "step7_data_relation",
+step7.question1 as "step7_question1",
+
+
+step8.id as "step8_id",
+step8.data_relation as "step8_data_relation",
+step8.question1 as "step8_question1",
+
+step9.id as "step9_id",
+step9.data_relation as "step9_data_relation",
+step9.question1 as "step9_question1",
+
+step10.id as "step10_id",
+step10.data_relation as "step10_data_relation",
+step10.question1 as "step10_question1",
+
+step11.id as "step11_id",
+step11.data_relation as "step11_data_relation",
+step11.question1 as "step11question1",
+
+step12.id as "step12_id",
+step12.data_relation as "step12_data_relation",
+step12.question1 as "step12_question1"
+
+from ddcl_seated_angle_form_step1_feedback step1
+
+join ddcl_seated_angle_form_step2_feedback step2 on step1.uid=step2.uid
+join ddcl_seated_angle_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_seated_angle_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_seated_angle_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_seated_angle_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_seated_angle_form_step7_feedback step7 on step6.uid=step7.uid
+join ddcl_seated_angle_form_step8_feedback step8 on step7.uid=step8.uid
+join ddcl_seated_angle_form_step9_feedback step9 on step8.uid=step9.uid
+join ddcl_seated_angle_form_step10_feedback step10 on step9.uid=step10.uid
+join ddcl_seated_angle_form_step11_feedback step11 on step10.uid=step11.uid
+join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
+			';
+		// $args = array(');
+		$result = db_query($query);
+		$i = 1;
+		while ($feedback_data = $result->fetchObject())
+		{
+			$item = array(
+				$i,
+				$feedback_data->step1_date,
+				$feedback_data->step1_name,
+				$feedback_data->step1_institute,
+				$feedback_data->step1_current_position,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation)
+			);
+			fputcsv($fp, $item);
+		} //$feedback_data = $result->fetchObject()
+		$i++;
+		fclose($fp);
+		$file = $result_file;
+		if (file_exists($file))
+		{
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename=' . basename($file));
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate');
+			header('Pragma: public');
+			header('Content-Length: ' . filesize($file));
+			ob_clean();
+			flush();
+			readfile($file);
+			unlink($file);
+			exit;
+		} //file_exists($file)
+	} //!$user->uid
+	else
+	{
+		drupal_set_message(t('You do not have permission to access this page.'), 'error');
+		drupal_goto('');
+	}
 }
