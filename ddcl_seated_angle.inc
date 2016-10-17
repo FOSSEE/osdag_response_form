@@ -466,6 +466,26 @@ function _fetch_exsiting_ddcl_seated_angle_comments($step_id, $data_relation)
 	return $comment;
 }
 /***************************************/
+/***************************************/
+function step2_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step2_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step2_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step2_num_comment'] > 1)
+	{
+		$form_state['step2_num_comment']--;
+	} //$form_state['step3_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step2_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step2_field1_fieldset'];
+}
+
 /***************************************** step 3 form starts **************************/
 function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
