@@ -262,11 +262,22 @@ function osdag_response_form_menu()
 		),
 		'file'=> 'ddcl_seated_angle.inc'
 	);
-		$items['ddcl-seated-angle/form/step12'] = array(
+	$items['ddcl-seated-angle/form/step12'] = array(
 		'title' => t('DDCL - Seated Angle'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_seated_angle.inc'
+	);
+	$items['ddcl-seated-angle/form/step13'] = array(
+		'title' => t('DDCL - Seated Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_seated_angle_step13_form'
 		),
 		'access arguments' => array(
 			'access osdag_feedback_form'
