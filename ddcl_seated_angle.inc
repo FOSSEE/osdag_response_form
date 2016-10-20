@@ -46,7 +46,15 @@ function ddcl_seated_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	global $base_url;
+	$markup_text = "The design and detailing checks to be followed for seated angle connection are listed in the following
+pages. Please give your feedback as comments on each item.";
 	// All the real form fields.
+	$form = array();
+	$form['step1_header'] = array(
+				'#markup' => $markup_text,
+				'#required' => true
+			);
+	
 	$query = db_select('ddcl_seated_angle_form_step1_feedback');
 	$query->fields('ddcl_seated_angle_form_step1_feedback');
 	$query->condition('uid', $user->uid);
@@ -64,7 +72,7 @@ function ddcl_seated_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 		return;
 		}*/
 	} //$form_step1_data
-	$form = array();
+	
 	$form['step1_field1_name'] = array(
 		'#title' => 'Name',
 		'#type' => 'textfield',
@@ -150,7 +158,7 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<strong> a. Seated Angle</strong><br> <p><strong>i. Bearing width</strong> of seated angle = width of beam [based on general practice]</p>
+	$markup_text = '<strong> a. Seated Angle</strong><br> <p><strong>i. Bearing width</strong> of seated angle = width of supported beam [based on general practice]</p>
 	
 	
 	
@@ -491,9 +499,9 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;"><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supporting beam</p>
+	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;"><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supported beam</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
-<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seat angle is calculated on the basis of web crippling of the beam. The seat leg length is kept more than the calculated bearing length given by [Cl 8.7.4]</p>
+<p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seated angle is calculated on the basis of web crippling of the beam. The outstanding leg length is kept more than the calculated bearing length given by [Cl 8.7.4]</p>
 
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
@@ -574,7 +582,58 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 ';
 	$markup_text1 = 'Bearing stiffeners should be provided for webs where forces applied through a flange
 by loads or reactions exceeding the local capacity of the web at its connection to the
-flange given by (equation form modified in the preceding paras)';
+flange given by <br>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<msub>
+    <mi>b</mi>
+    <mn>1</mn>
+  </msub>
+
+ </math>
+ = stiff bearing length
+
+<br>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<msub>
+    <mi>n</mi>
+    <mn>2</mn>
+  </msub>
+
+</math>
+
+ = length obtained by dispersion through the flange to the web junction at a slope of 1:2.5 to the plane of the flange
+<br>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<msub>
+    <mi>t</mi>
+    <mn>w</mn>
+  </msub>
+
+</math>
+ = thickness of the web, and
+
+ <br>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<msub>
+    <mi>f</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>y</mi>
+      <mi>w</mi>
+    </mrow>
+  </msub>
+
+</math>
+
+ = yield stress of the web
+
+
+';
 	$tooltip1 = '[Cl 8.7.4] Bearing Stiffeners';
 	// All the real form fields.
 	$form = array();
@@ -892,7 +951,7 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by shear <strong>yielding and flexural yielding of angle</strong><br />
+	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by <strong>shear</strong> yielding and flexural yielding of angle<br />
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity of the outstanding leg</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the factored design shear force, 
@@ -916,7 +975,14 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
   </msub>
 </math>
 
- is the design shear strength of the cross-section (see 8.4), the design bending strength, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ is the design shear strength of the cross-section, the design bending strength, <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>M</mi>
+    <mi>d</mi>
+  </msub>
+</math>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
     <mi>d</mi>
@@ -1417,8 +1483,7 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
    (= design bending strength under high shear as defined in 9.2)</p>
 
 <p>[Cl 9.2.2]<br />
-When the factored value of the applied shear force is high (exceeds the limit specified in Cl 9.2.1), the factored moment of the section should be less than the moment<br />
-capacity of the section under higher shear force, 
+When the factored value of the applied shear force is high (exceeds the limit specified in Cl 9.2.1), the factored moment of the section should be less than the moment capacity of the section under higher shear force, 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
@@ -1492,8 +1557,8 @@ capacity of the section under higher shear force,
   <msub>
     <mi>M</mi>
     <mrow class="MJX-TeXAtom-ORD">
-      <mi>d</mi>
       <mi>f</mi>
+      <mi>d</mi>
     </mrow>
   </msub>
 </math>
@@ -2017,7 +2082,7 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
   </msub>
 </math>
 
-(#this formula is for a plate, assuming clear horizontal leg of the seated angle is a plate) [Cl 8.4.1.1]<br />
+(#Assuming that this formula is for a plate, assuming clear horizontal leg of the seated angle as a plate) [Cl 8.4.1.1]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
@@ -2696,48 +2761,14 @@ but
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>&#x03B2;<!-- β --></mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>l</mi>
-      <mi>g</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mfrac>
-    <mrow>
-      <mn>8</mn>
-      <mi>d</mi>
-    </mrow>
-    <mrow>
-      <mn>3</mn>
-      <mi>d</mi>
-      <mo>+</mo>
-      <msub>
-        <mi>l</mi>
-        <mi>g</mi>
-      </msub>
-    </mrow>
-  </mfrac>
-</math>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mo>=</mo>
-  <mfrac>
-    <mn>8</mn>
-    <mrow>
-      <mn>3</mn>
-      <mo>+</mo>
-      <msub>
-        <mi>l</mi>
-        <mi>g</mi>
-      </msub>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mo>/</mo>
-      </mrow>
-      <mi>d</mi>
-    </mrow>
-  </mfrac>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>&#x03B2;<!-- β --></mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>l</mi>
+<mi>g</mi>
+</mrow>
+</msub>
 </math>
 
 <br />
@@ -2794,9 +2825,9 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 
 
 ';
-	$tooltip1 = '2) [Cl 10.3.3.1] Reduction factor for long joints [#assuming that this does not apply]';
-	$tooltip2 = '3) [Cl 10.3.3.2] Reduction factor for large grip lengths [#assuming that this does not apply]';
-	$tooltip3 = '4) [Cl 10.3.3.3] Reduction factor for packing plates [#assuming that this does not apply]';
+	$tooltip1 = '1) [Cl 10.3.3.1] Reduction factor for long joints [#assuming that this does not apply]';
+	$tooltip2 = '2) [Cl 10.3.3.2] Reduction factor for large grip lengths';
+	$tooltip3 = '3) [Cl 10.3.3.3] Reduction factor for packing plates [#assuming that this does not apply]';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
@@ -3182,31 +3213,58 @@ The design bearing strength of a bolt on any plate,
 </math>
 , as governed by bearing is given by:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>V</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>d</mi>
+<mi>p</mi>
+<mi>b</mi>
+</mrow>
+</msub>
+<mo>=</mo>
+<msub>
+<mi>V</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>n</mi>
+<mi>p</mi>
+<mi>b</mi>
+</mrow>
+</msub>
+<mrow class="MJX-TeXAtom-ORD">
+<mo>/</mo>
+</mrow>
+<msub>
+<mi>&#x03B3;<!-- γ --></mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>m</mi>
+<mi>b</mi>
+</mrow>
+</msub>
+</math>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<msub>
     <mi>V</mi>
     <mrow class="MJX-TeXAtom-ORD">
-      <mi>d</mi>
-      <mi>s</mi>
+      <mi>n</mi>
+      <mi>p</mi>
       <mi>b</mi>
     </mrow>
   </msub>
-  <mo>=</mo>
-  <mn>2.5</mn>
-  <msub>
-    <mi>k</mi>
-    <mi>b</mi>
-  </msub>
-  <mi>d</mi>
-  <mi>t</mi>
-  <msub>
-    <mi>f</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>u</mi>
-      <mi>b</mi>
-    </mrow>
-  </msub>
+
 </math>
+
+=2.5kbdtfub
+
+
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -3310,8 +3368,7 @@ is smaller of<br />
 </math>
 shall be minimum of {thickness of seat angle, thickness of support}</p>
 
-<p>#assuming standard clearance holes; hence, reduction factors for long slotted holes<br />
-and over size, and short slotted holes as given in [Cl 10.3.4] do not apply</p>
+<p>Reduction factor of 0.7 to be applied to the bearing resistance, in case of oversize holes.</p>
 
 
 <hr>
@@ -3633,7 +3690,7 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p><strong>iii.</strong> Number of bolts (N1) = reaction/capacity per bolt</p>
+	$markup_text = '<p><strong>iii.</strong> Number of bolts (N1) = Factored Load/capacity per bolt</p>
 
 
 <hr>
@@ -3962,95 +4019,115 @@ diameter of the fastener<br />
 The distance between the centres of any two adjacent fasteners shall not exceed 32t or<br />
 300mm, whichever is less, where t is the thickness of the thinner plate.<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+
+
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>B</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>t</mi>
-  <mi>p</mi>
-  <mi>i</mi>
-  <mi>t</mi>
-  <mi>c</mi>
-  <mi>h</mi>
-  <mo stretchy="false">(</mo>
-  <mi>m</mi>
-  <mi>m</mi>
-  <mo stretchy="false">)</mo>
-  <mo>&#x2265;<!-- ≥ --></mo>
-  <mn>2.5</mn>
-  <mo>&#x2217;<!-- ∗ --></mo>
-  <mo stretchy="false">(</mo>
-  <mi>b</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>t</mi>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>a</mi>
-  <mi>m</mi>
-  <mi>e</mi>
-  <mi>t</mi>
-  <mi>e</mi>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-  <mo>,</mo>
-  <mo>&#x2264;<!-- ≤ --></mo>
-  <mi>m</mi>
-  <mi>i</mi>
-  <mi>n</mi>
-  <mo stretchy="false">(</mo>
-  <mn>32</mn>
-  <mo>&#x2217;<!-- ∗ --></mo>
-  <mi>t</mi>
-  <mo>,</mo>
-  <mn>300</mn>
-  <mo stretchy="false">)</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>p</mi>
+<mi>i</mi>
+<mi>t</mi>
+<mi>c</mi>
+<mi>h</mi>
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mi>m</mi>
+<mo stretchy="false">)</mo>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>2.5</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mo stretchy="false">(</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>d</mi>
+<mi>i</mi>
+<mi>a</mi>
+<mi>m</mi>
+<mi>e</mi>
+<mi>t</mi>
+<mi>e</mi>
+<mi>r</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>p</mi>
+<mi>i</mi>
+<mi>t</mi>
+<mi>c</mi>
+<mi>h</mi>
+<mo>&#x2264;<!-- ≤ --></mo>
+<mi>m</mi>
+<mi>i</mi>
+<mi>n</mi>
+<mo stretchy="false">(</mo>
+<mn>32</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mi>t</mi>
+<mo>,</mo>
+<mn>300</mn>
+<mo stretchy="false">)</mo>
 </math>
 
-
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>B</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>t</mi>
-  <mi>g</mi>
-  <mi>a</mi>
-  <mi>u</mi>
-  <mi>g</mi>
-  <mi>e</mi>
-  <mo stretchy="false">(</mo>
-  <mi>m</mi>
-  <mi>m</mi>
-  <mo stretchy="false">)</mo>
-  <mo>&#x2265;<!-- ≥ --></mo>
-  <mn>2.5</mn>
-  <mo>&#x2217;<!-- ∗ --></mo>
-  <mo stretchy="false">(</mo>
-  <mi>b</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>t</mi>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>a</mi>
-  <mi>m</mi>
-  <mi>e</mi>
-  <mi>t</mi>
-  <mi>e</mi>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-  <mo>,</mo>
-  <mo>&#x2264;<!-- ≤ --></mo>
-  <mi>m</mi>
-  <mi>i</mi>
-  <mi>n</mi>
-  <mo stretchy="false">(</mo>
-  <mn>32</mn>
-  <mo>&#x2217;<!-- ∗ --></mo>
-  <mi>t</mi>
-  <mo>,</mo>
-  <mn>300</mn>
-  <mo stretchy="false">)</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>p</mi>
+<mi>i</mi>
+<mi>t</mi>
+<mi>c</mi>
+<mi>h</mi>
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mi>m</mi>
+<mo stretchy="false">)</mo>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>2.5</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mo stretchy="false">(</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>d</mi>
+<mi>i</mi>
+<mi>a</mi>
+<mi>m</mi>
+<mi>e</mi>
+<mi>t</mi>
+<mi>e</mi>
+<mi>r</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mi>b</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>t</mi>
+<mi>p</mi>
+<mi>i</mi>
+<mi>t</mi>
+<mi>c</mi>
+<mi>h</mi>
+<mo>&#x2264;<!-- ≤ --></mo>
+<mi>m</mi>
+<mi>i</mi>
+<mi>n</mi>
+<mo stretchy="false">(</mo>
+<mn>32</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mi>t</mi>
+<mo>,</mo>
+<mn>300</mn>
+<mo stretchy="false">)</mo>
 </math>
 
 </p>
@@ -4412,91 +4489,107 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
  is the thickness of the thinner outer plate.</p>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>E</mi>
-  <mi>n</mi>
-  <mi>d</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>s</mi>
-  <mi>t</mi>
-  <mi>a</mi>
-  <mi>n</mi>
-  <mi>c</mi>
-  <mi>e</mi>
-  <mo stretchy="false">(</mo>
-  <mi>m</mi>
-  <mi>m</mi>
-  <mo stretchy="false">)</mo>
-  <mtext>&#xA0;</mtext>
-  <mo>&#x2265;<!-- ≥ --></mo>
-  <mn>1.7</mn>
-  <mo>&#x2217;</mo>
-  <mo stretchy="false">(</mo>
-  <mi>h</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>e</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>a</mi>
-  <mi>m</mi>
-  <mi>e</mi>
-  <mi>t</mi>
-  <mi>e</mi>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-  <mo>,</mo>
-  <mtext>&#xA0;</mtext>
-  <mo>&#x2264;<!-- ≤ --></mo>
-  <mn>12</mn>
-  <mo>&#x2217;</mo>
-  <mi>t</mi>
+
+<mi>E</mi>
+<mi>n</mi>
+<mi>d</mi>
+<mi>D</mi>
+<mi>i</mi>
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>n</mi>
+<mi>c</mi>
+<mi>e</mi>
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mi>m</mi>
+<mo stretchy="false">)</mo>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>1.7</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mo stretchy="false">(</mo>
+<mi>h</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>e</mi>
+<mi>d</mi>
+<mi>i</mi>
+<mi>a</mi>
+<mi>m</mi>
+<mi>e</mi>
+<mi>t</mi>
+<mi>e</mi>
+<mi>r</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mi>E</mi>
+<mi>n</mi>
+<mi>d</mi>
+<mi>D</mi>
+<mi>i</mi>
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>n</mi>
+<mi>c</mi>
+<mi>e</mi>
+<mo>&#x2264;<!-- ≤ --></mo>
+<mn>12</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mi>t</mi>
 </math>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>E</mi>
-  <mi>d</mi>
-  <mi>g</mi>
-  <mi>e</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>s</mi>
-  <mi>t</mi>
-  <mi>a</mi>
-  <mi>n</mi>
+<mi>E</mi>
+<mi>d</mi>
+<mi>g</mi>
+<mi>e</mi>
+<mi>D</mi>
+<mi>i</mi>
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>n</mi>
   <mi>c</mi>
-  <mi>e</mi>
-  <mo stretchy="false">(</mo>
-  <mi>m</mi>
-  <mi>m</mi>
-  <mo stretchy="false">)</mo>
-  <mtext>&#xA0;</mtext>
-  <mo>&#x2265;<!-- ≥ --></mo>
-  <mn>1.7</mn>
-  <mo>&#x2217;</mo>
-  <mo stretchy="false">(</mo>
-  <mi>h</mi>
-  <mi>o</mi>
-  <mi>l</mi>
-  <mi>e</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>d</mi>
-  <mi>i</mi>
-  <mi>a</mi>
-  <mi>m</mi>
-  <mi>e</mi>
-  <mi>t</mi>
-  <mi>e</mi>
-  <mi>r</mi>
-  <mo stretchy="false">)</mo>
-  <mo>,</mo>
-  <mtext>&#xA0;</mtext>
-  <mo>&#x2264;<!-- ≤ --></mo>
-  <mn>12</mn>
-  <mo>&#x2217;</mo>
-  <mi>t</mi>
+<mi>e</mi>
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mi>m</mi>
+<mo stretchy="false">)</mo>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>1.7</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mo stretchy="false">(</mo>
+<mi>h</mi>
+<mi>o</mi>
+<mi>l</mi>
+<mi>e</mi>
+<mi>d</mi>
+<mi>i</mi>
+<mi>a</mi>
+<mi>m</mi>
+<mi>e</mi>
+<mi>t</mi>
+<mi>e</mi>
+<mi>r</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mi>E</mi>
+<mi>d</mi>
+<mi>g</mi>
+<mi>e</mi>
+<mi>D</mi>
+<mi>i</mi>
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>n</mi>
+<mi>c</mi>
+<mi>e</mi>
+<mo>&#x2264;<!-- ≤ --></mo>
+<mn>12</mn>
+<mo>&#x2217;<!-- ∗ --></mo>
+<mi>t</mi>
 </math>
 
 <hr>
@@ -4820,7 +4913,7 @@ function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '<p><strong>d. Top Angle</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Literature suggests to use a "nominal size" for the top angle (from stability consideration).<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Literature suggests use "nominal size" for the top angle (from stability consideration).<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; However the term nominal size is not well defined.</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The AISC Steel Construction Manual, 14th Ed, Page 10-84, suggests<br />
