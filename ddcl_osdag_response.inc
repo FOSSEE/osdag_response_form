@@ -168,14 +168,12 @@ function ddcl_osdag_response_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step2_options = array(
 		'100mm' => '100mm' . '
-					<p>Reference: The connected leg is so chosen that at least two horizontal rows
-of bolts can be accommodated. Hence, the assumed angle should have a leg
-length of 100 mm or more. (N. Subramanian'."'".'s - Design of Steel Structures - page 369 - Point 4 of 5.7.4)
+					<p>Reference: (N. Subramanian'."'".'s - Design of Steel Structures - page 369 - Point 4 of 5.7.4) The connected leg is so chosen that at least two horizontal rows of bolts can be accommodated. Hence, the assumed angle should have a leg length of 100 mm or more.
 </p>
 					<img src="' . $img_path . '/100mm.png" />',
-		'150mm' => '150mm' . '<p>Reference: The connected length is adopted in such a way that at least
+		'150mm' => '150mm' . '<p>Reference: (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture 4 - Time 9:00) The connected length is adopted in such a way that at least
 three horizontal rows of rivets can be accommodated. In general, it is 150
-mm or more (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture 4 - Time 9:00)</p>
+mm or more</p>
 <img src="' . $img_path . '/150mm.png" width="70%" />',
 		'Any other recommendation' => 'Any other recommendation'
 	);
