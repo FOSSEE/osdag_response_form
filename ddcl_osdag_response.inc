@@ -170,12 +170,12 @@ function ddcl_osdag_response_step2_form($form, &$form_state, $no_js_use = FALSE)
 		'100mm' => '100mm' . '
 					<p>Reference: The connected leg is so chosen that at least two horizontal rows
 of bolts can be accommodated. Hence, the assumed angle should have a leg
-length of 100 mm or more. (Ref I - page 369 - Point 4 of 5.7.4)
+length of 100 mm or more. (N. Subramanian'."'".'s - Design of Steel Structures - page 369 - Point 4 of 5.7.4)
 </p>
 					<img src="' . $img_path . '/100mm.png" />',
 		'150mm' => '150mm' . '<p>Reference: The connected length is adopted in such a way that at least
 three horizontal rows of rivets can be accommodated. In general, it is 150
-mm or more (Ref II - Time 9:00)</p>
+mm or more (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture 4 - Time 9:00)</p>
 <img src="' . $img_path . '/150mm.png" width="70%" />',
 		'Any other recommendation' => 'Any other recommendation'
 	);
@@ -549,7 +549,8 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 				'#title' => '<strong>b. What should be the minimum thickness of the seated angle?</strong>',
 				'#type' => 'textfield',
 				'#default_value' => $step3_data->question1,
-				'#required' => TRUE
+				'#required' => FALSE,
+				'#description'=>"Note: You may give 'None' or 'N/A', if you feel that this is not applicable",
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'What code provision(/s)/ reference text should be referred for this?',
@@ -650,8 +651,8 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
 				'#title' => '<strong>b. What should be the minimum thickness of the seated angle?</strong>',
 				'#type' => 'textfield',
-				'#required' => TRUE
-				//'#default_value' => $step3_data->question1
+				'#required' => FALSE,
+                                '#description'=>"Note: You may give 'None' or 'N/A', if you feel that this is not applicable",
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'What code provision(/s)/ reference text should be referred for this?',
@@ -875,8 +876,11 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step4_options = array(
 		'Plastic Moment Capacity (with Plastic Section Modulus)' => 'Plastic Moment Capacity (with Plastic Section Modulus)<p>Argument: The full available plastic moment capacity of the outstanding leg should be utilized to resist the moment. In the event that the connection fails in other limit states, the failure would be brittle. It would not make sense to add significantly more conservatism in the moment resistance than the other limit states.
-				<img src="' . $img_path . '/Elastic_Moment_Capacity.png" />',
-		'Elastic Moment Capacity (with Elastic Section Modulus)' => 'Elastic Moment Capacity (with Elastic Section Modulus)<p>Reference: (Ref I - Example 5.14 - page 407 )</p>
+				',
+		'Elastic Moment Capacity (with Elastic Section Modulus)' => 'Elastic Moment Capacity (with Elastic Section Modulus)<p>Reference: (N. Subramanian'."'".'s - Design of Steel Structures - Example 5.14 - page 407 )</p>
+				<img src="' . $img_path . '/Elastic_Moment_Capacity.png" /><br><br>
+		<label>Reference: (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture
+4 - 10:52min)</label>
 				<img src="' . $img_path . '/Reference-Ref-II-10-52min.png" />'
 	);
 	$form = array();
@@ -1585,7 +1589,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#title' => '<strong>e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle</strong><br><br>
-				<p><b>AISC suggests</b> : (Ref III - Page 10-84)<br>
+				<p><b>AISC suggests</b> : (AISC Steel Construction Manual - 14th Edition - Chapter 10 - Design of Simple Shear Connections - Page 10-84)<br>
 						A 1/4-in.-thick angle with a 4-in, vertical leg dimension will generally be adequate 
 							This translates to 6.35 mm thick angle with a 101.6 mm vertical leg Can use ISA 100 65x6 or ISA 100 65x8</p>
 				<img src="' . $img_path . '/need-guidelines-for-specifying-nominal-size-of-top-cleat.png" style="width:80%;" />',
