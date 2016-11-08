@@ -49,7 +49,9 @@ function ddcl_seated_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = "The design and detailing checks to be followed for seated angle connection are listed in the following
 pages. Please give your feedback as comments on each item.";
 	// All the real form fields.
+	
 	$form = array();
+	
 	$form['step1_header'] = array(
 				'#markup' => $markup_text,
 				'#required' => true
@@ -59,6 +61,7 @@ pages. Please give your feedback as comments on each item.";
 	$query->fields('ddcl_seated_angle_form_step1_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step1_data = $query->execute();
+	
 	if ($form_step1_data)
 	{
 		if ($step1_data = $form_step1_data->fetchObject())
@@ -164,6 +167,7 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	
 	<hr>';
 	$form = array();
+	drupal_set_title(t('a. Seated Angle'));
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -174,6 +178,7 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$query->fields('ddcl_seated_angle_form_step2_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step2_data = $query->execute();
+	
 	if ($form_step2_data)
 	{
 		if ($step2_data = $form_step2_data->fetchObject())
@@ -577,12 +582,61 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 
-<p style="margin-bottom: 0cm; line-height: 100%;">A dispersion of 45° is taken from the bearing on the cleat to the root line [Cl 8.7.1.3]</p>
+<p style="margin-bottom: 0cm; line-height: 100%;">A dispersion of 45° is taken from the bearing on the cleat to the root line [Cl 8.7.1.3]
+<br><br>
+Note: The dispersion of 1:2.5 as given in Cl 8.7.4 is not applicable here. Instead a dispersion of 45
+degrees is assumed as given in Cl 8.7.1.3.
+
+</p>
 
 ';
 	$markup_text1 = 'Bearing stiffeners should be provided for webs where forces applied through a flange
 by loads or reactions exceeding the local capacity of the web at its connection to the
 flange given by <br>
+
+<center>
+ 
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>F</mi>
+<mi>w</mi>
+</msub>
+<mo>=</mo>
+<mo stretchy="false">(</mo>
+<msub>
+<mi>b</mi>
+<mn>1</mn>
+</msub>
+<mo>+</mo>
+<msub>
+<mi>n</mi>
+<mn>2</mn>
+</msub>
+<mo stretchy="false">)</mo>
+<msub>
+<mi>t</mi>
+<mi>w</mi>
+</msub>
+<msub>
+<mi>f</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>y</mi>
+<mi>w</mi>
+</mrow>
+</msub>
+<mrow class="MJX-TeXAtom-ORD">
+<mo>/</mo>
+</mrow>
+<msub>
+<mi>&#x03B3;<!-- γ --></mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>m</mi>
+<mn>0</mn>
+</mrow>
+</msub>
+</math>
+</center>
+<br>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
 
@@ -631,6 +685,8 @@ flange given by <br>
 </math>
 
  = yield stress of the web
+ 
+
 
 
 ';
@@ -951,7 +1007,8 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by <strong>shear</strong> yielding and flexural yielding of angle<br />
+	drupal_set_title(t('Seated angle'));
+	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity of the outstanding leg</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the factored design shear force, 
@@ -1552,7 +1609,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
   <mo fence="false" stretchy="false">}</mo>
 </math>
 
-<p>[#Assuming, 
+<p>[Note: Assuming, 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
@@ -2008,6 +2065,7 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('a. Seated angle'));
 	$markup_text = '<p><strong>2) Shear capacity of the outstanding leg of cleat</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -2082,7 +2140,7 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
   </msub>
 </math>
 
-(#Assuming that this formula is for a plate, assuming clear horizontal leg of the seated angle as a plate) [Cl 8.4.1.1]<br />
+(Note:This formula is for a plate, assuming clear horizontal leg of the seated angle as a plate) [Cl 8.4.1.1]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
@@ -2121,7 +2179,7 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 </math>
 = partial safety factor<br />
 &nbsp;&nbsp; b) [Cl 8.4.2] [Resistance to shear buckling]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [#This clause check does not need to be implemented as the outstanding leg of the seated angle will not buckle due to the low slenderness ratio]</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Note: Assuming that this clause check does not need to be implemented as the outstanding leg of the seated angle will not buckle due to the low slenderness ratio]</p>
 
 
 
@@ -2444,6 +2502,7 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('b. Bolt'));
 	$markup_text = '<p><strong>b. Bolt<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bolt value and number of bolts</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>i.</strong> [Cl. 10.3.3] <strong>Shear capacity of bolt</strong><br />
@@ -2506,7 +2565,7 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
   </mfrac>
 </math>
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #currently, conservatively assuming &nbsp;  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Note: Currently, conservatively assuming &nbsp;  
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>n</mi>
@@ -2650,7 +2709,7 @@ Thus,<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the length of joint, 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
-    <mi>I</mi>
+    <mi>l</mi>
     <mrow class="MJX-TeXAtom-ORD">
       <mi>j</mi>
     </mrow>
@@ -2867,7 +2926,7 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 			);
 			$form['step7_field1_fieldset']['tooltip3'] = array(
 				'#type' => 'fieldset',
-				'#title' => $tooltip2,
+				'#title' => $tooltip3,
 				'#collapsible' => TRUE, // Added
 				'#collapsed' => TRUE // Added
 			);
