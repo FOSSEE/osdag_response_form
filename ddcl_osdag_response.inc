@@ -169,12 +169,14 @@ function ddcl_osdag_response_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$step2_options = array(
 		'100mm' => '100mm' . '
 					<p>Reference: (N. Subramanian'."'".'s - Design of Steel Structures - page 369 - Point 4 of 5.7.4) The connected leg is so chosen that at least two horizontal rows of bolts can be accommodated. Hence, the assumed angle should have a leg length of 100 mm or more.
-</p>
+					</p>
 					<img src="' . $img_path . '/100mm.png" />',
-		'150mm' => '150mm' . '<p>Reference: (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture 4 - Time 9:00) The connected length is adopted in such a way that at least
+		'150mm' => '150mm' . '
+					<p>Reference: (Damodar Maity'."'".'s - NPTEL course on Design of Steel Structures - Module 3 - Lecture 4 - Time 9:00) The connected length is adopted in such a way that at least
 three horizontal rows of rivets can be accommodated. In general, it is 150
-mm or more</p>
-<img src="' . $img_path . '/150mm.png" width="70%" />',
+mm or more
+					</p>
+					<img src="' . $img_path . '/150mm.png" width="70%" />',
 		'Any other recommendation' => 'Any other recommendation'
 	);
 	$form = array();
@@ -1561,9 +1563,14 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step6_question_title = '<strong>e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle</strong><br><br>
+				<p><b>AISC suggests</b> : (AISC Steel Construction Manual - 14th Edition - Chapter 10 - Design of Simple Shear Connections - Page 10-84)<br>
+						A 1/4-in.-thick angle with a 4-in, vertical leg dimension will generally be adequate 
+							This translates to 6.35 mm thick angle with a 101.6 mm vertical leg Can use ISA 100 65x6 or ISA 100 65x8</p>
+				<img src="' . $img_path . '/need-guidelines-for-specifying-nominal-size-of-top-cleat.png" style="width:80%;" />';
 	$step6_options = array(
-		'ISA 100 65x6 (include exact dim)' => 'ISA 100 65x6 (include exact dim)',
-		'ISA 100 65x8 (include exact dim)' => 'ISA 100 65x8 (include exact dim)',
+		'ISA 100 65x6 (include exact dim)' => 'ISA 100 65x6',
+		'ISA 100 65x8 (include exact dim)' => 'ISA 100 65x8',
 		'Any other recommendation' => t('Any other recommendation')
 	);
 	$step6_sub_options = array(
@@ -1586,11 +1593,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step6_data = $form_step6_data->fetchObject())
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => '<strong>e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle</strong><br><br>
-				<p><b>AISC suggests</b> : (AISC Steel Construction Manual - 14th Edition - Chapter 10 - Design of Simple Shear Connections - Page 10-84)<br>
-						A 1/4-in.-thick angle with a 4-in, vertical leg dimension will generally be adequate 
-							This translates to 6.35 mm thick angle with a 101.6 mm vertical leg Can use ISA 100 65x6 or ISA 100 65x8</p>
-				<img src="' . $img_path . '/need-guidelines-for-specifying-nominal-size-of-top-cleat.png" style="width:80%;" />',
+				'#title' => $step6_question_title ,
 				'#type' => 'radios',
 				'#options' => $step6_options,
 				'#default_value' => $step6_data->question1,
@@ -1712,11 +1715,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => '<strong>e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle</strong><br><br>
-				<p><b>AISC suggests</b> : (Ref III - Page 10-84)<br>
-						A 1/4-in.-thick angle with a 4-in, vertical leg dimension will generally be adequate 
-							This translates to 6.35 mm thick angle with a 101.6 mm vertical leg Can use ISA 100 65x6 or ISA 100 65x8</p>
-				<img src="' . $img_path . '/need-guidelines-for-specifying-nominal-size-of-top-cleat.png" style="width:80%;" />',
+				'#title' => $step6_question_title,
 				'#type' => 'radios',
 				'#options' => $step6_options,
 				//'#default_value' => $step6_data->question1,
