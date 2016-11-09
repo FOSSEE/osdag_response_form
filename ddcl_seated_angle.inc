@@ -1,7 +1,7 @@
 <?php
 /**
  * Fetches and displays the form.
- */
+*/
 function ddcl_seated_angle_form_page()
 {
 	global $user;
@@ -504,6 +504,7 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('a. Seated Angle'));
 	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;"><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supported beam</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seated angle is calculated on the basis of web crippling of the beam. The outstanding leg length is kept more than the calculated bearing length given by [Cl 8.7.4]</p>
@@ -888,15 +889,15 @@ function ddcl_seated_angle_step3_form_next_submit($form, &$form_state, $no_js_us
 	$query = db_select('ddcl_seated_angle_form_step3_feedback');
 	$query->fields('ddcl_seated_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
+	$form_step3_data = $query->execute()->fetchObject();
 	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddcl_seated_angle_form_step3_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -904,9 +905,9 @@ function ddcl_seated_angle_step3_form_next_submit($form, &$form_state, $no_js_us
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -919,8 +920,8 @@ function ddcl_seated_angle_step3_form_next_submit($form, &$form_state, $no_js_us
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -1007,7 +1008,7 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('Seated angle'));
+	drupal_set_title(t('a. Seated Angle'));
 	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity of the outstanding leg</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2]<br />
@@ -1498,6 +1499,7 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('a. Seated Angle'));
 	$markup_text = '<p>b) [CL 8.2.1.3]<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the design shear force (factored), 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2065,7 +2067,7 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Seated angle'));
+	drupal_set_title(t('a. Seated Angle'));
 	$markup_text = '<p><strong>2) Shear capacity of the outstanding leg of cleat</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -3257,6 +3259,7 @@ function ddcl_seated_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('b. Bolt'));
 	$markup_text = '<p><strong>ii. Bearing capacity of bolt</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) [Cl. 10.3.4] Bolt bearing on the seat angle (and column)<br />
 The design bearing strength of a bolt on any plate, 
@@ -3264,7 +3267,7 @@ The design bearing strength of a bolt on any plate,
   <msub>
     <mi>V</mi>
     <mrow class="MJX-TeXAtom-ORD">
-      <mi>d</mi>
+      <mi>n</mi>
       <mi>p</mi>
       <mi>b</mi>
     </mrow>
@@ -3308,20 +3311,33 @@ The design bearing strength of a bolt on any plate,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
+
 <math xmlns="http://www.w3.org/1998/Math/MathML">
-
 <msub>
-    <mi>V</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>n</mi>
-      <mi>p</mi>
-      <mi>b</mi>
-    </mrow>
-  </msub>
-
+<mi>V</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>d</mi>
+<mi>s</mi>
+<mi>b</mi>
+</mrow>
+</msub>
+<mo>=</mo>
+<mn>2.5</mn>
+<msub>
+<mi>k</mi>
+<mi>b</mi>
+</msub>
+<mi>d</mi>
+<mi>t</mi>
+<msub>
+<mi>f</mi>
+<mrow class="MJX-TeXAtom-ORD">
+<mi>u</mi>
+<mi>b</mi>
+</mrow>
+</msub>
 </math>
 
-=2.5kbdtfub
 
 
 <br />
@@ -3749,6 +3765,7 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('b. Bolt'));
 	$markup_text = '<p><strong>iii.</strong> Number of bolts (N1) = Factored Load/capacity per bolt</p>
 
 
@@ -4070,7 +4087,8 @@ function ddcl_seated_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p>c. Detailing<br />
+	drupal_set_title(t('c. Detailing'));
+	$markup_text = '<p><strong>c. Detailing</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i. [Cl 10.2.2] <strong>Minimum spacing</strong><br />
 The distance between centre of fasteners shall not be less than 2.5 times the nominal<br />
 diameter of the fastener<br />
@@ -4512,6 +4530,7 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('c. Detailing'));
 	$markup_text = '
 	
 	<p class="rtejustify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>iii. [Cl 10.2.4] Edge and end distances</strong><br />
@@ -4971,7 +4990,8 @@ function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = '<p>Assuming that block shear failure is not a governing mode of failure for the seated angle
+	drupal_set_title(t('c. Detailing'));
+	$markup_text = '<p>It is assumed that block shear failure is not a governing mode of failure for the seated angle
 connection</p>
 
 <hr>
@@ -5295,15 +5315,16 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('d. Top Angle'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '<p><strong>d. Top Angle</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Literature suggests use "nominal size" for the top angle (from stability consideration).<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Literature suggests use "nominal size" for the top angle (from stability consideration).<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; However the term nominal size is not well defined.</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The AISC Steel Construction Manual, 14th Ed, Page 10-84, suggests<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A 1/4-in.-thick angle with a 4-in., vertical leg dimension will generally be adequate</p>
 <img src="' . $img_path . '/seated-top-angle.png" style="width: 600px;" />
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Can ISA 100 65x6 or ISA 100 65x8 be used?<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Can we directly use the above sizes in the Indian context?</p>
 
