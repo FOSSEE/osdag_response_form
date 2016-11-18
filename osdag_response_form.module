@@ -298,6 +298,17 @@ List)'),
 		),
 		'file'=> 'ddcl_seated_angle.inc'
 	);
+	// Delete the comment
+	$items['ddcl-seated-angle/delete'] = array(
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
+		'page callback' => 'ddcl_seated_angle_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_seated_angle.inc'
+	);
 	// Success page.
 	$items['ddcl-seated-angle/success'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
