@@ -1522,7 +1522,7 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
     <mi>d</mi>
   </msub>
 </math>
- is the design shear strength of the cross-section (see 8.4) the design bending strength, 
+ is the design shear strength of the cross-section the design bending strength, 
  <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
@@ -1539,9 +1539,9 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
     </mrow>
   </msub>
 </math>
-   (= design bending strength under high shear as defined in 9.2)</p>
+   (= design bending strength under high shear as defined in Cl 9.2)</p>
 
-<p>[Cl 9.2.2]<br />
+<p>[CL 9.2.2]<br />
 When the factored value of the applied shear force is high (exceeds the limit specified in Cl 9.2.1), the factored moment of the section should be less than the moment capacity of the section under higher shear force, 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
@@ -3267,7 +3267,7 @@ The design bearing strength of a bolt on any plate,
   <msub>
     <mi>V</mi>
     <mrow class="MJX-TeXAtom-ORD">
-      <mi>n</mi>
+      <mi>d</mi>
       <mi>p</mi>
       <mi>b</mi>
     </mrow>
@@ -4087,7 +4087,7 @@ function ddcl_seated_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Detailing'));
+	drupal_set_title(t('General Assumptions'));
 	$markup_text = '<p><strong>c. Detailing</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i. [Cl 10.2.2] <strong>Minimum spacing</strong><br />
 The distance between centre of fasteners shall not be less than 2.5 times the nominal<br />
@@ -4530,7 +4530,7 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Detailing'));
+	drupal_set_title(t('General Assumptions'));
 	$markup_text = '
 	
 	<p class="rtejustify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>iii. [Cl 10.2.4] Edge and end distances</strong><br />
@@ -4616,7 +4616,9 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 <mn>12</mn>
 <mo>&#x2217;<!-- ∗ --></mo>
 <mi>t</mi>
+<mi>&#x03F5;<!-- ε --></mi>
 </math>
+
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mi>E</mi>
 <mi>d</mi>
@@ -4668,6 +4670,7 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 <mn>12</mn>
 <mo>&#x2217;<!-- ∗ --></mo>
 <mi>t</mi>
+<mi>&#x03F5;<!-- ε --></mi>
 </math>
 
 <hr>
@@ -4990,7 +4993,7 @@ function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Detailing'));
+	drupal_set_title(t('General Assumptions'));
 	$markup_text = '<p>It is assumed that block shear failure is not a governing mode of failure for the seated angle
 connection</p>
 
@@ -5318,7 +5321,7 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 	drupal_set_title(t('d. Top Angle'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '<p><strong>d. Top Angle</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Literature suggests use "nominal size" for the top angle (from stability consideration).<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Literature suggests use of "nominal size" for the top angle (from stability consideration).<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; However the term nominal size is not well defined.</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The AISC Steel Construction Manual, 14th Ed, Page 10-84, suggests<br />
