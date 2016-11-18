@@ -135,7 +135,8 @@ function osdag_response_form_menu()
 	/***********************************************************/
 	/****************** DDCL SEATED ANGlE FORM ******************/
 	$items['ddcl-seated-angle/form'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'ddcl_seated_angle_form_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -144,7 +145,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step1'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'ddcl_seated_angle_form_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -153,7 +155,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step2'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step2_form'
@@ -164,7 +167,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 		$items['ddcl-seated-angle/form/step3'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step3_form'
@@ -175,7 +179,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step4'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step4_form'
@@ -186,7 +191,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step5'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step5_form'
@@ -197,7 +203,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step6'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step6_form'
@@ -208,7 +215,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step7'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step7_form'
@@ -219,7 +227,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step8'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step8_form'
@@ -230,7 +239,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step9'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step9_form'
@@ -241,7 +251,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step10'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step10_form'
@@ -252,7 +263,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step11'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step11_form'
@@ -263,7 +275,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step12'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step12_form'
@@ -274,7 +287,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step13'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_seated_angle_step13_form'
@@ -286,7 +300,8 @@ function osdag_response_form_menu()
 	);
 	// Success page.
 	$items['ddcl-seated-angle/success'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'ddcl_seated_angle_success',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -296,7 +311,8 @@ function osdag_response_form_menu()
 	);
 	// Result page
 	$items['ddcl-seated-angle/form/result'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'ddcl_seated_angle_response_result_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -305,7 +321,8 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/result/download'] = array(
-		'title' => t('DDCL - Seated Angle'),
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
 		'page callback' => 'ddcl_seated_angle_result_generate_csv',
 		'page arguments' => array(),
 		'access arguments' => array(
