@@ -1,7 +1,7 @@
 <?php
 /**
  * Fetches and displays the form.
-*/
+ */
 function ddcl_seated_angle_form_page()
 {
 	global $user;
@@ -49,19 +49,15 @@ function ddcl_seated_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = "The design and detailing checks to be followed for seated angle connection are listed in the following
 pages. Please give your feedback as comments on each item.";
 	// All the real form fields.
-	
 	$form = array();
-	
 	$form['step1_header'] = array(
-				'#markup' => $markup_text,
-				'#required' => true
-			);
-	
+		'#markup' => $markup_text,
+		'#required' => true
+	);
 	$query = db_select('ddcl_seated_angle_form_step1_feedback');
 	$query->fields('ddcl_seated_angle_form_step1_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step1_data = $query->execute();
-	
 	if ($form_step1_data)
 	{
 		if ($step1_data = $form_step1_data->fetchObject())
@@ -75,7 +71,6 @@ pages. Please give your feedback as comments on each item.";
 		return;
 		}*/
 	} //$form_step1_data
-	
 	$form['step1_field1_name'] = array(
 		'#title' => 'Name',
 		'#type' => 'textfield',
@@ -178,7 +173,6 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$query->fields('ddcl_seated_angle_form_step2_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step2_data = $query->execute();
-	
 	if ($form_step2_data)
 	{
 		if ($step2_data = $form_step2_data->fetchObject())
@@ -456,28 +450,6 @@ function ddcl_seated_angle_step2_form_next_submit($form, &$form_state, $no_js_us
 	}
 	$form_state['redirect'] = 'ddcl-seated-angle/form/step3/' . $user->uid;
 }
-function _fetch_exsiting_ddcl_seated_angle_comments($step_id, $data_relation)
-{
-	$query_for_comment = db_query("SELECT * FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
-		':step1_form_id' => $step_id,
-		':data_relation' => $data_relation
-	));
-	$comment = array();
-	$i = 0;
-	if ($query_for_comment != NULL)
-	{
-		while ($row = $query_for_comment->fetchObject())
-		{
-			$comment[$i] = $i + 1 . ") " . $row->comment . "<br><h6 style='text-align: right;'>" . $row->inserted_on . "</h6><br>";
-			$i++;
-		} //$row = $query_for_comment->fetchObject()
-	} //$query_for_comment == NULL
-	else
-	{
-		$comment[$i] = 'No earlier comments';
-	}
-	return $comment;
-}
 /***************************************/
 /***************************************/
 function step2_comment_add_more_add_one($form, &$form_state)
@@ -498,7 +470,6 @@ function step2_comment_add_more_callback($form, &$form_state)
 {
 	return $form['step2_field1_fieldset'];
 }
-
 /***************************************** step 3 form starts **************************/
 function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -4987,7 +4958,6 @@ function step11_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 11 from ends ****************************/
-
 /************************ Step 12 form starts *********************/
 function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -5311,8 +5281,6 @@ function step12_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 12 from ends ****************************/
-
-
 /************************ Step 13 form starts *********************/
 function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -5434,7 +5402,9 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Submit',
-				'#attributes' =>array("onclick" => "return confirm('Are you sure?')"),
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_next_submit'
 				)
@@ -5442,7 +5412,9 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['save_submit'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save as draft',
-				'#attributes' =>array("onclick" => "return confirm('Are you sure?')"),
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_save_submit'
 				)
@@ -5521,7 +5493,9 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Submit',
-				'#attributes' =>array("onclick" => "return confirm('Are you sure?')"),
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_next_submit'
 				)
@@ -5529,7 +5503,9 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['save_submit'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save as draft',
-				'#attributes' =>array("onclick" => "return confirm('Are you sure?')"),
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_save_submit'
 				)
@@ -5786,8 +5762,6 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 	}
 	$form_state['redirect'] = 'ddcl-seated-angle/success';
 }
-
-
 /***************************************/
 function step13_comment_add_more_add_one($form, &$form_state)
 {
@@ -5809,11 +5783,6 @@ function step13_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 13 from ends ****************************/
-
-
-
-
-
 /**
  * Displays simple confirmation page after finishing the whole process.
  */
@@ -5955,6 +5924,53 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 		'sticky' => FALSE
 	));
 	return $output;
+}
+//displayed in user page
+function _fetch_exsiting_ddcl_seated_angle_comments($step_id, $data_relation)
+{
+	global $base_url;
+	$query_for_comment = db_query("SELECT * FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+		':step1_form_id' => $step_id,
+		':data_relation' => $data_relation
+	));
+	$comment = array();
+	$i = 0;
+	if ($query_for_comment != NULL)
+	{
+		while ($row = $query_for_comment->fetchObject())
+		{
+			$comment[$i] = $i + 1 . ") " . $row->comment . "<br><h6 style='text-align: right;'>
+			<a href='{$base_url}/ddcl-seated-angle/delete/{$row->data_relation}/{$row->id}'>Delete</a><br>" . $row->inserted_on . "</h6><br>";
+			$i++;
+		} //$row = $query_for_comment->fetchObject()
+	} //$query_for_comment == NULL
+	else
+	{
+		$comment[$i] = 'No earlier comments';
+	}
+	return $comment;
+}
+function ddcl_seated_angle_delete_comment()
+{
+	global $base_url;
+	$comment_id = arg(3);
+	$comment_step = arg(2);
+	if ($comment_id && user_access("osdag_feedback_form"))
+	{
+		$query = "DELETE FROM {ddcl_seated_angle_feedback_form_comment} WHERE id = :id";
+		$query_result = db_query($query, array(
+			':id' => $comment_id
+		));
+		if ($query_result->rowCount() > 0)
+		{
+			drupal_set_message("Deleted");
+		} //$query_result->rowCount() > 0
+		else
+		{
+			drupal_set_message("MySQL Error: row deletion failed.");
+		}
+	} //$comment_id && user_access("osdag_feedback_form")
+	drupal_goto("{$base_url}/ddcl-seated-angle/form/{$comment_step}/");
 }
 function _fetch_ddcl_seated_angle_exsiting_comments($step_id, $data_relation)
 {
