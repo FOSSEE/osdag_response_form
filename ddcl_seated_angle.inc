@@ -157,9 +157,6 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	$markup_text = '<strong> a. Seated Angle</strong><br> <p><strong>i. Bearing width</strong> of seated angle = width of supported beam [based on general practice]</p>
-	
-	
-	
 	<hr>';
 	$form = array();
 	drupal_set_title(t('a. Seated Angle'));
@@ -181,10 +178,34 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 				'#markup' => $markup_text,
 				'#required' => true
 			);
+			$form['step2_field1_fieldset']['step2_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step2_field1_fieldset']['step2_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step2_field1_fieldset\\[step2_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -269,6 +290,28 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
 				'#markup' => $markup_text
+			);
+			$form['step2_field1_fieldset']['step2_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#required' => true
+			);
+			$form['step2_field1_fieldset']['step2_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not?',
+				'#type' => 'textarea',
+				'#states' => array(
+					'visible' => array(
+						':input[name="step2_field1_fieldset\\[step2_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step2_num_comment']))
 			{
@@ -361,10 +404,12 @@ function ddcl_seated_angle_step2_form_next_submit($form, &$form_state, $no_js_us
 	$form_step2_data = $query->execute()->fetchObject();
 	if ($form_step2_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step2_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step2_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => 'question 1',
+			":question_ok_not_ok" => $v['step2_field1_fieldset']['step2_field1_question_ok'],
+			":question_not_ok_comment" => $v['step2_field1_fieldset']['step2_field1_question_not_ok_comment'],
 			":data_relation" => "step2"
 		);
 		/* storing the row id in $result */
@@ -407,10 +452,12 @@ function ddcl_seated_angle_step2_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step2_feedback} (uid, question1,data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step2_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step2_field1_fieldset']['step2_field1_question1'],
+			":question_ok_not_ok" => $v['step2_field1_fieldset']['step2_field1_question_ok'],
+			":question_not_ok_comment" => $v['step2_field1_fieldset']['step2_field1_question_not_ok_comment'],
 			":data_relation" => "step2",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -691,10 +738,34 @@ flange given by <br>
 			$form['step3_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
 				'#markup' => $markup_text1
 			);
+			$form['step3_field1_fieldset']['step3_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step3_field1_fieldset']['step3_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not?',
+				'#type' => 'textarea',
+				'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step3_field1_fieldset\\[step3_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -775,6 +846,28 @@ flange given by <br>
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
 				'#markup' => $markup_text
+			);
+			$form['step3_field1_fieldset']['step3_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#required' => true
+			);
+			$form['step3_field1_fieldset']['step3_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not?',
+				'#type' => 'textarea',
+				'#states' => array(
+					'visible' => array(
+						':input[name="step3_field1_fieldset\\[step3_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step3_num_comment']))
 			{
@@ -864,10 +957,12 @@ function ddcl_seated_angle_step3_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step2_data);die;
 	if ($form_step3_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step3_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step3_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":question_ok_not_ok" => $v['step3_field1_fieldset']['step3_field1_question_ok'],
+			":question_not_ok_comment" => $v['step3_field1_fieldset']['step3_field1_question_not_ok_comment'],
 			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
@@ -910,10 +1005,12 @@ function ddcl_seated_angle_step3_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step3_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step3_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":question_ok_not_ok" => $v['step3_field1_fieldset']['step3_field1_question_ok'],
+			":question_not_ok_comment" => $v['step3_field1_fieldset']['step3_field1_question_not_ok_comment'],
 			":data_relation" => "step3",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -1173,10 +1270,34 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 				'#markup' => $markup_text,
 				'#options' => $step4_options
 			);
+			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step4_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step4_field1_fieldset']['step4_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step4_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step4_field1_fieldset\\[step4_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1262,6 +1383,28 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step4_options
+			);
+			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#required' => true
+			);
+			$form['step4_field1_fieldset']['step4_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#states' => array(
+					'visible' => array(
+						':input[name="step4_field1_fieldset\\[step4_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step4_num_comment']))
 			{
@@ -1355,10 +1498,12 @@ function ddcl_seated_angle_step4_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step4_data);die;
 	if ($form_step4_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step4_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question_ok_not_ok" => $v['step4_field1_fieldset']['step4_field1_question_ok'],
+			":question_not_ok_comment" => $v['step4_field1_fieldset']['step4_field1_question_not_ok_comment'],
 			":data_relation" => "step4"
 		);
 		/* storing the row id in $result */
@@ -1401,10 +1546,12 @@ function ddcl_seated_angle_step4_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step4_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step4_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question_ok_not_ok" => $v['step4_field1_fieldset']['step4_field1_question_ok'],
+			":question_not_ok_comment" => $v['step4_field1_fieldset']['step4_field1_question_not_ok_comment'],
 			":data_relation" => "step4",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -1741,10 +1888,34 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 				'#markup' => $markup_text,
 				'#options' => $step5_options
 			);
+			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step5_field1_fieldset']['step5_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step5_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step5_field1_fieldset\\[step5_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1830,6 +2001,30 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step5_options
+			);
+			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step5_field1_fieldset']['step5_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step5_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step5_field1_fieldset\\[step5_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step5_num_comment']))
 			{
@@ -1923,10 +2118,12 @@ function ddcl_seated_angle_step5_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step5_data);die;
 	if ($form_step5_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step5_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step5_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
+			":question_ok_not_ok" => $v['step5_field1_fieldset']['step5_field1_question_ok'],
+			":question_not_ok_comment" => $v['step5_field1_fieldset']['step5_field1_question_not_ok_comment'],
 			":data_relation" => "step5"
 		);
 		/* storing the row id in $result */
@@ -1969,10 +2166,12 @@ function ddcl_seated_angle_step5_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step5_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step5_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step5_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation, inserted_on) VALUES (:uid, :question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
+			":question_ok_not_ok" => $v['step5_field1_fieldset']['step5_field1_question_ok'],
+			":question_not_ok_comment" => $v['step5_field1_fieldset']['step5_field1_question_not_ok_comment'],
 			":data_relation" => "step5",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2178,10 +2377,34 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 				'#markup' => $markup_text,
 				'#options' => $step6_options
 			);
+			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step6_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step6_field1_fieldset']['step6_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step6_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -2267,6 +2490,30 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step6_options
+			);
+			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok?</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step6_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step6_field1_fieldset']['step6_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step6_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step6_num_comment']))
 			{
@@ -2360,10 +2607,12 @@ function ddcl_seated_angle_step6_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step6_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
+			":question_ok_not_ok" => $v['step6_field1_fieldset']['step6_field1_question_ok'],
+			":question_not_ok_comment" => $v['step6_field1_fieldset']['step6_field1_question_not_ok_comment'],
 			":data_relation" => "step6"
 		);
 		/* storing the row id in $result */
@@ -2406,10 +2655,12 @@ function ddcl_seated_angle_step6_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step6_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step6_feedback} (uid, question1, question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
+			":question_ok_not_ok" => $v['step6_field1_fieldset']['step6_field1_question_ok'],
+			":question_not_ok_comment" => $v['step6_field1_fieldset']['step6_field1_question_not_ok_comment'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2906,10 +3157,34 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 			$form['step7_field1_fieldset']['tooltip3']['tooltip3_text'] = array(
 				'#markup' => $markup_text3
 			);
+			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step7_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step2_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step7_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step7_field1_fieldset\\[step7_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
 			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -3023,6 +3298,30 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 			$form['step7_field1_fieldset']['tooltip3']['tooltip3_text'] = array(
 				'#markup' => $markup_text3
 			);
+			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step7_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step2_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step7_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step7_field1_fieldset\\[step7_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			if (empty($form_state['step7_num_comment']))
 			{
 				$form_state['step7_num_comment'] = 1;
@@ -3115,10 +3414,12 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step7_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step7_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
+			":question_ok_not_ok" => $v['step7_field1_fieldset']['step7_field1_question_ok'],
+			":question_not_ok_comment" => $v['step7_field1_fieldset']['step7_field1_question_not_ok_comment'],
 			":data_relation" => "step7"
 		);
 		/* storing the row id in $result */
@@ -3161,10 +3462,12 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step7_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment,  data_relation,inserted_on) VALUES (:uid,:question1, :question_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
+			":question_ok_not_ok" => $v['step7_field1_fieldset']['step7_field1_question_ok'],
+			":question_not_ok_comment" => $v['step7_field1_fieldset']['step7_field1_question_not_ok_comment'],
 			":data_relation" => "step7",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -3439,10 +3742,34 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 				'#markup' => $markup_text,
 				'#options' => $step8_options
 			);
+			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step8_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step8_field1_fieldset']['step8_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step8_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step8_field1_fieldset\\[step8_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step8_data->id, $step8_data->data_relation);
 			$icom = 1;
 			$form['step8_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -3528,6 +3855,30 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step8_options
+			);
+			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step8_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step8_field1_fieldset']['step8_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step8_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step8_field1_fieldset\\[step8_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step8_num_comment']))
 			{
@@ -3621,10 +3972,12 @@ function ddcl_seated_angle_step8_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step8_data);die;
 	if ($form_step8_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step8_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
+			":question_ok_not_ok" => $v['step8_field1_fieldset']['step8_field1_question_ok'],
+			":question_not_ok_comment" => $v['step8_field1_fieldset']['step8_field1_question_not_ok_comment'],
 			":data_relation" => "step8"
 		);
 		/* storing the row id in $result */
@@ -3667,10 +4020,12 @@ function ddcl_seated_angle_step8_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step8_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step8_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step8_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
+			":question_ok_not_ok" => $v['step8_field1_fieldset']['step8_field1_question_ok'],
+			":question_not_ok_comment" => $v['step8_field1_fieldset']['step8_field1_question_not_ok_comment'],
 			":data_relation" => "step8",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -3761,10 +4116,34 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
+			$form['step9_field1_fieldset']['step9_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step9_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step9_field1_fieldset']['step9_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step9_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step9_field1_fieldset\\[step9_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step9_data->id, $step9_data->data_relation);
 			$icom = 1;
 			$form['step9_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -3850,6 +4229,30 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step9_options
+			);
+			$form['step9_field1_fieldset']['step9_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step9_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step9_field1_fieldset']['step9_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step9_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step9_field1_fieldset\\[step9_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step9_num_comment']))
 			{
@@ -3943,10 +4346,12 @@ function ddcl_seated_angle_step9_form_next_submit($form, &$form_state, $no_js_us
 	//var_dump($form_step9_data);die;
 	if ($form_step9_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step9_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step9_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
+			":question_ok_not_ok" => $v['step9_field1_fieldset']['step9_field1_question_ok'],
+			":question_not_ok_comment" => $v['step9_field1_fieldset']['step9_field1_question_not_ok_comment'],
 			":data_relation" => "step9"
 		);
 		/* storing the row id in $result */
@@ -4204,10 +4609,34 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 				'#markup' => $markup_text,
 				'#options' => $step10_options
 			);
+			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step10_data->id, $step10_data->data_relation);
 			$icom = 1;
 			$form['step10_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -4293,6 +4722,30 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step10_options
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step10_num_comment']))
 			{
@@ -4386,10 +4839,12 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 	//var_dump($form_step10_data);die;
 	if ($form_step10_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step10_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step10_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step2_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
 			":data_relation" => "step10"
 		);
 		/* storing the row id in $result */
@@ -4432,10 +4887,12 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step10_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step10_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step10_feedback} (uid, question1,  question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step2_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
 			":data_relation" => "step10",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -4666,6 +5123,30 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 				'#markup' => $markup_text,
 				'#options' => $step11_options
 			);
+			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step11_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step11_data->id, $step11_data->data_relation);
 			$icom = 1;
 			$form['step11_field1_fieldset']['exsiting_comments_title'] = array(
@@ -4755,6 +5236,30 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step11_options
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step11_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step11_num_comment']))
 			{
@@ -4848,10 +5353,12 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 	//var_dump($form_step11_data);die;
 	if ($form_step11_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step11_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step11_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
 			":data_relation" => "step11"
 		);
 		/* storing the row id in $result */
@@ -4894,10 +5401,12 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step11_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step11_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_ok_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
 			":data_relation" => "step11",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -4989,10 +5498,34 @@ connection</p>
 				'#markup' => $markup_text,
 				'#options' => $step12_options
 			);
+			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step12_data->id, $step12_data->data_relation);
 			$icom = 1;
 			$form['step12_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment<strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -5078,6 +5611,30 @@ connection</p>
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step12_options
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step12_num_comment']))
 			{
@@ -5171,10 +5728,12 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	//var_dump($form_step12_data);die;
 	if ($form_step12_data)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step12_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step12_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
 			":data_relation" => "step12"
 		);
 		/* storing the row id in $result */
@@ -5217,10 +5776,12 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step12_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
 			":data_relation" => "step12",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -5322,6 +5883,30 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step13_options
+			);
+			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step13_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step13_field1_fieldset']['step13_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step13_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step13_field1_fieldset\\[step13_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step13_data->id, $step13_data->data_relation);
 			$icom = 1;
@@ -5425,6 +6010,30 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
 				'#markup' => $markup_text,
 				'#options' => $step13_options
+			);
+			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step13_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step13_field1_fieldset']['step13_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step13_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step13_field1_fieldset\\[step13_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step13_num_comment']))
 			{
@@ -5533,10 +6142,12 @@ function ddcl_seated_angle_step13_form_save_submit($form, &$form_state, $no_js_u
 	$form_step7_data = $form_step7_data->fetchObject();
 	if ($form_step7_data_count != 0)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
 			":data_relation" => "step13"
 		);
 		/* storing the row id in $result */
@@ -5588,10 +6199,12 @@ function ddcl_seated_angle_step13_form_save_submit($form, &$form_state, $no_js_u
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
 			":data_relation" => "step13",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -5655,10 +6268,12 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 	$form_step7_data = $form_step7_data->fetchObject();
 	if ($form_step7_data_count != 0)
 	{
-		$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
 			":data_relation" => "step13"
 		);
 		/* storing the row id in $result */
@@ -5710,10 +6325,12 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, :question_ok_not_ok, :question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
 			":data_relation" => "step13",
 			":inserted_on" => date('Y-m-d')
 		);
