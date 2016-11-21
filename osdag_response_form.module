@@ -103,6 +103,16 @@ function osdag_response_form_menu()
 		),
 		'file'=> 'ddcl_osdag_response.inc'
 	);
+		// Delete the comment
+	$items['ddcl-osdag-response/delete'] = array(
+		'title' => t(' DDCL - Web Response Form successful!'),
+		'page callback' => 'ddcl_osdag_response_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_osdag_response.inc'
+	);
 	// Success page.
 	$items['ddcl-osdag-response/success'] = array(
 		'title' => t(' DDCL - Web Response Form successful!'),
