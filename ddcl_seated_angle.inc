@@ -3167,7 +3167,7 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 				'#default_value' => $step7_data->question_ok_not_ok,
 				'#required' => true
 			);
-			$form['step2_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
+			$form['step7_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
 				'#default_value' => $step7_data->question_not_ok_comment,
@@ -3308,7 +3308,7 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 				//'#default_value' => $step7_data->question_ok_not_ok,
 				'#required' => true
 			);
-			$form['step2_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
+			$form['step7_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
 				//'#default_value' => $step7_data->question_not_ok_comment,
@@ -3462,7 +3462,7 @@ function ddcl_seated_angle_step7_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment,  data_relation,inserted_on) VALUES (:uid,:question1, :question_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
