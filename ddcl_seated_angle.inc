@@ -5778,7 +5778,7 @@ function ddcl_seated_angle_step12_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step12_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
