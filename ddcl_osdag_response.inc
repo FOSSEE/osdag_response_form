@@ -398,6 +398,102 @@ mm or more
 function ddcl_osdag_response_step2_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step2_feedback');
+	$query->fields('ddcl_osdag_response_form_step2_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step2_data = $query->execute()->fetchObject();
+	if ($form_step2_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step2_feedback SET question1=:question1, any_other_recommendation=:any_other_recommendation, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step2_field1_fieldset']['step2_field1_question1'],
+			":any_other_recommendation" => $v['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'],
+			":data_relation" => "step2"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step2_data->id
+		));
+		$form_step2_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++)
+		{
+			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step2_data->id,
+					":number" => $i + $form_step2_comment_data->max + 1,
+					":comment" => $v['step2_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step2",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
+	} //$form_step2_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step2_feedback} (uid, question1, any_other_recommendation, data_relation,inserted_on) VALUES (:uid,:question1,:any_other_recommendation, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step2_field1_fieldset']['step2_field1_question1'],
+			":any_other_recommendation" => $v['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'],
+			":data_relation" => "step2",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++)
+		{
+			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step2_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step2",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step1/' . $user->uid;
 }
 function ddcl_osdag_response_step2_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -740,6 +836,103 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 function ddcl_osdag_response_step3_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step3_feedback');
+	$query->fields('ddcl_osdag_response_form_step3_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step2_data = $query->execute()->fetchObject();
+	//var_dump($form_step2_data);die;
+	if ($form_step2_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
+			":data_relation" => "step2"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step2_data->id
+		));
+		$form_step2_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
+		{
+			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step2_data->id,
+					":number" => $i + $form_step2_comment_data->max + 1,
+					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step3",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
+	} //$form_step2_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step3_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
+			":data_relation" => "step3",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
+		{
+			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step3",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step2/' . $user->uid;
 }
 function ddcl_osdag_response_step3_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -1074,6 +1267,101 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 function ddcl_osdag_response_step4_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step4_feedback');
+	$query->fields('ddcl_osdag_response_form_step4_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step4_data = $query->execute()->fetchObject();
+	//var_dump($form_step4_data);die;
+	if ($form_step4_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":data_relation" => "step4"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step4_data->id
+		));
+		$form_step4_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++)
+		{
+			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step4_data->id,
+					":number" => $i + $form_step4_comment_data->max + 1,
+					":comment" => $v['step4_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step4",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
+	} //$form_step4_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":data_relation" => "step4",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++)
+		{
+			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step4_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step4",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step3/' . $user->uid;
 }
 function ddcl_osdag_response_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -1429,6 +1717,103 @@ function ddcl_osdag_response_step5_form($form, &$form_state, $no_js_use = FALSE)
 function ddcl_osdag_response_step5_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step5_feedback');
+	$query->fields('ddcl_osdag_response_form_step5_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step5_data = $query->execute()->fetchObject();
+	//var_dump($form_step5_data);die;
+	if ($form_step5_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step5_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
+			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step5"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step5_data->id
+		));
+		$form_step5_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
+		{
+			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step5_data->id,
+					":number" => $i + $form_step5_comment_data->max + 1,
+					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step5",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
+	} //$form_step5_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step5_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
+			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step5",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
+		{
+			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step5",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step4/' . $user->uid;
 }
 function ddcl_osdag_response_step5_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -1853,6 +2238,111 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 function ddcl_osdag_response_step6_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step6_feedback');
+	$query->fields('ddcl_osdag_response_form_step6_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step6_data = $query->execute()->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step6_feedback SET question1=:question1, 
+					sub_option2=:sub_option2,
+					based_on_experience=:based_on_experience,
+					based_on_reasoning_comment=:based_on_reasoning_comment, 
+					data_relation=:data_relation WHERE uid=:uid";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
+			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
+			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
+			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
+			":data_relation" => "step6"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step6_data->id
+		));
+		$form_step6_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
+		{
+			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
+					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step6",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
+	} //$form_step6_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2,based_on_experience, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2,:based_on_experience, :based_on_reasoning_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
+			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
+			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
+			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
+			":data_relation" => "step6",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
+		{
+			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step6",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step5/' . $user->uid;
 }
 function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -2226,7 +2716,104 @@ be taken as input from the user. What should be the minimum value for this?',
 }
 function ddcl_osdag_response_step7_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
-	global $user;
+		global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddcl_osdag_response_form_step7_feedback');
+	$query->fields('ddcl_osdag_response_form_step7_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step7_data = $query->execute()->fetchObject();
+	//var_dump($form_step7_data);die;
+	if ($form_step7_data)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step7_feedback SET question1=:question1, any_other_recommendation=:any_other_recommendation, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
+			":any_other_recommendation" => $v['step7_field1_fieldset']['step7_field2_any_other'],
+			":data_relation" => "step7"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step7_data->id
+		));
+		$form_step7_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++)
+		{
+			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step7_data->id,
+					":number" => $i + $form_step7_comment_data->max + 1,
+					":comment" => $v['step7_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step7",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
+	} //$form_step7_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step7_feedback} (uid, question1, any_other_recommendation, data_relation,inserted_on) VALUES (:uid,:question1,:any_other_recommendation, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
+			":any_other_recommendation" => $v['step7_field1_fieldset']['step7_field2_any_other'],
+			":data_relation" => "step7",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++)
+		{
+			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step7_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step7",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step6/' . $user->uid;
 }
 function ddcl_osdag_response_step7_form_next_submit($form, &$form_state, $no_js_use = FALSE)
@@ -2554,6 +3141,127 @@ function ddcl_osdag_response_step8_form($form, &$form_state, $no_js_use = FALSE)
 function ddcl_osdag_response_step8_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
+	$v = $form_state['values'];
+	/*$query = db_select('ddcl_osdag_response_form_step8_feedback');
+	$query->fields('ddcl_osdag_response_form_step8_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step7_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step7_data = db_query($query, $args);
+	$form_step7_data_count = $form_step7_data->rowCount();
+	$form_step7_data = $form_step7_data->fetchObject();
+	//var_dump($form_step7_data);die;
+	if ($form_step7_data_count != 0)
+	{
+		$query = "UPDATE ddcl_osdag_response_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
+			":data_relation" => "step8"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_osdag_response_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $$args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step7_data->id
+		));
+		$form_step7_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++)
+		{
+			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step7_data->id,
+					":number" => $i + $form_step7_comment_data->max + 1,
+					":comment" => $v['step8_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step8",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	} //$form_step7_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_osdag_response_form_step8_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
+			":data_relation" => "step8",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_osdag_response_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $$args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++)
+		{
+			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step8_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step8",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	}
 	$form_state['redirect'] = 'ddcl-osdag-response/form/step6/' . $user->uid;
 }
 function ddcl_osdag_response_step8_form_save_submit($form, &$form_state, $no_js_use = FALSE)
