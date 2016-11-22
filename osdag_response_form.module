@@ -7,9 +7,9 @@ function osdag_response_form_menu()
 {
 	$items = array();
 	// Form page.
-	/****************** DDCL WEB RESPONSE FORM ******************/
+	/****************** Seated Angle Connection DDQ (Design and Detailing Queries)******************/
 	$items['ddcl-osdag-response/form'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'ddcl_osdag_response_form_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -18,7 +18,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step1'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'ddcl_osdag_response_form_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -27,7 +27,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step2'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step2_form'
@@ -38,7 +38,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step3'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step3_form'
@@ -49,7 +49,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step4'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step4_form'
@@ -60,7 +60,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step5'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step5_form'
@@ -71,7 +71,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step6'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step6_form'
@@ -82,7 +82,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step7'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step7_form'
@@ -93,7 +93,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step8'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddcl_osdag_response_step8_form'
@@ -105,7 +105,7 @@ function osdag_response_form_menu()
 	);
 		// Delete the comment
 	$items['ddcl-osdag-response/delete'] = array(
-		'title' => t(' DDCL - Web Response Form successful!'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries) successful!'),
 		'page callback' => 'ddcl_osdag_response_delete_comment',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -115,7 +115,7 @@ function osdag_response_form_menu()
 	);
 	// Success page.
 	$items['ddcl-osdag-response/success'] = array(
-		'title' => t(' DDCL - Web Response Form successful!'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries) successful!'),
 		'page callback' => 'ddcl_osdag_response_success',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -125,7 +125,7 @@ function osdag_response_form_menu()
 	);
 	// Result page
 	$items['ddcl-osdag-response/form/result'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'ddcl_osdag_response_result_page',
 		'page arguments' => array(),
 		'access arguments' => array(
@@ -134,7 +134,7 @@ function osdag_response_form_menu()
 		'file'=> 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/result/download'] = array(
-		'title' => t('DDCL - Web Response Form'),
+		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
 		'page callback' => 'ddcl_result_generate_csv',
 		'page arguments' => array(),
 		'access arguments' => array(
