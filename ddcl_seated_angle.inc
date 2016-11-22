@@ -745,13 +745,13 @@ flange given by <br>
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step3_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not?',
 				'#type' => 'textarea',
-				'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step3_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question_ok\\]"]' => array(
@@ -4827,7 +4827,7 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 function ddcl_seated_angle_step10_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
-	$form_state['redirect'] = 'ddcl-seated-angle/form/step8/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-seated-angle/form/step9/' . $user->uid;
 }
 function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
