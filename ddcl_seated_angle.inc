@@ -4845,7 +4845,7 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step2_field1_question_ok'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
 			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
 			":data_relation" => "step10"
 		);
