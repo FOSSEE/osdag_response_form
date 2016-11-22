@@ -1268,7 +1268,6 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step4_options
 			);
 			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -1382,7 +1381,6 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step4_options
 			);
 			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -1886,7 +1884,6 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step5_options
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2000,7 +1997,6 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step5_options
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2375,7 +2371,6 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step6_options
 			);
 			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2489,7 +2484,6 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step6_options
 			);
 			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -3269,7 +3263,6 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step7_options
 			);
 			$form['step7_field1_fieldset']['tooltip1'] = array(
 				'#type' => 'fieldset',
@@ -3740,7 +3733,6 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step8_options
 			);
 			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -3854,7 +3846,6 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step8_options
 			);
 			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -4228,7 +4219,6 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step9_options
 			);
 			$form['step9_field1_fieldset']['step9_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -4609,7 +4599,6 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 		{
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step10_options
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -4723,7 +4712,6 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 		{
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step10_options
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5123,7 +5111,6 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step11_options
 			);
 			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5237,7 +5224,6 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step11_options
 			);
 			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5498,7 +5484,6 @@ connection</p>
 		{
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step12_options
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5612,7 +5597,6 @@ connection</p>
 		{
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step12_options
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5884,7 +5868,6 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step13_options
 			);
 			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -6011,7 +5994,6 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
 				'#markup' => $markup_text,
-				'#options' => $step13_options
 			);
 			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
