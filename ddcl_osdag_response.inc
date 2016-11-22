@@ -193,7 +193,7 @@ mm or more
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'What should be the minimum length of the connected leg (to the support) of the seated angle?',
+				'#title' => 'a. What should be the minimum length of the connected leg (to the support) of the seated angle?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -216,7 +216,7 @@ mm or more
 			$earlier_comments = _fetch_exsiting_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -300,7 +300,7 @@ mm or more
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'What should be the minimum length of the connected leg (to the support) of the seated angle?',
+				'#title' => 'a. What should be the minimum length of the connected leg (to the support) of the seated angle?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
@@ -567,7 +567,7 @@ function ddcl_osdag_response_step3_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -906,7 +906,7 @@ function ddcl_osdag_response_step4_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1247,7 +1247,7 @@ function ddcl_osdag_response_step5_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1612,8 +1612,22 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
+			$form['step6_field1_fieldset']['step6_field2_based_on_experience'] = array(
+				'#title' => 'What should be the angle section?',
+				'#type' => 'textarea',
+				'#default_value' => $step6_data->based_on_experience,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field2_other_recomendation\\]"]' => array(
+							array(
+								'value' => t('Based on Experience')
+							)
+						)
+					)
+				)
+			);
 			$form['step6_field1_fieldset']['step6_field2_based_on_reasoning'] = array(
-				'#title' => 'Comments/Reference',
+				'#title' => 'What should be the angle section?',
 				'#type' => 'textarea',
 				'#default_value' => $step6_data->based_on_reasoning_comment,
 				'#states' => array(
@@ -1629,7 +1643,7 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1733,10 +1747,24 @@ function ddcl_osdag_response_step6_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$form['step6_field1_fieldset']['step6_field2_based_on_reasoning'] = array(
-				'#title' => 'Comments/Reference',
+			$form['step6_field1_fieldset']['step6_field2_based_on_experience'] = array(
+				'#title' => 'What should be the angle section?',
 				'#type' => 'textarea',
-				'#default_value' => $step6_data->any_other_recommendation,
+				//'#default_value' => $step6_data->based_on_experience,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field2_other_recomendation\\]"]' => array(
+							array(
+								'value' => t('Based on Experience')
+							)
+						)
+					)
+				)
+			);
+			$form['step6_field1_fieldset']['step6_field2_based_on_reasoning'] = array(
+				'#title' => 'What should be the angle section?',
+				'#type' => 'textarea',
+				//'#default_value' => $step6_data->any_other_recommendation,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step6_field1_fieldset\\[step6_field2_other_recomendation\\]"]' => array(
@@ -1838,11 +1866,16 @@ function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddcl_osdag_response_form_step6_feedback SET question1=:question1, sub_option2 =:sub_option2, based_on_reasoning_comment=:based_on_reasoning_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_osdag_response_form_step6_feedback SET question1=:question1, 
+					sub_option2=:sub_option2,
+					based_on_experience=:based_on_experience,
+					based_on_reasoning_comment=:based_on_reasoning_comment, 
+					data_relation=:data_relation WHERE uid=:uid";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
+			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6"
 		);
@@ -1886,11 +1919,12 @@ function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2, :based_on_reasoning_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2,based_on_experience, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2,:based_on_experience, :based_on_reasoning_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
+			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
@@ -1961,12 +1995,13 @@ function ddcl_osdag_response_step7_form($form, &$form_state, $no_js_use = FALSE)
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step7_options = array(
 		'10mm' => '10mm' . '
-					<p>Reference: Assume "gap" of 10 mm (Ref II - 12:00 min)
+					<p>Reference: Assume "gap" of 10 mm (Damodar Maity'."'".'s - NPTEL course on Design of Steel
+Structures - Module 3 - Lecture 4 - 12:00 min)
 </p>
 					<img src="' . $img_path . '/10mm.png" />
 					<p>Reference: The clearance between the end of the beam and flanges of the
-column should be minimum (between 2 and 5 mm) so that maximum
-bearing length is available (Ref I - 5.7.3 page 367)
+column should be minimum (between 2 and 5 mm) so that maximum bearing length is available (N Subramanian'."'".'s - Design of
+Steel Structures - 5.7.3 page 367)
 </p>
 					<img src="' . $img_path . '/10mmsub.png" />',
 		'Any other recommendation' => 'Any other recommendation'
@@ -1987,10 +2022,9 @@ bearing length is available (Ref I - 5.7.3 page 367)
 		if ($step7_data = $form_step7_data->fetchObject())
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#title' => 'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
+				'#title' => 'f. The assumed clearance + tolerance between the beam and supporting column will
 be taken as input from the user. What should be the minimum value for this?
-Ref II takes clearance = 10 mm
-Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
+',
 				'#type' => 'radios',
 				'#options' => $step7_options,
 				'#default_value' => $step7_data->question1,
@@ -2012,7 +2046,7 @@ Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
 			$earlier_comments = _fetch_exsiting_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
 			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -2096,10 +2130,8 @@ Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
 		else
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#title' => 'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
-be taken as input from the user. What should be the minimum value for this?
-Ref II takes clearance = 10 mm
-Ref I takes (clearance + tolerance) = 5 mm + 5 mm = 10mm [page 407, Ref I]',
+				'#title' => 'f. The assumed clearance + tolerance between the beam and supporting (column or girder) will
+be taken as input from the user. What should be the minimum value for this?',
 				'#type' => 'radios',
 				'#options' => $step7_options,
 				//'#default_value' => $step7_data->question1,
