@@ -1895,7 +1895,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step5_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_not_ok_comment'] = array(
@@ -4618,13 +4618,13 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step10_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step10_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
