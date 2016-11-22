@@ -5138,7 +5138,7 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step11_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
@@ -5403,7 +5403,7 @@ function ddcl_seated_angle_step11_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step11_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_ok_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
