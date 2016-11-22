@@ -4638,7 +4638,7 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step10_data->id, $step10_data->data_relation);
 			$icom = 1;
 			$form['step10_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr>Earlier comment<hr><br>'
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -4893,7 +4893,7 @@ function ddcl_seated_angle_step10_form_next_submit($form, &$form_state, $no_js_u
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step2_field1_question_ok'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
 			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
 			":data_relation" => "step10",
 			":inserted_on" => date('Y-m-d')
