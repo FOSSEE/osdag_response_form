@@ -7616,7 +7616,7 @@ function ddcl_seated_angle_success()
 function ddcl_seated_angle_response_result_page()
 {
 	/* get pending proposals to be approved */
-	$output .= "";
+	$output = "";
 	$output .= l("Download All Result in CSV", "ddcl-seated-angle/form/result/download");
 	$feedback_rows = array();
 	$feedback_q = db_query('
@@ -7632,50 +7632,80 @@ step1.current_position as "step1_current_position",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1",
+step2.question_ok_not_ok as "step2_question_ok_not_ok",
+step2.question_not_ok_comment as "step2_question_not_ok_comment",
 
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1",
+step3.question_ok_not_ok as "step3_question_ok_not_ok",
+step3.question_not_ok_comment as "step3_question_not_ok_comment",
+
 
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
 step4.question1 as "step4_question1",
+step4.question_ok_not_ok as "step4_question_ok_not_ok",
+step4.question_not_ok_comment as "step4_question_not_ok_comment",
+
 
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1",
+step5.question_ok_not_ok as "step5_question_ok_not_ok",
+step5.question_not_ok_comment as "step5_question_not_ok_comment",
+
 
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1",
+step6.question_ok_not_ok as "step6_question_ok_not_ok",
+step6.question_not_ok_comment as "step6_question_not_ok_comment",
+
 
 step7.id as "step7_id",
 step7.data_relation as "step7_data_relation",
 step7.question1 as "step7_question1",
+step7.question_ok_not_ok as "step7_question_ok_not_ok",
+step7.question_not_ok_comment as "step7_question_not_ok_comment",
 
 
 step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
 step8.question1 as "step8_question1",
+step8.question_ok_not_ok as "step8_question_ok_not_ok",
+step8.question_not_ok_comment as "step8_question_not_ok_comment",
+
 
 step9.id as "step9_id",
 step9.data_relation as "step9_data_relation",
 step9.question1 as "step9_question1",
+step9.question_ok_not_ok as "step9_question_ok_not_ok",
+step9.question_not_ok_comment as "step9_question_not_ok_comment",
+
 
 step10.id as "step10_id",
 step10.data_relation as "step10_data_relation",
 step10.question1 as "step10_question1",
+step10.question_ok_not_ok as "step10_question_ok_not_ok",
+step10.question_not_ok_comment as "step10_question_not_ok_comment",
+
 
 step11.id as "step11_id",
 step11.data_relation as "step11_data_relation",
 step11.question1 as "step11question1",
+step11.question_ok_not_ok as "step11_question_ok_not_ok",
+step11.question_not_ok_comment as "step11_question_not_ok_comment",
 
 step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
-step12.question1 as "step12_question1"
+step12.question1 as "step12_question1",
+step12.question_ok_not_ok as "step12_question_ok_not_ok",
+step12.question_not_ok_comment as "step12_question_not_ok_comment"
+
 
 from ddcl_seated_angle_form_step1_feedback step1
 
@@ -7694,22 +7724,44 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
 	{
-		$feedback_rows[$feedback_data->uid] = array(
+		$feedback_rows[$feedback_data->step1_uid] = array(
 			$i,
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
 			$feedback_data->step1_institute,
 			$feedback_data->step1_current_position,
+			$feedback_data->step2_question_ok_not_ok,
+			$feedback_data->step2_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			$feedback_data->step3_question_ok_not_ok,
+			$feedback_data->step3_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			$feedback_data->step4_question_ok_not_ok,
+			$feedback_data->step4_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			$feedback_data->step5_question_ok_not_ok,
+			$feedback_data->step5_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			$feedback_data->step6_question_ok_not_ok,
+			$feedback_data->step6_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
+			$feedback_data->step7_question_ok_not_ok,
+			$feedback_data->step7_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
+			$feedback_data->step8_question_ok_not_ok,
+			$feedback_data->step8_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			$feedback_data->step9_question_ok_not_ok,
+			$feedback_data->step9_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			$feedback_data->step10_question_ok_not_ok,
+			$feedback_data->step10_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			$feedback_data->step11_question_ok_not_ok,
+			$feedback_data->step11_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			$feedback_data->step12_question_ok_not_ok,
+			$feedback_data->step12_question_not_ok_comment,
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation)
 		);
 		$i++;
@@ -7726,17 +7778,39 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 		'Name',
 		'Institute / Company',
 		'Current Position',
+		'Page 2 Is this ok/not ok',
+		'Page 2 Is this ok/not ok comment',
 		'Page 2 comments',
+		'Page 3 Is this ok/not ok',
+		'Page 3 Is this ok/not ok comment',
 		'Page 3 comments',
+		'Page 4 Is this ok/not ok',
+		'Page 4 Is this ok/not ok comment',
 		'Page 4 comments',
+		'Page 5 Is this ok/not ok',
+		'Page 5 Is this ok/not ok comment',
 		'Page 5 comments',
+		'Page 6 Is this ok/not ok',
+		'Page 6 Is this ok/not ok comment',
 		'Page 6 comments',
+		'Page 7 Is this ok/not ok',
+		'Page 7 Is this ok/not ok comment',
 		'Page 7 comments',
+		'Page 8 Is this ok/not ok',
+		'Page 8 Is this ok/not ok comment',
 		'Page 8 comments',
+		'Page 9 Is this ok/not ok',
+		'Page 9 Is this ok/not ok comment',
 		'Page 9 comments',
+		'Page 10 Is this ok/not ok',
+		'Page 10 Is this ok/not ok comment',
 		'Page 10 comments',
+		'Page 11 Is this ok/not ok',
+		'Page 11 Is this ok/not ok comment',
 		'Page 11 comments',
-		'Page 12 comments'
+		'Page 12 Is this ok/not ok',
+		'Page 12 Is this ok/not ok comment',
+		'Page 12 comments',
 	);
 	$output .= theme('table', array(
 		'header' => $data_header,
@@ -7858,7 +7932,7 @@ function _fetch_ddcl_seated_angle_exsiting_comments_result_csv($step_id, $data_r
 		$i++;
 	} //$row = $query_for_comment->fetchObject()
 	//$query_for_comment == NULL
-	return $text;
+	return trim($text);
 }
 function ddcl_seated_angle_result_generate_csv()
 {
@@ -7876,22 +7950,43 @@ function ddcl_seated_angle_result_generate_csv()
 		/* making the first row */
 		$item = array(
 			'No.',
-			'Date of Submission',
-			'Name',
-			'Institute / Company',
-			'Current Position',
-			'Page 1 comments',
-			'Page 2 comments',
-			'Page 3 comments',
-			'Page 4 comments',
-			'Page 5 comments',
-			'Page 6 comments',
-			'Page 7 comments',
-			'Page 8 comments',
-			'Page 9 comments',
-			'Page 10 comments',
-			'Page 11 comments',
-			'Page 12 comments'
+		'Date of Submission',
+		'Name',
+		'Institute / Company',
+		'Current Position',
+		'Page 2 Is this ok/not ok',
+		'Page 2 Is this ok/not ok comment',
+		'Page 2 comments',
+		'Page 3 Is this ok/not ok',
+		'Page 3 Is this ok/not ok comment',
+		'Page 3 comments',
+		'Page 4 Is this ok/not ok',
+		'Page 4 Is this ok/not ok comment',
+		'Page 4 comments',
+		'Page 5 Is this ok/not ok',
+		'Page 5 Is this ok/not ok comment',
+		'Page 5 comments',
+		'Page 6 Is this ok/not ok',
+		'Page 6 Is this ok/not ok comment',
+		'Page 6 comments',
+		'Page 7 Is this ok/not ok',
+		'Page 7 Is this ok/not ok comment',
+		'Page 7 comments',
+		'Page 8 Is this ok/not ok',
+		'Page 8 Is this ok/not ok comment',
+		'Page 8 comments',
+		'Page 9 Is this ok/not ok',
+		'Page 9 Is this ok/not ok comment',
+		'Page 9 comments',
+		'Page 10 Is this ok/not ok',
+		'Page 10 Is this ok/not ok comment',
+		'Page 10 comments',
+		'Page 11 Is this ok/not ok',
+		'Page 11 Is this ok/not ok comment',
+		'Page 11 comments',
+		'Page 12 Is this ok/not ok',
+		'Page 12 Is this ok/not ok comment',
+		'Page 12 comments',
 		);
 		fputcsv($fp, $item);
 		$query = '
@@ -7906,51 +8001,81 @@ step1.current_position as "step1_current_position",
 
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
-step2.question1 as "step2_question1", 
+step2.question1 as "step2_question1",
+step2.question_ok_not_ok as "step2_question_ok_not_ok",
+step2.question_not_ok_comment as "step2_question_not_ok_comment",
 
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
-step3.question1 as "step3_question1", 
+step3.question1 as "step3_question1",
+step3.question_ok_not_ok as "step3_question_ok_not_ok",
+step3.question_not_ok_comment as "step3_question_not_ok_comment",
+
 
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
 step4.question1 as "step4_question1",
+step4.question_ok_not_ok as "step4_question_ok_not_ok",
+step4.question_not_ok_comment as "step4_question_not_ok_comment",
+
 
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
-step5.question1 as "step5_question1", 
+step5.question1 as "step5_question1",
+step5.question_ok_not_ok as "step5_question_ok_not_ok",
+step5.question_not_ok_comment as "step5_question_not_ok_comment",
+
 
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
-step6.question1 as "step6_question1", 
+step6.question1 as "step6_question1",
+step6.question_ok_not_ok as "step6_question_ok_not_ok",
+step6.question_not_ok_comment as "step6_question_not_ok_comment",
+
 
 step7.id as "step7_id",
 step7.data_relation as "step7_data_relation",
 step7.question1 as "step7_question1",
+step7.question_ok_not_ok as "step7_question_ok_not_ok",
+step7.question_not_ok_comment as "step7_question_not_ok_comment",
 
 
 step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
 step8.question1 as "step8_question1",
+step8.question_ok_not_ok as "step8_question_ok_not_ok",
+step8.question_not_ok_comment as "step8_question_not_ok_comment",
+
 
 step9.id as "step9_id",
 step9.data_relation as "step9_data_relation",
 step9.question1 as "step9_question1",
+step9.question_ok_not_ok as "step9_question_ok_not_ok",
+step9.question_not_ok_comment as "step9_question_not_ok_comment",
+
 
 step10.id as "step10_id",
 step10.data_relation as "step10_data_relation",
 step10.question1 as "step10_question1",
+step10.question_ok_not_ok as "step10_question_ok_not_ok",
+step10.question_not_ok_comment as "step10_question_not_ok_comment",
+
 
 step11.id as "step11_id",
 step11.data_relation as "step11_data_relation",
 step11.question1 as "step11question1",
+step11.question_ok_not_ok as "step11_question_ok_not_ok",
+step11.question_not_ok_comment as "step11_question_not_ok_comment",
 
 step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
-step12.question1 as "step12_question1"
+step12.question1 as "step12_question1",
+step12.question_ok_not_ok as "step12_question_ok_not_ok",
+step12.question_not_ok_comment as "step12_question_not_ok_comment"
+
 
 from ddcl_seated_angle_form_step1_feedback step1
 
@@ -7973,21 +8098,43 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 		{
 			$item = array(
 				$i,
-				$feedback_data->step1_date,
-				$feedback_data->step1_name,
-				$feedback_data->step1_institute,
-				$feedback_data->step1_current_position,
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
-				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation)
+			$feedback_data->step1_date,
+			$feedback_data->step1_name,
+			$feedback_data->step1_institute,
+			$feedback_data->step1_current_position,
+			$feedback_data->step2_question_ok_not_ok,
+			$feedback_data->step2_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			$feedback_data->step3_question_ok_not_ok,
+			$feedback_data->step3_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			$feedback_data->step4_question_ok_not_ok,
+			$feedback_data->step4_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			$feedback_data->step5_question_ok_not_ok,
+			$feedback_data->step5_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			$feedback_data->step6_question_ok_not_ok,
+			$feedback_data->step6_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+			$feedback_data->step7_question_ok_not_ok,
+			$feedback_data->step7_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+			$feedback_data->step8_question_ok_not_ok,
+			$feedback_data->step8_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			$feedback_data->step9_question_ok_not_ok,
+			$feedback_data->step9_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			$feedback_data->step10_question_ok_not_ok,
+			$feedback_data->step10_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			$feedback_data->step11_question_ok_not_ok,
+			$feedback_data->step11_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			$feedback_data->step12_question_ok_not_ok,
+			$feedback_data->step12_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation)
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()
