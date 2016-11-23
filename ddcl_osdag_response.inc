@@ -2239,6 +2239,13 @@ function ddcl_osdag_response_step6_form_previous_submit($form, &$form_state, $no
 {
 	global $user;
 	$v = $form_state['values'];
+	if($v['step6_field1_fieldset']['step6_field2_other_recomendation']=='Based on Experience')
+	{
+		$v['step6_field1_fieldset']['step6_field2_based_on_reasoning']=$v['step6_field1_fieldset']['step6_field2_based_on_experience'];
+	}else
+	{
+		$v['step6_field1_fieldset']['step6_field2_based_on_reasoning']=$v['step6_field1_fieldset']['step6_field2_based_on_reasoning'];
+	}
 	$query = db_select('ddcl_osdag_response_form_step6_feedback');
 	$query->fields('ddcl_osdag_response_form_step6_feedback');
 	$query->condition('uid', $user->uid);
@@ -2248,14 +2255,12 @@ function ddcl_osdag_response_step6_form_previous_submit($form, &$form_state, $no
 	{
 		$query = "UPDATE ddcl_osdag_response_form_step6_feedback SET question1=:question1, 
 					sub_option2=:sub_option2,
-					based_on_experience=:based_on_experience,
 					based_on_reasoning_comment=:based_on_reasoning_comment, 
 					data_relation=:data_relation WHERE uid=:uid";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
-			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6"
 		);
@@ -2299,12 +2304,11 @@ function ddcl_osdag_response_step6_form_previous_submit($form, &$form_state, $no
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2,based_on_experience, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2,:based_on_experience, :based_on_reasoning_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2,:based_on_reasoning_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
-			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
@@ -2349,6 +2353,13 @@ function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_
 {
 	global $user;
 	$v = $form_state['values'];
+	if($v['step6_field1_fieldset']['step6_field2_other_recomendation']=='Based on Experience')
+	{
+		$v['step6_field1_fieldset']['step6_field2_based_on_reasoning']=$v['step6_field1_fieldset']['step6_field2_based_on_experience'];
+	}else
+	{
+		$v['step6_field1_fieldset']['step6_field2_based_on_reasoning']=$v['step6_field1_fieldset']['step6_field2_based_on_reasoning'];
+	}
 	$query = db_select('ddcl_osdag_response_form_step6_feedback');
 	$query->fields('ddcl_osdag_response_form_step6_feedback');
 	$query->condition('uid', $user->uid);
@@ -2358,14 +2369,12 @@ function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_
 	{
 		$query = "UPDATE ddcl_osdag_response_form_step6_feedback SET question1=:question1, 
 					sub_option2=:sub_option2,
-					based_on_experience=:based_on_experience,
 					based_on_reasoning_comment=:based_on_reasoning_comment, 
 					data_relation=:data_relation WHERE uid=:uid";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
-			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6"
 		);
@@ -2409,12 +2418,11 @@ function ddcl_osdag_response_step6_form_next_submit($form, &$form_state, $no_js_
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2,based_on_experience, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2,:based_on_experience, :based_on_reasoning_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_osdag_response_form_step6_feedback} (uid, question1, sub_option2, based_on_reasoning_comment, data_relation, inserted_on) VALUES (:uid,:question1, :sub_option2, :based_on_reasoning_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
 			":sub_option2" => $v['step6_field1_fieldset']['step6_field2_other_recomendation'],
-			":based_on_experience" => $v['step6_field1_fieldset']['step6_field2_based_on_experience'],
 			":based_on_reasoning_comment" => $v['step6_field1_fieldset']['step6_field2_based_on_reasoning'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
@@ -3541,7 +3549,7 @@ function step8_comment_add_more_callback($form, &$form_state)
 function ddcl_osdag_response_result_page()
 {
 	/* get pending proposals to be approved */
-	$output .= "";
+	$output = "";
 	$output .= l("Download All Result in CSV", "ddcl-osdag-response/form/result/download");
 	$feedback_rows = array();
 	$feedback_q = db_query('
@@ -3599,7 +3607,7 @@ join ddcl_osdag_response_form_step8_feedback step8 on step7.uid=step8.uid
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
 	{
-		$feedback_rows[$feedback_data->uid] = array(
+		$feedback_rows[$feedback_data->step1_uid] = array(
 			$i,
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
@@ -3648,10 +3656,10 @@ join ddcl_osdag_response_form_step8_feedback step8 on step7.uid=step8.uid
 		'If yes, what IS code clauses and references should be followed?',
 		'comments',
 		'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
-		'Based on Reasoning',
-		'Comments /references',
+		'Based on Experience/Reasoning',
+		'What should be the angle section?',
 		'comments',
-		'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
+		'f. The assumed clearance + tolerance between the beam and supporting column will
 be taken as input from the user. What should be the minimum value for this?',
 		'Any other',
 		'comments',
@@ -3790,10 +3798,10 @@ function ddcl_result_generate_csv()
 			'If yes, what IS code clauses and references should be followed?',
 			'comments',
 			'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
-			'Based on Reasoning',
-			'Comments /references',
+			'Based on Experience/Reasoning',
+			'What should be the angle section?',
 			'comments',
-			'The (assumed) clearance + tolerance between the beam and supporting (column or girder) will
+			'f. The assumed clearance + tolerance between the beam and supporting column will
 be taken as input from the user. What should be the minimum value for this?',
 			'Any other',
 			'comments',
