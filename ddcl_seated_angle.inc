@@ -4182,8 +4182,8 @@ The design bearing strength of a bolt on any plate,
 <msub>
 <mi>V</mi>
 <mrow class="MJX-TeXAtom-ORD">
-<mi>d</mi>
-<mi>s</mi>
+<mi>n</mi>
+<mi>p</mi>
 <mi>b</mi>
 </mrow>
 </msub>
