@@ -159,7 +159,7 @@ function ddcl_seated_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '<strong> a. Seated Angle</strong><br> <p><strong>i. Bearing width</strong> of seated angle = width of supported beam [based on general practice]</p>
 	<hr>';
 	$form = array();
-	drupal_set_title(t('a. Seated Angle'));
+	drupal_set_title(t('a. Seated Angle > i. Bearing width design check'));
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -621,8 +621,9 @@ function ddcl_seated_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Seated Angle'));
-	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;"><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supported beam</p>
+	drupal_set_title(t('a. Seated Angle > ii. Length of outstanding leg > Web local crippling check'));
+	$markup_text = '<p style="margin-bottom: 0cm; line-height: 100%;">
+	<strong> a. Seated Angle</strong><br> <br><strong>ii. Bearing length</strong> (length of outstanding leg of seated angle) is governed by <strong>web local crippling </strong>of supported beam</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;</p>
 <p style="margin-bottom: 0cm; line-height: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) The length of the outstanding leg of the seated angle is calculated on the basis of web crippling of the beam. The outstanding leg length is kept more than the calculated bearing length given by [Cl 8.7.4]</p>
 
