@@ -3246,9 +3246,9 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('b. Bolt > i. Shear capacity'));
-	$markup_text = '<p><strong>b. Bolt<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bolt value and number of bolts</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>i.</strong> [Cl. 10.3.3] <strong>Shear capacity of bolt</strong><br />
+	$markup_text = '<p><strong>b. Bolt<br /></strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>i.Shear capacity of bolt</strong> [Cl. 10.3.3] <br />
+
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -4186,8 +4186,9 @@ function ddcl_seated_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('b. Bolt > ii. Bearing capacity'));
-	$markup_text = '<p><strong>ii. Bearing capacity of bolt</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) [Cl. 10.3.4] Bolt bearing on the seat angle (and column)<br />
+	$markup_text = '<p><strong>b. Bolt<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii. Bearing capacity of bolt</strong> [Cl. 10.3.4]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Bolt bearing on the seat angle (and column)<br />
 The design bearing strength of a bolt on any plate, 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
@@ -4833,8 +4834,9 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt'));
-	$markup_text = '<p><strong>iii.</strong> Number of bolts (N1) = Factored Load/capacity per bolt</p>
+	drupal_set_title(t('b. Bolt> iii. Number of bolts'));
+	$markup_text = '<p><strong>b. Bolt<br /></strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii.</strong> Number of bolts (N1) = Factored Load/capacity per bolt</p>
 
 
 <hr>
@@ -5306,59 +5308,34 @@ function ddcl_seated_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('General Assumptions'));
+	drupal_set_title(t('a. Detailing > i. Spacing requirements'));
 	$markup_text = '<p><strong>c. Detailing</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i. [Cl 10.2.2] <strong>Minimum spacing</strong><br />
-The distance between centre of fasteners shall not be less than 2.5 times the nominal<br />
-diameter of the fastener<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii. [Cl 10.2.3.1] <strong>Maximum spacing</strong><br />
-The distance between the centres of any two adjacent fasteners shall not exceed 32t or<br />
-300mm, whichever is less, where t is the thickness of the thinner plate.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-
-
+&emsp;&emsp;&emsp;
+i. [Cl 10.2.2] <strong>Minimum spacing</strong><br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
 <mi>p</mi>
-<mi>i</mi>
-<mi>t</mi>
-<mi>c</mi>
-<mi>h</mi>
-<mo stretchy="false">(</mo>
-<mi>m</mi>
-<mi>m</mi>
-<mo stretchy="false">)</mo>
 <mo>&#x2265;<!-- ≥ --></mo>
 <mn>2.5</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mo stretchy="false">(</mo>
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
 <mi>d</mi>
-<mi>i</mi>
-<mi>a</mi>
-<mi>m</mi>
-<mi>e</mi>
-<mi>t</mi>
-<mi>e</mi>
-<mi>r</mi>
-<mo stretchy="false">)</mo>
-<mo>,</mo>
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mi>g</mi>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>2.5</mn>
+<mi>d</mi>
+</math>
+
+&emsp;&emsp;&emsp;
+ii. [Cl 10.2.3.1] <strong>Maximum spacing</strong><br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+The distance between the centres of any two adjacent fasteners shall not exceed 32t or 300mm, whichever is less.
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mi>p</mi>
-<mi>i</mi>
-<mi>t</mi>
-<mi>c</mi>
-<mi>h</mi>
 <mo>&#x2264;<!-- ≤ --></mo>
 <mi>m</mi>
 <mi>i</mi>
@@ -5373,46 +5350,7 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 </math>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
-<mi>p</mi>
-<mi>i</mi>
-<mi>t</mi>
-<mi>c</mi>
-<mi>h</mi>
-<mo stretchy="false">(</mo>
-<mi>m</mi>
-<mi>m</mi>
-<mo stretchy="false">)</mo>
-<mo>&#x2265;<!-- ≥ --></mo>
-<mn>2.5</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mo stretchy="false">(</mo>
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
-<mi>d</mi>
-<mi>i</mi>
-<mi>a</mi>
-<mi>m</mi>
-<mi>e</mi>
-<mi>t</mi>
-<mi>e</mi>
-<mi>r</mi>
-<mo stretchy="false">)</mo>
-<mo>,</mo>
-<mi>b</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>t</mi>
-<mi>p</mi>
-<mi>i</mi>
-<mi>t</mi>
-<mi>c</mi>
-<mi>h</mi>
+<mi>g</mi>
 <mo>&#x2264;<!-- ≤ --></mo>
 <mi>m</mi>
 <mi>i</mi>
@@ -5428,7 +5366,34 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 
 </p>
 
+&emsp;&emsp;&emsp;
+Where, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>p</mi>
+</math>
+- pitch 
 
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>g</mi>
+</math>
+- gauge
+
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>d</mi>
+</math>
+- nominal bolt diameter 
+
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>t</mi>
+</math>
+- thickness of the thinner plate.
 
 <hr>
 ';
