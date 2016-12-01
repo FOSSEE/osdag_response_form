@@ -4834,7 +4834,7 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt> iii. Number of bolts'));
+	drupal_set_title(t('b. Bolt > iii. Number of bolts'));
 	$markup_text = '<p><strong>b. Bolt<br /></strong>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii.</strong> Number of bolts (N1) = Factored Load/capacity per bolt</p>
 
@@ -5308,7 +5308,7 @@ function ddcl_seated_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Detailing > i. Spacing requirements'));
+	drupal_set_title(t('c. Detailing > i. Spacing requirements'));
 	$markup_text = '<p><strong>c. Detailing</strong><br />
 &emsp;&emsp;&emsp;
 i. [Cl 10.2.2] <strong>Minimum spacing</strong><br />
@@ -5864,28 +5864,102 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('General Assumptions'));
+	drupal_set_title(t('c. Detailing > iii. Edge and end distance requirements'));
 	$markup_text = '
 	
-	<p class="rtejustify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>iii. [Cl 10.2.4] Edge and end distances</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.2]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges.</p>
+	<p><strong>c. Detailing <br> </strong>
+	<p class="rtejustify">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>
+	iii. [Cl 10.2.4] Edge and end distances</strong><br />
+&emsp;&emsp;&emsp;
+[Cl 10.2.4.2]<br />
+&emsp;&emsp;&emsp;
+The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges.
 
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<msub>
+	<mi>e</mi>
+	<mi>1</mi>
+</msub>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>1.7</mn>
+<msub>
+	<mi>d</mi>
+	<mi>h</mi>
+</msub>
+</math>
 
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<msub>
+	<mi>e</mi>
+	<mi>2</mi>
+</msub>
+<mo>&#x2265;<!-- ≥ --></mo>
+<mn>1.7</mn>
+<msub>
+	<mi>d</mi>
+	<mi>h</mi>
+</msub>
+</math>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Cl 10.2.4.3]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
+<p>
+&emsp;&emsp;&emsp;
+[Cl 10.2.4.3]<br />
+&emsp;&emsp;&emsp;
+ The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mn>12</mn>
   <mi>t</mi>
   <mi>&#x03F5;<!-- ϵ --></mi>
-  <mo>,</mo>
-  <mi>w</mi>
-  <mi>h</mi>
-  <mi>e</mi>
-  <mi>r</mi>
-  <mi>e</mi>
-  <mtext>&#xA0;</mtext>
+ </math>.
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" 
+display="block">
+<msub>
+	<mi>e</mi>
+	<mi>2</mi>
+</msub>
+<mo>&#x2264;<!-- ≤ --></mo>
+<mn>12</mn>
+<mi>t</mi>
+<mi>&#x03F5;<!-- ε --></mi>
+</math>
+
+&emsp;&emsp;&emsp;
+where,<br>
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+     <msub>
+	<mi>e</mi>
+	<mi>1</mi>
+</msub>
+</math>
+- End distance
+
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+     <msub>
+	<mi>e</mi>
+	<mi>2</mi>
+</msub>
+</math>
+- Edge distance
+
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+     <msub>
+	<mi>d</mi>
+	<mi>h</mi>
+</msub>
+</math>
+- Diameter of bolt hole
+
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>&#x03F5;<!-- ϵ --></mi>
   <mo>=</mo>
   <msqrt>
@@ -5898,114 +5972,24 @@ function ddcl_seated_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
     </mfrac>
   </msqrt>
 </math>
- is the thickness of the thinner outer plate.</p>
 
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-
-<mi>E</mi>
-<mi>n</mi>
-<mi>d</mi>
-<mi>D</mi>
-<mi>i</mi>
-<mi>s</mi>
-<mi>t</mi>
-<mi>a</mi>
-<mi>n</mi>
-<mi>c</mi>
-<mi>e</mi>
-<mo stretchy="false">(</mo>
-<mi>m</mi>
-<mi>m</mi>
-<mo stretchy="false">)</mo>
-<mo>&#x2265;<!-- ≥ --></mo>
-<mn>1.7</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mo stretchy="false">(</mo>
-<mi>h</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>e</mi>
-<mi>d</mi>
-<mi>i</mi>
-<mi>a</mi>
-<mi>m</mi>
-<mi>e</mi>
-<mi>t</mi>
-<mi>e</mi>
-<mi>r</mi>
-<mo stretchy="false">)</mo>
-<mo>,</mo>
-<mi>E</mi>
-<mi>n</mi>
-<mi>d</mi>
-<mi>D</mi>
-<mi>i</mi>
-<mi>s</mi>
-<mi>t</mi>
-<mi>a</mi>
-<mi>n</mi>
-<mi>c</mi>
-<mi>e</mi>
-<mo>&#x2264;<!-- ≤ --></mo>
-<mn>12</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mi>t</mi>
-<mi>&#x03F5;<!-- ε --></mi>
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+     <msub>
+	<mi>f</mi>
+	<mi>y</mi>
+</msub>
 </math>
+- yield strength of plate
 
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-<mi>E</mi>
-<mi>d</mi>
-<mi>g</mi>
-<mi>e</mi>
-<mi>D</mi>
-<mi>i</mi>
-<mi>s</mi>
-<mi>t</mi>
-<mi>a</mi>
-<mi>n</mi>
-  <mi>c</mi>
-<mi>e</mi>
-<mo stretchy="false">(</mo>
-<mi>m</mi>
-<mi>m</mi>
-<mo stretchy="false">)</mo>
-<mo>&#x2265;<!-- ≥ --></mo>
-<mn>1.7</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mo stretchy="false">(</mo>
-<mi>h</mi>
-<mi>o</mi>
-<mi>l</mi>
-<mi>e</mi>
-<mi>d</mi>
-<mi>i</mi>
-<mi>a</mi>
-<mi>m</mi>
-<mi>e</mi>
-<mi>t</mi>
-<mi>e</mi>
-<mi>r</mi>
-<mo stretchy="false">)</mo>
-<mo>,</mo>
-<mi>E</mi>
-<mi>d</mi>
-<mi>g</mi>
-<mi>e</mi>
-<mi>D</mi>
-<mi>i</mi>
-<mi>s</mi>
-<mi>t</mi>
-<mi>a</mi>
-<mi>n</mi>
-<mi>c</mi>
-<mi>e</mi>
-<mo>&#x2264;<!-- ≤ --></mo>
-<mn>12</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
-<mi>t</mi>
-<mi>&#x03F5;<!-- ε --></mi>
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+     <mi>t</mi>
 </math>
+- the thickness of the thinner outer plate.</p>
+
 
 <hr>
 ';
@@ -6476,8 +6460,12 @@ function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('General Assumptions'));
-	$markup_text = '<p>It is assumed that block shear failure is not a governing mode of failure for the seated angle
+	drupal_set_title(t('d. General Assumptions > i. Block shear check'));
+	$markup_text = '<p><strong>d. General Assumptions <br>
+	&emsp;&emsp;&emsp;i. Block shear check<br>
+	</strong>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	It is assumed that block shear failure is not a governing mode of failure for the seated angle
 connection</p>
 
 <hr>
@@ -6949,18 +6937,33 @@ function ddcl_seated_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('d. Top Angle'));
+	drupal_set_title(t('d. General assumptions > ii. Top angle'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$markup_text = '<p><strong>d. Top Angle</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Literature suggests use of "nominal size" for the top angle (from stability consideration).<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; However the term nominal size is not well defined.</p>
+	$markup_text = '<p><strong>d. General assumptions 
+		<br>
+		&emsp;&emsp;&emsp;
+		ii. Top Angle</strong><br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Literature suggests use of "nominal size" for the top angle (from stability consideration).<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		However the term nominal size is not well defined.</p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The AISC Steel Construction Manual, 14th Ed, Page 10-84, suggests<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A 1/4-in.-thick angle with a 4-in., vertical leg dimension will generally be adequate</p>
+<p>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+The AISC Steel Construction Manual, 14th Ed, Page 10-84, suggests<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;
+ A 1/4-in.-thick angle with a 4-in., vertical leg dimension will generally be adequate</p>
 <img src="' . $img_path . '/seated-top-angle.png" style="width: 600px;" />
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Can ISA 100 65x6 or ISA 100 65x8 be used?<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Can we directly use the above sizes in the Indian context?</p>
+<p>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;
+ Can ISA 100 65x6 or ISA 100 65x8 be used?<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;
+ Can we directly use the above sizes in the Indian context?</p>
 
 
 
