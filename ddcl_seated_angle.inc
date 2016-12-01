@@ -4185,7 +4185,7 @@ function ddcl_seated_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt'));
+	drupal_set_title(t('b. Bolt > ii. Bearing capacity'));
 	$markup_text = '<p><strong>ii. Bearing capacity of bolt</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) [Cl. 10.3.4] Bolt bearing on the seat angle (and column)<br />
 The design bearing strength of a bolt on any plate, 
@@ -4199,11 +4199,9 @@ The design bearing strength of a bolt on any plate,
     </mrow>
   </msub>
 </math>
-, as governed by bearing is given by:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+, as governed by bearing is given by:
 
-
-<math xmlns="http://www.w3.org/1998/Math/MathML">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <msub>
 <mi>V</mi>
 <mrow class="MJX-TeXAtom-ORD">
@@ -4233,12 +4231,7 @@ The design bearing strength of a bolt on any plate,
 </msub>
 </math>
 
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-
-<math xmlns="http://www.w3.org/1998/Math/MathML">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <msub>
 <mi>V</mi>
 <mrow class="MJX-TeXAtom-ORD">
@@ -4268,8 +4261,7 @@ The design bearing strength of a bolt on any plate,
 
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>k</mi>
@@ -4277,10 +4269,9 @@ The design bearing strength of a bolt on any plate,
   </msub>
 </math>
 
-is smaller of<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+is smaller of
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mo fence="false" stretchy="false">{</mo>
+  <mo>{</mo>
   <mfrac>
     <mi>e</mi>
     <mrow>
@@ -4320,17 +4311,17 @@ is smaller of<br />
   </mfrac>
   <mo>,</mo>
   <mn>1.0</mn>
-  <mo fence="false" stretchy="false">}</mo>
+  <mo>}</mo>
 </math>
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>e</mi>
   <mo>,</mo>
   <mi>p</mi>
 </math>
  = end and pitch distances of the fastener along bearing direction;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>d</mi>
@@ -4338,7 +4329,7 @@ is smaller of<br />
   </msub>
 </math>
  = diameter of the hole<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>f</mi>
@@ -4354,22 +4345,23 @@ is smaller of<br />
   </msub>
 </math>
 = ultimate tensile stress of the bolt and the ultimate tensile stress of the plate, respectively;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>d</mi>
 </math>
 = nominal diameter of the bolt,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>t</mi>
 </math>
 = summation of the thicknesses of the connected plates experiencing bearing stress in the same direction, or if the bolts are countersunk, the thickness of the plate&nbsp; minus one half of the depth of countersinking.<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>t</mi>
 </math>
 shall be minimum of {thickness of seat angle, thickness of support}</p>
 
-<p>Reduction factor of 0.7 to be applied to the bearing resistance, in case of oversize holes.</p>
+<p>Note: A reduction factor of 0.7 should be applied to the bearing resistance, in case of oversize holes.</p>
 
 
 <hr>
