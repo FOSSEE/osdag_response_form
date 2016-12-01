@@ -1276,17 +1276,15 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Seated Angle'));
-	$markup_text = '<p><strong>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
-<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity of the outstanding leg</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2]<br />
+	drupal_set_title(t('a. Seated Angle > iii. Angle thickness > 1) Moment capacity check'));
+	$markup_text = '<p><strong>a. Seated Angle <br>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity check of the outstanding leg</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.2.1.2] For low shear force<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the factored design shear force, 
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>V</mi>
-</math>
-
-, does not exceed 0.6 <math xmlns="http://www.w3.org/1998/Math/MathML">
+</math>, does not exceed 0.6 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>V</mi>
     <mi>d</mi>
@@ -1307,58 +1305,59 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
     <mi>d</mi>
   </msub>
 </math>
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msub>
-    <mi>M</mi>
-    <mi>d</mi>
-  </msub>
-</math>
-  shall be taken as:<br />
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  shall be taken as:
+ 
+<br>
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+ <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
     <mi>d</mi>
   </msub>
   <mo>=</mo>
-  <msub>
-    <mi>&#x03B2;<!-- β --></mi>
-    <mi>b</mi>
-  </msub>
-  <msub>
-    <mi>Z</mi>
-    <mi>p</mi>
-  </msub>
-  <msub>
-    <mi>f</mi>
-    <mi>y</mi>
-  </msub>
-  <mrow class="MJX-TeXAtom-ORD">
-    <mo>/</mo>
-  </mrow>
-  <msub>
-    <mi>&#x03B3;<!-- γ --></mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>m</mi>
-      <mn>0</mn>
+  <mfrac>
+    <mrow>
+      <msub>
+        <mi>&#x03B2;<!-- β --></mi>
+        <mi>b</mi>
+      </msub>
+      <msub>
+        <mi>Z</mi>
+        <mi>p</mi>
+      </msub>
+      <msub>
+        <mi>f</mi>
+        <mi>y</mi>
+      </msub>
     </mrow>
-  </msub>
+    <msub>
+      <mi>&#x03B3;<!-- γ --></mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>m</mi>
+        <mn>0</mn>
+      </mrow>
+    </msub>
+  </mfrac>
 </math>
-
 </p>
 
-<p><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avoid irreversible deformation under serviceability loads in cantilever beams,
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avoid irreversible deformation under serviceability loads in cantilevers,
+<br>
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>M</mi>
     <mi>d</mi>
   </msub>
-</math>
- shall be less than 
- 
- <br />
- <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mo>&lt;</mo>
   <mfrac>
     <mrow>
       <mn>1.5</mn>
@@ -1381,7 +1380,10 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
   </mfrac>
 </math>
  <br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where,<br />
+<br>
+
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Where,<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
