@@ -1307,13 +1307,7 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 </math>
   shall be taken as:
  
-<br>
-<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
- <math xmlns="http://www.w3.org/1998/Math/MathML">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>M</mi>
     <mi>d</mi>
@@ -1347,12 +1341,8 @@ function ddcl_seated_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 
 <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avoid irreversible deformation under serviceability loads in cantilevers,
-<br>
-<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>M</mi>
     <mi>d</mi>
