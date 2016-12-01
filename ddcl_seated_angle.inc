@@ -2652,9 +2652,12 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Seated Angle'));
-	$markup_text = '<p><strong>2) Shear capacity of the outstanding leg of cleat</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp; a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
+	drupal_set_title(t('a. Seated Angle > iii. Angle thickness > 2) Shear capacity check'));
+	$markup_text = '<p><strong>a. Seated Angle <br>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2) Shear capacity of the outstanding leg of cleat</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>V</mi>
@@ -2765,8 +2768,11 @@ function ddcl_seated_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
   </msub>
 </math>
 = partial safety factor<br />
-&nbsp;&nbsp; b) [Cl 8.4.2] [Resistance to shear buckling]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Note: Assuming that this clause check does not need to be implemented as the outstanding leg of the seated angle will not buckle due to the low slenderness ratio]</p>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b) [Cl 8.4.2] [Resistance to shear buckling]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[Note: Assuming that this clause check does not need to be implemented as the outstanding leg of the seated angle will not buckle due to the low slenderness ratio]</p>
 
 
 
@@ -3239,11 +3245,10 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt'));
+	drupal_set_title(t('b. Bolt > i. Shear capacity'));
 	$markup_text = '<p><strong>b. Bolt<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bolt value and number of bolts</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>i.</strong> [Cl. 10.3.3] <strong>Shear capacity of bolt</strong><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) 
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -3319,7 +3324,7 @@ function ddcl_seated_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
   <mn>0</mn>
 </math>
  &nbsp;that is, all shear planes pass through the threads.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The option to specify this as an input from the user is being implemented.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The option to specify this as an user input shall be implemented in future.<br />
 Thus,<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -3557,18 +3562,53 @@ but
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-<msub>
-<mi>&#x03B2;<!-- β --></mi>
-<mrow class="MJX-TeXAtom-ORD">
-<mi>l</mi>
-<mi>g</mi>
-</mrow>
-</msub>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>g</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mn>8</mn>
+      <mi>d</mi>
+    </mrow>
+    <mrow>
+      <mn>3</mn>
+      <mi>d</mi>
+      <mo>+</mo>
+      <msub>
+        <mi>l</mi>
+        <mi>g</mi>
+      </msub>
+    </mrow>
+  </mfrac>
 </math>
 
 <br />
-shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case be greater than 8d</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>g</mi>
+    </mrow>
+  </msub>  
+</math>
+shall not be more than 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>l</mi>
+      <mi>j</mi>
+    </mrow>
+  </msub>  
+</math>
+,given in [Cl 10.3.3.1]. The grip length shall in no case be greater than 8d</p>
 
 ';
 	$markup_text3 = '
@@ -3577,8 +3617,8 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
   <msub>
     <mi>&#x03B2;<!-- β --></mi>
     <mrow class="MJX-TeXAtom-ORD">
-      <mi>l</mi>
-      <mi>j</mi>
+      <mi>p</mi>
+      <mi>k</mi>
     </mrow>
   </msub>
 </math>
@@ -3621,9 +3661,9 @@ shall not be more than given in [Cl 10.3.3.1]. The grip length shall in no case 
 
 
 ';
-	$tooltip1 = '1) [Cl 10.3.3.1] Reduction factor for long joints [#assuming that this does not apply]';
+	$tooltip1 = '1) [Cl 10.3.3.1] Reduction factor for long joints [Note: assuming that this does not apply]';
 	$tooltip2 = '2) [Cl 10.3.3.2] Reduction factor for large grip lengths';
-	$tooltip3 = '3) [Cl 10.3.3.3] Reduction factor for packing plates [#assuming that this does not apply]';
+	$tooltip3 = '3) [Cl 10.3.3.3] Reduction factor for packing plates [Note: assuming that this does not apply]';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
