@@ -1917,8 +1917,11 @@ function ddcl_seated_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Seated Angle'));
-	$markup_text = '<p>b) [CL 8.2.1.3]<br />
+	drupal_set_title(t('a. Seated Angle > iii. Angle thickness > 1) Moment capacity check'));
+	$markup_text = '<p><strong>a. Seated Angle <br>iii. Angle thickness</strong> is governed by <strong>shear yielding and flexural yielding of angle</strong><br />
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) Moment capacity check of the outstanding leg</strong><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+b) [CL 8.2.1.3] For high shear force<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the design shear force (factored), 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>V</mi>
@@ -1970,9 +1973,8 @@ When the factored value of the applied shear force is high (exceeds the limit sp
     </mrow>
   </msub>
 </math>
- , for plastic or compact section is calculated as given below:</p>
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+ , for plastic or compact section is calculated as given below:
+ <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>M</mi>
     <mrow class="MJX-TeXAtom-ORD">
@@ -1984,49 +1986,56 @@ When the factored value of the applied shear force is high (exceeds the limit sp
   <mi>m</mi>
   <mi>i</mi>
   <mi>n</mi>
-  <mo fence="false" stretchy="false">{</mo>
-  <msub>
-    <mi>M</mi>
-    <mi>d</mi>
-  </msub>
-  <mo>&#x2212;</mo>
-  <mi>&#x03B2;<!-- β --></mi>
-  <mo stretchy="false">(</mo>
-  <msub>
-    <mi>M</mi>
-    <mi>d</mi>
-  </msub>
-  <mo>&#x2212;</mo>
-  <msub>
-    <mi>M</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>f</mi>
-      <mi>d</mi>
-    </mrow>
-  </msub>
-  <mo stretchy="false">)</mo>
-  <mo>,</mo>
-  <mfrac>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo>&#x2061;</mo>
+  </mrow>
+  <mrow>
+    <mo>{</mo>
     <mrow>
-      <mn>1.2</mn>
       <msub>
-        <mi>Z</mi>
-        <mi>e</mi>
+        <mi>M</mi>
+        <mi>d</mi>
       </msub>
+      <mo>&#x2212;</mo>
+      <mi>&#x03B2;<!-- β --></mi>
+      <mo stretchy="false">(</mo>
       <msub>
-        <mi>f</mi>
-        <mi>y</mi>
+        <mi>M</mi>
+        <mi>d</mi>
       </msub>
+      <mo>&#x2212;</mo>
+      <msub>
+        <mi>M</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>f</mi>
+          <mi>d</mi>
+        </mrow>
+      </msub>
+      <mo stretchy="false">)</mo>
+      <mo>,</mo>
+      <mfrac>
+        <mrow>
+          <mn>1.2</mn>
+          <msub>
+            <mi>Z</mi>
+            <mi>e</mi>
+          </msub>
+          <msub>
+            <mi>f</mi>
+            <mi>y</mi>
+          </msub>
+        </mrow>
+        <msub>
+          <mi>&#x03B3;<!-- γ --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>m</mi>
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mfrac>
     </mrow>
-    <msub>
-      <mi>&#x03B3;<!-- γ --></mi>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>m</mi>
-        <mn>0</mn>
-      </mrow>
-    </msub>
-  </mfrac>
-  <mo fence="false" stretchy="false">}</mo>
+    <mo>}</mo>
+  </mrow>
 </math>
 
 <p>[Note: Assuming, 
@@ -2042,63 +2051,81 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 = 0, as the shear resisting area and moment resisting area are the same for the cross section of the outstanding leg] =</p>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>M</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>d</mi>
+      <mi>v</mi>
+    </mrow>
+  </msub>
   <mo>=</mo>
   <mi>m</mi>
   <mi>i</mi>
   <mi>n</mi>
-  <mo fence="false" stretchy="false">{</mo>
-  <mo stretchy="false">(</mo>
-  <mn>1</mn>
-  <mo>&#x2212;</mo>
-  <mi>&#x03B2;<!-- β --></mi>
-  <mo stretchy="false">)</mo>
-  <msub>
-    <mi>M</mi>
-    <mi>d</mi>
-  </msub>
-  <mo>,</mo>
-  <mfrac>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mo>&#x2061;</mo>
+  </mrow>
+  <mrow>
+    <mo>{</mo>
     <mrow>
-      <mn>1.2</mn>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;</mo>
+      <mi>&#x03B2;<!-- β --></mi>
+      <mo stretchy="false">)</mo>
       <msub>
-        <mi>Z</mi>
-        <mi>e</mi>
+        <mi>M</mi>
+        <mi>d</mi>
       </msub>
-      <msub>
-        <mi>f</mi>
-        <mi>y</mi>
-      </msub>
+      <mo>,</mo>
+      <mfrac>
+        <mrow>
+          <mn>1.2</mn>
+          <msub>
+            <mi>Z</mi>
+            <mi>e</mi>
+          </msub>
+          <msub>
+            <mi>f</mi>
+            <mi>y</mi>
+          </msub>
+        </mrow>
+        <msub>
+          <mi>&#x03B3;<!-- γ --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>m</mi>
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mfrac>
     </mrow>
-    <msub>
-      <mi>&#x03B3;<!-- γ --></mi>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>m</mi>
-        <mn>0</mn>
-      </mrow>
-    </msub>
-  </mfrac>
-  <mo fence="false" stretchy="false">}</mo>
+    <mo>}</mo>
+  </mrow>
 </math>
 
 <p>Where,<br />
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>&#x03B2;<!-- β --></mi>
   <mo>=</mo>
-  <mo stretchy="false">(</mo>
-  <mfrac>
-    <mrow>
-      <mn>2</mn>
-      <mi>V</mi>
-    </mrow>
-    <msub>
-      <mi>V</mi>
-      <mi>d</mi>
-    </msub>
-  </mfrac>
-  <mo>&#x2212;</mo>
-  <mn>1</mn>
   <msup>
-    <mo stretchy="false">)</mo>
+    <mrow>
+      <mo>{</mo>
+      <mrow>
+        <mfrac>
+          <mrow>
+            <mn>2</mn>
+            <mi>V</mi>
+          </mrow>
+          <msub>
+            <mi>V</mi>
+            <mi>d</mi>
+          </msub>
+        </mfrac>
+        <mo>&#x2212;<!-- − --></mo>
+        <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+    </mrow>
     <mn>2</mn>
   </msup>
 </math><br />
