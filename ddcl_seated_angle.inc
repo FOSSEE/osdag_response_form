@@ -1973,9 +1973,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
     </mrow>
   </msub>
   <mo>=</mo>
-  <mi>m</mi>
-  <mi>i</mi>
-  <mi>n</mi>
+  <mo movablelimits="true" form="prefix">min</mo>
   <mrow class="MJX-TeXAtom-ORD">
     <mo>&#x2061;</mo>
   </mrow>
@@ -2049,9 +2047,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
     </mrow>
   </msub>
   <mo>=</mo>
-  <mi>m</mi>
-  <mi>i</mi>
-  <mi>n</mi>
+  <mo movablelimits="true" form="prefix">min</mo>
   <mrow class="MJX-TeXAtom-ORD">
     <mo>&#x2061;</mo>
   </mrow>
@@ -2685,7 +2681,6 @@ a) [Cl 8.4.1] <strong>Plastic shear resistance under pure shear</strong><br />
       <msqrt>
         <mn>3</mn>
       </msqrt>
-      <mo>&#x2217;<!-- ∗ --></mo>
       <msub>
         <mi>&#x03B3;<!-- γ --></mi>
         <mrow class="MJX-TeXAtom-ORD">
@@ -5337,12 +5332,9 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mi>p</mi>
 <mo>&#x2264;<!-- ≤ --></mo>
-<mi>m</mi>
-<mi>i</mi>
-<mi>n</mi>
+ <mo movablelimits="true" form="prefix">min</mo>
 <mo stretchy="false">(</mo>
 <mn>32</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
 <mi>t</mi>
 <mo>,</mo>
 <mn>300</mn>
@@ -5352,12 +5344,9 @@ The distance between the centres of any two adjacent fasteners shall not exceed 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 <mi>g</mi>
 <mo>&#x2264;<!-- ≤ --></mo>
-<mi>m</mi>
-<mi>i</mi>
-<mi>n</mi>
+<mo movablelimits="true" form="prefix">min</mo>
 <mo stretchy="false">(</mo>
 <mn>32</mn>
-<mo>&#x2217;<!-- ∗ --></mo>
 <mi>t</mi>
 <mo>,</mo>
 <mn>300</mn>
@@ -6466,7 +6455,7 @@ function ddcl_seated_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 	</strong>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	It is assumed that block shear failure is not a governing mode of failure for the seated angle
-connection</p>
+connection.</p>
 
 <hr>
 ';
