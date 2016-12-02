@@ -6485,7 +6485,7 @@ connection.</p>
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step12_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
