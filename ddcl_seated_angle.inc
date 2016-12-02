@@ -7338,7 +7338,7 @@ function ddcl_seated_angle_step13_form_previous_submit($form, &$form_state, $no_
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-seated-angle/form/step11/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-seated-angle/form/step12/' . $user->uid;
 }
 function ddcl_seated_angle_step13_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
