@@ -3181,7 +3181,7 @@ function ddcl_osdag_response_step8_form_previous_submit($form, &$form_state, $no
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3237,7 +3237,7 @@ function ddcl_osdag_response_step8_form_previous_submit($form, &$form_state, $no
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3307,7 +3307,7 @@ function ddcl_osdag_response_step8_form_save_submit($form, &$form_state, $no_js_
 			":submitted" => 0
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3363,7 +3363,7 @@ function ddcl_osdag_response_step8_form_save_submit($form, &$form_state, $no_js_
 			":submitted" => 0
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3434,7 +3434,7 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3490,7 +3490,7 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 			":submitted" => 1
 		);
 		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $$args_finish, array(
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
