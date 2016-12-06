@@ -308,6 +308,18 @@ List)'),
 		),
 		'file'=> 'ddcl_seated_angle.inc'
 	);
+	$items['ddcl-seated-angle/form/step14'] = array(
+		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
+List)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_seated_angle_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_seated_angle.inc'
+	);
 	// Delete the comment
 	$items['ddcl-seated-angle/delete'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
