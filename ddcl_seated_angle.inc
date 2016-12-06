@@ -23,9 +23,9 @@ function ddcl_seated_angle_form_page()
 		{
 			if ($feedback_data->submitted == 1)
 			{
-				$data .= drupal_set_message(t('You have already submitted the feedback.'), 'status');
+				$data = drupal_set_message(t('You have already submitted the feedback.'), 'status');
 				$data .= drupal_goto('');
-				return;
+				return $data;
 			} //$feedback_data->submitted == 1
 			else
 			{
@@ -1459,7 +1459,7 @@ Where,<br />
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -1572,7 +1572,7 @@ Where,<br />
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2198,7 +2198,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2311,7 +2311,7 @@ When the factored value of the applied shear force is high (exceeds the limit sp
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2790,7 +2790,7 @@ b) [Cl 8.4.2] [Resistance to shear buckling]<br />
 		if ($step6_data = $form_step6_data->fetchObject())
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -2903,7 +2903,7 @@ b) [Cl 8.4.2] [Resistance to shear buckling]<br />
 		else
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step6_field1_fieldset']['step6_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -3816,7 +3816,7 @@ shall not be more than
 		else
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step7_field1_fieldset']['tooltip1'] = array(
 				'#type' => 'fieldset',
@@ -4379,7 +4379,7 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 		if ($step8_data = $form_step8_data->fetchObject())
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -4492,7 +4492,7 @@ shall be minimum of {thickness of seat angle, thickness of support}</p>
 		else
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step8_field1_fieldset']['step8_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -4966,7 +4966,7 @@ function ddcl_seated_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step9_field1_fieldset']['step9_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5403,7 +5403,7 @@ Where, <br>
 		if ($step10_data = $form_step10_data->fetchObject())
 		{
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5516,7 +5516,7 @@ Where, <br>
 		else
 		{
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -5999,7 +5999,7 @@ where,<br>
 		if ($step11_data = $form_step11_data->fetchObject())
 		{
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -6112,7 +6112,7 @@ where,<br>
 		else
 		{
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -6476,7 +6476,7 @@ connection.</p>
 		if ($step12_data = $form_step12_data->fetchObject())
 		{
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -6491,7 +6491,7 @@ connection.</p>
 			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step12_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
@@ -6589,7 +6589,7 @@ connection.</p>
 		else
 		{
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -6975,7 +6975,7 @@ This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
 		if ($step13_data = $form_step13_data->fetchObject())
 		{
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -7079,29 +7079,16 @@ This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_seated_angle_step13_form_save_submit'
 				)
 			);
 		} //$step13_data = $form_step13_data->fetchObject()
 		else
 		{
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
-				'#markup' => $markup_text,
+				'#markup' => $markup_text
 			);
 			$form['step13_field1_fieldset']['step13_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
@@ -7193,22 +7180,9 @@ This translates to 6.35 mm thick angle with a 101.6 mm vertical leg<br />
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddcl_seated_angle_step13_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_seated_angle_step13_form_save_submit'
 				)
 			);
 		} //$step13_data = $form_step13_data->fetchObject()
@@ -7340,132 +7314,134 @@ function ddcl_seated_angle_step13_form_previous_submit($form, &$form_state, $no_
 	}
 	$form_state['redirect'] = 'ddcl-seated-angle/form/step12/' . $user->uid;
 }
-function ddcl_seated_angle_step13_form_save_submit($form, &$form_state, $no_js_use = FALSE)
+/*
+function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
-	global $user;
-	$v = $form_state['values'];
-	$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_seated_angle_form_step13_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
-	{
-		$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
-			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
-			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
-			":data_relation" => "step13"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
-		{
-			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_seated_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
-					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step13",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
-			":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
-			":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
-			":data_relation" => "step13",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
-		{
-			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_seated_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step13",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
-	}
-	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
-	drupal_goto('home');
+global $user;
+$v = $form_state['values'];
+$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
+$query = "SELECT * FROM ddcl_seated_angle_form_step13_feedback WHERE uid=:uid";
+$args = array(
+":uid" => $user->uid
+);
+$form_step7_data = db_query($query, $args);
+$form_step7_data_count = $form_step7_data->rowCount();
+$form_step7_data = $form_step7_data->fetchObject();
+if ($form_step7_data_count != 0)
+{
+$query = "UPDATE ddcl_seated_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+$args = array(
+":uid" => $user->uid,
+":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
+":data_relation" => "step13"
+);
+/* storing the row id in $result */
+/*$result = db_query($query, $args, array(
+'return' => Database::RETURN_INSERT_ID
+));
+$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+$args_finish = array(
+":uid" => $user->uid,
+":submitted" => 0
+);
+/* storing the row id in $result */
+/*$resultfinish = db_query($queryfinish, $args_finish, array(
+'return' => Database::RETURN_INSERT_ID
+));
+/* For adding comments */
+/*$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+':step1_form_id' => $form_step7_data->id
+));
+$form_step7_comment_data = $query->fetchObject();
+$comments = 0;
+for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+{
+if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+{
+$commentquery = "
+INSERT INTO ddcl_seated_angle_feedback_form_comment
+(step1_form_id, number, comment, data_relation, inserted_on)
+VALUES
+(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+";
+$commentargs = array(
+":step1_form_id" => $form_step7_data->id,
+":number" => $i + $form_step7_comment_data->max + 1,
+":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+":data_relation" => "step13",
+":inserted_on" => date('Y-m-d')
+);
+/* storing the row id in $result */
+/*$commentresult = db_query($commentquery, $commentargs, array(
+'return' => Database::RETURN_INSERT_ID
+));
+if ($commentresult != 0)
+{
+$comments++;
+} //$commentresult != 0
+} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
+} //$form_step7_data
+else
+{
+$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+$args = array(
+":uid" => $user->uid,
+":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+":question_ok_not_ok" => $v['step13_field1_fieldset']['step13_field1_question_ok'],
+":question_not_ok_comment" => $v['step13_field1_fieldset']['step13_field1_question_not_ok_comment'],
+":data_relation" => "step13",
+":inserted_on" => date('Y-m-d')
+);
+/* storing the row id in $result */
+/*$result = db_query($query, $args, array(
+'return' => Database::RETURN_INSERT_ID
+));
+$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+$args_finish = array(
+":uid" => $user->uid,
+":submitted" => 0
+);
+/* storing the row id in $result */
+/*$resultfinish = db_query($queryfinish, $args_finish, array(
+'return' => Database::RETURN_INSERT_ID
+));
+/* For adding comments */
+/*$comments = 0;
+for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+{
+if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+{
+$commentquery = "
+INSERT INTO ddcl_seated_angle_feedback_form_comment
+(step1_form_id, number, comment, data_relation, inserted_on)
+VALUES
+(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+";
+$commentargs = array(
+":step1_form_id" => $result,
+":number" => $i + 1,
+":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+":data_relation" => "step13",
+":inserted_on" => date('Y-m-d')
+);
+/* storing the row id in $result */
+/*$commentresult = db_query($commentquery, $commentargs, array(
+'return' => Database::RETURN_INSERT_ID
+));
+if ($commentresult != 0)
+{
+$comments++;
+} //$commentresult != 0
+} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 }
+//drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
+//drupal_goto('home');
+}
+*/
 function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
@@ -7589,7 +7565,8 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-seated-angle/success';
+	//$form_state['redirect'] = 'ddcl-seated-angle/success';
+	$form_state['redirect'] = 'ddcl-seated-angle/form/step14/' . $user->uid;
 }
 /***************************************/
 function step13_comment_add_more_add_one($form, &$form_state)
@@ -7611,7 +7588,630 @@ function step13_comment_add_more_callback($form, &$form_state)
 	return $form['step13_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 13 from ends ****************************/
+/***************************************** step 13 form ends ****************************/
+
+/************************ Step 14 form starts *********************/
+
+function ddcl_seated_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$form = array();
+	$form['step14_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step14-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddcl_seated_angle_form_step14_feedback');
+	$query->fields('ddcl_seated_angle_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute();
+	if ($form_step14_data)
+	{
+		if ($step14_data = $form_step14_data->fetchObject())
+		{
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
+				'#type' => 'hidden',
+				'#default_value' => 'other recommendations/ Comments',
+				'#required' => TRUE
+			);
+			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step14_data->id, $step14_data->data_relation);
+			$icom = 1;
+			$form['step14_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step14_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form['previous2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_seated_angle_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_seated_angle_step14_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_seated_angle_step14_form_save_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+		else
+		{
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
+				'#type' => 'hidden',
+				'#default_value' => 'other recommendations/ Comments',
+				'#required' => TRUE
+			);
+			$earlier_comments = _fetch_exsiting_ddcl_seated_angle_comments($step14_data->id, $step14_data->data_relation);
+			$icom = 1;
+			$form['step14_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step14_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_seated_angle_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_osdag_response_step14_form_previous_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_seated_angle_step14_form_save_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+	} //$form_step14_data
+	return $form;
+}
+function ddcl_seated_angle_step14_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	/*$query = db_select('ddcl_seated_angle_form_step8_feedback');
+	$query->fields('ddcl_seated_angle_form_step8_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step7_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddcl_seated_angle_form_step14_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step14_data = db_query($query, $args);
+	$form_step14_data_count = $form_step14_data->rowCount();
+	$form_step14_data = $form_step14_data->fetchObject();
+	//var_dump($form_step7_data);die;
+	if ($form_step14_data_count != 0)
+	{
+		$query = "UPDATE ddcl_seated_angle_form_step14_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step7_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step14_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	} //$form_step7_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_seated_angle_form_step14_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step8_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO 	ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-seated-angle/form/step13/' . $user->uid;
+}
+function ddcl_seated_angle_step14_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	/*$query = db_select('ddcl_seated_angle_form_step8_feedback');
+	$query->fields('ddcl_seated_angle_form_step8_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step7_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddcl_seated_angle_form_step14_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step14_data = db_query($query, $args);
+	$form_step14_data_count = $form_step14_data->rowCount();
+	$form_step14_data = $form_step14_data->fetchObject();
+	//var_dump($form_step7_data);die;
+	if ($form_step14_data_count != 0)
+	{
+		$query = "UPDATE ddcl_seated_angle_form_step14_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	} //$form_step7_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_seated_angle_form_step14_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step8_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO 	ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-seated-angle/form/step13/' . $user->uid;
+}
+
+
+function ddcl_seated_angle_step14_form_save_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
+	$query = "SELECT * FROM ddcl_seated_angle_form_step14_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step14_data = db_query($query, $args);
+	$form_step14_data_count = $form_step14_data->rowCount();
+	$form_step14_data = $form_step14_data->fetchObject();
+	if ($form_step14_data_count != 0)
+	{
+		$query = "UPDATE ddcl_seated_angle_form_step14_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_seated_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	} //$form_step14_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_seated_angle_form_step14_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_seated_angle_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	}
+	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
+	drupal_goto('home');
+}
+
+/***************************************/
+function step14_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step14_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step14_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step14_num_comment'] > 1)
+	{
+		$form_state['step14_num_comment']--;
+	} //$form_state['step14_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step14_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step14_field1_fieldset'];
+}
+/***************************************/
+/****************************************** step 14 form ends ****************************/
 /**
  * Displays simple confirmation page after finishing the whole process.
  */
@@ -7713,7 +8313,17 @@ step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
 step12.question1 as "step12_question1",
 step12.question_ok_not_ok as "step12_question_ok_not_ok",
-step12.question_not_ok_comment as "step12_question_not_ok_comment"
+step12.question_not_ok_comment as "step12_question_not_ok_comment",
+
+step13.id as "step13_id",
+step13.data_relation as "step13_data_relation",
+step13.question1 as "step13_question1",
+step13.question_ok_not_ok as "step13_question_ok_not_ok",
+step13.question_not_ok_comment as "step13_question_not_ok_comment",
+
+step14.id as "step14_id",
+step14.data_relation as "step14_data_relation",
+step14.question1 as "step14_question1"
 
 
 from ddcl_seated_angle_form_step1_feedback step1
@@ -7729,6 +8339,8 @@ join ddcl_seated_angle_form_step9_feedback step9 on step8.uid=step9.uid
 join ddcl_seated_angle_form_step10_feedback step10 on step9.uid=step10.uid
 join ddcl_seated_angle_form_step11_feedback step11 on step10.uid=step11.uid
 join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
+join ddcl_seated_angle_form_step13_feedback step13 on step12.uid=step13.uid
+join ddcl_seated_angle_form_step14_feedback step14 on step13.uid=step14.uid
 	');
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
@@ -7771,7 +8383,11 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
 			$feedback_data->step12_question_ok_not_ok,
 			$feedback_data->step12_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation)
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
+			$feedback_data->step13_question_ok_not_ok,
+			$feedback_data->step13_question_not_ok_comment,
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
+			_fetch_ddcl_seated_angle_exsiting_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -7820,6 +8436,10 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 		'Page 12 Is this ok/not ok',
 		'Page 12 Is this ok/not ok comment',
 		'Page 12 comments',
+		'Page 13 Is this ok/not ok',
+		'Page 13 Is this ok/not ok comment',
+		'Page 13 comments',
+		'Page 14 Any other comments'
 	);
 	$output .= theme('table', array(
 		'header' => $data_header,
@@ -7959,43 +8579,47 @@ function ddcl_seated_angle_result_generate_csv()
 		/* making the first row */
 		$item = array(
 			'No.',
-		'Date of Submission',
-		'Name',
-		'Institute / Company',
-		'Current Position',
-		'Page 2 Is this ok/not ok',
-		'Page 2 Is this ok/not ok comment',
-		'Page 2 comments',
-		'Page 3 Is this ok/not ok',
-		'Page 3 Is this ok/not ok comment',
-		'Page 3 comments',
-		'Page 4 Is this ok/not ok',
-		'Page 4 Is this ok/not ok comment',
-		'Page 4 comments',
-		'Page 5 Is this ok/not ok',
-		'Page 5 Is this ok/not ok comment',
-		'Page 5 comments',
-		'Page 6 Is this ok/not ok',
-		'Page 6 Is this ok/not ok comment',
-		'Page 6 comments',
-		'Page 7 Is this ok/not ok',
-		'Page 7 Is this ok/not ok comment',
-		'Page 7 comments',
-		'Page 8 Is this ok/not ok',
-		'Page 8 Is this ok/not ok comment',
-		'Page 8 comments',
-		'Page 9 Is this ok/not ok',
-		'Page 9 Is this ok/not ok comment',
-		'Page 9 comments',
-		'Page 10 Is this ok/not ok',
-		'Page 10 Is this ok/not ok comment',
-		'Page 10 comments',
-		'Page 11 Is this ok/not ok',
-		'Page 11 Is this ok/not ok comment',
-		'Page 11 comments',
-		'Page 12 Is this ok/not ok',
-		'Page 12 Is this ok/not ok comment',
-		'Page 12 comments',
+			'Date of Submission',
+			'Name',
+			'Institute / Company',
+			'Current Position',
+			'Page 2 Is this ok/not ok',
+			'Page 2 Is this ok/not ok comment',
+			'Page 2 comments',
+			'Page 3 Is this ok/not ok',
+			'Page 3 Is this ok/not ok comment',
+			'Page 3 comments',
+			'Page 4 Is this ok/not ok',
+			'Page 4 Is this ok/not ok comment',
+			'Page 4 comments',
+			'Page 5 Is this ok/not ok',
+			'Page 5 Is this ok/not ok comment',
+			'Page 5 comments',
+			'Page 6 Is this ok/not ok',
+			'Page 6 Is this ok/not ok comment',
+			'Page 6 comments',
+			'Page 7 Is this ok/not ok',
+			'Page 7 Is this ok/not ok comment',
+			'Page 7 comments',
+			'Page 8 Is this ok/not ok',
+			'Page 8 Is this ok/not ok comment',
+			'Page 8 comments',
+			'Page 9 Is this ok/not ok',
+			'Page 9 Is this ok/not ok comment',
+			'Page 9 comments',
+			'Page 10 Is this ok/not ok',
+			'Page 10 Is this ok/not ok comment',
+			'Page 10 comments',
+			'Page 11 Is this ok/not ok',
+			'Page 11 Is this ok/not ok comment',
+			'Page 11 comments',
+			'Page 12 Is this ok/not ok',
+			'Page 12 Is this ok/not ok comment',
+			'Page 12 comments',
+			'Page 13 Is this ok/not ok',
+			'Page 13 Is this ok/not ok comment',
+			'Page 13 comments',
+			'Page 14 Any other comments',
 		);
 		fputcsv($fp, $item);
 		$query = '
@@ -8083,8 +8707,17 @@ step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
 step12.question1 as "step12_question1",
 step12.question_ok_not_ok as "step12_question_ok_not_ok",
-step12.question_not_ok_comment as "step12_question_not_ok_comment"
+step12.question_not_ok_comment as "step12_question_not_ok_comment",
 
+step13.id as "step13_id",
+step13.data_relation as "step13_data_relation",
+step13.question1 as "step13_question1",
+step13.question_ok_not_ok as "step13_question_ok_not_ok",
+step13.question_not_ok_comment as "step13_question_not_ok_comment",
+
+step14.id as "step14_id",
+step14.data_relation as "step14_data_relation",
+step14.question1 as "step14_question1"
 
 from ddcl_seated_angle_form_step1_feedback step1
 
@@ -8099,6 +8732,8 @@ join ddcl_seated_angle_form_step9_feedback step9 on step8.uid=step9.uid
 join ddcl_seated_angle_form_step10_feedback step10 on step9.uid=step10.uid
 join ddcl_seated_angle_form_step11_feedback step11 on step10.uid=step11.uid
 join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
+join ddcl_seated_angle_form_step13_feedback step13 on step12.uid=step13.uid
+join ddcl_seated_angle_form_step14_feedback step14 on step13.uid=step14.uid
 			';
 		// $args = array(');
 		$result = db_query($query);
@@ -8107,43 +8742,48 @@ join ddcl_seated_angle_form_step12_feedback step12 on step11.uid=step12.uid
 		{
 			$item = array(
 				$i,
-			$feedback_data->step1_date,
-			$feedback_data->step1_name,
-			$feedback_data->step1_institute,
-			$feedback_data->step1_current_position,
-			$feedback_data->step2_question_ok_not_ok,
-			$feedback_data->step2_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
-			$feedback_data->step3_question_ok_not_ok,
-			$feedback_data->step3_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
-			$feedback_data->step4_question_ok_not_ok,
-			$feedback_data->step4_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-			$feedback_data->step5_question_ok_not_ok,
-			$feedback_data->step5_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
-			$feedback_data->step6_question_ok_not_ok,
-			$feedback_data->step6_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
-			$feedback_data->step7_question_ok_not_ok,
-			$feedback_data->step7_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
-			$feedback_data->step8_question_ok_not_ok,
-			$feedback_data->step8_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
-			$feedback_data->step9_question_ok_not_ok,
-			$feedback_data->step9_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
-			$feedback_data->step10_question_ok_not_ok,
-			$feedback_data->step10_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
-			$feedback_data->step11_question_ok_not_ok,
-			$feedback_data->step11_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
-			$feedback_data->step12_question_ok_not_ok,
-			$feedback_data->step12_question_not_ok_comment,
-			_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation)
+				$feedback_data->step1_date,
+				$feedback_data->step1_name,
+				$feedback_data->step1_institute,
+				$feedback_data->step1_current_position,
+				$feedback_data->step2_question_ok_not_ok,
+				$feedback_data->step2_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				$feedback_data->step3_question_ok_not_ok,
+				$feedback_data->step3_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				$feedback_data->step4_question_ok_not_ok,
+				$feedback_data->step4_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				$feedback_data->step5_question_ok_not_ok,
+				$feedback_data->step5_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+				$feedback_data->step6_question_ok_not_ok,
+				$feedback_data->step6_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+				$feedback_data->step7_question_ok_not_ok,
+				$feedback_data->step7_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+				$feedback_data->step8_question_ok_not_ok,
+				$feedback_data->step8_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+				$feedback_data->step9_question_ok_not_ok,
+				$feedback_data->step9_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+				$feedback_data->step10_question_ok_not_ok,
+				$feedback_data->step10_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+				$feedback_data->step11_question_ok_not_ok,
+				$feedback_data->step11_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+				$feedback_data->step12_question_ok_not_ok,
+				$feedback_data->step12_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
+				$feedback_data->step13_question_ok_not_ok,
+				$feedback_data->step13_question_not_ok_comment,
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
+				_fetch_ddcl_seated_angle_exsiting_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation)
+
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()
