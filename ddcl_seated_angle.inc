@@ -7513,7 +7513,7 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, :question_ok_not_ok, :question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_seated_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
@@ -7529,7 +7529,7 @@ function ddcl_seated_angle_step13_form_next_submit($form, &$form_state, $no_js_u
 		$queryfinish = "UPDATE ddcl_seated_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 1
+			":submitted" => 0
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -8064,7 +8064,7 @@ function ddcl_seated_angle_step14_form_next_submit($form, &$form_state, $no_js_u
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-seated-angle/form/step13/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-seated-angle/success/' . $user->uid;
 }
 
 
@@ -8478,7 +8478,7 @@ function ddcl_seated_angle_delete_comment()
 	global $base_url;
 	$comment_id = arg(3);
 	$comment_step = arg(2);
-	if ($comment_id && user_access("osdag_feedback_form"))
+	if ($comment_id)
 	{
 		$query = "DELETE FROM {ddcl_seated_angle_feedback_form_comment} WHERE id = :id";
 		$query_result = db_query($query, array(
@@ -8786,8 +8786,9 @@ join ddcl_seated_angle_form_step14_feedback step14 on step13.uid=step14.uid
 
 			);
 			fputcsv($fp, $item);
+			$i++;
 		} //$feedback_data = $result->fetchObject()
-		$i++;
+		
 		fclose($fp);
 		$file = $result_file;
 		if (file_exists($file))
