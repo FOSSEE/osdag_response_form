@@ -582,7 +582,7 @@ List)'),
 	// Result page
 	$items['ddcl-fin-plate/form/result'] = array(
 		'title' => t('Page Title'),
-		'page callback' => 'ddcl_fin_plate_response_result_page',
+		'page callback' => 'ddcl_fin_plate_result_page',
 		'page arguments' => array(),
 		'access arguments' => array(
 			'access osdag_feedback_form'
@@ -598,8 +598,241 @@ List)'),
 		),
 		'file'=> 'ddcl_fin_plate.inc'
 	);
-
-
+/*******************************************************************/
+/************* DDCL FIN PLATE **************************************/
+	$items['ddcl-cleat-angle/form'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step1'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step2'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+		$items['ddcl-cleat-angle/form/step3'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step4'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step5'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step6'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step7'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step8'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step9'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step10'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step11'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step12'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step13'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step14'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step15'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step16'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step16_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step17'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step17_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	// Delete the comment
+	$items['ddcl-cleat-angle/delete'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_cleat_angle_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	// Success page.
+	$items['ddcl-cleat-angle/success'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_cleat_angle_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	// Result page
+	$items['ddcl-cleat-angle/form/result'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/result/download'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_cleat_angle.inc'
+	);
 /*******************************************************************/
 	return $items;
 }
