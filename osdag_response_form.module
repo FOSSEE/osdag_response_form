@@ -363,6 +363,244 @@ List)'),
 		),
 		'file'=> 'ddcl_seated_angle.inc'
 	);
+/*******************************************************************/
+/************* DDCL FIN PLATE **************************************/
+	$items['ddcl-fin-plate/form'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step1'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step2'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+		$items['ddcl-fin-plate/form/step3'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step4'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step5'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step6'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step7'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step8'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step9'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step10'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step11'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step12'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step13'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step14'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step15'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step16'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step16_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step17'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step17_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	// Delete the comment
+	$items['ddcl-fin-plate/delete'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	// Success page.
+	$items['ddcl-fin-plate/success'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	// Result page
+	$items['ddcl-fin-plate/form/result'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_response_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/result/download'] = array(
+		'title' => t('Page Title'),
+		'page callback' => 'ddcl_fin_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddcl_fin_plate.inc'
+	);
+
+
+/*******************************************************************/
 	return $items;
 }
 function osdag_response_form_permission()
