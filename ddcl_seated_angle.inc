@@ -8568,7 +8568,7 @@ function ddcl_seated_angle_result_generate_csv()
 	global $user;
 	if ($user->uid != NULL)
 	{
-		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "ddcl-seated-angle-form-result/{$user->uid}/";
+		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-downloads/ddcl-seated-angle-form-result/{$user->uid}/";
 		if (!file_exists($result_dir))
 		{
 			mkdir($result_dir, 0755, TRUE);
