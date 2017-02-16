@@ -155,10 +155,13 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = 'specimen text</p>
-	<hr>';
+	$markup_text = 'i. Yield Stress limits <br>
+					165 < f_y  < 290 [Ref. Table-2, IS 800] </p>
+			ii. Ultimate Strength limits <br>
+					390 < f_u  < 690 [Ref. Table-2, IS 800] </p>
+			<hr>';
 	$form = array();
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('a. Material Strength'));
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -620,10 +623,10 @@ function ddcl_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text2';
-	$markup_text1 = 'specimen text2';
-	$tooltip1 = '[Cl 8.7.4] Bearing Stiffeners';
+	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));
+	$markup_text = 'This check will be the same as implemented for the seated angle connection.';
+	$markup_text1 = '';
+	$tooltip1 = '';
 	// All the real form fields.
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
@@ -1090,8 +1093,40 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > i.Shear capacity of bolt > 2) HSFG bolt'));
+	$markup_text = '
+	b. Bolt <br>
+	&emsp; i. Shear capacity of bolt <br>
+	&emsp;&emsp; 2) HSFG bolt [Cl 10.4.3]<br>
+	&emsp;&emsp;&emsp; <p> Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, V_sf  in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
+	
+							V_sf≤V_dsf <br>
+					
+					Where, <br>
+						V_dsf=V_nsf/γ_mf <br>
+						V_nsf  = nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
+							 V_nsf=μ_f n_e K_hF_0 <br>
+							
+						Where, <br>
+						μ_f  = coefficient of friction (slip factor) as specified in Table 20 (μ_f=0.55),⁆
+n_e  = number of effective interfaces offering frictional resitance to slip, <br>
+						K_h = 1.0 for fasteners in clearance holes, <br>
+							= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long <br> slotted holes loaded perpendicular to the slot, <br>
+							= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
+						 γ_mf  =  1.10 (if lsip resistance is designed at service load), <br>
+						         =  1.25 (if lsip resistance is designed at ultimate load), <br>
+						F_0  = minimum bolt tension (proof load) at installation and may be taken as A_nb f_0, <br>
+						A_nb  = net area of the bolt at threads, and <br>
+						f_0  = proof stress (0.70f_ub) <br>
+						
+					Note: Designing the connection such that slip does not occur at ultimate loads <br>
+					
+					10.4.3.1 Long joints <br>
+						The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
+
+</p>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
@@ -1557,8 +1592,14 @@ function ddcl_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > ii. Bearing capacity of bolt'));
+	$markup_text = '
+	b. Bolt <br>
+	&emsp; ii. Bearing capacity of bolt <br>
+	&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+		
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step5_field1_fieldset'] = array(
@@ -2026,8 +2067,20 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > iii. Bolt value'));
+	$markup_text = '
+	b. Bolt <br>
+	&emsp; iii. Bolt value<p>
+	<p> The bolt capacity is taken as the minimum of bolt shear capacity  and bolt bearing capacity. <br>
+					V_db=min⁡(V_dsb, V_dpb ) <br>
+					
+					Where, <br>
+						V_db  = design strength of bolt <br>
+						V_dsb  = design shear capacity of bolt <br>
+						V_dpb  = design bearing capacity of bolt <br>
+	<br>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step6_field1_fieldset'] = array(
@@ -2495,8 +2548,15 @@ function ddcl_fin_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > iv. Number of bolts'));
+	$markup_text = '
+	b. Bolt <br>
+	&emsp; iv. Number of bolts (n) = roundup(Factored shear force/ bolt capacity) <br>
+		
+
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
