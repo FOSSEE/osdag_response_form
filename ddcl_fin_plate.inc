@@ -3027,8 +3027,30 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen title<hr>';
+	drupal_set_title(t('c. Plate'));
+	$markup_text = 'c. Plate: <p>
+			i. Plate height <br>
+			Minimum plate height [Ref. - Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				hp,min = 0.6 d <br>
+				Where,  <br>
+					d⁆ - depth of supported beam  
+					
+		<p>Maximum plate height: [Based on reasoning]  <br>
+				For beam to column connectivity: <br>
+					hp,max⁡〖=d −2t_fbs−2r_1bs−ϵ〗 <br>
+					 
+				For beam to beam connectivity: <br>
+					hp,max=d −t_fbs−t_fbp−r_1bp−ϵ <br>
+				
+				Where, <br>
+					d⁆ - depth of supported beam <br>
+					t_fbs  - thickness of flange of supported beam <br>
+					r_1bs  - root radius of supported beam <br>
+					ϵ⁆ - assumed gap (5 mm) <br>
+					t_fbp   - thickness of flange of primary beam <br>
+					r_1bp   - root radius of primary beam <br>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step8_field1_fieldset'] = array(
@@ -3496,8 +3518,34 @@ function ddcl_fin_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > ii. Plate thickness'));
+	$markup_text = 'c. Plate <br>
+	ii. Plate thickness  <br>
+			Minimum plate thickness [Ref. - N. Subramanian’s  Design of Steel Structures - Chapter 5, Sec. 5.7.7 - Page 373] <br>
+				t_p,min⁆ =5F/(f_y hp ) <br>
+				
+				Where, <br>
+					F - shear force <br>
+					f_y  - yield strength of the plate <br>
+					hp  ⁆- plate height <br>
+
+			Minimum plate thickness #Jnote - please give some reference <br>
+				t_p,min⁡〖>t_wb 〗 <br>
+				
+				Where, <br>
+					t_p  - plate thickness  <br>
+					t_bw  - beam web thickness  <br>
+				Note:  <br>
+					1) It is assumed that greater plate thickness ensures that the plate is stronger than the beam web against shear.  <br>
+					2) It is assumed that the beam is designed to be safe against shear. <br>
+
+			Maximum plate thickness [Ref. - Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				t_p,max = 0.5d <br>
+				
+				Where, <br>
+d⁆ - depth of supported beam <br>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step9_field1_fieldset'] = array(
@@ -3965,8 +4013,39 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > iii. Moment capacity'));
+	$markup_text = 'c. Plate <br>
+				iii. Plate moment capacity [Cl. 8.2.1.2] <br>
+				Maximum of moment due to the shear force and moment developed by bolt group (M_d) should be less than the moment capacity of the plate (M_c)  <br>
+				
+				Moment due to shear force  <br>
+					M_(d,sf)=Fd_bw <br>
+					
+					Where, <br>
+						F - shear force <br>
+						d_bw- distance between center of gravity of bolt group and welded plate edge  <br>
+						
+				Moment developed by bolt group  <br>
+					M_(d,bg)=(nV_dsb ∑▒r^2 )/(∑▒r) <br>
+					
+					Where, <br>
+						n⁆ - number of bolts <br>
+						r⁆ = distance between center of gravity of bolt group from each bolt  <br>
+						V_dsb  -  <br>
+						
+				Moment capacity of plate <br>
+					M_c=(1.2f_y t_p hp^2)/(6γ_m0 ) <br>
+					
+					Where, <br>
+						f_y  -  yield strength of the plate <br>
+						t_p  -  thickness of the plate <br>
+						hp  -  height of the plate <br>
+						γ_m0−1.1⁆ Partial safety factor against yield stress  <br>
+		
+
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step10_field1_fieldset'] = array(
@@ -4434,8 +4513,33 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > iv. Block shear capacity check'));
+	$markup_text = 'c. Plate <br>
+	iv. Block shear capacity check [Cl. 6.4.1]  <br>
+			Block shear capacity > Factored applied shear load <br>
+			
+					T_db>F⁆  <br>
+					
+				Where, <br>
+					T_db  - Block shear capacity <br>
+					F⁆ - Shear force <br>
+			
+			Block shear capacity = min⁡(T_db1,T_db2) <br>
+	
+			Check adequacy of block shear capacity of angle leg on both column and beam <br>
+				T_db1=(A_vg f_y)/(√3 γ_m0 )+(0.9A_tn f_u)/γ_m1  <br>
+				T_db2=(0.9A_vn f_u)/(√3 γ_m1 )+(A_tg f_y)/γ_m0  <br>
+		
+				Where, <br>
+					A_tn  - Minimum net area in tension from the bolt hole to the toe of the angle, end bolt line, perpendicular to the line of force. <br>
+					A_tg  - Minimum gross area in tension from the bolt hole to the toe of the angle, end bolt line, perpendicular to the line of force. <br>
+					A_vg  - Minimum gross area in shear along bolt line parallel to external force <br>
+					A_vn  - Minimum net area in shear along bolt line parallel to external force <br>
+					f_u  - ultimate stress of material <br>
+					f_y  - yield stress of the material <br>
+			
+
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step11_field1_fieldset'] = array(
@@ -4903,8 +5007,18 @@ function ddcl_fin_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('d. Weld > i. Effective length of weld'));
+	$markup_text = 'd. Weld <br>
+			Eﬀective length of weld [IS 800 Cl. 10.5.4.1] <br>
+				L_(eff,w)=hp−2t_weld <br>
+				
+				Where, <br>
+					hp- height of the plate <br>
+					t_weld  - thickness of weld
+
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step12_field1_fieldset'] = array(
@@ -5372,9 +5486,27 @@ function ddcl_fin_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('d. Weld > ii. Shear strength'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = 'd. Weld <br>
+	shear strength check [Cl. 10.5.7] <br>
+					R_w>f_wd <br>
+			
+					R_w= √(H_w^2+V_w^2 ) ⁆ (in kN/mm) <br>
+					
+					H_w= (6M_d)/(2(L_(eff,w) )^2 )  ⁆ (in kN/mm) <br>
+					V_w= F/(2L_(eff,w) ) <br>
+			
+				Where, <br>
+					R_w  - Resultant shear in weld <br>
+					H_w   - Horizontal shear in weld <br>
+					V_w   - Vertical shear in weld <br>
+					M_d  - Moment demand <br>
+					L_(eff,w)  - Effective length of the weld <br>
+					F⁆ - Factored shear force <br>
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step13_field1_fieldset'] = array(
@@ -5884,9 +6016,17 @@ function ddcl_fin_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('d. Weld > iii. Weld thickness'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = 'd. Weld <br>
+	iii. Minimum weld thickness [Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				t_(weld,min)=0.8t_p <br>
+				
+				Where, <br>
+					t_p  - thickness of plate <br>
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step14_field1_fieldset'] = array(
@@ -6395,9 +6535,29 @@ function ddcl_fin_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('e. Detailing checks > i. Spacing'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = 'e. Detailing checks: <br>
+			i. [Cl 10.2.2] Minimum spacing <br>
+				The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener. <br>
+				
+						p≥2.5d <br>
+						g≥2.5d <br>
+						
+			ii. [Cl 10.2.3.1] Maximum spacing <br>
+				The distance between the centres of any two adjacent fasteners shall not exceed 32t or 300mm, whichever is less, where t is the thickness of the thinner plate. <br>
+			
+					p ≤min(32t, 300) <br>
+					g ≤min(32t, 300) <br>
+				
+				 Where,  <br>
+				 p ⁆- pitch  <br>
+				g⁆ - gauge  <br>
+				d⁆ - nominal bolt diameter  <br>
+				t⁆ - thickness of the thinner plate. <br>
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step15_field1_fieldset'] = array(
@@ -6906,9 +7066,34 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('e. Detailing checks > ii. Edge and end distances'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = 'e. Detailing checks <br>
+	[Cl 10.2.4] Edge and end distances <br>
+			[Cl 10.2.4.2] <br>
+				 The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
+				
+						e_1≥1.7 d_ℎ <br>
+						e_2≥1.7 d_ℎ <br>
+						
+			
+			[Cl 10.2.4.3] <br>
+				The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 12tε⁆, where ε = √(250/f_y )  ⁆and t is the thickness of the thinner outer plate.  <br>
+			
+						e_2  ≤ 12*t  <br>
+			
+			Where, <br>
+				e_1  - End distance <br>
+				e_2  - Edge distance <br>
+				d_h - Diameter of bolt hole <br>
+				ϵ=√(250/f_y ) <br>
+				f_y  - yield strength of plate <br>
+				t ⁆ - thickness of the thinner outer plate <br>
+
+	
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step16_field1_fieldset'] = array(
@@ -7420,6 +7605,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('Other recommendations'));
 	// All the real form fields.
 	$form = array();
 	$form['step17_field1_fieldset'] = array(
