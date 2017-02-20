@@ -3995,31 +3995,152 @@ function ddcl_fin_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('c. Plate > ii. Plate thickness'));
-	$markup_text = 'c. Plate <br>
-	ii. Plate thickness  <br>
-			Minimum plate thickness [Ref. - N. Subramanian’s  Design of Steel Structures - Chapter 5, Sec. 5.7.7 - Page 373] <br>
-				t_p,min⁆ =5F/(f_y hp ) <br>
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> ii. Plate thickness (<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>p</mi>
+					  </msub>
+					</math>)
+					</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate thickness </b> [Reference: N. Subramanian’s  Design of Steel Structures - Chapter 5, Sec. 5.7.7 - Page 373] <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <mn>5</mn>
+					  <mi>F</mi>
+					</mrow>
+					<mrow>
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					  <msub>
+						<mi>h</mi>
+						<mi>p</mi>
+					  </msub>
+					</mrow>
+				  </mfrac>
+				</math>
+				<br>
 				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-					F - shear force <br>
-					f_y  - yield strength of the plate <br>
-					hp  ⁆- plate height <br>
-
-			Minimum plate thickness #Jnote - please give some reference <br>
-				t_p,min⁡〖>t_wb 〗 <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mi>F</mi>
+				</math> - shear force <br>
+					
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				</math> - yield strength of plate <br>
+					
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  - plate height 
+				<br>
+				<br>
 				
-				Where, <br>
-					t_p  - plate thickness  <br>
-					t_bw  - beam web thickness  <br>
+			&emsp;&emsp;&emsp;
+			<b> Minimum plate thickness </b> <font color=red>Jnote - need to include reference </font><br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>&gt;</mo>
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>w</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>p</mi>
+					  </msub>
+					</math>  - plate thickness  <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>b</mi>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>  - beam web thickness  
+					<br>
+					<br>
+					
+				&emsp;&emsp;&emsp;
 				Note:  <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					1) It is assumed that greater plate thickness ensures that the plate is stronger than the beam web against shear.  <br>
-					2) It is assumed that the beam is designed to be safe against shear. <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					2) It is assumed that the beam is designed to be safe against shear. 
+				<br>
+				<br>
 
-			Maximum plate thickness [Ref. - Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
-				t_p,max = 0.5d <br>
+			&emsp;&emsp;&emsp;
+			<b> Maximum plate thickness </b>[Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>a</mi>
+					  <mi>x</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>0.5</mn>
+				  <mi>d</mi>
+				</math>
+				<br>
 				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-d⁆ - depth of supported beam <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
 	
 	<hr>';
 	// All the real form fields.
@@ -4490,33 +4611,293 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('c. Plate > iii. Moment capacity'));
-	$markup_text = 'c. Plate <br>
-				iii. Plate moment capacity [Cl. 8.2.1.2] <br>
-				Maximum of moment due to the shear force and moment developed by bolt group (M_d) should be less than the moment capacity of the plate (M_c)  <br>
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> iii. Plate moment capacity </b> [Cl. 8.2.1.2] <br>
+		&emsp;&emsp;&emsp;
+				Maximum of moment due to the shear force and moment developed by bolt group 
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				</math> should be less than the moment capacity of the plate
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>M</mi>
+					<mi>c</mi>
+				  </msub>
+				</math>  <br>
 				
-				Moment due to shear force  <br>
-					M_(d,sf)=Fd_bw <br>
-					
-					Where, <br>
-						F - shear force <br>
-						d_bw- distance between center of gravity of bolt group and welded plate edge  <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				  <mo>&lt;</mo>
+				  <msub>
+					<mi>M</mi>
+					<mi>c</mi>
+				  </msub>
+				</math>
 						
-				Moment developed by bolt group  <br>
-					M_(d,bg)=(nV_dsb ∑▒r^2 )/(∑▒r) <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML"  display="block">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				  <mo>=</mo>
+				  <mi>m</mi>
+				  <mi>a</mi>
+				  <mi>x</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mo>&#x2061;</mo>
+				  </mrow>
+				  <mo stretchy="false">(</mo>
+				  <msub>
+					<mi>M</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mo>,</mo>
+					  <mi>s</mi>
+					  <mi>f</mi>
+					</mrow>
+				  </msub>
+				  <mo>,</mo>
+				  <msub>
+					<mi>M</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mo>,</mo>
+					  <mi>b</mi>
+					  <mi>g</mi>
+					</mrow>
+				  </msub>
+				  <mo stretchy="false">)</mo>
+				</math>
+				
+		&emsp;&emsp;&emsp;
+		<b> Moment due to shear force </b> <math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>M</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>d</mi>
+				  <mo>,</mo>
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			</math>:
+			<br>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>M</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mo>,</mo>
+						  <mi>s</mi>
+						  <mi>f</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>F</mi>
+					  <msub>
+						<mi>d</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>b</mi>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>
 					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					Where, <br>
-						n⁆ - number of bolts <br>
-						r⁆ = distance between center of gravity of bolt group from each bolt  <br>
-						V_dsb  -  <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>F</mi>
+						  </msub>
+						</math> - shear force <br>
 						
-				Moment capacity of plate <br>
-					M_c=(1.2f_y t_p hp^2)/(6γ_m0 ) <br>
-					
-					Where, <br>
-						f_y  -  yield strength of the plate <br>
-						t_p  -  thickness of the plate <br>
-						hp  -  height of the plate <br>
-						γ_m0−1.1⁆ Partial safety factor against yield stress  <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>d</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>b</mi>
+							  <mi>w</mi>
+							</mrow>
+						  </msub>
+						</math> - distance between center of gravity of bolt group and welded plate edge
+						<br>
+						<br>
+						
+		&emsp;&emsp;&emsp;
+		<b> Moment developed by bolt group </b>
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <msub>
+			<mi>M</mi>
+			<mrow class="MJX-TeXAtom-ORD">
+			  <mi>d</mi>
+			  <mo>,</mo>
+			  <mi>b</mi>
+			  <mi>g</mi>
+			</mrow>
+		  </msub>
+		</math>:
+		<br>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>M</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>d</mi>
+				  <mo>,</mo>
+				  <mi>b</mi>
+				  <mi>g</mi>
+				</mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mfrac>
+				<mrow>
+				  <mi>n</mi>
+				  <msub>
+					<mi>V</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>s</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				  <mo>&#x2211;</mo>
+				  <msup>
+					<mi>r</mi>
+					<mn>2</mn>
+				  </msup>
+				</mrow>
+				<mrow>
+				  <mo>&#x2211;</mo>
+				  <mi>r</mi>
+				</mrow>
+			  </mfrac>
+			</math>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>n</mi>
+				  </msub>
+				</math> - number of bolts <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>r</mi>
+				  </msub>
+				</math> - distance between center of gravity of bolt group from each bolt  <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>V</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>s</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				</math>  -  <font color=red> Jnote: Insert definition </font>
+				<br>
+				<br>
+				<br>
+				<br>
+						
+		&emsp;&emsp;&emsp;
+		<b> Moment capacity of plate </b>
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>M</mi>
+				<mi>c</mi>
+			  </msub>
+			</math>:
+			<br>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>M</mi>
+				<mi>c</mi>
+			  </msub>
+			  <mo>=</mo>
+			  <mfrac>
+				<mrow>
+				  <mn>1.2</mn>
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				  <msub>
+					<mi>t</mi>
+					<mi>p</mi>
+				  </msub>
+				  <msubsup>
+					<mi>h</mi>
+					<mi>p</mi>
+					<mn>2</mn>
+				  </msubsup>
+				</mrow>
+				<mrow>
+				  <mn>6</mn>
+				  <msub>
+					<mi>&#x03B3;<!-- γ --></mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>m</mi>
+					  <mn>0</mn>
+					</mrow>
+				  </msub>
+				</mrow>
+			  </mfrac>
+			</math>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				</math>  -  yield strength of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  -  thickness of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  -  height of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>&#x03B3;<!-- γ --></mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>m</mi>
+					  <mn>0</mn>
+					</mrow>
+				  </msub>
+				</math> − 1.1 Partial safety factor against yield stress  
+				<br>
+				<br>
 		
 
 	
