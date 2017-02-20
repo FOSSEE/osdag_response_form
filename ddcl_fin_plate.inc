@@ -155,13 +155,38 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = 'i. Yield Stress limits <br>
-					165 < f_y  < 290 [Ref. Table-2, IS 800] </p>
-			ii. Ultimate Strength limits <br>
-					390 < f_u  < 690 [Ref. Table-2, IS 800] </p>
+	drupal_set_title(t('a. Material Strength'));
+	$markup_text = '<b>a. Material Strength </b><br>
+		&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>165</mn>
+					<mo>&lt;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>y</mi>					  
+					</msub>
+					<mo>&lt;</mo>
+					<mn>290</mn>
+					</math>
+					</center>		
+		<br>
+		&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-2, IS 800] <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>390</mn>
+					<mo>&lt;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					</msub>
+					<mo>&lt;</mo>
+					<mn>690</mn>
+					</math>
+					</center>					
 			<hr>';
 	$form = array();
-	drupal_set_title(t('a. Material Strength'));
+	
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -624,7 +649,11 @@ function ddcl_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));
-	$markup_text = 'This check will be the same as implemented for the seated angle connection.';
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 1) Black bolt </b> <br>
+	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the seated angle connection.';
 	$markup_text1 = '';
 	$tooltip1 = '';
 	// All the real form fields.
@@ -1095,34 +1124,223 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('b. Bolt > i.Shear capacity of bolt > 2) HSFG bolt'));
 	$markup_text = '
-	b. Bolt <br>
-	&emsp; i. Shear capacity of bolt <br>
-	&emsp;&emsp; 2) HSFG bolt [Cl 10.4.3]<br>
-	&emsp;&emsp;&emsp; <p> Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, V_sf  in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
-	
-							V_sf≤V_dsf <br>
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 2) HSFG bolt [Cl 10.4.3]</b> <br>
+	&emsp;&emsp;&emsp; Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>V</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			</math>
+			in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
+							<center>
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							  <mo>&#x2264;</mo>
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>d</mi>
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							</math>
+							</center>
 					
+					&emsp;&emsp;&emsp;&emsp;
 					Where, <br>
-						V_dsf=V_nsf/γ_mf <br>
-						V_nsf  = nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
-							 V_nsf=μ_f n_e K_hF_0 <br>
-							
-						Where, <br>
-						μ_f  = coefficient of friction (slip factor) as specified in Table 20 (μ_f=0.55),⁆
-n_e  = number of effective interfaces offering frictional resitance to slip, <br>
-						K_h = 1.0 for fasteners in clearance holes, <br>
-							= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long <br> slotted holes loaded perpendicular to the slot, <br>
-							= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
-						 γ_mf  =  1.10 (if lsip resistance is designed at service load), <br>
-						         =  1.25 (if lsip resistance is designed at ultimate load), <br>
-						F_0  = minimum bolt tension (proof load) at installation and may be taken as A_nb f_0, <br>
-						A_nb  = net area of the bolt at threads, and <br>
-						f_0  = proof stress (0.70f_ub) <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mrow class="MJX-TeXAtom-ORD">
+							<mo>/</mo>
+						  </mrow>
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>							
 						
-					Note: Designing the connection such that slip does not occur at ultimate loads <br>
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						  <msub>
+							<mi>F</mi>
+							<mn>0</mn>
+						  </msub>
+						</math>
+							
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						</math>  = coefficient of friction (slip factor) as specified in Table 20 (default value=0.55), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						</math>
+						= number of effective interfaces offering frictional resitance to slip, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+						= 1.0 for fasteners in clearance holes, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long slotted <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						holes loaded perpendicular to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						=  1.10 (if slip resistance is designed at service load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						=  1.25 (if lsip resistance is designed at ultimate load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>F</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= minimum bolt tension (proof load) at installation and may be taken as 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= net area of the bolt at threads, and <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= proof stress (= 0.70
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						) <br>
+						
+					<br>
+					<p>Note: Designing the connection such that slip does not occur at ultimate loads <br>
 					
-					10.4.3.1 Long joints <br>
-						The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
+					
+					<br>
+					<b>10.4.3.1 Long joints </b><br>
+					&emsp;&emsp;&emsp;The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
 
 </p>
 	
