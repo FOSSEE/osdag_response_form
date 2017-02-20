@@ -1812,9 +1812,9 @@ function ddcl_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('b. Bolt > ii. Bearing capacity of bolt'));
 	$markup_text = '
-	b. Bolt <br>
-	&emsp; ii. Bearing capacity of bolt <br>
-	&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+	<b> b. Bolt </b> <br>
+	&emsp; <b> ii. Bearing capacity of bolt </b> <br>	
+	&emsp;&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
 		
 	
 	<hr>';
@@ -2287,17 +2287,83 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('b. Bolt > iii. Bolt value'));
 	$markup_text = '
-	b. Bolt <br>
-	&emsp; iii. Bolt value<p>
-	<p> The bolt capacity is taken as the minimum of bolt shear capacity  and bolt bearing capacity. <br>
-					V_db=min⁡(V_dsb, V_dpb ) <br>
+	<b> b. Bolt </b> <br>
+	&emsp; <b> iii. Bolt value </b> <br>
+	&emsp;&emsp;&emsp; The bolt capacity is taken as the minimum of bolt shear capacity  and bolt bearing capacity. <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo stretchy="false">(</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>s</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>,</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>p</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo stretchy="false">)</mo>
+					</math>
+					</center> 
+					<br>
 					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					Where, <br>
-						V_db  = design strength of bolt <br>
-						V_dsb  = design shear capacity of bolt <br>
-						V_dpb  = design bearing capacity of bolt <br>
-	<br>
-	
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>  = design strength of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>  = design shear capacity of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>p</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>  = design bearing capacity of bolt <br>
+		
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -2768,12 +2834,11 @@ function ddcl_fin_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('b. Bolt > iv. Number of bolts'));
 	$markup_text = '
-	b. Bolt <br>
-	&emsp; iv. Number of bolts (n) = roundup(Factored shear force/ bolt capacity) <br>
+	<b> b. Bolt </b> <br>
+	&emsp; <b> iv. Number of bolts (n)</b> <br>
+	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
 		
 
-	
-	
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -3246,28 +3311,221 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('c. Plate'));
-	$markup_text = 'c. Plate: <p>
-			i. Plate height <br>
-			Minimum plate height [Ref. - Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
-				hp,min = 0.6 d <br>
-				Where,  <br>
-					d⁆ - depth of supported beam  
-					
-		<p>Maximum plate height: [Based on reasoning]  <br>
-				For beam to column connectivity: <br>
-					hp,max⁡〖=d −2t_fbs−2r_1bs−ϵ〗 <br>
-					 
-				For beam to beam connectivity: <br>
-					hp,max=d −t_fbs−t_fbp−r_1bp−ϵ <br>
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> i. Plate height (<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>h</mi>
+				<mi>p</mi>
+			  </msub>
+			</math>)
+			</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate height </b> [Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				<center>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <mi>h</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mi>p</mi>
+					<mo>,</mo>
+					<mi>m</mi>
+					<mi>i</mi>
+					<mi>n</mi>
+				  </mrow>
+				  <mo>=</mo>
+				  <mn>0.6</mn>
+				  <mi>d</mi>
+				</math>
+				</center> <br>
 				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where,
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam  
+				<br>
+				<br>
+			
+			
+		&emsp;&emsp;&emsp; <b> Maximum plate height </b> [Based on reasoning]  <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to column connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math>
+					</center>
+				
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-					d⁆ - depth of supported beam <br>
-					t_fbs  - thickness of flange of supported beam <br>
-					r_1bs  - root radius of supported beam <br>
-					ϵ⁆ - assumed gap (5 mm) <br>
-					t_fbp   - thickness of flange of primary beam <br>
-					r_1bp   - root radius of primary beam <br>
-	
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math> - root radius of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) 
+					<br>
+					<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to beam connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x3F5;</mo>
+					  </mrow>
+					</math>
+					</center>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - root radius of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) <br>
+					
+					
 	<hr>';
 	// All the real form fields.
 	$form = array();
