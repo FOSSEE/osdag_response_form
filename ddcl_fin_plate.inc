@@ -7861,26 +7861,83 @@ function ddcl_fin_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('e. Detailing checks > i. Spacing'));
+	drupal_set_title(t('e. Detailing checks > i. Spacing limits'));
 	$img_path = '';
-	$markup_text = 'e. Detailing checks: <br>
-			i. [Cl 10.2.2] Minimum spacing <br>
-				The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener. <br>
+	$markup_text = '
+	
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> i. Minimum spacing</b> [Cl 10.2.2] <br>
+	&emsp;&emsp;&emsp; The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
 				
-						p≥2.5d <br>
-						g≥2.5d <br>
-						
-			ii. [Cl 10.2.3.1] Maximum spacing <br>
-				The distance between the centres of any two adjacent fasteners shall not exceed 32t or 300mm, whichever is less, where t is the thickness of the thinner plate. <br>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>p</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>g</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
 			
-					p ≤min(32t, 300) <br>
-					g ≤min(32t, 300) <br>
+	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
+	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mi>t</mi></math>
+	or 300 mm, whichever is less, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>t</mi></math>
+	is the thickness of the thinner plate. <br>
+			
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>p</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>g</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+
 				
-				 Where,  <br>
-				 p ⁆- pitch  <br>
-				g⁆ - gauge  <br>
-				d⁆ - nominal bolt diameter  <br>
-				t⁆ - thickness of the thinner plate. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>p</mi>
+					</math>	- pitch <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>g</mi>
+					</math> - gauge <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>d</mi>
+					</math> - nominal bolt diameter <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>t</mi>
+					</math> - thickness of thinner plate <br>
 
 	
 	<hr>';
@@ -8394,30 +8451,136 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('e. Detailing checks > ii. Edge and end distances'));
 	$img_path = '';
-	$markup_text = 'e. Detailing checks <br>
-	[Cl 10.2.4] Edge and end distances <br>
-			[Cl 10.2.4.2] <br>
-				 The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
+	$markup_text = '
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> ii. Edge and end distances </b> [Cl 10.2.4] <br>
+	&emsp;&emsp;&emsp; [Cl 10.2.4.2] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
 				
-						e_1≥1.7 d_ℎ <br>
-						e_2≥1.7 d_ℎ <br>
-						
-			
-			[Cl 10.2.4.3] <br>
-				The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 12tε⁆, where ε = √(250/f_y )  ⁆and t is the thickness of the thinner outer plate.  <br>
-			
-						e_2  ≤ 12*t  <br>
-			
-			Where, <br>
-				e_1  - End distance <br>
-				e_2  - Edge distance <br>
-				d_h - Diameter of bolt hole <br>
-				ϵ=√(250/f_y ) <br>
-				f_y  - yield strength of plate <br>
-				t ⁆ - thickness of the thinner outer plate <br>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>1</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.7</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
 
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>2</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.7</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
 	
-	
+	&emsp;&emsp;&emsp; [Cl 10.2.4.3] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mn>12</mn>
+		  <mi>t</mi>
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		</math>
+	, where
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		  <mo>=</mo>
+		  <msqrt>
+			<mn>250</mn>
+			<mrow class="MJX-TeXAtom-ORD">
+			  <mo>/</mo>
+			</mrow>
+			<msub>
+			  <mi>f</mi>
+			  <mi>y</mi>
+			</msub>
+		  </msqrt>
+		</math>
+	and 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>t</mi>
+		</math>
+	is the thickness of the thinner outer plate.  <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>e</mi>
+					<mn>2</mn>
+				  </msub>
+				  <mo>&#x2264;</mo>
+				  <mn>12</mn>
+				  <mi>t</mi>
+				</math>
+			
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Where, <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>1</mn>
+			  </msub>
+			</math>
+			- End distance <br>
+
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>2</mn>
+			  </msub>
+			</math>
+			- Edge distance <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>d</mi>
+				<mn>h</mn>
+			  </msub>
+			</math> 
+			- Diameter of bolt hole <br>
+			
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <mi>&#x03F5;<!-- ϵ --></mi>
+			  <mo>=</mo>
+			  <msqrt>
+				<mn>250</mn>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mo>/</mo>
+				</mrow>
+				<msub>
+				  <mi>f</mi>
+				  <mi>y</mi>
+				</msub>
+			  </msqrt>
+			</math> <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>f</mi>
+				<mn>y</mn>
+			  </msub>
+			</math>
+			- yield strength of plate <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>t</mi>
+			</math> 
+			- thickness of the thinner outer plate <br>
+
 	
 	<hr>';
 	// All the real form fields.
@@ -8936,7 +9099,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 	$form = array();
 	$form['step17_field1_fieldset'] = array(
 		'#type' => 'fieldset',
-		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
+		'#title' => '<strong>Any other recommendation/Comment?</strong>',
 		'#tree' => TRUE,
 		'#prefix' => '<div id="step17-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
@@ -8957,7 +9120,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_ddcl_fin_plate_comments($step17_data->id, $step17_data->data_relation);
 			$icom = 1;
 			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -9057,7 +9220,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_ddcl_fin_plate_comments($step17_data->id, $step17_data->data_relation);
 			$icom = 1;
 			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
