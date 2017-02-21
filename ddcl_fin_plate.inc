@@ -156,7 +156,8 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('a. Material Strength'));
-	$markup_text = '<b>a. Material Strength </b><br>
+	$markup_text = '
+	<b>a. Material Strength </b><br>
 		&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2340,7 +2341,7 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 							  <mi>b</mi>
 							</mrow>
 						  </msub>
-						</math>  = design strength of bolt <br>
+						</math> - design strength of bolt <br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -2351,7 +2352,7 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 							  <mi>b</mi>
 							</mrow>
 						  </msub>
-						</math>  = design shear capacity of bolt <br>
+						</math> - design shear capacity of bolt <br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -2362,7 +2363,7 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 							  <mi>b</mi>
 							</mrow>
 						  </msub>
-						</math>  = design bearing capacity of bolt <br>
+						</math> - design bearing capacity of bolt <br>
 		
 	<hr>';
 	// All the real form fields.
@@ -5412,7 +5413,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 					<br>
 					<br>
 			
-			Check adequacy of block shear capacity of angle leg on both column and beam. The block shear capacity is calculated as:
+			Check adequacy of block shear capacity of plate on both beam. The block shear capacity is calculated as:
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
 					<mi>T</mi>
@@ -5578,6 +5579,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 		
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
+					<font color=red>These items need revision as per fin plate parameters</font>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
