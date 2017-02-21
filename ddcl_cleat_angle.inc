@@ -149,16 +149,45 @@ function ddcl_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FA
 	} //$form_step1_data
 	$form_state['redirect'] = 'ddcl-cleat-angle/form/step2/' . $user->uid;
 }
+/************************ Step 1 form ends *********************/
 /*************************************************************************/
 /************************ Step 2 form starts *********************/
 function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = 'specimen text</p>
+	drupal_set_title(t('a. Material strength'));
+	$markup_text = '
+	<b>a. Material Strength </b><br>
+		&emsp;&emsp;&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>165</mn>
+					<mo>&lt;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>y</mi>					  
+					</msub>
+					<mo>&lt;</mo>
+					<mn>290</mn>
+					</math>
+					</center>		
+		<br>
+		&emsp;&emsp;&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-2, IS 800] <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>390</mn>
+					<mo>&lt;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					</msub>
+					<mo>&lt;</mo>
+					<mn>690</mn>
+					</math>
+					</center>	
 	<hr>';
-	$form = array();
-	drupal_set_title(t('specimen title'));
+	$form = array();	
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -615,15 +644,22 @@ function step2_comment_add_more_callback($form, &$form_state)
 {
 	return $form['step2_field1_fieldset'];
 }
+
+/************************ Step 2 form ends *********************/
 /***************************************** step 3 form starts **************************/
 function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text2';
+	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));	
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 1) Black bolt </b> <br>
+	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the seated angle connection. <br>	
+	';
 	$markup_text1 = 'specimen text2';
-	$tooltip1 = '[Cl 8.7.4] Bearing Stiffeners';
+	$tooltip1 = '';
 	// All the real form fields.
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
@@ -1090,8 +1126,229 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > i.Shear capacity of bolt > 2) HSFG bolt'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 2) HSFG bolt [Cl 10.4.3]</b> <br>
+	&emsp;&emsp;&emsp; Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>V</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			</math>
+			in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
+							<center>
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							  <mo>&#x2264;</mo>
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>d</mi>
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							</math>
+							</center>
+					
+					&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mrow class="MJX-TeXAtom-ORD">
+							<mo>/</mo>
+						  </mrow>
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>							
+						
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						  <msub>
+							<mi>F</mi>
+							<mn>0</mn>
+						  </msub>
+						</math>
+							
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						</math>  = coefficient of friction (slip factor) as specified in Table 20 (default value=0.55), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						</math>
+						= number of effective interfaces offering frictional resitance to slip, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+						= 1.0 for fasteners in clearance holes, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long slotted <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						holes loaded perpendicular to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						=  1.10 (if slip resistance is designed at service load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						=  1.25 (if lsip resistance is designed at ultimate load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>F</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= minimum bolt tension (proof load) at installation and may be taken as 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= net area of the bolt at threads, and <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= proof stress (= 0.70
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						) <br>
+						
+					<br>
+					<p>Note: Designing the connection such that slip does not occur at ultimate loads <br>
+					
+					
+					<br>
+					<b>10.4.3.1 Long joints </b><br>
+					&emsp;&emsp;&emsp;The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
+
+</p>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
@@ -1557,8 +1814,15 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > ii. Bearing capacity of bolt'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> ii. Bearing capacity of bolt </b> <br>	
+	&emsp;&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+		
+	
+	<hr>';
+	
 	// All the real form fields.
 	$form = array();
 	$form['step5_field1_fieldset'] = array(
@@ -2026,8 +2290,91 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > iii. Bolt value'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> iii. Bolt value </b> <br>
+	&emsp;&emsp;&emsp; The bolt capacity is taken as the minimum of bolt shear capacity  and bolt bearing capacity. <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo stretchy="false">(</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>s</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>,</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>p</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo stretchy="false">)</mo>
+					</math>
+					</center> 
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design strength of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design shear capacity of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>p</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design bearing capacity of bolt 
+						<br>
+				<br>
+	&emsp; <b> iv. Number of bolts (n)</b> <br>
+	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
+		
+	<hr>';
+	
 	// All the real form fields.
 	$form = array();
 	$form['step6_field1_fieldset'] = array(
@@ -2495,8 +2842,135 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > v. Factored resultant shear force'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> v. Factored resultant shear force</b> <br>
+	&emsp;&emsp;&emsp; The bolts have to resist a resultant shear force arising due to the factored shear force (vertical, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>V</mi></msub></math>
+	) and shear force arising due the bolt eccentricity (horizontal, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>H</mi></msub></math>
+	) <br>
+	<br>
+	
+	&emsp;&emsp;&emsp; The resultant shear force, 
+			<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>R</mi></msub></math>
+	on each bolt is given by:
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>V</mi>
+				<mi>R</mi>
+			  </msub>
+			  <mo>=</mo>
+			  <msqrt>
+				<msubsup>
+				  <mi>V</mi>
+				  <mi>H</mi>
+				  <mn>2</mn>
+				</msubsup>
+				<mo>+</mo>
+				<msubsup>
+				  <mi>V</mi>
+				  <mi>V</mi>
+				  <mn>2</mn>
+				</msubsup>
+			  </msqrt>
+			</math>
+		
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>				
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>V</mi>
+					<mi>H</mi>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <msub>
+						<mi>V</mi>
+						<mi>x</mi>
+					  </msub>
+					  <msub>
+						<mi>e</mi>
+						<mi>x</mi>
+					  </msub>
+					  <msub>
+						<mi>r</mi>
+						<mi>i</mi>
+					  </msub>
+					</mrow>
+					<mrow>
+					  <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+					  <msubsup>
+						<mi>r</mi>
+						<mi>i</mi>
+						<mn>2</mn>
+					  </msubsup>
+					</mrow>
+				  </mfrac>
+				</math>				
+								
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>V</mi>
+					<mi>V</mi>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<msub>
+					  <mi>V</mi>
+					  <mi>x</mi>
+					</msub>
+					<mi>n</mi>
+				  </mfrac>
+				</math>				
+			
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mi>x</mi>
+					  </msub>
+					</math> - applied shear force 
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>e</mi>
+						<mi>x</mi>
+					  </msub>
+					</math> - eccentricity of bolt group [Refer the front and side view images for eccentricity of beam bolts, 					
+						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
+							<mi>e</mi>
+							<mi>xb</mi>
+						</msub></math>
+					and eccentricity of column bolts, 
+						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
+							<mi>e</mi>
+							<mi>xc</mi>
+						</msub></math>
+					<br>
+						
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<msub>
+							<mi>r</mi>
+							<mi>i</mi>
+						</msub>
+					</math> - distance of each bolt from C.G. of the bolt group, and <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<mi>n</mi>
+					</math> - number of bolts 
+	
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
@@ -2967,8 +3441,42 @@ function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen title<hr>';
+	drupal_set_title(t('b. Bolt > vi. Bolt capacity check'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> vi. Bolt capacity check</b><br>
+	&emsp;&emsp;&emsp; The design strength of bolt, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <msub>
+			<mi>V</mi>
+			<mi>db</mi>
+		  </msub>
+		</math>
+	should be greater than the resultant shear force, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <msub>
+			<mi>V</mi>
+			<mi>R</mi>
+		  </msub>
+		</math>
+	on each bolt 
+
+	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+	  <msub>
+		<mi>V</mi>
+		<mrow class="MJX-TeXAtom-ORD">
+		  <mi>d</mi>
+		  <mi>b</mi>
+		</mrow>
+	  </msub>
+	  <mo>&gt;</mo>
+	  <msub>
+		<mi>V</mi>
+		<mi>R</mi>
+	  </msub>
+	</math>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step8_field1_fieldset'] = array(
@@ -3436,8 +3944,122 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Cleat angle > i. Height'));
+	$markup_text = '
+	<b> c. Cleat angle </b> <br>
+	&emsp; <b> i. Minimum height</b> [INSDAG detailing manual p-733, Steel Designers Manual -6th Edition (2003)] <br>
+	&emsp;&emsp;&emsp; Minimum height of the cleat angle shall be calculated as:
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>H</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>m</mi>
+				  <mi>i</mi>
+				  <mi>n</mi>
+				</mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mn>0.6</mn>
+			  <mi>d</mi>
+			</math>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>H</mi>
+					<mi>min</mi>
+				  </msub>
+				</math> - Minimum height of cleat angle
+				<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <mi>d</mi>
+				</math> - beam depth
+				<br>
+				<br>
+				
+	&emsp; <b> ii. Maximum height</b> <font color=red>Jnote - Add reference</font><br>
+	&emsp;&emsp;&emsp; Maximum height of the cleat angle shall be calculated as:
+					
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>H</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>m</mi>
+						  <mi>a</mi>
+						  <mi>x</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <mo>&#x2217;</mo>
+					  <mn>5</mn>
+					</math>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>H</mi>
+							<mi>max</mi>
+						  </msub>
+						</math> - Maximum height of cleat angle
+						<br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <mi>d</mi>							
+						</math> - beam depth						
+						<br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>t</mi>
+							<mi>fb</mi>
+						  </msub>
+						</math> - flange thickness of beam
+						<br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>r</mi>
+							<mi>1b</mi>
+						  </msub>
+						</math> - root radius of beam
+						<br>
+						<br>
+					
+					Note: Assumed clearance of 5 mm on each side.
+
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step9_field1_fieldset'] = array(
@@ -3905,8 +4527,99 @@ function ddcl_cleat_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Cleat angle > ii. Angle leg'));
+	$markup_text = '
+	<b> c. Cleat angle </b> <br>
+	&emsp; <b> ii. Maximum cleat angle leg</b><br>
+	&emsp;&emsp;&emsp; Maximum cleat angle leg size for beam - column web connectivity:
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <mi>B</mi>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <msub>
+						<mi>d</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>c</mi>
+						  <mi>o</mi>
+						  <mi>l</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>c</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2*5</mn>
+					</mrow>
+					<mn>2</mn>
+				  </mfrac>
+				</math>
+		
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<mi>B</mi>						
+					</math> - maximum cleat angle leg
+					<br> 
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>d</mi>
+						<mi>col</mi>
+					  </msub>
+					</math> - depth of column
+					<br> 
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>fc</mi>
+					  </msub>
+					</math> - thickness of flange of column
+					<br> 
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>d</mi>
+						<mi>col</mi>
+					  </msub>
+					</math> - depth of column
+					<br> 
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>wb</mi>
+					  </msub>
+					</math> - thickness of web of beam
+					<br> 
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">					  
+						<mi>2*5</mi>
+					</math> mm - twice the minimum clearance from root radius
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step10_field1_fieldset'] = array(
@@ -4374,8 +5087,52 @@ function ddcl_cleat_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Cleat Angle > iii. Angle thickness'));
+	$markup_text = '
+	<b> c. Cleat angle </b> <br>
+	&emsp; <b> iii. Angle thickness</b>	
+			(<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>t</mi>
+				<mi>c</mi>
+			  </msub>
+			</math>)
+	<br>
+	
+	&emsp;&emsp;&emsp; The thickness of the cleat angle shall be determined based on the following rules
+	<br>
+	&emsp;&emsp;&emsp;
+	[Reference: Steel Designers Manual - p733 - 6th Edition (2003)] 
+	<br>
+	<br>
+	
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> a) For beam depth less than 450 mm</b>	<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <msub>
+								<mi>t</mi>
+								<mi>c</mi>
+							  </msub>
+							  <mo>=</mo>
+							  <mn>8</mn>
+							</math> mm
+							<br>
+	
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> b) For beam depth greater than 450 mm</b>	<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <msub>
+								<mi>t</mi>
+								<mi>c</mi>
+							  </msub>
+							  <mo>=</mo>
+							  <mn>12</mn>
+							</math> mm
+							<br>
+	
+	
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step11_field1_fieldset'] = array(
@@ -4843,8 +5600,176 @@ function ddcl_cleat_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Cleat angle > iv. Moment capacity check'));
+	$markup_text = '
+	<b> c. Cleat angle </b> <br>
+	&emsp; <b> iv. Moment capacity check</b><br>
+	&emsp;&emsp;&emsp; 1) The factored design moment, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
+	shall satisfy
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <mi>M</mi>
+			  <mo>&lt;</mo>
+			  <msub>
+				<mi>M</mi>
+				<mi>d</mi>
+			  </msub>
+			</math>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				</math> - design bending strength of the the cleat angle leg, calculated as given in [Cl 8.2.1.2]
+				<br>
+				<br>
+	
+	&emsp;&emsp;&emsp; <b>2) Moment due to shear force, </b>
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
+	shall satisfy <br>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <mi>M</mi>
+			  <mo>=</mo>
+			  <mn>0.5</mn>
+			  <msub>
+				<mi>V</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			  <msub>
+				<mi>e</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <msub>
+					<mi>x</mi>
+					<mi>b</mi>
+				  </msub>
+				</mrow>
+			  </msub>
+			</math>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>V</mi>
+					<mi>sf</mi>
+				  </msub>
+				</math> - shear force
+				<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>e</mi>
+					<mi>
+						<msub>
+							<mi>x</mi>
+							<mi>b</mi>
+						</msub>							
+					</mi>
+				  </msub>
+					</mi>
+				  </msub>
+				</math> &emsp; - eccentricity
+				<br>
+				<br>
+		
+	&emsp;&emsp;&emsp;  <b> 3) Design Bending strength </b>[Cl 8.2.1.2]
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>d</mi></msub></math>
+	<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; When the factored design shear force does not exceed 0
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>0.6V</mi><mi>d</mi></msub></math>
+	, where
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>0.6V</mi><mi>d</mi></msub></math>
+	is the design shear strength of the cross-section, the design bending strength, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>d</mi></msub></math>
+	shall be taken as:
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <mn>1.2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mi>a</mi>
+					  </msub>
+					  <msubsup>
+						<mi>h</mi>
+						<mi>a</mi>
+						<mn>2</mn>
+					  </msubsup>
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					</mrow>
+					<mrow>
+					  <mn>6</mn>
+					  <msub>
+						<mi>&#x03B3;<!-- γ --></mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>m</mi>
+						  <mn>0</mn>
+						</mrow>
+					  </msub>
+					</mrow>
+				  </mfrac>
+				</math>
+			
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>a</mi>
+					  </msub>
+					</math> - thickness of cleat angle
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>h</mi>
+						<mi>a</mi>
+					  </msub>
+					</math> - height of cleat angle
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					</math> - yield stress of the cleat angle material
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>&#x03B3;<!-- γ --></mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>m</mi>
+						  <mn>0</mn>
+						</mrow>
+					  </msub>
+					</math> -  partial safety factor (= 1.1 )
+					<br>
+			
+				
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step12_field1_fieldset'] = array(
