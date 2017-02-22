@@ -185,7 +185,12 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<mo>&lt;</mo>
 					<mn>690</mn>
 					</math>
-					</center>	
+					</center>
+		<br>
+		<br>
+
+		&emsp;&emsp;&emsp; Note: All units in MPa
+		
 	<hr>';
 	$form = array();	
 	$form['step2_field1_fieldset'] = array(
@@ -3947,7 +3952,7 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 	drupal_set_title(t('c. Cleat angle > i. Height'));
 	$markup_text = '
 	<b> c. Cleat angle </b> <br>
-	&emsp; <b> i. Minimum height</b> [INSDAG detailing manual p-733, Steel Designers Manual -6th Edition (2003)] <br>
+	&emsp; <b> i. Minimum height</b> [Reference: INSDAG detailing manual p-733, Steel Designers Manual - 6th Edition (2003)] <br>
 	&emsp;&emsp;&emsp; Minimum height of the cleat angle shall be calculated as:
 			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			  <msub>
@@ -5604,7 +5609,7 @@ function ddcl_cleat_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '
 	<b> c. Cleat angle </b> <br>
 	&emsp; <b> iv. Moment capacity check</b><br>
-	&emsp;&emsp;&emsp; 1) The factored design moment, 
+	&emsp;&emsp;&emsp; 1) The factored design moment due to shear force, 
 		<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
 	shall satisfy
 			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -8285,9 +8290,9 @@ function ddcl_cleat_angle_step16_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('Other recommendations'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = 'Any other recommendation/Comment?<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step16_field1_fieldset'] = array(
