@@ -5413,7 +5413,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 					<br>
 					<br>
 			
-			Check adequacy of block shear capacity of plate on both beam. The block shear capacity is calculated as:
+			Check adequacy of block shear capacity of plate on beam. The block shear capacity is calculated as:
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
 					<mi>T</mi>
@@ -5579,7 +5579,8 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 		
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-					<font color=red>These items need revision as per fin plate parameters</font>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
+					<font color=red>These items need revision as per fin plate parameters</font> <br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
