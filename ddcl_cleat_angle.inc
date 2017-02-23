@@ -2948,12 +2948,12 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 						<mi>e</mi>
 						<mi>x</mi>
 					  </msub>
-					</math> - eccentricity of bolt group [Refer the front and side view images for eccentricity of beam bolts, 					
+					</math> - eccentricity of bolt group [Refer below images for eccentricity of beam-bolts, 					
 						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
 							<mi>e</mi>
 							<mi>xb</mi>
 						</msub></math>
-					and eccentricity of column bolts, 
+					and eccentricity of column-bolts, 
 						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
 							<mi>e</mi>
 							<mi>xc</mi>
