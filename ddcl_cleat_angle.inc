@@ -2848,6 +2848,8 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('b. Bolt > v. Factored resultant shear force'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> v. Factored resultant shear force</b> <br>
@@ -2948,17 +2950,18 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 						<mi>e</mi>
 						<mi>x</mi>
 					  </msub>
-					</math> - eccentricity of bolt group [Refer below images for eccentricity of beam-bolts, 					
+					</math> - eccentricity of bolt group [Refer below images] <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
 							<mi>e</mi>
 							<mi>xb</mi>
-						</msub></math>
-					and eccentricity of column-bolts, 
+						</msub></math> - eccentricity of beam-bolts <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
 							<mi>e</mi>
 							<mi>xc</mi>
-						</msub></math>
-					<br>
+						</msub></math> - eccentricity of column-bolts <br>
 						
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2971,8 +2974,17 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 						<mi>n</mi>
-					</math> - number of bolts 
-	
+					</math> - number of bolts <br><br>
+					
+			
+			<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" align="left"/>	
+			<img src="' . $img_path . '/cleatside.png" width="40%" height="40%" align="middle"/>
+			<br><br><br><br><br>
+			<br><br><br><br><br>
+			<br><br><br><br><br>
+			<br><br><br><br><br>
+			<br><br><br>
+			
 	
 	
 	<hr>';
@@ -5605,6 +5617,8 @@ function ddcl_cleat_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	global $base_url;
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	drupal_set_title(t('c. Cleat angle > iv. Moment capacity check'));
 	$markup_text = '
 	<b> c. Cleat angle </b> <br>
@@ -5681,10 +5695,15 @@ function ddcl_cleat_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
 				  </msub>
 					</mi>
 				  </msub>
-				</math> &emsp; - eccentricity
+				</math> &ensp; - eccentricity of beam-bolts
 				<br>
 				<br>
-		
+								
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" />			
+				<br><br><br>
+				<hr>
+				
 	&emsp;&emsp;&emsp;  <b> 3) Design Bending strength </b>[Cl 8.2.1.2]
 		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>d</mi></msub></math>
 	<br>
