@@ -834,6 +834,142 @@ List)'),
 		'file'=> 'ddcl_cleat_angle.inc'
 	);
 /*******************************************************************/
+/****************** DDQ Fin Plate ******************/
+	$items['ddq-fin-plate/form'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step1'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step2'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step3'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step4'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step5'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step6'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step7'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step8'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+		// Delete the comment
+	$items['ddq-fin-plate/delete'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_fin_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	// Success page.
+	$items['ddq-fin-plate/success'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_fin_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	// Result page
+	$items['ddq-fin-plate/form/result'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/result/download'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file'=> 'ddq_fin_plate.inc'
+	);
+	/***********************************************************/
 	return $items;
 }
 function osdag_response_form_permission()
