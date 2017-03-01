@@ -1138,7 +1138,7 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 				</mrow>
 			  </msub>
 			</math>
-			in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
+			in the interface of connections at which slip cannot be tolerated, shall satisfy the following: <br>
 							<center>
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
 							  <msub>
@@ -1245,7 +1245,7 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 							<mi>&#x03BC;<!-- μ --></mi>
 							<mi>f</mi>
 						  </msub>
-						</math>  = coefficient of friction (slip factor) as specified in Table 20 (default value=0.55), <br>
+						</math>  = coefficient of friction (slip factor) as specified in Table 20 - IS 800(default value=0.55), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -1280,7 +1280,7 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 						</math>
 						=  1.10 (if slip resistance is designed at service load), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						=  1.25 (if lsip resistance is designed at ultimate load), <br>
+						=  1.25 (if slip resistance is designed at ultimate load), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -1336,12 +1336,12 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 						) <br>
 						
 					<br>
-					<p>Note: Designing the connection such that slip does not occur at ultimate loads <br>
+					<p>Note: The connection is designed such that slip does not occur at ultimate loads. <br>
 					
 					
 					<br>
 					<b>10.4.3.1 Long joints </b><br>
-					&emsp;&emsp;&emsp;The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
+					&emsp;&emsp;&emsp;The provision for the long joints in 10.3.3.1 shall apply to friction grip connections also.
 
 </p>
 	
@@ -3387,6 +3387,7 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 						</mrow>
 					  </msub>
 					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
 					  <mi>&#x03F5;<!-- ϵ --></mi>
 					</math>
 					</center>
