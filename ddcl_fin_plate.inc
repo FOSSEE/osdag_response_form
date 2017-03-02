@@ -162,12 +162,12 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>165</mn>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<msub>
 						<mi>f</mi>
 						<mi>y</mi>					  
 					</msub>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<mn>290</mn>
 					</math>
 					</center>		
@@ -176,12 +176,12 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>390</mn>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<msub>
 						<mi>f</mi>
 						<mi>u</mi>
 					</msub>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<mn>690</mn>
 					</math>
 					</center>					
@@ -1245,7 +1245,7 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 							<mi>&#x03BC;<!-- μ --></mi>
 							<mi>f</mi>
 						  </msub>
-						</math>  = coefficient of friction (slip factor) as specified in Table 20 - IS 800(default value=0.55), <br>
+						</math>  = coefficient of friction (slip factor) as specified in Table 20 - IS 800 (default value=0.55), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -1334,6 +1334,17 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 						  </msub>
 						</math>
 						) <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= ultimate strength of bolt material <br>
 						
 					<br>
 					<p>Note: The connection is designed such that slip does not occur at ultimate loads. <br>
@@ -3312,6 +3323,7 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('c. Plate'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
 	<b> c. Plate </b> <br>
 	&emsp; <b> i. Plate height (<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -3339,12 +3351,16 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 				</center> <br>
 				
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where,
+				Where, 
+				<br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>d</mi>
-					</math> - depth of supported beam  
+					</math> - depth of supported beam  		
 				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/finfront_hp.svg" width="60%" height="60%" align="middle"/><br>
+				<hr>
 				<br>
 			
 			
@@ -3394,7 +3410,8 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 				
 				
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
+				Where,
+					<br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>d</mi>
@@ -3427,9 +3444,20 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>&#x03F5;<!-- ϵ --></mi>
-					</math> - assumed gap (5 mm) 
+					</math> - assumed gap (5 mm) (see image below)
 					<br>
 					<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/finbcside.svg" width="35%" height="35%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> Fin Plate Connection - Side View
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)
+				<br>
+				<hr>
 				
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				<b> For beam to beam connectivity: </b> <br>
@@ -3526,8 +3554,13 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>&#x03F5;<!-- ϵ --></mi>
 					</math> - assumed gap (5 mm) <br>
-					
-					
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/finbbside.svg" width="60%" height="60%" align="middle" /><br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<b> Figure: </b> Fin Plate Connection - Side View			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			(Beam web to Beam web connectivity)<br>
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -4064,7 +4097,7 @@ function ddcl_fin_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 				<br>
 				
 			&emsp;&emsp;&emsp;
-			<b> Minimum plate thickness </b> <font color=red>Jnote - need to include reference </font><br>
+			<b> Minimum plate thickness </b> <br>
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
 					<mi>t</mi>
@@ -4142,7 +4175,7 @@ function ddcl_fin_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>d</mi>
-					</math> - depth of supported beam <br>
+					</math> - nominal bolt diameter <br>
 	
 	<hr>';
 	// All the real form fields.
@@ -4613,6 +4646,7 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 	global $base_url;
 	global $user;
 	drupal_set_title(t('c. Plate > iii. Moment capacity'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
 	<b> c. Plate </b> <br>
 	&emsp; <b> iii. Plate moment capacity </b> [Cl. 8.2.1.2] <br>
@@ -4732,7 +4766,11 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 						  </msub>
 						</math> - distance between center of gravity of bolt group and welded plate edge
 						<br>
-						<br>
+					
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<img src="' . $img_path . '/finfront_dbw.svg" width="65%" height="65%" align="middle" /><br>
+					<hr>
 						
 		&emsp;&emsp;&emsp;
 		<b> Moment developed by bolt group </b>
@@ -4810,12 +4848,13 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 					  <mi>b</mi>
 					</mrow>
 				  </msub>
-				</math>  -  <font color=red> Jnote: Insert definition </font>
+				</math>  -  design shear strength of bolt 
 				<br>
 				<br>
 				<br>
 				<br>
 						
+		<hr>
 		&emsp;&emsp;&emsp;
 		<b> Moment capacity of plate </b>
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -4823,7 +4862,8 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 				<mi>M</mi>
 				<mi>c</mi>
 			  </msub>
-			</math>:
+			</math>
+			[Cl. 8.2.1.2]:
 			<br>
 			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			  <msub>
@@ -4901,9 +4941,7 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 				<br>
 				<br>
 		
-
-	
-	
+			
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -5580,9 +5618,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 		
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
-					<font color=red>These items need revision as per fin plate parameters</font> <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
 						<mi>A</mi>
@@ -5591,7 +5627,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 						  <mi>n</mi>
 						</mrow>
 					  </msub>
-					</math>  - Minimum net area in tension from the bolt hole to the toe of the angle, end bolt line,
+					</math>  - Minimum net area in tension from the bolt hole to the edge of the plate, end bolt line,
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					perpendicular to the line of force. <br>
 					
@@ -5604,7 +5640,7 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 						  <mi>g</mi>
 						</mrow>
 					  </msub>
-					</math> - Minimum gross area in tension from the bolt hole to the toe of the angle, end bolt line, <br>
+					</math> - Minimum gross area in tension from the bolt hole to the edge of the plate, end bolt line, <br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					perpendicular to the line of force. <br>
 					
@@ -6118,7 +6154,7 @@ function ddcl_fin_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
 	drupal_set_title(t('d. Weld > i. Effective length of weld'));
 	$markup_text = '
 	<b> d. Weld </b> <br>
-	&emsp; <b> i. Effective length of weld</b>  [IS 800 Cl. 10.5.4.1] <br>
+	&emsp; <b> i. Effective length of weld</b>  [Cl. 10.5.4.1] <br>
 	&emsp;&emsp;&emsp; The effective length of weld is calculated as:
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
@@ -6760,7 +6796,44 @@ function ddcl_fin_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 						<mi>f</mi>
 						<mi>wd</mi>
 					  </msub>
-					</math>  - <font color=red>Insert definition here </font> <br>
+					</math>  - design weld strength (in kN/mm)<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;= <math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <mfrac>
+								<mrow>
+								  <msub>
+									<mi>f</mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>u</mi>
+									  <mi>w</mi>
+									</mrow>
+								  </msub>
+								  <msub>
+									<mi>t</mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>w</mi>
+									  <mi>e</mi>
+									  <mi>l</mi>
+									  <mi>d</mi>
+									</mrow>
+								  </msub>
+								</mrow>
+								<mrow>
+								  <msqrt>
+									<mn>3</mn>
+								  </msqrt>
+								  <msub>
+									<mi>&#x03B3;<!-- γ --></mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>m</mi>
+									  <mi>w</mi>
+									</mrow>
+								  </msub>
+								</mrow>
+							  </mfrac>
+							</math> 						
+						<br>
 					
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -8467,7 +8540,7 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 							<mn>1</mn>
 						  </msub>
 						  <mo>&#x2265;</mo>
-						  <mn>1.7</mn>
+						  <mn>1.5</mn>
 						  <msub>
 							<mi>d</mi>
 							<mi>h</mi>
@@ -8480,7 +8553,7 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 							<mn>2</mn>
 						  </msub>
 						  <mo>&#x2265;</mo>
-						  <mn>1.7</mn>
+						  <mn>1.5</mn>
 						  <msub>
 							<mi>d</mi>
 							<mi>h</mi>
