@@ -7958,6 +7958,25 @@ function ddcl_fin_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 						  <mn>2.5</mn>
 						  <mi>d</mi>
 						</math>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>p</mi>
+						</math>	- pitch distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>g</mi>
+						</math> - gauge distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>d</mi>
+						</math> - nominal bolt diameter <br>
+						<br>
+				
 			
 	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
 	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
@@ -7999,18 +8018,13 @@ function ddcl_fin_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>p</mi>
-					</math>	- pitch <br>
+					</math>	- pitch distance <br>
 					
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>g</mi>
-					</math> - gauge <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>d</mi>
-					</math> - nominal bolt diameter <br>
-					
+					</math> - gauge distance <br>
+										
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>t</mi>
@@ -8595,6 +8609,7 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 				  <mo>&#x2264;</mo>
 				  <mn>12</mn>
 				  <mi>t</mi>
+				  <mi>&#x03F5;<!-- ϵ --></mi>
 				</math>
 			
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -8657,6 +8672,19 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 				<mi>t</mi>
 			</math> 
 			- thickness of the thinner outer plate <br>
+		
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Note: Where the members are exposed to corrosive influences, the maximum edge distance shall not exceed 40 mm plus 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>4</mn>
+				<mi>t</mi>
+		</math> 
+		, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>t</mi>
+		</math> 
+		is the thickness of thinner connected plate.
 
 	
 	<hr>';
