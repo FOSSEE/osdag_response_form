@@ -163,12 +163,12 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>165</mn>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<msub>
 						<mi>f</mi>
 						<mi>y</mi>					  
 					</msub>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<mn>290</mn>
 					</math>
 					</center>		
@@ -177,12 +177,12 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>390</mn>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<msub>
 						<mi>f</mi>
 						<mi>u</mi>
 					</msub>
-					<mo>&lt;</mo>
+					<mo>&le;</mo>
 					<mn>690</mn>
 					</math>
 					</center>
@@ -2974,16 +2974,25 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 						<mi>n</mi>
-					</math> - number of bolts <br><br>
+					</math> - number of bolts <br>
 					
 			
-			<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" align="left"/>	
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" align="middle"/>	
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;
+			<b>Figure:</b> Cleat angle connection - Front view<br>
+			<br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<img src="' . $img_path . '/cleatside.png" width="40%" height="40%" align="middle"/>
-			<br><br><br><br><br>
-			<br><br><br><br><br>
-			<br><br><br><br><br>
-			<br><br><br><br><br>
-			<br><br><br>
+			<br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;
+			<b>Figure:</b> Cleat angle connection - Side view<br>			
+			<br><br>
 			
 	
 	
@@ -3998,7 +4007,7 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 				<br>
 				<br>
 				
-	&emsp; <b> ii. Maximum height</b> <font color=red>Jnote - Add reference</font><br>
+	&emsp; <b> ii. Maximum height</b> [Based on Reasoning]<br>
 	&emsp;&emsp;&emsp; Maximum height of the cleat angle shall be calculated as:
 					
 					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -4547,7 +4556,7 @@ function ddcl_cleat_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
 	drupal_set_title(t('c. Cleat angle > ii. Angle leg'));
 	$markup_text = '
 	<b> c. Cleat angle </b> <br>
-	&emsp; <b> ii. Maximum cleat angle leg</b><br>
+	&emsp; <b> ii. Maximum cleat angle leg</b> [Based on Reasoning]<br>
 	&emsp;&emsp;&emsp; Maximum cleat angle leg size for beam - column web connectivity:
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <mi>B</mi>
@@ -7046,6 +7055,7 @@ function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	drupal_set_title(t('d. Detailing checks > i. Spacing limits'));
 	$markup_text = '
 	
@@ -7065,6 +7075,25 @@ function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 						  <mn>2.5</mn>
 						  <mi>d</mi>
 						</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>p</mi>
+					</math>	- pitch distance<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>g</mi>
+					</math> - gauge distance <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>d</mi>
+					</math> - nominal bolt diameter <br>
+					<br>
+					
 			
 	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
 	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
@@ -7106,22 +7135,18 @@ function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>p</mi>
-					</math>	- pitch <br>
+					</math>	- pitch distance <br>
 					
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>g</mi>
-					</math> - gauge <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>d</mi>
-					</math> - nominal bolt diameter <br>
-					
+					</math> - gauge distance <br>
+										
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>t</mi>
 					</math> - thickness of thinner plate <br>
+					<br>
 
 	&emsp; <b> iii. Gauge1 limitations</b> [Reference: Steel Designers Manual - p733 - 6th Edition (2003)] <br>
 	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm).
@@ -7152,9 +7177,16 @@ function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 					<mi>g</mi>
 					<mi>1</mi>
 				</msub>			
-			</math> - gauge1
-
-	
+			</math> - gauge1 <br><br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/cleatside.png" width="40%" height="40%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<b>Figure:</b> Cleat angle connection - Side view<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Beam web - Column flange connectivity
 					
 	<hr>';
 	
@@ -7681,7 +7713,7 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 							<mn>1</mn>
 						  </msub>
 						  <mo>&#x2265;</mo>
-						  <mn>1.7</mn>
+						  <mn>1.5</mn>
 						  <msub>
 							<mi>d</mi>
 							<mi>h</mi>
@@ -7694,7 +7726,7 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 							<mn>2</mn>
 						  </msub>
 						  <mo>&#x2265;</mo>
-						  <mn>1.7</mn>
+						  <mn>1.5</mn>
 						  <msub>
 							<mi>d</mi>
 							<mi>h</mi>
@@ -7736,6 +7768,7 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 				  <mo>&#x2264;</mo>
 				  <mn>12</mn>
 				  <mi>t</mi>
+				  <mi>&#x03F5;<!-- ϵ --></mi>
 				</math>
 			
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -7797,8 +7830,21 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
 				<mi>t</mi>
 			</math> 
-			- thickness of the thinner component <br>
-
+			- thickness of the thinner component 
+			<br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Note: Where the members are exposed to corrosive influences, the maximum edge distance shall not exceed 40 mm plus 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>4</mn>
+					<mi>t</mi>
+			</math> 
+			, where 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mi>t</mi>
+			</math> 
+			is the thickness of thinner connected plate.
 	
 	<hr>';
 	// All the real form fields.
