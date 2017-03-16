@@ -741,7 +741,7 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok?',
 				'#type' => 'radios',
 				'#options' => $step3_options,
-				'#default_value' => $step3_data->question1,
+				//'#default_value' => $step3_data->question1,
 				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
@@ -836,16 +836,16 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 	$query = db_select('ddq_cleat_angle_form_step3_feedback');
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_cleat_angle_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -853,9 +853,9 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -868,8 +868,8 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -884,7 +884,7 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 				} //$commentresult != 0
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
-	} //$form_step2_data
+	} //$form_step3_data
 	else
 	{
 		$query = "INSERT INTO {ddq_cleat_angle_form_step3_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
@@ -938,16 +938,16 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 	$query = db_select('ddq_cleat_angle_form_step3_feedback');
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_cleat_angle_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -955,9 +955,9 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -970,8 +970,8 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -986,7 +986,7 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 				} //$commentresult != 0
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
-	} //$form_step2_data
+	} //$form_step3_data
 	else
 	{
 		$query = "INSERT INTO {ddq_cleat_angle_form_step3_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
