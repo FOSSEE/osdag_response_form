@@ -203,14 +203,14 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments_result($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
-			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step2_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step2_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step2_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -650,14 +650,14 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments_result($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
-			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step3_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step3_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step3_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1078,14 +1078,14 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => $step4_data->question1,
 				'#required' => true
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments_result($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
-			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step4_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step4_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step4_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1494,13 +1494,13 @@ function ddq_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step5_data->id, $step5_data->data_relation);
-			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments_result($step5_data->id, $step5_data->data_relation);
+			$form['step5_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step5_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step5_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -2120,24 +2120,24 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 			$feedback_data->step1_name,
 			$feedback_data->step2_question1,
 			$feedback_data->step2_any_other,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
 			$feedback_data->step3_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
 			$feedback_data->step5_question3,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -2169,7 +2169,7 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 	));
 	return $output;
 }
-function _fetch_exsiting_ddq_cleat_angle_comments($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments($step_id, $data_relation)
 {
 	global $base_url;
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
@@ -2217,7 +2217,7 @@ function ddq_cleat_angle_delete_comment()
 	} //$comment_id && user_access("osdag_feedback_form")
 	drupal_goto("{$base_url}/ddq-cleat-angle/form/{$comment_step}/");
 }
-function _fetch_exsiting_ddq_cleat_angle_comments_result($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments_result($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -2240,7 +2240,7 @@ function _fetch_exsiting_ddq_cleat_angle_comments_result($step_id, $data_relatio
 	//$query_for_comment == NULL
 	return $text;
 }
-function _fetch_exsiting_ddq_cleat_angle_comments_result_csv($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments_result_csv($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -2338,16 +2338,16 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 				$feedback_data->step1_current_position,
 				$feedback_data->step2_question1,
 				$feedback_data->step2_any_other,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question1,
 				$feedback_data->step3_question2,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question1,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
 				
 				
 				$feedback_data->step5_question1,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()
