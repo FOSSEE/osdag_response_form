@@ -649,7 +649,7 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
@@ -752,7 +752,7 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
