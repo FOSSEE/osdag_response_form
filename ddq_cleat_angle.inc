@@ -626,19 +626,23 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step3_data = $query->execute();
+	$step3_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	if ($form_step3_data)
 	{
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok?',
+				'#type' => 'radios',
+				'#options' => $step3_options,
 				'#default_value' => $step3_data->question1,
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
-				'#title' => 'specimen text3-3',
+				'#title' => 'Comments:',
 				'#type' => 'textarea',
 				'#default_value' => $step3_data->question2,
 				'#states' => array(
@@ -734,13 +738,14 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok?',
+				'#type' => 'radios',
+				'#options' => $step3_options,
+				'#default_value' => $step3_data->question1,
+				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
-				'#title' => 'specimen text3-3',
+				'#title' => 'Comments:',
 				'#type' => 'textarea',
 				//'#default_value' => $step3_data->question2,
 				'#states' => array(
