@@ -184,7 +184,8 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok?',
+				'#title' => 'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -291,7 +292,8 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
@@ -635,7 +637,8 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok?',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step3_options,
 				'#default_value' => $step3_data->question1,
@@ -738,7 +741,8 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok?',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step3_options,
 				//'#default_value' => $step3_data->question1,
@@ -1081,7 +1085,9 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
@@ -1174,7 +1180,9 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm.
+
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
