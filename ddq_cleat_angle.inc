@@ -207,7 +207,7 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['existing_comments_title'] = array(
-				'#markup' => '<hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1061,7 +1061,10 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$step4_options = array();
+	$step4_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -1078,7 +1081,7 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
@@ -1171,7 +1174,7 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
@@ -1808,7 +1811,7 @@ function ddq_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js_
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-cleat-angle/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddq-cleat-angle/form/step4/' . $user->uid;
 }
 function ddq_cleat_angle_step5_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
