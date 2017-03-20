@@ -1514,7 +1514,8 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => '<strong>specimen text5</strong>',
+				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				'#default_value' => $step5_data->question1,
@@ -1528,7 +1529,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
 							array(
-								'value' => t('Yes')
+								'value' => t('No')
 							)
 						)
 					)
@@ -1537,7 +1538,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1621,7 +1622,8 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => '<strong>specimen text5</strong>',
+				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				//'#default_value' => $step5_data->question1,
@@ -1635,7 +1637,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
 							array(
-								'value' => t('Yes')
+								'value' => t('No')
 							)
 						)
 					)
@@ -1971,7 +1973,7 @@ function ddq_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 			);
 			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step6_data->id, $step6_data->data_relation);
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
