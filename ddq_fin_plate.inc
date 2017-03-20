@@ -837,16 +837,16 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 	$query = db_select('ddq_fin_plate_form_step3_feedback');
 	$query->fields('ddq_fin_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -856,7 +856,7 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step2_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -869,8 +869,8 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -939,16 +939,16 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 	$query = db_select('ddq_fin_plate_form_step3_feedback');
 	$query->fields('ddq_fin_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -956,9 +956,9 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -971,8 +971,8 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -2147,17 +2147,17 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step7_data->rowCount();
+	$form_step6_data = $form_step7_data->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2180,9 +2180,9 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2195,8 +2195,8 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2274,17 +2274,17 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
 	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	$form_step7_data_count = $form_step6_data->rowCount();
+	$form_step7_data = $form_step6_data->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2307,9 +2307,9 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2322,8 +2322,8 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2402,15 +2402,15 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data_count != 0)
 	{
@@ -2435,9 +2435,9 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2450,8 +2450,8 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2581,14 +2581,16 @@ step6.question1 as "step6_question1",
 step6.sub_option2 as "step6_question2",
 step6.based_on_reasoning_comment as "step6_question3",
 
-step7.id as "step7_id",
+/*
+step7.id as  "step7_id",
 step7.data_relation as "step7_data_relation",
 step7.question1 as "step7_question1",
 step7.any_other_recommendation as "step7_question2",
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
-step6.question1 as "step6_question1"
+step6.question1 as "step6_question1" 
+*/
 
 from ddq_fin_plate_form_step1_feedback step1
 
@@ -2597,8 +2599,12 @@ join ddq_fin_plate_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_fin_plate_form_step4_feedback step4 on step3.uid=step4.uid
 join ddq_fin_plate_form_step5_feedback step5 on step4.uid=step5.uid
 join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
+
+/*
 join ddq_fin_plate_form_step7_feedback step7 on step6.uid=step7.uid
 join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
+*/
+
 	');
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
@@ -2621,11 +2627,6 @@ join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
 			$feedback_data->step6_question1,
 			$feedback_data->step6_question2,
 			$feedback_data->step6_question3,
-			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
-			$feedback_data->step7_question1,
-			$feedback_data->step7_question2,
-			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
-			$feedback_data->step6_question1,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation)
 		);
 		$i++;
