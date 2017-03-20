@@ -2137,24 +2137,24 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 			$feedback_data->step1_name,
 			$feedback_data->step2_question1,
 			$feedback_data->step2_any_other,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
 			$feedback_data->step3_question2,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
 			$feedback_data->step5_question3,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
-			_fetch_existing_ddq_cleat_angle_comments($feedback_data->step5_id, $feedback_data->step5_data_relation)
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
