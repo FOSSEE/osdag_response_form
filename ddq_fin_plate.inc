@@ -2574,12 +2574,10 @@ step1.inserted_on as "step1_date",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
-/* step2.any_other_recommendation as "step2_any_other", */
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
-/* step3.question2 as "step3_question2", */
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
@@ -2588,24 +2586,10 @@ step4.question1 as "step4_question1",
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
-/* step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2", */
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1", 
-/* step6.sub_option2 as "step6_question2", */
-/* step6.based_on_reasoning_comment as "step6_question3", */
-
-/*
-	step7.id as  "step7_id",
-	step7.data_relation as "step7_data_relation",
-	step7.question1 as "step7_question1",
-	step7.any_other_recommendation as "step7_question2",
-
-	step6.id as "step6_id",
-	step6.data_relation as "step6_data_relation",
-	step6.question1 as "step6_question1" 
-*/
 
 from ddq_fin_plate_form_step1_feedback step1
 
@@ -2615,10 +2599,6 @@ join ddq_fin_plate_form_step4_feedback step4 on step3.uid=step4.uid
 join ddq_fin_plate_form_step5_feedback step5 on step4.uid=step5.uid
 join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 
-/*
-	join ddq_fin_plate_form_step7_feedback step7 on step6.uid=step7.uid
-	join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
-*/
 
 	');
 	$i = 1;
@@ -2628,20 +2608,15 @@ join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 			$i,
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
-			$feedback_data->step2_question1,
-				/* $feedback_data->step2_any_other, */
+			$feedback_data->step2_question1,				
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
-			$feedback_data->step3_question1,
-				/* $feedback_data->step3_question2, */
+			$feedback_data->step3_question1,				
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
-				/* $feedback_data->step5_question2, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step6_question1,
-				/* $feedback_data->step6_question2, */
-				/* $feedback_data->step6_question3, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation)
 		);
 		$i++;
@@ -2656,26 +2631,15 @@ join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 		'No.',
 		'Date of Submission',
 		'User',
-		'specimen text2',
-		'Reasoning (including reference from literature):',
+		'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',		
 		'comments',
-		'specimen text3',
-		'specimen text3-3',
+		'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',		
 		'comments',
-		'specimen text',
+		'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 		'comments',
-		'specimen text',
-		'If yes, what IS code clauses and references should be followed?',
+		'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',		
 		'comments',
-		'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
-		'Based on Experience/Reasoning',
-		'What should be the angle section?',
-		'comments',
-		'f. The assumed clearance + tolerance between the beam and supporting column will
-be taken as input from the user. What should be the minimum value for this?',
-		'Any other',
-		'comments',
-		'Any other recomendation',
+		'Any other recommendation/ Comments?',				
 		'comments'
 	);
 	$output .= theme('table', array(
@@ -2799,16 +2763,13 @@ function ddq_fin_plate_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'specimen text2',
-			'Reasoning (including reference from literature):',
+			'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',			
 			'comments',
-			'specimen text3',
-			'specimen text3-3',
+			'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',			
 			'comments',
-			'specimen text',
+			'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 			'comments',
-			'specimen text',
-			'If yes, what IS code clauses and references should be followed?',
+			'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',			
 			'comments',
 			'Any other recomendation',
 			'comments'
@@ -2827,12 +2788,12 @@ step1.inserted_on as "step1_date",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
-step2.any_other_recommendation as "step2_any_other",
+/* step2.any_other_recommendation as "step2_any_other", */
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
-step3.question2 as "step3_question2",
+/* step3.question2 as "step3_question2", */
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
@@ -2841,7 +2802,7 @@ step4.question1 as "step4_question1",
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
-step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
+/* step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2", */
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
@@ -2866,16 +2827,13 @@ join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 				$feedback_data->step1_name,
 				$feedback_data->step1_institute,
 				$feedback_data->step1_current_position,
-				$feedback_data->step2_question1,
-				$feedback_data->step2_any_other,
+				$feedback_data->step2_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
-				$feedback_data->step3_question1,
-				$feedback_data->step3_question2,
+				$feedback_data->step3_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question1,
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-				$feedback_data->step5_question1,
-				$feedback_data->step5_question2,
+				$feedback_data->step5_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
 				$feedback_data->step6_question1,
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation)
