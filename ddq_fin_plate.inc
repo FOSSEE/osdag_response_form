@@ -186,7 +186,7 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				'#title' => 'a. The minimum number of bolts for the fin plate connection are assumed to be 3. 
 				
 				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
@@ -2169,8 +2169,8 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 		":uid" => $user->uid
 	);
 	$form_step6_data = db_query($query, $args);
-	$form_step6_data_count = $form_step7_data->rowCount();
-	$form_step6_data = $form_step7_data->fetchObject();
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data_count != 0)
 	{
@@ -2226,7 +2226,7 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step6_data
 	else
 	{
 		$query = "INSERT INTO {ddq_fin_plate_form_step6_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -2295,9 +2295,9 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step6_data->rowCount();
-	$form_step7_data = $form_step6_data->fetchObject();
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data_count != 0)
 	{
@@ -2353,7 +2353,7 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step6_data
 	else
 	{
 		$query = "INSERT INTO {ddq_fin_plate_form_step6_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -2426,8 +2426,8 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 	$form_step6_data = db_query($query, $args);
 	$form_step6_data_count = $form_step6_data->rowCount();
 	$form_step6_data = $form_step6_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
