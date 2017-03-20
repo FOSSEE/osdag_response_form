@@ -157,6 +157,8 @@ function ddq_fin_plate_step1_form_submit($form, &$form_state, $no_js_use = FALSE
 	} //$form_step1_data
 	$form_state['redirect'] = 'ddq-fin-plate/form/step2/' . $user->uid;
 }
+
+/************************ Step 1 form ends *********************/
 /************************ Step 2 form starts *********************/
 function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -165,7 +167,8 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step2_options = array(
-		'Any other recommendation' => 'Any other recommendation'
+		'Yes' => 'Yes',
+		'No'=> 'No'
 	);
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
@@ -183,7 +186,9 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -203,10 +208,10 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -290,7 +295,9 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
