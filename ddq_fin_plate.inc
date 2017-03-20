@@ -622,6 +622,10 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$form = array();
+	$step3_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form['step3_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -637,11 +641,13 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br> Is this assumption ok? ',
+				'#type' => 'radios',
 				'#default_value' => $step3_data->question1,
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#options' => $step3_options,
+				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -651,16 +657,16 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -740,10 +746,12 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br> Is this assumption ok? ',
+				'#type' => 'radios',
+				'#options' => $step3_options,
+				'#required' => true,
+				
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -753,7 +761,7 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
@@ -1062,7 +1070,10 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$step4_options = array();
+	$step4_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -1079,16 +1090,17 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
 				'#required' => true
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1172,7 +1184,8 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
@@ -1521,7 +1534,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step5_data->id, $step5_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
@@ -1956,7 +1969,7 @@ function ddq_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step6_data->id, $step6_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step6_data->id, $step6_data->data_relation);
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
