@@ -1968,7 +1968,7 @@ function ddq_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
+				'#default_value' => 'Other recommendations/ Comments',
 				'#required' => TRUE
 			);
 			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step6_data->id, $step6_data->data_relation);
@@ -2574,12 +2574,12 @@ step1.inserted_on as "step1_date",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
-step2.any_other_recommendation as "step2_any_other",
+/* step2.any_other_recommendation as "step2_any_other", */
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
-step3.question2 as "step3_question2",
+/* step3.question2 as "step3_question2", */
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
@@ -2588,23 +2588,23 @@ step4.question1 as "step4_question1",
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
-step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
+/* step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2", */
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1", 
-step6.sub_option2 as "step6_question2",
-step6.based_on_reasoning_comment as "step6_question3",
+/* step6.sub_option2 as "step6_question2", */
+/* step6.based_on_reasoning_comment as "step6_question3", */
 
 /*
-step7.id as  "step7_id",
-step7.data_relation as "step7_data_relation",
-step7.question1 as "step7_question1",
-step7.any_other_recommendation as "step7_question2",
+	step7.id as  "step7_id",
+	step7.data_relation as "step7_data_relation",
+	step7.question1 as "step7_question1",
+	step7.any_other_recommendation as "step7_question2",
 
-step6.id as "step6_id",
-step6.data_relation as "step6_data_relation",
-step6.question1 as "step6_question1" 
+	step6.id as "step6_id",
+	step6.data_relation as "step6_data_relation",
+	step6.question1 as "step6_question1" 
 */
 
 from ddq_fin_plate_form_step1_feedback step1
@@ -2616,8 +2616,8 @@ join ddq_fin_plate_form_step5_feedback step5 on step4.uid=step5.uid
 join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 
 /*
-join ddq_fin_plate_form_step7_feedback step7 on step6.uid=step7.uid
-join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
+	join ddq_fin_plate_form_step7_feedback step7 on step6.uid=step7.uid
+	join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
 */
 
 	');
@@ -2629,19 +2629,19 @@ join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
 			$feedback_data->step2_question1,
-			$feedback_data->step2_any_other,
+				/* $feedback_data->step2_any_other, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
-			$feedback_data->step3_question2,
+				/* $feedback_data->step3_question2, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
+				/* $feedback_data->step5_question2, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step6_question1,
-			$feedback_data->step6_question2,
-			$feedback_data->step6_question3,
+				/* $feedback_data->step6_question2, */
+				/* $feedback_data->step6_question3, */
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation)
 		);
 		$i++;
