@@ -2300,18 +2300,13 @@ function ddq_cleat_angle_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'specimen text2',
-			'Reasoning (including reference from literature):',
+			'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok?',	
 			'comments',
-			'specimen text3',
-			'specimen text3-3',
+			'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
+			'comments',			
+			'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 			'comments',
-			'specimen text4',
-			'comments',
-			'specimen text5',
-			'Any other',
-			'comments',
-			'Any other recomendation',
+			'Any other recommendation',
 			'comments'
 		);
 		fputcsv($fp, $item);
