@@ -157,6 +157,8 @@ function ddq_fin_plate_step1_form_submit($form, &$form_state, $no_js_use = FALSE
 	} //$form_step1_data
 	$form_state['redirect'] = 'ddq-fin-plate/form/step2/' . $user->uid;
 }
+
+/************************ Step 1 form ends *********************/
 /************************ Step 2 form starts *********************/
 function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -165,7 +167,8 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step2_options = array(
-		'Any other recommendation' => 'Any other recommendation'
+		'Yes' => 'Yes',
+		'No'=> 'No'
 	);
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
@@ -183,7 +186,9 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'a. The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -203,10 +208,10 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
 			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -290,7 +295,9 @@ function ddq_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
@@ -615,6 +622,10 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$form = array();
+	$step3_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form['step3_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -630,11 +641,13 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br> Is this assumption ok? ',
+				'#type' => 'radios',
 				'#default_value' => $step3_data->question1,
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#options' => $step3_options,
+				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -644,16 +657,16 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -733,10 +746,12 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br> Is this assumption ok? ',
+				'#type' => 'radios',
+				'#options' => $step3_options,
+				'#required' => true,
+				
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -746,7 +761,7 @@ function ddq_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
@@ -830,16 +845,16 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 	$query = db_select('ddq_fin_plate_form_step3_feedback');
 	$query->fields('ddq_fin_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -849,7 +864,7 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step2_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -862,8 +877,8 @@ function ddq_fin_plate_step3_form_previous_submit($form, &$form_state, $no_js_us
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -932,16 +947,16 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 	$query = db_select('ddq_fin_plate_form_step3_feedback');
 	$query->fields('ddq_fin_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -949,9 +964,9 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -964,8 +979,8 @@ function ddq_fin_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -1055,7 +1070,10 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$step4_options = array();
+	$step4_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -1072,16 +1090,17 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
 				'#required' => true
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1165,7 +1184,8 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
@@ -1494,7 +1514,8 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => '<strong>specimen text5</strong>',
+				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				'#default_value' => $step5_data->question1,
@@ -1508,16 +1529,16 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
 							array(
-								'value' => t('Yes')
+								'value' => t('No')
 							)
 						)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step5_data->id, $step5_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1601,7 +1622,8 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => '<strong>specimen text5</strong>',
+				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				//'#default_value' => $step5_data->question1,
@@ -1615,7 +1637,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					'visible' => array(
 						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
 							array(
-								'value' => t('Yes')
+								'value' => t('No')
 							)
 						)
 					)
@@ -1946,12 +1968,12 @@ function ddq_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
 				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
+				'#default_value' => 'Other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments_result($step6_data->id, $step6_data->data_relation);
+			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step6_data->id, $step6_data->data_relation);
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -2140,17 +2162,17 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2173,9 +2195,9 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2188,8 +2210,8 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2204,7 +2226,7 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step6_data
 	else
 	{
 		$query = "INSERT INTO {ddq_fin_plate_form_step6_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -2267,17 +2289,17 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2300,9 +2322,9 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2315,8 +2337,8 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2331,7 +2353,7 @@ function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = 
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step6_data
 	else
 	{
 		$query = "INSERT INTO {ddq_fin_plate_form_step6_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -2395,17 +2417,17 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 	/*$query = db_select('ddq_fin_plate_form_step6_feedback');
 	$query->fields('ddq_fin_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
+	$form_step6_data = $query->execute()->fetchObject();
 	*/
 	$query = "SELECT * FROM ddq_fin_plate_form_step6_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step7_data_count != 0)
+	$form_step6_data = db_query($query, $args);
+	$form_step6_data_count = $form_step6_data->rowCount();
+	$form_step6_data = $form_step6_data->fetchObject();
+	//var_dump($form_step6_data);die;
+	if ($form_step6_data_count != 0)
 	{
 		$query = "UPDATE ddq_fin_plate_form_step6_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -2428,9 +2450,9 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_fin_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step6_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++)
 		{
@@ -2443,8 +2465,8 @@ function ddq_fin_plate_step6_form_next_submit($form, &$form_state, $no_js_use = 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step6_data->id,
+					":number" => $i + $form_step6_comment_data->max + 1,
 					":comment" => $v['step6_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step6",
 					":inserted_on" => date('Y-m-d')
@@ -2552,12 +2574,10 @@ step1.inserted_on as "step1_date",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
-step2.any_other_recommendation as "step2_any_other",
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
-step3.question2 as "step3_question2",
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
@@ -2566,22 +2586,10 @@ step4.question1 as "step4_question1",
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
-step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1", 
-step6.sub_option2 as "step6_question2",
-step6.based_on_reasoning_comment as "step6_question3",
-
-step7.id as "step7_id",
-step7.data_relation as "step7_data_relation",
-step7.question1 as "step7_question1",
-step7.any_other_recommendation as "step7_question2",
-
-step6.id as "step6_id",
-step6.data_relation as "step6_data_relation",
-step6.question1 as "step6_question1"
 
 from ddq_fin_plate_form_step1_feedback step1
 
@@ -2590,8 +2598,8 @@ join ddq_fin_plate_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_fin_plate_form_step4_feedback step4 on step3.uid=step4.uid
 join ddq_fin_plate_form_step5_feedback step5 on step4.uid=step5.uid
 join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
-join ddq_fin_plate_form_step7_feedback step7 on step6.uid=step7.uid
-join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
+
+
 	');
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
@@ -2600,24 +2608,14 @@ join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
 			$i,
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
-			$feedback_data->step2_question1,
-			$feedback_data->step2_any_other,
+			$feedback_data->step2_question1,				
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
-			$feedback_data->step3_question1,
-			$feedback_data->step3_question2,
+			$feedback_data->step3_question1,				
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
-			$feedback_data->step6_question1,
-			$feedback_data->step6_question2,
-			$feedback_data->step6_question3,
-			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
-			$feedback_data->step7_question1,
-			$feedback_data->step7_question2,
-			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
 			$feedback_data->step6_question1,
 			_fetch_exsiting_ddq_fin_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation)
 		);
@@ -2633,26 +2631,15 @@ join ddq_fin_plate_form_step6_feedback step6 on step7.uid=step6.uid
 		'No.',
 		'Date of Submission',
 		'User',
-		'specimen text2',
-		'Reasoning (including reference from literature):',
+		'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',		
 		'comments',
-		'specimen text3',
-		'specimen text3-3',
+		'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',		
 		'comments',
-		'specimen text',
+		'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 		'comments',
-		'specimen text',
-		'If yes, what IS code clauses and references should be followed?',
+		'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',		
 		'comments',
-		'e. Need guidelines for specifying Nominal Size of Top Cleat (/Clip) Angle',
-		'Based on Experience/Reasoning',
-		'What should be the angle section?',
-		'comments',
-		'f. The assumed clearance + tolerance between the beam and supporting column will
-be taken as input from the user. What should be the minimum value for this?',
-		'Any other',
-		'comments',
-		'Any other recomendation',
+		'Any other recommendation/ Comments?',				
 		'comments'
 	);
 	$output .= theme('table', array(
@@ -2776,16 +2763,13 @@ function ddq_fin_plate_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'specimen text2',
-			'Reasoning (including reference from literature):',
+			'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',			
 			'comments',
-			'specimen text3',
-			'specimen text3-3',
+			'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',			
 			'comments',
-			'specimen text',
+			'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 			'comments',
-			'specimen text',
-			'If yes, what IS code clauses and references should be followed?',
+			'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',			
 			'comments',
 			'Any other recomendation',
 			'comments'
@@ -2804,12 +2788,12 @@ step1.inserted_on as "step1_date",
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
-step2.any_other_recommendation as "step2_any_other",
+/* step2.any_other_recommendation as "step2_any_other", */
 
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
-step3.question2 as "step3_question2",
+/* step3.question2 as "step3_question2", */
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
@@ -2818,7 +2802,7 @@ step4.question1 as "step4_question1",
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1", 
-step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2",
+/* step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2", */
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
@@ -2843,16 +2827,13 @@ join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 				$feedback_data->step1_name,
 				$feedback_data->step1_institute,
 				$feedback_data->step1_current_position,
-				$feedback_data->step2_question1,
-				$feedback_data->step2_any_other,
+				$feedback_data->step2_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
-				$feedback_data->step3_question1,
-				$feedback_data->step3_question2,
+				$feedback_data->step3_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question1,
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-				$feedback_data->step5_question1,
-				$feedback_data->step5_question2,
+				$feedback_data->step5_question1,				
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
 				$feedback_data->step6_question1,
 				_fetch_exsiting_ddq_fin_plate_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation)

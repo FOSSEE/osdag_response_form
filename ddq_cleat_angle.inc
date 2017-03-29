@@ -142,7 +142,7 @@ function ddq_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FAL
 		} //$step1_data = $form_step1_data->fetchObject()
 		else
 		{
-			$query = "INSERT INTO {ddq_cleat_angle_form_step1_feedback} (uid, name, email_id, institute, current_position, data_reletion, inserted_on) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_reletion,:inserted_on)";
+			$query = "INSERT INTO {ddq_cleat_angle_form_step1_feedback} (uid, name, email_id, institute, current_position, data_relation, inserted_on) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_relation,:inserted_on)";
 			$args = array(
 				":uid" => $user->uid,
 				":name" => $v['step1_field1_name'],
@@ -165,7 +165,8 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$step2_options = array(
-		'Any other recommendation' => 'Any other recommendation'
+		'Yes' => 'Yes',
+		'No' => 'No'
 	);
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
@@ -183,7 +184,8 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -203,14 +205,14 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
-			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><br>'
+			$form['step2_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step2_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step2_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -290,7 +292,8 @@ function ddq_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'specimen text2',
+				'#title' => 'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. 
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
@@ -625,39 +628,44 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step3_data = $query->execute();
+	$step3_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	if ($form_step3_data)
 	{
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br>Is this assumption ok?',
+				'#type' => 'radios',
+				'#options' => $step3_options,
 				'#default_value' => $step3_data->question1,
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
-				'#title' => 'specimen text3-3',
+				'#title' => 'Comments:',
 				'#type' => 'textarea',
 				'#default_value' => $step3_data->question2,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
-			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step3_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step3_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step3_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -733,20 +741,22 @@ function ddq_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '<strong>specimen text3</strong>',
-				'#type' => 'textfield',
-				'#required' => FALSE,
-				'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
+				<br><br>Is this assumption ok?',
+				'#type' => 'radios',
+				'#options' => $step3_options,
+				//'#default_value' => $step3_data->question1,
+				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
-				'#title' => 'specimen text3-3',
+				'#title' => 'Comments:',
 				'#type' => 'textarea',
 				//'#default_value' => $step3_data->question2,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question1\\]"]' => array(
 							array(
-								'filled' => true
+								'filled' => false
 							)
 						)
 					)
@@ -830,16 +840,16 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 	$query = db_select('ddq_cleat_angle_form_step3_feedback');
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_cleat_angle_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -847,9 +857,9 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -862,8 +872,8 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -878,7 +888,7 @@ function ddq_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_
 				} //$commentresult != 0
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
-	} //$form_step2_data
+	} //$form_step3_data
 	else
 	{
 		$query = "INSERT INTO {ddq_cleat_angle_form_step3_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
@@ -932,16 +942,16 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 	$query = db_select('ddq_cleat_angle_form_step3_feedback');
 	$query->fields('ddq_cleat_angle_form_step3_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step2_data = $query->execute()->fetchObject();
-	//var_dump($form_step2_data);die;
-	if ($form_step2_data)
+	$form_step3_data = $query->execute()->fetchObject();
+	//var_dump($form_step3_data);die;
+	if ($form_step3_data)
 	{
 		$query = "UPDATE ddq_cleat_angle_form_step3_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
 			":question2" => $v['step3_field1_fieldset']['step3_field1_question2'],
-			":data_relation" => "step2"
+			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
@@ -949,9 +959,9 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step2_data->id
+			':step1_form_id' => $form_step3_data->id
 		));
-		$form_step2_comment_data = $query->fetchObject();
+		$form_step3_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++)
 		{
@@ -964,8 +974,8 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step2_data->id,
-					":number" => $i + $form_step2_comment_data->max + 1,
+					":step1_form_id" => $form_step3_data->id,
+					":number" => $i + $form_step3_comment_data->max + 1,
 					":comment" => $v['step3_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step3",
 					":inserted_on" => date('Y-m-d')
@@ -980,7 +990,7 @@ function ddq_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use 
 				} //$commentresult != 0
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
-	} //$form_step2_data
+	} //$form_step3_data
 	else
 	{
 		$query = "INSERT INTO {ddq_cleat_angle_form_step3_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
@@ -1055,7 +1065,10 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$step4_options = array();
+	$step4_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -1072,20 +1085,22 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
 				'#required' => true
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
-			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step4_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step4_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step4_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1165,7 +1180,9 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '<strong>specimen text4',
+				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm.
+
+				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
@@ -1467,7 +1484,6 @@ function step4_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 4 from ends ****************************/
-
 /***************************************** step 5form starts **************************/
 function ddq_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -1495,13 +1511,13 @@ function ddq_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddq_cleat_angle_comments_result($step5_data->id, $step5_data->data_relation);
-			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
+			$earlier_comments = _fetch_existing_ddq_cleat_angle_comments($step5_data->id, $step5_data->data_relation);
+			$form['step5_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step5_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step5_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1803,7 +1819,7 @@ function ddq_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js_
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-cleat-angle/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddq-cleat-angle/form/step4/' . $user->uid;
 }
 function ddq_cleat_angle_step5_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -2088,34 +2104,25 @@ function ddq_cleat_angle_result_page()
 	$output .= l("Download All Result in CSV", "ddq-cleat-angle/form/result/download");
 	$feedback_rows = array();
 	$feedback_q = db_query('
-
 select
-
 step1.uid as "step1_uid",
 step1.name as "step1_name",
 step1.inserted_on as "step1_date",
-
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
 step2.any_other_recommendation as "step2_any_other",
-
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
 step3.question2 as "step3_question2",
-
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
 step4.question1 as "step4_question1",
-
-
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1"
-
 from ddq_cleat_angle_form_step1_feedback step1
-
 join ddq_cleat_angle_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_cleat_angle_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_cleat_angle_form_step4_feedback step4 on step3.uid=step4.uid
@@ -2130,24 +2137,24 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 			$feedback_data->step1_name,
 			$feedback_data->step2_question1,
 			$feedback_data->step2_any_other,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
 			$feedback_data->step3_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
 			$feedback_data->step5_question3,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			$feedback_data->step5_question2,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
-			_fetch_exsiting_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
+			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -2179,7 +2186,7 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 	));
 	return $output;
 }
-function _fetch_exsiting_ddq_cleat_angle_comments($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments($step_id, $data_relation)
 {
 	global $base_url;
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
@@ -2227,7 +2234,7 @@ function ddq_cleat_angle_delete_comment()
 	} //$comment_id && user_access("osdag_feedback_form")
 	drupal_goto("{$base_url}/ddq-cleat-angle/form/{$comment_step}/");
 }
-function _fetch_exsiting_ddq_cleat_angle_comments_result($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments_result($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -2250,7 +2257,7 @@ function _fetch_exsiting_ddq_cleat_angle_comments_result($step_id, $data_relatio
 	//$query_for_comment == NULL
 	return $text;
 }
-function _fetch_exsiting_ddq_cleat_angle_comments_result_csv($step_id, $data_relation)
+function _fetch_existing_ddq_cleat_angle_comments_result_csv($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddq_cleat_angle_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -2293,51 +2300,38 @@ function ddq_cleat_angle_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'specimen text2',
-			'Reasoning (including reference from literature):',
+			'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok?',	
 			'comments',
-			'specimen text3',
-			'specimen text3-3',
+			'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
+			'comments',			
+			'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 			'comments',
-			'specimen text4',
-			'comments',
-			'specimen text5',
-			'Any other',
-			'comments',
-			'Any other recomendation',
+			'Any other recommendation',
 			'comments'
 		);
 		fputcsv($fp, $item);
 		$query = '
-
 select
-
 step1.uid as "step1_uid",
 step1.name as "step1_name",
 step1.institute as "step1_institute",
 step1.current_position as "step1_current_position",
 step1.inserted_on as "step1_date",
-
 step2.id as "step2_id",
 step2.data_relation as "step2_data_relation",
 step2.question1 as "step2_question1", 
 step2.any_other_recommendation as "step2_any_other",
-
 step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
 step3.question2 as "step3_question2",
-
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
 step4.question1 as "step4_question1",
-
 step5.id as "step5_id",
 step5.data_relation as "step5_data_relation",
 step5.question1 as "step5_question1"
-
 from ddq_cleat_angle_form_step1_feedback step1
-
 join ddq_cleat_angle_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_cleat_angle_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_cleat_angle_form_step4_feedback step4 on step3.uid=step4.uid
@@ -2356,16 +2350,16 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 				$feedback_data->step1_current_position,
 				$feedback_data->step2_question1,
 				$feedback_data->step2_any_other,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question1,
 				$feedback_data->step3_question2,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question1,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
 				
 				
 				$feedback_data->step5_question1,
-				_fetch_exsiting_ddq_cleat_angle_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
+				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()

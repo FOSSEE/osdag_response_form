@@ -155,10 +155,39 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	$markup_text = 'specimen text</p>
-	<hr>';
+	drupal_set_title(t('a. Material Strength'));
+	$markup_text = '
+	<b>a. Material Strength </b><br>
+		&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>165</mn>
+					<mo>&le;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>y</mi>					  
+					</msub>
+					<mo>&le;</mo>
+					<mn>290</mn>
+					</math>
+					</center>		
+		<br>
+		&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-2, IS 800] <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>390</mn>
+					<mo>&le;</mo>
+					<msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					</msub>
+					<mo>&le;</mo>
+					<mn>690</mn>
+					</math>
+					</center>					
+			<hr>';
 	$form = array();
-	drupal_set_title(t('specimen title'));
+	
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -620,10 +649,14 @@ function ddcl_fin_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text2';
-	$markup_text1 = 'specimen text2';
-	$tooltip1 = '[Cl 8.7.4] Bearing Stiffeners';
+	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 1) Black bolt </b> <br>
+	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the seated angle connection.';
+	$markup_text1 = '';
+	$tooltip1 = '';
 	// All the real form fields.
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
@@ -1090,8 +1123,240 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > i.Shear capacity of bolt > 2) HSFG bolt'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> i. Shear capacity of bolt </b> <br>
+	&emsp;&emsp; <b> 2) HSFG bolt [Cl 10.4.3]</b> <br>
+	&emsp;&emsp;&emsp; Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>V</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			</math>
+			in the interface of connections at which slip cannot be tolerated, shall satisfy the following: <br>
+							<center>
+							<math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							  <mo>&#x2264;</mo>
+							  <msub>
+								<mi>V</mi>
+								<mrow class="MJX-TeXAtom-ORD">
+								  <mi>d</mi>
+								  <mi>s</mi>
+								  <mi>f</mi>
+								</mrow>
+							  </msub>
+							</math>
+							</center>
+					
+					&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mrow class="MJX-TeXAtom-ORD">
+							<mo>/</mo>
+						  </mrow>
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>							
+						
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>s</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						  <mo>=</mo>
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						  <msub>
+							<mi>F</mi>
+							<mn>0</mn>
+						  </msub>
+						</math>
+							
+						<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03BC;<!-- μ --></mi>
+							<mi>f</mi>
+						  </msub>
+						</math>  = coefficient of friction (slip factor) as specified in Table 20 - IS 800 (default value=0.55), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>n</mi>
+							<mi>e</mi>
+						  </msub>
+						</math>
+						= number of effective interfaces offering frictional resitance to slip, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>K</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+						= 1.0 for fasteners in clearance holes, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long slotted <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						holes loaded perpendicular to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>&#x03B3;<!-- γ --></mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>m</mi>
+							  <mi>f</mi>
+							</mrow>
+						  </msub>
+						</math>
+						=  1.10 (if slip resistance is designed at service load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						=  1.25 (if slip resistance is designed at ultimate load), <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>F</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= minimum bolt tension (proof load) at installation and may be taken as 
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>A</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>n</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= net area of the bolt at threads, and <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mi>0</mi>
+						  </msub>
+						</math>
+						= proof stress (= 0.70
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						) <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math>
+						= ultimate strength of bolt material <br>
+						
+					<br>
+					<p>Note: The connection is designed such that slip does not occur at ultimate loads. <br>
+					
+					
+					<br>
+					<b>10.4.3.1 Long joints </b><br>
+					&emsp;&emsp;&emsp;The provision for the long joints in 10.3.3.1 shall apply to friction grip connections also.
+
+</p>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
@@ -1557,8 +1822,14 @@ function ddcl_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > ii. Bearing capacity of bolt'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> ii. Bearing capacity of bolt </b> <br>	
+	&emsp;&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+		
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step5_field1_fieldset'] = array(
@@ -2026,8 +2297,86 @@ function ddcl_fin_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > iii. Bolt value'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> iii. Bolt value </b> <br>
+	&emsp;&emsp;&emsp; The bolt capacity is taken as the minimum of bolt shear capacity  and bolt bearing capacity. <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo stretchy="false">(</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>s</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo>,</mo>
+					  <msub>
+						<mi>V</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>p</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					  <mo stretchy="false">)</mo>
+					</math>
+					</center> 
+					<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design strength of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>s</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design shear capacity of bolt <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>V</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>d</mi>
+							  <mi>p</mi>
+							  <mi>b</mi>
+							</mrow>
+						  </msub>
+						</math> - design bearing capacity of bolt <br>
+		
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step6_field1_fieldset'] = array(
@@ -2495,8 +2844,14 @@ function ddcl_fin_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('b. Bolt > iv. Number of bolts'));
+	$markup_text = '
+	<b> b. Bolt </b> <br>
+	&emsp; <b> iv. Number of bolts (n)</b> <br>
+	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
+		
+
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step7_field1_fieldset'] = array(
@@ -2967,8 +3322,246 @@ function ddcl_fin_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen title<hr>';
+	drupal_set_title(t('c. Plate'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> i. Plate height (<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>h</mi>
+				<mi>p</mi>
+			  </msub>
+			</math>)
+			</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate height </b> [Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				<center>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <mi>h</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mi>p</mi>
+					<mo>,</mo>
+					<mi>m</mi>
+					<mi>i</mi>
+					<mi>n</mi>
+				  </mrow>
+				  <mo>=</mo>
+				  <mn>0.6</mn>
+				  <mi>d</mi>
+				</math>
+				</center> <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, 
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam  		
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/finfront_hp.svg" width="60%" height="60%" align="middle"/><br>
+				<hr>
+				<br>
+			
+			
+		&emsp;&emsp;&emsp; <b> Maximum plate height </b> [Based on reasoning]  <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to column connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math>
+					</center>
+				
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where,
+					<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math> - root radius of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) (see image below)
+					<br>
+					<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/finbcside.svg" width="35%" height="35%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> Fin Plate Connection - Side View
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)
+				<br>
+				<hr>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to beam connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x3F5;</mo>
+					  </mrow>
+					</math>
+					</center>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - root radius of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/finbbside.svg" width="60%" height="60%" align="middle" /><br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<b> Figure: </b> Fin Plate Connection - Side View			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			(Beam web to Beam web connectivity)<br>
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step8_field1_fieldset'] = array(
@@ -3436,8 +4029,155 @@ function ddcl_fin_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > ii. Plate thickness'));
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> ii. Plate thickness (<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>p</mi>
+					  </msub>
+					</math>)
+					</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate thickness </b> [Reference: N. Subramanian’s  Design of Steel Structures - Chapter 5, Sec. 5.7.7 - Page 373] <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <mn>5</mn>
+					  <mi>F</mi>
+					</mrow>
+					<mrow>
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					  <msub>
+						<mi>h</mi>
+						<mi>p</mi>
+					  </msub>
+					</mrow>
+				  </mfrac>
+				</math>
+				<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mi>F</mi>
+				</math> - shear force <br>
+					
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				</math> - yield strength of plate <br>
+					
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  - plate height 
+				<br>
+				<br>
+				
+			&emsp;&emsp;&emsp;
+			<b> Minimum plate thickness </b> <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>&gt;</mo>
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>w</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>p</mi>
+					  </msub>
+					</math>  - plate thickness  <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>b</mi>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>  - beam web thickness  
+					<br>
+					<br>
+					
+				&emsp;&emsp;&emsp;
+				Note:  <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					1) It is assumed that greater plate thickness ensures that the plate is stronger than the beam web against shear.  <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					2) It is assumed that the beam is designed to be safe against shear. 
+				<br>
+				<br>
+
+			&emsp;&emsp;&emsp;
+			<b> Maximum plate thickness </b>[Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>a</mi>
+					  <mi>x</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>0.5</mn>
+				  <mi>d</mi>
+				</math>
+				<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - nominal bolt diameter <br>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step9_field1_fieldset'] = array(
@@ -3905,8 +4645,304 @@ function ddcl_fin_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > iii. Moment capacity'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$markup_text = '
+	<b> c. Plate </b> <br>
+	&emsp; <b> iii. Plate moment capacity </b> [Cl. 8.2.1.2] <br>
+		&emsp;&emsp;&emsp;
+				Maximum of moment due to the shear force and moment developed by bolt group 
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				</math> should be less than the moment capacity of the plate
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>M</mi>
+					<mi>c</mi>
+				  </msub>
+				</math>  <br>
+				
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				  <mo>&lt;</mo>
+				  <msub>
+					<mi>M</mi>
+					<mi>c</mi>
+				  </msub>
+				</math>
+						
+				<math xmlns="http://www.w3.org/1998/Math/MathML"  display="block">
+				  <msub>
+					<mi>M</mi>
+					<mi>d</mi>
+				  </msub>
+				  <mo>=</mo>
+				  <mi>m</mi>
+				  <mi>a</mi>
+				  <mi>x</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mo>&#x2061;</mo>
+				  </mrow>
+				  <mo stretchy="false">(</mo>
+				  <msub>
+					<mi>M</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mo>,</mo>
+					  <mi>s</mi>
+					  <mi>f</mi>
+					</mrow>
+				  </msub>
+				  <mo>,</mo>
+				  <msub>
+					<mi>M</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mo>,</mo>
+					  <mi>b</mi>
+					  <mi>g</mi>
+					</mrow>
+				  </msub>
+				  <mo stretchy="false">)</mo>
+				</math>
+				
+		&emsp;&emsp;&emsp;
+		<b> Moment due to shear force </b> <math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>M</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>d</mi>
+				  <mo>,</mo>
+				  <mi>s</mi>
+				  <mi>f</mi>
+				</mrow>
+			  </msub>
+			</math>:
+			<br>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>M</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mo>,</mo>
+						  <mi>s</mi>
+						  <mi>f</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>F</mi>
+					  <msub>
+						<mi>d</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>b</mi>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>F</mi>
+						  </msub>
+						</math> - shear force <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <msub>
+							<mi>d</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>b</mi>
+							  <mi>w</mi>
+							</mrow>
+						  </msub>
+						</math> - distance between center of gravity of bolt group and welded plate edge
+						<br>
+					
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<img src="' . $img_path . '/finfront_dbw.svg" width="65%" height="65%" align="middle" /><br>
+					<hr>
+						
+		&emsp;&emsp;&emsp;
+		<b> Moment developed by bolt group </b>
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <msub>
+			<mi>M</mi>
+			<mrow class="MJX-TeXAtom-ORD">
+			  <mi>d</mi>
+			  <mo>,</mo>
+			  <mi>b</mi>
+			  <mi>g</mi>
+			</mrow>
+		  </msub>
+		</math>:
+		<br>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>M</mi>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mi>d</mi>
+				  <mo>,</mo>
+				  <mi>b</mi>
+				  <mi>g</mi>
+				</mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mfrac>
+				<mrow>
+				  <mi>n</mi>
+				  <msub>
+					<mi>V</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>s</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				  <mo>&#x2211;</mo>
+				  <msup>
+					<mi>r</mi>
+					<mn>2</mn>
+				  </msup>
+				</mrow>
+				<mrow>
+				  <mo>&#x2211;</mo>
+				  <mi>r</mi>
+				</mrow>
+			  </mfrac>
+			</math>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>n</mi>
+				  </msub>
+				</math> - number of bolts <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>r</mi>
+				  </msub>
+				</math> - distance between center of gravity of bolt group from each bolt  <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>V</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>s</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				</math>  -  design shear strength of bolt 
+				<br>
+				<br>
+				<br>
+				<br>
+						
+		<hr>
+		&emsp;&emsp;&emsp;
+		<b> Moment capacity of plate </b>
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>M</mi>
+				<mi>c</mi>
+			  </msub>
+			</math>
+			[Cl. 8.2.1.2]:
+			<br>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+				<mi>M</mi>
+				<mi>c</mi>
+			  </msub>
+			  <mo>=</mo>
+			  <mfrac>
+				<mrow>
+				  <mn>1.2</mn>
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				  <msub>
+					<mi>t</mi>
+					<mi>p</mi>
+				  </msub>
+				  <msubsup>
+					<mi>h</mi>
+					<mi>p</mi>
+					<mn>2</mn>
+				  </msubsup>
+				</mrow>
+				<mrow>
+				  <mn>6</mn>
+				  <msub>
+					<mi>&#x03B3;<!-- γ --></mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>m</mi>
+					  <mn>0</mn>
+					</mrow>
+				  </msub>
+				</mrow>
+			  </mfrac>
+			</math>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>f</mi>
+					<mi>y</mi>
+				  </msub>
+				</math>  -  yield strength of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  -  thickness of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>  -  height of the plate <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>&#x03B3;<!-- γ --></mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>m</mi>
+					  <mn>0</mn>
+					</mrow>
+				  </msub>
+				</math> − 1.1 Partial safety factor against yield stress  
+				<br>
+				<br>
+		
+			
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step10_field1_fieldset'] = array(
@@ -4374,8 +5410,280 @@ function ddcl_fin_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('c. Plate > iv. Block shear capacity check'));
+	$markup_text = '
+	
+	<b> c. Plate </b> <br>
+	&emsp; <b> iv. Block shear capacity check </b> [Cl. 6.4.1] <br>
+	&emsp;&emsp;&emsp;
+			Block shear capacity of the plate should be greater than the factored applied shear force. <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				  <mo>&gt;</mo>
+				  <mi>F</mi>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>T</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>b</mi>
+						</mrow>
+					  </msub>
+					</math>  - Block shear capacity <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>F</mi>
+					  </msub>
+					</math> - Shear force 
+					<br>
+					<br>
+			
+			Check adequacy of block shear capacity of plate on beam. The block shear capacity is calculated as:
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mi>m</mi>
+				  <mi>i</mi>
+				  <mi>n</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mo>&#x2061;</mo>
+				  </mrow>
+				  <mo stretchy="false">(</mo>
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					  <mn>1</mn>
+					</mrow>
+				  </msub>
+				  <mo>,</mo>
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					  <mn>2</mn>
+					</mrow>
+				  </msub>
+				  <mo stretchy="false">)</mo>
+				</math>
+	
+			
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					  <mn>1</mn>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>v</mi>
+						  <mi>g</mi>
+						</mrow>
+					  </msub>
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					</mrow>
+					<mrow>
+					  <msqrt>
+						<mn>3</mn>
+					  </msqrt>
+					  <msub>
+						<mi>&#x03B3;<!-- γ --></mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>m</mi>
+						  <mn>0</mn>
+						</mrow>
+					  </msub>
+					</mrow>
+				  </mfrac>
+				  <mo>+</mo>
+				  <mfrac>
+					<mrow>
+					  <mn>0.9</mn>
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>t</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					  <msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					  </msub>
+					</mrow>
+					<msub>
+					  <mi>&#x03B3;<!-- γ --></mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>m</mi>
+						<mn>1</mn>
+					  </mrow>
+					</msub>
+				  </mfrac>
+				</math>
+
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>T</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>d</mi>
+					  <mi>b</mi>
+					  <mn>2</mn>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mfrac>
+					<mrow>
+					  <mn>0.9</mn>
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>v</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					  <msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					  </msub>
+					</mrow>
+					<mrow>
+					  <msqrt>
+						<mn>3</mn>
+					  </msqrt>
+					  <msub>
+						<mi>&#x03B3;<!-- γ --></mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>m</mi>
+						  <mn>1</mn>
+						</mrow>
+					  </msub>
+					</mrow>
+				  </mfrac>
+				  <mo>+</mo>
+				  <mfrac>
+					<mrow>
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>t</mi>
+						  <mi>g</mi>
+						</mrow>
+					  </msub>
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					</mrow>
+					<msub>
+					  <mi>&#x03B3;<!-- γ --></mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>m</mi>
+						<mn>0</mn>
+					  </mrow>
+					</msub>
+				  </mfrac>
+				</math>
+		
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>t</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					</math>  - Minimum net area in tension from the bolt hole to the edge of the plate, end bolt line,
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					perpendicular to the line of force. <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>t</mi>
+						  <mi>g</mi>
+						</mrow>
+					  </msub>
+					</math> - Minimum gross area in tension from the bolt hole to the edge of the plate, end bolt line, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					perpendicular to the line of force. <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>v</mi>
+						  <mi>g</mi>
+						</mrow>
+					  </msub>
+					</math>  - Minimum gross area in shear along bolt line parallel to external force <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>A</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>v</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					</math>  - Minimum net area in shear along bolt line parallel to external force <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					  </msub>
+					</math>  - ultimate stress of material <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>y</mi>
+					  </msub>
+					</math> - yield stress of the material <br>
+			
+
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step11_field1_fieldset'] = array(
@@ -4843,8 +6151,64 @@ function ddcl_fin_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
-	$markup_text = 'specimen text<hr>';
+	drupal_set_title(t('d. Weld > i. Effective length of weld'));
+	$markup_text = '
+	<b> d. Weld </b> <br>
+	&emsp; <b> i. Effective length of weld</b>  [Cl. 10.5.4.1] <br>
+	&emsp;&emsp;&emsp; The effective length of weld is calculated as:
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>L</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>e</mi>
+					  <mi>f</mi>
+					  <mi>f</mi>
+					  <mo>,</mo>
+					  <mi>w</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				  <mo>&#x2212;</mo>
+				  <mn>2</mn>
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>w</mi>
+					  <mi>e</mi>
+					  <mi>l</mi>
+					  <mi>d</mi>
+					</mrow>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>h</mi>
+						<mi>p</mi>
+					  </msub>
+					</math> - height of the plate <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>e</mi>
+						  <mi>l</mi>
+						  <mi>d</mi>
+						</mrow>
+						</msub>
+					</math>- thickness of weld
+
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step12_field1_fieldset'] = array(
@@ -5312,9 +6676,212 @@ function ddcl_fin_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('d. Weld > ii. Shear strength'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = '
+	<b> d. Weld </b> <br>
+	&emsp; <b> ii. Shear strength</b> [Cl. 10.5.7]<br>
+	&emsp;&emsp;&emsp; Shear strength of the weld is calculated as Cl. 10.5.7
+
+	
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>R</mi>
+						<mi>w</mi>
+					  </msub>
+					  <mo>&gt;</mo>
+					  <msub>
+						<mi>f</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>d</mi>
+						</mrow>
+					  </msub>
+					</math>
+			
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>R</mi>
+						<mi>w</mi>
+					  </msub>
+					  <mo>=</mo>
+					  <msqrt>
+						<msubsup>
+						  <mi>H</mi>
+						  <mi>w</mi>
+						  <mn>2</mn>
+						</msubsup>
+						<mo>+</mo>
+						<msubsup>
+						  <mi>V</mi>
+						  <mi>w</mi>
+						  <mn>2</mn>
+						</msubsup>
+					  </msqrt>
+					</math>  (in kN/mm) <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>H</mi>
+						<mi>w</mi>
+					  </msub>
+					  <mo>=</mo>
+					  <mfrac>
+						<mrow>
+						  <mn>6</mn>
+						  <msub>
+							<mi>M</mi>
+							<mi>d</mi>
+						  </msub>
+						</mrow>
+						<mrow>
+						  <mn>2</mn>
+						  <msubsup>
+							<mi>L</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>e</mi>
+							  <mi>f</mi>
+							  <mi>f</mi>
+							  <mo>,</mo>
+							  <mi>w</mi>
+							</mrow>
+							<mn>2</mn>
+						  </msubsup>
+						</mrow>
+					  </mfrac>
+					</math>
+					
+					
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>V</mi>
+						<mi>w</mi>
+					  </msub>
+					  <mo>=</mo>
+					  <mfrac>
+						<mi>F</mi>
+						<mrow>
+						  <mn>2</mn>
+						  <msub>
+							<mi>L</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>e</mi>
+							  <mi>f</mi>
+							  <mi>f</mi>
+							  <mo>,</mo>
+							  <mi>w</mi>
+							</mrow>
+						  </msub>
+						</mrow>
+					  </mfrac>
+					</math>
+			
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>R</mi>
+						<mi>w</mi>
+					  </msub>
+					</math>  - Resultant shear in weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>wd</mi>
+					  </msub>
+					</math>  - design weld strength (in kN/mm)<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;= <math xmlns="http://www.w3.org/1998/Math/MathML">
+						  <math xmlns="http://www.w3.org/1998/Math/MathML">
+							  <mfrac>
+								<mrow>
+								  <msub>
+									<mi>f</mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>u</mi>
+									  <mi>w</mi>
+									</mrow>
+								  </msub>
+								  <msub>
+									<mi>t</mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>w</mi>
+									  <mi>e</mi>
+									  <mi>l</mi>
+									  <mi>d</mi>
+									</mrow>
+								  </msub>
+								</mrow>
+								<mrow>
+								  <msqrt>
+									<mn>3</mn>
+								  </msqrt>
+								  <msub>
+									<mi>&#x03B3;<!-- γ --></mi>
+									<mrow class="MJX-TeXAtom-ORD">
+									  <mi>m</mi>
+									  <mi>w</mi>
+									</mrow>
+								  </msub>
+								</mrow>
+							  </mfrac>
+							</math> 						
+						<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>H</mi>
+						<mi>w</mi>
+					  </msub>
+					</math>   - Horizontal shear in weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mi>w</mi>
+					  </msub>
+					</math>   - Vertical shear in weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>M</mi>
+						<mi>d</mi>
+					  </msub>
+					</math>  - Moment demand <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>L</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>e</mi>
+						  <mi>f</mi>
+						  <mi>f</mi>
+						  <mo>,</mo>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>  - Effective length of the weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>F</mi>
+					  </msub>
+					</math> - Factored shear force <br>
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step13_field1_fieldset'] = array(
@@ -5824,9 +7391,45 @@ function ddcl_fin_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('d. Weld > iii. Minimum weld thickness'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = '
+	<b> d. Weld </b> <br>
+	&emsp; <b> iii. Minimum weld thickness</b> [Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>w</mi>
+					  <mi>e</mi>
+					  <mi>l</mi>
+					  <mi>d</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>0.8</mn>
+				  <msub>
+					<mi>t</mi>
+					<mi>p</mi>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<msub>
+							<mi>t</mi>
+							<mi>p</mi>
+						</msub>
+					</math> - thickness of plate 
+					<br>
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step14_field1_fieldset'] = array(
@@ -6335,9 +7938,100 @@ function ddcl_fin_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('e. Detailing checks > i. Spacing limits'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = '
+	
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> i. Minimum spacing</b> [Cl 10.2.2] <br>
+	&emsp;&emsp;&emsp; The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
+				
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>p</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>g</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>p</mi>
+						</math>	- pitch distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>g</mi>
+						</math> - gauge distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>d</mi>
+						</math> - nominal bolt diameter <br>
+						<br>
+				
+			
+	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
+	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mi>t</mi></math>
+	or 300 mm, whichever is less, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>t</mi></math>
+	is the thickness of the thinner plate. <br>
+			
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>p</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>g</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>p</mi>
+					</math>	- pitch distance <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>g</mi>
+					</math> - gauge distance <br>
+										
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>t</mi>
+					</math> - thickness of thinner plate <br>
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step15_field1_fieldset'] = array(
@@ -6846,9 +8540,154 @@ function ddcl_fin_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('specimen title'));
+	drupal_set_title(t('e. Detailing checks > ii. Edge and end distances'));
 	$img_path = '';
-	$markup_text = 'specimen text<hr>';
+	$markup_text = '
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> ii. Edge and end distances </b> [Cl 10.2.4] <br>
+	&emsp;&emsp;&emsp; [Cl 10.2.4.2] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The minimum edge and end distances from the centre of any hole to the nearest edge of a plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
+				
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>1</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.5</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>2</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.5</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+	
+	&emsp;&emsp;&emsp; [Cl 10.2.4.3] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mn>12</mn>
+		  <mi>t</mi>
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		</math>
+	, where
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		  <mo>=</mo>
+		  <msqrt>
+			<mn>250</mn>
+			<mrow class="MJX-TeXAtom-ORD">
+			  <mo>/</mo>
+			</mrow>
+			<msub>
+			  <mi>f</mi>
+			  <mi>y</mi>
+			</msub>
+		  </msqrt>
+		</math>
+	and 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>t</mi>
+		</math>
+	is the thickness of the thinner outer plate.  <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>e</mi>
+					<mn>2</mn>
+				  </msub>
+				  <mo>&#x2264;</mo>
+				  <mn>12</mn>
+				  <mi>t</mi>
+				  <mi>&#x03F5;<!-- ϵ --></mi>
+				</math>
+			
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Where, <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>1</mn>
+			  </msub>
+			</math>
+			- End distance <br>
+
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>2</mn>
+			  </msub>
+			</math>
+			- Edge distance <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>d</mi>
+				<mn>h</mn>
+			  </msub>
+			</math> 
+			- Diameter of bolt hole <br>
+			
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <mi>&#x03F5;<!-- ϵ --></mi>
+			  <mo>=</mo>
+			  <msqrt>
+				<mn>250</mn>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mo>/</mo>
+				</mrow>
+				<msub>
+				  <mi>f</mi>
+				  <mi>y</mi>
+				</msub>
+			  </msqrt>
+			</math> <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>f</mi>
+				<mn>y</mn>
+			  </msub>
+			</math>
+			- yield strength of plate <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>t</mi>
+			</math> 
+			- thickness of the thinner outer plate <br>
+		
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Note: Where the members are exposed to corrosive influences, the maximum edge distance shall not exceed 40 mm plus 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>4</mn>
+				<mi>t</mi>
+		</math> 
+		, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>t</mi>
+		</math> 
+		is the thickness of thinner connected plate.
+
+	
+	<hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step16_field1_fieldset'] = array(
@@ -7360,11 +9199,12 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	drupal_set_title(t('Other recommendations'));
 	// All the real form fields.
 	$form = array();
 	$form['step17_field1_fieldset'] = array(
 		'#type' => 'fieldset',
-		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
+		'#title' => '<strong>Any other recommendation/Comment?</strong>',
 		'#tree' => TRUE,
 		'#prefix' => '<div id="step17-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
@@ -7385,7 +9225,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_ddcl_fin_plate_comments($step17_data->id, $step17_data->data_relation);
 			$icom = 1;
 			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -7485,7 +9325,7 @@ function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 			$earlier_comments = _fetch_exsiting_ddcl_fin_plate_comments($step17_data->id, $step17_data->data_relation);
 			$icom = 1;
 			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
