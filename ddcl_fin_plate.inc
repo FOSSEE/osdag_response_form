@@ -187,7 +187,6 @@ function ddcl_fin_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					</center>					
 			<hr>';
 	$form = array();
-	
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -2871,8 +2870,6 @@ function ddcl_fin_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			
-			
 			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
 				'#type' => 'radios',
@@ -2986,7 +2983,6 @@ function ddcl_fin_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			
 			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
 				'#type' => 'radios',
@@ -7385,7 +7381,6 @@ function step13_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 13 form ends ****************************/
-
 /************************ Step 14 form starts *********************/
 function ddcl_fin_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -9191,10 +9186,7 @@ function step16_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 16 form ends ****************************/
-
-
 /************************ Step 17 form starts *********************/
-
 function ddcl_fin_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
@@ -9670,8 +9662,6 @@ function ddcl_fin_plate_step17_form_next_submit($form, &$form_state, $no_js_use 
 	}
 	$form_state['redirect'] = 'ddcl-fin-plate/success/' . $user->uid;
 }
-
-
 function ddcl_fin_plate_step17_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
@@ -9794,7 +9784,6 @@ function ddcl_fin_plate_step17_form_save_submit($form, &$form_state, $no_js_use 
 	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
 	drupal_goto('home');
 }
-
 /***************************************/
 function step17_comment_add_more_add_one($form, &$form_state)
 {
@@ -9816,9 +9805,6 @@ function step17_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /****************************************** step 17 form ends ****************************/
-
-
-
 /**
  * Displays simple confirmation page after finishing the whole process.
  */
@@ -10024,7 +10010,7 @@ join ddcl_fin_plate_form_step17_feedback step17 on step16.uid=step17.uid
 			$feedback_data->step16_question_ok_not_ok,
 			$feedback_data->step16_question_not_ok_comment,
 			_fetch_ddcl_fin_plate_exsiting_comments_result($feedback_data->step16_id, $feedback_data->step16_data_relation),
-			_fetch_ddcl_fin_plate_exsiting_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation),
+			_fetch_ddcl_fin_plate_exsiting_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -10274,7 +10260,7 @@ function ddcl_fin_plate_result_generate_csv()
 			'Page 16 Is this ok/not ok',
 			'Page 16 Is this ok/not ok comment',
 			'Page 16 comments',
-			'Page 17 Any other comments',
+			'Page 17 Any other comments'
 		);
 		fputcsv($fp, $item);
 		$query = '
@@ -10461,12 +10447,11 @@ join ddcl_fin_plate_form_step17_feedback step17 on step16.uid=step17.uid
 				$feedback_data->step16_question_ok_not_ok,
 				$feedback_data->step16_question_not_ok_comment,
 				_fetch_ddcl_fin_plate_exsiting_comments_result_csv($feedback_data->step16_id, $feedback_data->step16_data_relation),
-				_fetch_ddcl_fin_plate_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation),
+				_fetch_ddcl_fin_plate_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation)
 			);
 			fputcsv($fp, $item);
 			$i++;
 		} //$feedback_data = $result->fetchObject()
-		
 		fclose($fp);
 		$file = $result_file;
 		if (file_exists($file))

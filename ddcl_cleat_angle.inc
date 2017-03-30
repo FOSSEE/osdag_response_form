@@ -192,7 +192,7 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		&emsp;&emsp;&emsp; Note: All units in MPa
 		
 	<hr>';
-	$form = array();	
+	$form = array();
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -649,14 +649,13 @@ function step2_comment_add_more_callback($form, &$form_state)
 {
 	return $form['step2_field1_fieldset'];
 }
-
 /************************ Step 2 form ends *********************/
 /***************************************** step 3 form starts **************************/
 function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));	
+	drupal_set_title(t('b. Bolt > i. Shear capacity of bolt > 1) Black bolt'));
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> i. Shear capacity of bolt </b> <br>
@@ -1827,7 +1826,6 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 		
 	
 	<hr>';
-	
 	// All the real form fields.
 	$form = array();
 	$form['step5_field1_fieldset'] = array(
@@ -2379,7 +2377,6 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
 		
 	<hr>';
-	
 	// All the real form fields.
 	$form = array();
 	$form['step6_field1_fieldset'] = array(
@@ -2849,7 +2846,6 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 	global $user;
 	drupal_set_title(t('b. Bolt > v. Factored resultant shear force'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> v. Factored resultant shear force</b> <br>
@@ -3016,8 +3012,6 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			
-			
 			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
 				'#type' => 'radios',
@@ -3131,7 +3125,6 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			
 			$form['step7_field1_fieldset']['step7_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
 				'#type' => 'radios',
@@ -6269,7 +6262,7 @@ function step12_comment_add_more_callback($form, &$form_state)
 function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
-	global $user;	
+	global $user;
 	$img_path = '';
 	drupal_set_title(t('c. Cleat angle > v. Block shear capacity check'));
 	$markup_text = '
@@ -6545,7 +6538,6 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 			
 
 	<hr>';
-
 	// All the real form fields.
 	$form = array();
 	$form['step13_field1_fieldset'] = array(
@@ -7049,7 +7041,6 @@ function step13_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 13 form ends ****************************/
-
 /************************ Step 14 form starts *********************/
 function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
@@ -7189,8 +7180,7 @@ function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
 			Beam web - Column flange connectivity
 					
 	<hr>';
-	
-	$img_path = '';	
+	$img_path = '';
 	// All the real form fields.
 	$form = array();
 	$form['step14_field1_fieldset'] = array(
@@ -8861,10 +8851,7 @@ function step16_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 16 form ends ****************************/
-
-
 /************************ Step 17 form starts *********************/
-
 function ddcl_cleat_angle_step17_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
@@ -9339,8 +9326,6 @@ function ddcl_cleat_angle_step17_form_next_submit($form, &$form_state, $no_js_us
 	}
 	$form_state['redirect'] = 'ddcl-cleat-angle/success/' . $user->uid;
 }
-
-
 function ddcl_cleat_angle_step17_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
@@ -9463,7 +9448,6 @@ function ddcl_cleat_angle_step17_form_save_submit($form, &$form_state, $no_js_us
 	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
 	drupal_goto('home');
 }
-
 /***************************************/
 function step17_comment_add_more_add_one($form, &$form_state)
 {
@@ -9485,9 +9469,6 @@ function step17_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /****************************************** step 17 form ends ****************************/
-
-
-
 /**
  * Displays simple confirmation page after finishing the whole process.
  */
@@ -9693,7 +9674,7 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step16.uid=step17.uid
 			$feedback_data->step16_question_ok_not_ok,
 			$feedback_data->step16_question_not_ok_comment,
 			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step16_id, $feedback_data->step16_data_relation),
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation),
+			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -9943,7 +9924,7 @@ function ddcl_cleat_angle_result_generate_csv()
 			'Page 16 Is this ok/not ok',
 			'Page 16 Is this ok/not ok comment',
 			'Page 16 comments',
-			'Page 17 Any other comments',
+			'Page 17 Any other comments'
 		);
 		fputcsv($fp, $item);
 		$query = '
@@ -10130,12 +10111,11 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step16.uid=step17.uid
 				$feedback_data->step16_question_ok_not_ok,
 				$feedback_data->step16_question_not_ok_comment,
 				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step16_id, $feedback_data->step16_data_relation),
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation),
+				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation)
 			);
 			fputcsv($fp, $item);
 			$i++;
 		} //$feedback_data = $result->fetchObject()
-		
 		fclose($fp);
 		$file = $result_file;
 		if (file_exists($file))

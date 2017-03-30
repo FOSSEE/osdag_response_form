@@ -142,7 +142,7 @@ function ddq_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FAL
 		} //$step1_data = $form_step1_data->fetchObject()
 		else
 		{
-			$query = "INSERT INTO {ddq_cleat_angle_form_step1_feedback} (uid, name, email_id, institute, current_position, data_relation, inserted_on) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_relation,:inserted_on)";
+			$query = "INSERT INTO {ddq_cleat_angle_form_step1_feedback} (uid, name, email_id, institute, current_position, data_reletion, inserted_on) VALUES (:uid, :name, :email_id, :institute, :current_position, :data_reletion,:inserted_on)";
 			$args = array(
 				":uid" => $user->uid,
 				":name" => $v['step1_field1_name'],
@@ -2136,23 +2136,11 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 			$feedback_data->step1_date,
 			$feedback_data->step1_name,
 			$feedback_data->step2_question1,
-			$feedback_data->step2_any_other,
 			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
-			$feedback_data->step3_question2,
 			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question1,
 			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
-			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
-			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
-			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
-			$feedback_data->step5_question3,
-			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
-			$feedback_data->step5_question1,
-			$feedback_data->step5_question2,
-			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step5_question1,
 			_fetch_existing_ddq_cleat_angle_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
 		);
@@ -2161,20 +2149,18 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 	/* check if there are any pending proposals */
 	/*if (!$feedback_rows)
 	{
-		drupal_set_message(t('There are no results.'), 'status');
-		return '';
+	drupal_set_message(t('There are no results.'), 'status');
+	return '';
 	} //!$pending_rows*/
 	$data_header = array(
 		'No.',
 		'Date of Submission',
 		'User',
-		'specimen text2',
-		'Reasoning (including reference from literature):',
+		'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok? *',
 		'comments',
-		'specimen text3',
-		'specimen text3-3',
+		'b. A maximum of two (vertical) lines of bolts are allowed. Is this assumption ok? *',
 		'comments',
-		'specimen text4',
+		'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this assumption ok? *',
 		'comments',
 		'Any other recomendation',
 		'comments'
@@ -2300,10 +2286,10 @@ function ddq_cleat_angle_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok?',	
+			'a. The minimum number of bolts connecting the cleat angle to the beam; and the cleat angle to the supporting column or beam are assumed to be 3 each. Is this assumption ok?',
 			'comments',
 			'b. A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
-			'comments',			
+			'comments',
 			'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
 			'comments',
 			'Any other recommendation',
@@ -2356,8 +2342,6 @@ join ddq_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
 				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question1,
 				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-				
-				
 				$feedback_data->step5_question1,
 				_fetch_existing_ddq_cleat_angle_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
 			);
