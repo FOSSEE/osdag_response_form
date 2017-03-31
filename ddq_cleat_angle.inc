@@ -1085,7 +1085,7 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
 				
 				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
@@ -1180,7 +1180,7 @@ function ddq_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm.
+				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
 
 				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
