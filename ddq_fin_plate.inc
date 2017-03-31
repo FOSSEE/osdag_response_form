@@ -1088,7 +1088,8 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
+ 
 				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
@@ -1182,7 +1183,7 @@ function ddq_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. 
+				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
 				<br><br>Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step4_options,
@@ -1519,20 +1520,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => $step5_data->question1,
 				'#required' => true
 			);
-			$form['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'] = array(
-				'#title' => 'If yes, what IS code clauses and references should be followed?',
-				'#type' => 'textarea',
-				'#default_value' => $step5_data->what_IS_code_clauses_and_references_should_be_followed,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
-							array(
-								'value' => t('No')
-							)
-						)
-					)
-				)
-			);
+			
 			$earlier_comments = _fetch_exsiting_ddq_fin_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
@@ -1627,20 +1615,7 @@ function ddq_fin_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 				//'#default_value' => $step5_data->question1,
 				'#required' => true
 			);
-			$form['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'] = array(
-				'#title' => 'If yes, what IS code clauses and references should be followed?',
-				'#type' => 'textarea',
-				//'#default_value' => $step5_data->if_yes,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
-							array(
-								'value' => t('No')
-							)
-						)
-					)
-				)
-			);
+			
 			if (empty($form_state['step5_num_comment']))
 			{
 				$form_state['step5_num_comment'] = 1;
@@ -2632,7 +2607,7 @@ join ddq_fin_plate_form_step6_feedback step6 on step5.uid=step6.uid
 		'comments',
 		'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
 		'comments',
-		'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
+		'The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm.  Is this ok?',
 		'comments',
 		'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',
 		'comments',
