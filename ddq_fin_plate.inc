@@ -2251,7 +2251,7 @@ function ddq_fin_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-fin-plate/form/step7/' . $user->uid;
+	$form_state['redirect'] = 'ddq-fin-plate/form/step5/' . $user->uid;
 }
 function ddq_fin_plate_step6_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
