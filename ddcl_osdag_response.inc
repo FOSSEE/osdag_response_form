@@ -2974,6 +2974,17 @@ function ddcl_osdag_response_step8_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
+			$earlier_comments = _fetch_exsiting_comments($step8_data->id, $step8_data->data_relation);
+			$form['step8_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step8_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step8_num_comment']))
 			{
 				$form_state['step8_num_comment'] = 1;
@@ -3150,12 +3161,13 @@ function ddcl_osdag_response_step8_form_previous_submit($form, &$form_state, $no
 {
 	global $user;
 	$v = $form_state['values'];
+	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
 	/*$query = db_select('ddcl_osdag_response_form_step8_feedback');
 	$query->fields('ddcl_osdag_response_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
 	*/
-	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$query = "SELECT * FROM ddcl_osdag_response_form_step8_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
@@ -3270,18 +3282,19 @@ function ddcl_osdag_response_step8_form_previous_submit($form, &$form_state, $no
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-osdag-response/form/step6/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-osdag-response/form/step7/' . $user->uid;
 }
 function ddcl_osdag_response_step8_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
+	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
 	/*$query = db_select('ddcl_osdag_response_form_step8_feedback');
 	$query->fields('ddcl_osdag_response_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
 	*/
-	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$query = "SELECT * FROM ddcl_osdag_response_form_step8_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
@@ -3403,12 +3416,13 @@ function ddcl_osdag_response_step8_form_next_submit($form, &$form_state, $no_js_
 {
 	global $user;
 	$v = $form_state['values'];
+	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
 	/*$query = db_select('ddcl_osdag_response_form_step8_feedback');
 	$query->fields('ddcl_osdag_response_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
 	*/
-	$query = "SELECT * FROM ddcl_seated_angle_form_step12_feedback WHERE uid=:uid";
+	$query = "SELECT * FROM ddcl_osdag_response_form_step8_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
@@ -3635,11 +3649,11 @@ join ddcl_osdag_response_form_step8_feedback step8 on step7.uid=step8.uid
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
 	/* check if there are any pending proposals */
-	if (!$feedback_rows)
+	/*if (!$feedback_rows)
 	{
 		drupal_set_message(t('There are no results.'), 'status');
 		return '';
-	} //!$pending_rows
+	} //!$pending_rows*/
 	$data_header = array(
 		'No.',
 		'Date of Submission',
@@ -3703,10 +3717,11 @@ function ddcl_osdag_response_delete_comment()
 	global $base_url;
 	$comment_id = arg(3);
 	$comment_step = arg(2);
-	if ($comment_id && user_access("osdag_feedback_form"))
+	//var_dump($comment_id .'----');die;
+	if ($comment_id)
 	{
-		$query = "DELETE FROM {ddcl_feedback_form_comment} WHERE id = :id";
-		$query_result = db_query($query, array(
+		//$query = "DELETE FROM ddcl_feedback_form_comment WHERE id = :id";
+		$query_result = db_query("DELETE FROM ddcl_feedback_form_comment WHERE id = :id", array(
 			':id' => $comment_id
 		));
 		if ($query_result->rowCount() > 0)
