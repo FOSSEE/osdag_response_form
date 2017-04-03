@@ -15,7 +15,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step1'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -24,7 +24,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step2'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -35,7 +35,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step3'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -46,7 +46,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step4'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -57,7 +57,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step5'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -68,7 +68,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step6'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -79,7 +79,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step7'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -90,7 +90,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/step8'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -101,9 +101,9 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
-		// Delete the comment
+	// Delete the comment
 	$items['ddcl-osdag-response/delete'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries) successful!'),
 		'page callback' => 'ddcl_osdag_response_delete_comment',
@@ -111,7 +111,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	// Success page.
 	$items['ddcl-osdag-response/success'] = array(
@@ -121,7 +121,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	// Result page
 	$items['ddcl-osdag-response/form/result'] = array(
@@ -131,7 +131,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	$items['ddcl-osdag-response/form/result/download'] = array(
 		'title' => t('Seated Angle Connection DDQ (Design and Detailing Queries)'),
@@ -140,7 +140,7 @@ function osdag_response_form_menu()
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_osdag_response.inc'
+		'file' => 'ddcl_osdag_response.inc'
 	);
 	/***********************************************************/
 	/****************** DDCL SEATED ANGlE FORM ******************/
@@ -152,7 +152,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step1'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -162,7 +162,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step2'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -174,9 +174,9 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
-		$items['ddcl-seated-angle/form/step3'] = array(
+	$items['ddcl-seated-angle/form/step3'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
 List)'),
 		'page callback' => 'drupal_get_form',
@@ -186,7 +186,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step4'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -198,7 +198,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step5'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -210,7 +210,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step6'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -222,7 +222,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step7'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -234,7 +234,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step8'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -246,7 +246,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step9'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -258,7 +258,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step10'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -270,7 +270,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step11'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -282,7 +282,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step12'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -294,7 +294,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step13'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -306,7 +306,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/step14'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -318,7 +318,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	// Delete the comment
 	$items['ddcl-seated-angle/delete'] = array(
@@ -329,7 +329,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	// Success page.
 	$items['ddcl-seated-angle/success'] = array(
@@ -340,7 +340,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	// Result page
 	$items['ddcl-seated-angle/form/result'] = array(
@@ -351,7 +351,7 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
 	$items['ddcl-seated-angle/form/result/download'] = array(
 		'title' => t('Seated Angle Connection DDCL (Design and Detailing Check-
@@ -361,8 +361,696 @@ List)'),
 		'access arguments' => array(
 			'access osdag_feedback_form'
 		),
-		'file'=> 'ddcl_seated_angle.inc'
+		'file' => 'ddcl_seated_angle.inc'
 	);
+	/*******************************************************************/
+	/************* DDCL FIN PLATE **************************************/
+	$items['ddcl-fin-plate/form'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step1'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step2'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step3'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step4'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step5'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step6'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step7'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step8'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step9'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step10'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step11'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step12'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step13'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step14'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step15'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step16'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step16_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/step17'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_fin_plate_step17_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	// Delete the comment
+	$items['ddcl-fin-plate/delete'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	// Success page.
+	$items['ddcl-fin-plate/success'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	// Result page
+	$items['ddcl-fin-plate/form/result'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	$items['ddcl-fin-plate/form/result/download'] = array(
+		'title' => t('DDCL Fin Plate'),
+		'page callback' => 'ddcl_fin_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_fin_plate.inc'
+	);
+	/*******************************************************************/
+	/************* DDCL Cleat Angle **************************************/
+	$items['ddcl-cleat-angle/form'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step1'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step2'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step3'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step4'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step5'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step6'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step7'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step8'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step9'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step10'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step11'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step12'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step13'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step14'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step15'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step16'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step16_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/step17'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_cleat_angle_step17_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	// Delete the comment
+	$items['ddcl-cleat-angle/delete'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	// Success page.
+	$items['ddcl-cleat-angle/success'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	// Result page
+	$items['ddcl-cleat-angle/form/result'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	$items['ddcl-cleat-angle/form/result/download'] = array(
+		'title' => t('DDCL Cleat Angle'),
+		'page callback' => 'ddcl_cleat_angle_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_cleat_angle.inc'
+	);
+	/*******************************************************************/
+	/****************** DDQ Fin Plate ******************/
+	$items['ddq-fin-plate/form'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step1'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step2'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step3'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step4'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step5'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/step6'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_fin_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	// Delete the comment
+	$items['ddq-fin-plate/delete'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_fin_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	// Success page.
+	$items['ddq-fin-plate/success'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_fin_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	// Result page
+	$items['ddq-fin-plate/form/result'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	$items['ddq-fin-plate/form/result/download'] = array(
+		'title' => t('Fin plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_fin_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_fin_plate.inc'
+	);
+	/***********************************************************/
+	/****************** DDQ cleat angle  ******************/
+	$items['ddq-cleat-angle/form'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/step1'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_cleat_angle_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/step2'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_cleat_angle_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/step3'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_cleat_angle_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/step4'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_cleat_angle_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/step5'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_cleat_angle_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	// Delete the comment
+	$items['ddq-cleat-angle/delete'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_cleat_angle_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	// Success page.
+	$items['ddq-cleat-angle/success'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_cleat_angle_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	// Result page
+	$items['ddq-cleat-angle/form/result'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_cleat_angle_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	$items['ddq-cleat-angle/form/result/download'] = array(
+		'title' => t('Cleat angle DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_cleat_angle_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_cleat_angle.inc'
+	);
+	/******************************************************************************/
 	return $items;
 }
 function osdag_response_form_permission()
@@ -393,4 +1081,3 @@ function _field_sentence_case($string)
 	} //array( '-', '\'' ) as $delimiter
 	return $string;
 }
-
