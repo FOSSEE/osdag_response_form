@@ -1252,7 +1252,7 @@ function ddcl_fin_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 							<mi>e</mi>
 						  </msub>
 						</math>
-						= number of effective interfaces offering frictional resitance to slip, <br>
+						= number of effective interfaces offering frictional resistance to slip, <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>

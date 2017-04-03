@@ -1145,7 +1145,7 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 				</mrow>
 			  </msub>
 			</math>
-			in the interface of connections at which lsip cannot be tolerated, shall satisfy the following: <br>
+			in the interface of connections at which slip cannot be tolerated, shall satisfy the following: <br>
 							<center>
 							<math xmlns="http://www.w3.org/1998/Math/MathML">
 							  <msub>
@@ -1260,7 +1260,7 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 							<mi>e</mi>
 						  </msub>
 						</math>
-						= number of effective interfaces offering frictional resitance to slip, <br>
+						= number of effective interfaces offering frictional resistance to slip, <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -1287,7 +1287,7 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 						</math>
 						=  1.10 (if slip resistance is designed at service load), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						=  1.25 (if lsip resistance is designed at ultimate load), <br>
+						=  1.25 (if slip resistance is designed at ultimate load), <br>
 						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  <msub>
@@ -8317,7 +8317,7 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
 	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step16/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-cleat-angle/form/step17/' . $user->uid;
 }
 /***************************************/
 function step15_comment_add_more_add_one($form, &$form_state)
