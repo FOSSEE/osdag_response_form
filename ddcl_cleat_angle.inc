@@ -1,6 +1,6 @@
 <?php
 /**
- * Fetches and displays the form.
+ * Fetches and displays ddcl cleat angle form.
  */
 function ddcl_cleat_angle_form_page()
 {
