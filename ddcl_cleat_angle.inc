@@ -8317,7 +8317,7 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
 	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step16/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-cleat-angle/form/step17/' . $user->uid;
 }
 /***************************************/
 function step15_comment_add_more_add_one($form, &$form_state)
