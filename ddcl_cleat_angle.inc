@@ -9126,7 +9126,7 @@ function ddcl_cleat_angle_step17_form_previous_submit($form, &$form_state, $no_j
 	INSERT INTO ddcl_cleat_angle_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	(:step17_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
 					":step17_form_id" => $form_step17_data->id,
