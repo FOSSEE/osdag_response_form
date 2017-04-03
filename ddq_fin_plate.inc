@@ -2561,7 +2561,7 @@ step5.question1 as "step5_question1",
 
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
-step6.question1 as "step6_question1", 
+step6.question1 as "step6_question1"
 
 from ddq_fin_plate_form_step1_feedback step1
 
