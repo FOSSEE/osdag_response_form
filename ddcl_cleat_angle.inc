@@ -10018,12 +10018,6 @@ step15.question1 as "step15_question1",
 step15.question_ok_not_ok as "step15_question_ok_not_ok",
 step15.question_not_ok_comment as "step15_question_not_ok_comment",
 
-step16.id as "step16_id",
-step16.data_relation as "step16_data_relation",
-step16.question1 as "step16_question1",
-step16.question_ok_not_ok as "step16_question_ok_not_ok",
-step16.question_not_ok_comment as "step16_question_not_ok_comment",
-
 step17.id as "step17_id",
 step17.data_relation as "step17_data_relation",
 step17.question1 as "step17_question1"
@@ -10044,8 +10038,7 @@ join ddcl_cleat_angle_form_step12_feedback step12 on step11.uid=step12.uid
 join ddcl_cleat_angle_form_step13_feedback step13 on step12.uid=step13.uid
 join ddcl_cleat_angle_form_step14_feedback step14 on step13.uid=step14.uid
 join ddcl_cleat_angle_form_step15_feedback step15 on step14.uid=step15.uid
-join ddcl_cleat_angle_form_step16_feedback step16 on step15.uid=step16.uid
-join ddcl_cleat_angle_form_step17_feedback step17 on step16.uid=step17.uid
+join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 
 			';
 		// $args = array(');
@@ -10101,9 +10094,6 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step16.uid=step17.uid
 				$feedback_data->step15_question_ok_not_ok,
 				$feedback_data->step15_question_not_ok_comment,
 				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation),
-				$feedback_data->step16_question_ok_not_ok,
-				$feedback_data->step16_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step16_id, $feedback_data->step16_data_relation),
 				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation)
 			);
 			fputcsv($fp, $item);
