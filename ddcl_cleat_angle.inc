@@ -9914,9 +9914,6 @@ function ddcl_cleat_angle_result_generate_csv()
 			'Page 15 Is this ok/not ok',
 			'Page 15 Is this ok/not ok comment',
 			'Page 15 comments',
-			'Page 16 Is this ok/not ok',
-			'Page 16 Is this ok/not ok comment',
-			'Page 16 comments',
 			'Page 17 Any other comments'
 		);
 		fputcsv($fp, $item);
