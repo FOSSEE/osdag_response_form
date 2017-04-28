@@ -598,6 +598,220 @@ List)'),
 		),
 		'file' => 'ddcl_fin_plate.inc'
 	);
+/*******************************************************************/
+	/************* DDCL END PLATE **************************************/
+	$items['ddcl-end-plate/form'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step1'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step2'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step3'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step4'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step5'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step6'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step7'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step7_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step8'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step8_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step9'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step10'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step11'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step12'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step13'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step14'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/step15'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_end_plate_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	
+	// Delete the comment
+	$items['ddcl-end-plate/delete'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	// Success page.
+	$items['ddcl-end-plate/success'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	// Result page
+	$items['ddcl-end-plate/form/result'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
+	$items['ddcl-end-plate/form/result/download'] = array(
+		'title' => t('DDCL End Plate'),
+		'page callback' => 'ddcl_end_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_end_plate.inc'
+	);
 	/*******************************************************************/
 	/************* DDCL Cleat Angle **************************************/
 	$items['ddcl-cleat-angle/form'] = array(
@@ -946,6 +1160,121 @@ List)'),
 			'access osdag_feedback_form'
 		),
 		'file' => 'ddq_fin_plate.inc'
+	);
+
+	/*******************************************************************/
+	/****************** DDQ End Plate ******************/
+	$items['ddq-end-plate/form'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_end_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step1'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_end_plate_form_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step2'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_end_plate_step2_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step3'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_end_plate_step3_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step4'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_end_plate_step4_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step5'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_end_plate_step5_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/step6'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_end_plate_step6_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	// Delete the comment
+	$items['ddq-end-plate/delete'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_end_plate_delete_comment',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	// Success page.
+	$items['ddq-end-plate/success'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries) successful!'),
+		'page callback' => 'ddq_end_plate_success',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	// Result page
+	$items['ddq-end-plate/form/result'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_end_plate_result_page',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
+	);
+	$items['ddq-end-plate/form/result/download'] = array(
+		'title' => t('End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'ddq_end_plate_result_generate_csv',
+		'page arguments' => array(),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_end_plate.inc'
 	);
 	/***********************************************************/
 	/****************** DDQ cleat angle  ******************/
