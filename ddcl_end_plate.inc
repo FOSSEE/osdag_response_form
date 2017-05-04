@@ -229,14 +229,14 @@ function ddcl_end_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
-			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			$form['step2_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step2_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step2_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -653,7 +653,7 @@ function ddcl_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 	<b> b. Bolt </b> <br>
 	&emsp; <b> i. Shear capacity of bolt </b> <br>
 	&emsp;&emsp; <b> 1) Black bolt </b> <br>
-	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the seated angle connection.';
+	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the cleat angle connection.';
 	$markup_text1 = '';
 	$tooltip1 = '';
 	// All the real form fields.
@@ -708,14 +708,14 @@ function ddcl_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
-			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step3_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step3_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step3_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1399,14 +1399,14 @@ function ddcl_end_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
-			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step4_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step4_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step4_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1825,7 +1825,7 @@ function ddcl_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> ii. Bearing capacity of bolt </b> <br>	
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+	&emsp;&emsp;&emsp; This check will be the same as implemented for the cleat angle connection.
 		
 	
 	<hr>';
@@ -1872,14 +1872,14 @@ function ddcl_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step5_data->id, $step5_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
-			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step5_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step5_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step5_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -2419,14 +2419,14 @@ function ddcl_end_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step6_data->id, $step6_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
-			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step6_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step6_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step6_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -2894,14 +2894,14 @@ function ddcl_end_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step7_data->id, $step7_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
-			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step7_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step7_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step7_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -3601,14 +3601,14 @@ function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step8_data->id, $step8_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step8_data->id, $step8_data->data_relation);
 			$icom = 1;
-			$form['step8_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step8_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step8_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step8_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -4217,14 +4217,14 @@ function ddcl_end_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step9_data->id, $step9_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step9_data->id, $step9_data->data_relation);
 			$icom = 1;
-			$form['step9_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step9_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step9_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step9_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -4982,14 +4982,14 @@ function ddcl_end_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step10_data->id, $step10_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step10_data->id, $step10_data->data_relation);
 			$icom = 1;
-			$form['step10_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step10_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step10_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step10_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -5723,14 +5723,14 @@ function ddcl_end_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step11_data->id, $step11_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step11_data->id, $step11_data->data_relation);
 			$icom = 1;
-			$form['step11_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step11_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step11_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step11_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -6248,14 +6248,14 @@ function ddcl_end_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step12_data->id, $step12_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step12_data->id, $step12_data->data_relation);
 			$icom = 1;
-			$form['step12_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step12_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment<strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step12_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step12_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -6921,14 +6921,14 @@ function ddcl_end_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step13_data->id, $step13_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step13_data->id, $step13_data->data_relation);
 			$icom = 1;
-			$form['step13_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step13_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step13_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step13_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -7468,14 +7468,14 @@ function ddcl_end_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step14_data->id, $step14_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step14_data->id, $step14_data->data_relation);
 			$icom = 1;
-			$form['step14_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step14_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step14_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step14_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -7957,14 +7957,14 @@ function ddcl_end_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
 			$icom = 1;
-			$form['step15_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step15_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step15_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step15_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -8057,14 +8057,14 @@ function ddcl_end_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 				'#default_value' => 'other recommendations/ Comments',
 				'#required' => TRUE
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
 			$icom = 1;
-			$form['step15_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step15_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => ''
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step15_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step15_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -8697,44 +8697,44 @@ join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
 			$feedback_data->step1_current_position,
 			$feedback_data->step2_question_ok_not_ok,
 			$feedback_data->step2_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question_ok_not_ok,
 			$feedback_data->step3_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question_ok_not_ok,
 			$feedback_data->step4_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question_ok_not_ok,
 			$feedback_data->step5_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step6_question_ok_not_ok,
 			$feedback_data->step6_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
 			$feedback_data->step7_question_ok_not_ok,
 			$feedback_data->step7_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
 			$feedback_data->step8_question_ok_not_ok,
 			$feedback_data->step8_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
 			$feedback_data->step9_question_ok_not_ok,
 			$feedback_data->step9_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
 			$feedback_data->step10_question_ok_not_ok,
 			$feedback_data->step10_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
 			$feedback_data->step11_question_ok_not_ok,
 			$feedback_data->step11_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
 			$feedback_data->step12_question_ok_not_ok,
 			$feedback_data->step12_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
 			$feedback_data->step13_question_ok_not_ok,
 			$feedback_data->step13_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
 			$feedback_data->step14_question_ok_not_ok,
 			$feedback_data->step14_question_not_ok_comment,
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
-			_fetch_ddcl_end_plate_exsiting_comments_result($feedback_data->step15_id, $feedback_data->step15_data_relation)
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step15_id, $feedback_data->step15_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -8799,7 +8799,7 @@ join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
 	return $output;
 }
 //displayed in user page
-function _fetch_exsiting_ddcl_end_plate_comments($step_id, $data_relation)
+function _fetch_existing_ddcl_end_plate_comments($step_id, $data_relation)
 {
 	global $base_url;
 	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
@@ -8845,7 +8845,7 @@ function ddcl_end_plate_delete_comment()
 	} //$comment_id && user_access("osdag_feedback_form")
 	drupal_goto("{$base_url}/ddcl-end-plate/form/{$comment_step}/");
 }
-function _fetch_ddcl_end_plate_exsiting_comments($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -8867,7 +8867,7 @@ function _fetch_ddcl_end_plate_exsiting_comments($step_id, $data_relation)
 	}
 	return $comment;
 }
-function _fetch_ddcl_end_plate_exsiting_comments_result($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments_result($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -8890,7 +8890,7 @@ function _fetch_ddcl_end_plate_exsiting_comments_result($step_id, $data_relation
 	//$query_for_comment == NULL
 	return $text;
 }
-function _fetch_ddcl_end_plate_exsiting_comments_result_csv($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments_result_csv($step_id, $data_relation)
 {
 	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
@@ -9103,44 +9103,44 @@ join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
 				$feedback_data->step1_current_position,
 				$feedback_data->step2_question_ok_not_ok,
 				$feedback_data->step2_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question_ok_not_ok,
 				$feedback_data->step3_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question_ok_not_ok,
 				$feedback_data->step4_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
 				$feedback_data->step5_question_ok_not_ok,
 				$feedback_data->step5_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
 				$feedback_data->step6_question_ok_not_ok,
 				$feedback_data->step6_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
 				$feedback_data->step7_question_ok_not_ok,
 				$feedback_data->step7_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
 				$feedback_data->step8_question_ok_not_ok,
 				$feedback_data->step8_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
 				$feedback_data->step9_question_ok_not_ok,
 				$feedback_data->step9_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
 				$feedback_data->step10_question_ok_not_ok,
 				$feedback_data->step10_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
 				$feedback_data->step11_question_ok_not_ok,
 				$feedback_data->step11_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
 				$feedback_data->step12_question_ok_not_ok,
 				$feedback_data->step12_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
 				$feedback_data->step13_question_ok_not_ok,
 				$feedback_data->step13_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
 				$feedback_data->step14_question_ok_not_ok,
 				$feedback_data->step14_question_not_ok_comment,
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation),
-				_fetch_ddcl_end_plate_exsiting_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation)
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation)
 			);
 			fputcsv($fp, $item);
 			$i++;
