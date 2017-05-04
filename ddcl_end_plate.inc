@@ -5910,8 +5910,150 @@ function ddcl_end_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('d. Weld > i. Effective length of weld'));
+	drupal_set_title(t('d. Weld > ii. Minimum weld thickness'));
 	$markup_text = '
+	
+	<b> d. Weld </b> <br>
+	&emsp; <b> ii. Minimum weld thickness</b> <br>
+	&emsp;&emsp;&emsp; The minimum weld thickness is selected based on thickness of column web/flange or primary beam web [Reference: Table 21, IS 800] 
+		<br>
+		<br>
+	
+	&emsp;&emsp;&emsp; Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				  </msub>
+				</math> denore the thickness of the thicker part:
+				<br>
+				<br>
+	
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>0</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>10</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>3</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>10</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>20</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>5</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>20</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>32</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>6</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>32</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>50</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>10</mn>
+				</math>
+			<br>
+			<br>	
+	
+	
 	
 					
 					
@@ -6383,10 +6525,141 @@ function ddcl_end_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('d. Weld > ii. Shear strength'));
-	$img_path = '';
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	drupal_set_title(t('e. Detailing checks > i. Spacing limits'));	
 	$markup_text = '
 	
+	
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> i. Minimum spacing</b> [Cl 10.2.2] <br>
+	&emsp;&emsp;&emsp; The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
+				
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>p</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>g</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>p</mi>
+						</math>	- pitch distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>g</mi>
+						</math> - gauge distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>d</mi>
+						</math> - nominal bolt diameter <br>
+						<br>
+				
+			
+	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
+	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mi>t</mi></math>
+	or 300 mm, whichever is less, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>t</mi></math>
+	is the thickness of the thinner plate. <br>
+			
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>p</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>g</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>p</mi>
+					</math>	- pitch distance <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>g</mi>
+					</math> - gauge distance <br>
+										
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>t</mi>
+					</math> - thickness of thinner plate <br>
+		
+	&emsp; <b> iii. Gauge1 limitations</b> [Reference: Steel Designers Manual - p733 - 6th Edition (2003)] <br>
+	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm).
+	<br>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			<msub>
+				<mi>g</mi>
+				<mi>1</mi>
+			</msub>
+			<mo>&lt;</mo>
+			<mn>140</mn>
+		</math>
+		
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			<msub>
+				<mi>g</mi>
+				<mi>1</mi>
+			</msub>
+			<mo>&gt;</mo>
+			<mn>90</mn>
+		</math>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Where, <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<msub>
+					<mi>g</mi>
+					<mi>1</mi>
+				</msub>			
+			</math> - gauge1 <br><br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/ddcl_end_plate_figure_3.svg" width="20%" height="20%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			<b>Figure:</b> End plate connection<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Beam web - Column flange connectivity
+			
 	
 	<hr>';
 	// All the real form fields.
@@ -6897,43 +7170,153 @@ function ddcl_end_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('d. Weld > iii. Minimum weld thickness'));
+	drupal_set_title(t('d. Detailing checks > ii. Edge and end distances'));
 	$img_path = '';
 	$markup_text = '
-	<b> d. Weld </b> <br>
-	&emsp; <b> iii. Minimum weld thickness</b> [Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+	<b> d. Detailing checks </b> <br>
+	&emsp; <b> ii. Edge and end distances </b> [Cl 10.2.4] <br>
+	&emsp;&emsp;&emsp; [Cl 10.2.4.2] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The minimum edge and end distances from the centre of any hole to the nearest edge of the column/end plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
+				
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>1</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.5</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <msub>
+							<mi>e</mi>
+							<mn>2</mn>
+						  </msub>
+						  <mo>&#x2265;</mo>
+						  <mn>1.5</mn>
+						  <msub>
+							<mi>d</mi>
+							<mi>h</mi>
+						  </msub>
+						</math>
+	
+	&emsp;&emsp;&emsp; [Cl 10.2.4.3] <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The maximum edge distance to the nearest line of fasteners from an edge of any un-stiffened part should not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mn>12</mn>
+		  <mi>t</mi>
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		</math>
+	, where
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>&#x03F5;<!-- ϵ --></mi>
+		  <mo>=</mo>
+		  <msqrt>
+			<mn>250</mn>
+			<mrow class="MJX-TeXAtom-ORD">
+			  <mo>/</mo>
+			</mrow>
+			<msub>
+			  <mi>f</mi>
+			  <mi>y</mi>
+			</msub>
+		  </msqrt>
+		</math>
+	and 
+		<math xmlns="http://www.w3.org/1998/Math/MathML">
+		  <mi>t</mi>
+		</math>
+	is the thickness of the thinner component.  <br>
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
-					<mi>t</mi>
-					<mrow class="MJX-TeXAtom-ORD">
-					  <mi>w</mi>
-					  <mi>e</mi>
-					  <mi>l</mi>
-					  <mi>d</mi>
-					  <mo>,</mo>
-					  <mi>m</mi>
-					  <mi>i</mi>
-					  <mi>n</mi>
-					</mrow>
+					<mi>e</mi>
+					<mn>2</mn>
 				  </msub>
-				  <mo>=</mo>
-				  <mn>0.8</mn>
-				  <msub>
-					<mi>t</mi>
-					<mi>p</mi>
-				  </msub>
+				  <mo>&#x2264;</mo>
+				  <mn>12</mn>
+				  <mi>t</mi>
+				  <mi>&#x03F5;<!-- ϵ --></mi>
 				</math>
-				
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msub>
-							<mi>t</mi>
-							<mi>p</mi>
-						</msub>
-					</math> - thickness of plate 
-					<br>
+			
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Where, <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>1</mn>
+			  </msub>
+			</math>
+			- End distance <br>
+
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>e</mi>
+				<mn>2</mn>
+			  </msub>
+			</math>
+			- Edge distance <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>d</mi>
+				<mn>h</mn>
+			  </msub>
+			</math> 
+			- Diameter of bolt hole <br>
+			
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <mi>&#x03F5;<!-- ϵ --></mi>
+			  <mo>=</mo>
+			  <msqrt>
+				<mn>250</mn>
+				<mrow class="MJX-TeXAtom-ORD">
+				  <mo>/</mo>
+				</mrow>
+				<msub>
+				  <mi>f</mi>
+				  <mi>y</mi>
+				</msub>
+			  </msqrt>
+			</math> <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>f</mi>
+				<mn>y</mn>
+			  </msub>
+			</math>
+			- yield strength of end plate <br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mi>t</mi>
+			</math> 
+			- thickness of the thinner component 
+			<br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Note: Where the members are exposed to corrosive influences, the maximum edge distance shall not exceed 40 mm plus 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mn>4</mn>
+					<mi>t</mi>
+			</math> 
+			, where 
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mi>t</mi>
+			</math> 
+			is the thickness of thinner connected plate.
+	
 	
 	<hr>';
 	// All the real form fields.
