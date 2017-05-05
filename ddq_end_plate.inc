@@ -185,9 +185,23 @@ function ddq_end_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'a. The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				'#title' => 'a. Minimum number of bolts is 2, on each side of the web of the supported beam. <br> &emsp;&emsp; This makes the minimum total number of bolts as 4.
+				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_end_plate_figure_1.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)
+				<br>
+				<br>
+				<hr>
+				<br>
 				
-				<br><br>Is this assumption ok?',
+				Is this assumption ok?
+				',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				'#default_value' => $step2_data->question1,
@@ -294,9 +308,22 @@ function ddq_end_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'The minimum number of bolts for the fin plate connection are assumed to be 3. 
+				'#title' => 'a. Minimum number of bolts is 2, on each side of the web of the supported beam. <br> &emsp;&emsp; This makes the minimum total number of bolts as 4.
+				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_end_plate_figure_1.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)
+				<br>
+				<br>
+				<hr>
+				<br>
 				
-				<br><br>Is this assumption ok?',
+				Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step2_options,
 				//'#default_value' => $step2_data->question1,
@@ -619,6 +646,7 @@ function ddq_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	// All the real form fields.
 	$form = array();
 	$step3_options = array(
@@ -640,8 +668,24 @@ function ddq_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
-				<br><br> Is this assumption ok? ',
+				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
+				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
+				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)<br>
+				<br>
+				<hr>
+				<br>				
+				
+				
+				
+				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#default_value' => $step3_data->question1,
 				'#options' => $step3_options,
@@ -745,8 +789,23 @@ function ddq_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. A maximum of two (vertical) lines of bolts are allowed. 
-				<br><br> Is this assumption ok? ',
+				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
+				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
+				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)<br>
+				<br>
+				<hr>
+				<br>				
+				
+
+				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#options' => $step3_options,
 				'#required' => true
@@ -1038,7 +1097,7 @@ function ddq_end_plate_step3_form_next_submit($form, &$form_state, $no_js_use = 
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-end-plate/form/step4/' . $user->uid;
+	$form_state['redirect'] = 'ddq-end-plate/form/step6/' . $user->uid;
 }
 /***************************************/
 function step3_comment_add_more_add_one($form, &$form_state)
@@ -2251,7 +2310,7 @@ function ddq_end_plate_step6_form_previous_submit($form, &$form_state, $no_js_us
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-end-plate/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddq-end-plate/form/step3/' . $user->uid;
 }
 function ddq_end_plate_step6_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -2551,14 +2610,6 @@ step3.id as "step3_id",
 step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
 
-step4.id as "step4_id",
-step4.data_relation as "step4_data_relation",
-step4.question1 as "step4_question1",
-
-step5.id as "step5_id",
-step5.data_relation as "step5_data_relation",
-step5.question1 as "step5_question1", 
-
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1"
@@ -2567,9 +2618,7 @@ from ddq_end_plate_form_step1_feedback step1
 
 join ddq_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
-join ddq_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
-join ddq_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
-join ddq_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddq_end_plate_form_step6_feedback step6 on step3.uid=step6.uid
 
 
 	');
@@ -2583,11 +2632,7 @@ join ddq_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
 			$feedback_data->step2_question1,
 			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
-			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
-			$feedback_data->step4_question1,
-			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
-			$feedback_data->step5_question1,
-			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),			
 			$feedback_data->step6_question1,
 			_fetch_exsiting_ddq_end_plate_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation)
 		);
@@ -2606,11 +2651,7 @@ join ddq_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
 		'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',
 		'comments',
 		'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
-		'comments',
-		'The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm.  Is this ok?',
-		'comments',
-		'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',
-		'comments',
+		'comments',		
 		'Any other recommendation/ Comments?',
 		'comments'
 	);
@@ -2738,11 +2779,7 @@ function ddq_end_plate_result_generate_csv()
 			'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',
 			'comments',
 			'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
-			'comments',
-			'The gap between the column edge and beam edge, beam-beam edge is assumed to be 20 mm. Is this ok?',
-			'comments',
-			'The minimum plate thickness should be greater than the supported beam web thickness. Is this ok?',
-			'comments',
+			'comments',			
 			'Any other recomendation',
 			'comments'
 		);
@@ -2767,15 +2804,6 @@ step3.data_relation as "step3_data_relation",
 step3.question1 as "step3_question1", 
 /* step3.question2 as "step3_question2", */
 
-step4.id as "step4_id",
-step4.data_relation as "step4_data_relation",
-step4.question1 as "step4_question1",
-
-step5.id as "step5_id",
-step5.data_relation as "step5_data_relation",
-step5.question1 as "step5_question1", 
-/* step5.what_IS_code_clauses_and_references_should_be_followed as "step5_question2", */
-
 step6.id as "step6_id",
 step6.data_relation as "step6_data_relation",
 step6.question1 as "step6_question1"
@@ -2784,9 +2812,7 @@ from ddq_end_plate_form_step1_feedback step1
 
 join ddq_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
-join ddq_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
-join ddq_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
-join ddq_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddq_end_plate_form_step6_feedback step6 on step3.uid=step6.uid
 			';
 		// $args = array(');
 		$result = db_query($query);
@@ -2803,10 +2829,6 @@ join ddq_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
 				_fetch_exsiting_ddq_end_plate_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question1,
 				_fetch_exsiting_ddq_end_plate_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
-				$feedback_data->step4_question1,
-				_fetch_exsiting_ddq_end_plate_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
-				$feedback_data->step5_question1,
-				_fetch_exsiting_ddq_end_plate_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
 				$feedback_data->step6_question1,
 				_fetch_exsiting_ddq_end_plate_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation)
 			);
