@@ -2668,9 +2668,9 @@ join ddq_end_plate_form_step6_feedback step6 on step3.uid=step6.uid
 		'No.',
 		'Date of Submission',
 		'User',
-		'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',
+		'The minimum number of bolts is 2, on each side of the web of the supported beam. This makes the minimum total number of bolts as 4. Is this assumption ok?',
 		'comments',
-		'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
+		'The maximum number of column of bolts is 2 on each side of the web of the supported beam. This makes the maximum total number of bolt columns as 4. Is this assumption ok? ',
 		'comments',		
 		'Any other recommendation/ Comments?',
 		'comments'
@@ -2786,7 +2786,7 @@ function ddq_end_plate_result_generate_csv()
 		{
 			mkdir($result_dir, 0755, TRUE);
 		} //!file_exists($result_dir)
-		$result_file = $result_dir . "ddcl-result-{$user->uid}" . ".csv";
+		$result_file = $result_dir . "ddq-endplate-{$user->uid}" . ".csv";
 		$csv_file = "ddcl-result-{$user->uid}" . ".csv";
 		$fp = fopen($result_file, "w");
 		/* making the first row */
@@ -2796,10 +2796,10 @@ function ddq_end_plate_result_generate_csv()
 			'User',
 			'Company / Institute',
 			'Current Position',
-			'The minimum number of bolts for the fin plate connection are assumed to be 3. Is this assumption ok?',
+			'The minimum number of bolts is 2, on each side of the web of the supported beam. This makes the minimum total number of bolts as 4. Is this assumption ok?',
 			'comments',
-			'A maximum of two (vertical) lines of bolts are allowed. Is this ok? ',
-			'comments',			
+			'The maximum number of column of bolts is 2 on each side of the web of the supported beam. This makes the maximum total number of bolt columns as 4. Is this assumption ok? ',
+			'comments',		
 			'Any other recomendation',
 			'comments'
 		);
