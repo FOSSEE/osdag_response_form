@@ -1147,9 +1147,14 @@ function ddq_end_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
- 
-				<br><br>Is this assumption ok?',
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				
+				',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
@@ -1242,8 +1247,13 @@ function ddq_end_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'c. The gap between the edge of the supported beam and the edge (or face) of the support (column or beam, depending on the connectivity) is assumed to be 20 mm. 
-				<br><br>Is this assumption ok?',
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
 				'#type' => 'radios',
 				'#options' => $step4_options,
 				//'#default_value' => $step4_data->question1,
@@ -1572,8 +1582,13 @@ function ddq_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
-				<br><br>Is this assumption ok?',
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				'#default_value' => $step5_data->question1,
@@ -1667,8 +1682,13 @@ function ddq_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => 'd. The minimum plate thickness should be greater than the supported beam web thickness. 
-				<br><br>Is this assumption ok?',
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
 				'#type' => 'radios',
 				'#options' => $step5_options,
 				//'#default_value' => $step5_data->question1,
