@@ -6898,14 +6898,12 @@ function ddcl_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_
 	global $user;
 	$v = $form_state['values'];
 	$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_end_plate_form_step13_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step13_feedback');
+	$query->fields('ddcl_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step13_data)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -6930,9 +6928,9 @@ function ddcl_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step13_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step13_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
 		{
@@ -6945,8 +6943,8 @@ function ddcl_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
 					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step13",
 					":inserted_on" => date('Y-m-d')
@@ -6961,7 +6959,7 @@ function ddcl_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_
 				} //$commentresult != 0
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step13_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_end_plate_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
@@ -7023,14 +7021,12 @@ function ddcl_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use 
 	global $user;
 	$v = $form_state['values'];
 	$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_end_plate_form_step13_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step13_feedback');
+	$query->fields('ddcl_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step13_data);die;
+	if ($form_step13_data)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -7055,9 +7051,9 @@ function ddcl_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use 
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step13_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step13_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
 		{
@@ -7070,8 +7066,8 @@ function ddcl_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
 					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step13",
 					":inserted_on" => date('Y-m-d')
@@ -7555,14 +7551,12 @@ function ddcl_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_
 	global $user;
 	$v = $form_state['values'];
 	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_end_plate_form_step14_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step14_feedback');
+	$query->fields('ddcl_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -7587,9 +7581,9 @@ function ddcl_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+			':step1_form_id' => $form_step14_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step14_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
 		{
@@ -7602,8 +7596,8 @@ function ddcl_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
 					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step14",
 					":inserted_on" => date('Y-m-d')
@@ -7618,7 +7612,7 @@ function ddcl_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_
 				} //$commentresult != 0
 			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step14_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_end_plate_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
@@ -7680,14 +7674,12 @@ function ddcl_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use 
 	global $user;
 	$v = $form_state['values'];
 	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_end_plate_form_step14_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step14_feedback');
+	$query->fields('ddcl_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -7714,7 +7706,7 @@ function ddcl_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use 
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step7_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step14_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
 		{
@@ -7727,8 +7719,8 @@ function ddcl_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use 
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
 					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step14",
 					":inserted_on" => date('Y-m-d')
@@ -7743,7 +7735,7 @@ function ddcl_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use 
 				} //$commentresult != 0
 			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step14_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_end_plate_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
@@ -7823,7 +7815,7 @@ function step14_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 14 form ends ****************************/
 
-/************************ Step 17 form starts *********************/
+/************************ Step 15 form starts *********************/
 function ddcl_end_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
@@ -8062,8 +8054,7 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 	);
 	$form_step15_data = db_query($query, $args);
 	$form_step15_data_count = $form_step15_data->rowCount();
-	$form_step15_data = $form_step15_data->fetchObject();
-	//var_dump($form_step7_data);die;
+	$form_step15_data = $form_step15_data->fetchObject();	
 	if ($form_step15_data_count != 0)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step15_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
@@ -8089,7 +8080,7 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step15_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step15_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
 		{
@@ -8099,7 +8090,7 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	(:step15_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
 					":step15_form_id" => $form_step15_data->id,
@@ -8116,9 +8107,9 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 				{
 					$comments++;
 				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	} //$form_step7_data
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	} //$form_step15_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_end_plate_form_step15_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -8143,7 +8134,7 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 		));
 		/* For adding comments */
 		$comments = 0;
-		for ($i = 0; $i <= $v['step15_field1_fieldset']["step8_comment_count"]; $i++)
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
 		{
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
@@ -8168,20 +8159,15 @@ function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_
 				{
 					$comments++;
 				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-end-plate/form/step16/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step14/' . $user->uid;
 }
 function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
-	$v = $form_state['values'];
-	/*$query = db_select('ddcl_end_plate_form_step8_feedback');
-	$query->fields('ddcl_end_plate_form_step8_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
-	*/
+	$v = $form_state['values'];	
 	$query = "SELECT * FROM ddcl_end_plate_form_step15_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
@@ -8189,7 +8175,7 @@ function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use 
 	$form_step15_data = db_query($query, $args);
 	$form_step15_data_count = $form_step15_data->rowCount();
 	$form_step15_data = $form_step15_data->fetchObject();
-	//var_dump($form_step7_data);die;
+	//var_dump($form_step15_data);die;
 	if ($form_step15_data_count != 0)
 	{
 		$query = "UPDATE ddcl_end_plate_form_step15_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
@@ -8242,9 +8228,9 @@ function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use 
 				{
 					$comments++;
 				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	} //$form_step7_data
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	} //$form_step15_data
 	else
 	{
 		$query = "INSERT INTO {ddcl_end_plate_form_step15_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
@@ -8269,7 +8255,7 @@ function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use 
 		));
 		/* For adding comments */
 		$comments = 0;
-		for ($i = 0; $i <= $v['step15_field1_fieldset']["step8_comment_count"]; $i++)
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
 		{
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
@@ -8295,7 +8281,7 @@ function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use 
 					$comments++;
 				} //$commentresult != 0
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
 	$form_state['redirect'] = 'ddcl-end-plate/success/' . $user->uid;
 }
@@ -8346,10 +8332,10 @@ function ddcl_end_plate_step15_form_save_submit($form, &$form_state, $no_js_use 
 	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	(:step15_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step15_data->id,
+					":step15_form_id" => $form_step15_data->id,
 					":number" => $i + $form_step15_comment_data->max + 1,
 					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step15",
@@ -8633,7 +8619,7 @@ join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
 	/* check if there are any pending proposals */
-	if (!$feedback_rows)
+	if (!$feedback_q)
 	{
 		drupal_set_message(t('There are no results.'), 'status');
 		return '';
