@@ -3114,7 +3114,7 @@ function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Plate -> i. Plate height'));
+	drupal_set_title(t('c. Plate > i. Plate height'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
 	<b> c. Plate </b> <br>
