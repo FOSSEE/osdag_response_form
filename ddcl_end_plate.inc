@@ -3125,7 +3125,7 @@ function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 			  </msub>
 			</math>)
 			</b> <br>
-	&emsp;&emsp;&emsp; <b> Minimum plate height </b> [Reference: Handbook on Structural Steel Detailing, INSDAG - Chapter 5, Section 5.2.3, Page 5.7] <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate height </b> [Reference: Steel Designers\' Manual - 6th Edition (2003) - Page 734] <br>
 				<center>
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
 				  <mi>h</mi>
@@ -3150,8 +3150,17 @@ function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 					  <mi>d</mi>
 					</math> - depth of supported beam  		
 				<br>				
+				<br>			
 				<hr>
+								
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;				
+				<img src="' . $img_path . '/ddcl_end_plate_step8_figure_0.PNG" width="60%" height="60%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Figure: (Ref) Steel Designers\' Manual - 6th Ed - Page 734
 				<br>
+				<br>
+				<hr>
 			
 			
 		&emsp;&emsp;&emsp; <b> Maximum plate height </b> [Based on reasoning]  <br>
