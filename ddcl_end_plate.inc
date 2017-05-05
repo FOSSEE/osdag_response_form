@@ -2621,10 +2621,12 @@ function ddcl_end_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 	drupal_set_title(t('b. Bolt > iv. Number of bolts and Bolt group capacity'));
 	$markup_text = '
 	<b> b. Bolt </b> <br>
-	&emsp; <b> iv. Number of bolts (n)</b> <br>
-	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
+	&emsp; <b>Number of bolts (n)</b> <br>
+	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) 
+		<br>
+		<br>
 	
-	&emsp;&emsp;&emsp; Bolt group capacity = 
+	&emsp; <b>Bolt group capacity </b>=
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mi>n</mi>
 					  <msub>
@@ -2636,12 +2638,13 @@ function ddcl_end_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 					  </msub>
 					</math>
 					<br>
+					<br>
 					
-	&emsp;&emsp;&emsp; Bolt group capacity 
+	&emsp; Bolt group capacity 
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <mo>&gt;</mo>
 					</math>
-					factored shear force
+					Factored shear force
 	
 	<hr>';
 	// All the real form fields.
@@ -3111,7 +3114,7 @@ function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Plate'));
+	drupal_set_title(t('c. Plate -> i. Plate height'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
 	<b> c. Plate </b> <br>
@@ -4501,7 +4504,7 @@ function ddcl_end_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Plate > iii. Moment capacity'));
+	drupal_set_title(t('c. Plate > iii. Block shear capacity check'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
 	
@@ -5424,7 +5427,7 @@ function ddcl_end_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
 						<mi>f</mi>
 						<mi>wd</mi>
 					  </msub>
-					</math>  - Design weld strength (in kN/mm)<br>
+					</math>  - Design weld strength<br>
 					
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -6616,10 +6619,12 @@ function ddcl_end_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
 						<mi>t</mi>
-					</math> - thickness of thinner plate <br>
+					</math> - thickness of thinner plate 
+					<br>
+					<br>
 		
 	&emsp; <b> iii. Gauge1 limitations</b> [Reference: Steel Designers Manual - p733 - 6th Edition (2003)] <br>
-	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm).
+	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm):
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			<msub>
