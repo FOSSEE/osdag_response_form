@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="100%"
+   version="1.1"
+   viewBox="-100 -100 665.31016 872.5"
+   width="100%"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Fig5.svg">
+  <metadata
+     id="metadata303">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
+     id="namedview301"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.5733333"
+     inkscape:cx="261.28594"
+     inkscape:cy="621.54431"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#diagonalHatch"
+       id="pattern3282"
+       patternTransform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,-25.348045,-95.578427)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#diagonalHatch"
+       id="pattern3280"
+       patternTransform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,-25.348045,-99.578427)" />
+    <pattern
+       height="6"
+       id="diagonalHatch"
+       patternTransform="rotate(45 2 2)"
+       patternUnits="userSpaceOnUse"
+       width="6">
+      <path
+         d="M -1,2 l 6,0"
+         stroke="#000000"
+         stroke-width="0.7"
+         id="path7" />
+    </pattern>
+    <marker
+       id="id143"
+       markerHeight="30"
+       markerWidth="30"
+       orient="auto"
+       refX="8"
+       refY="3">
+      <path
+         d="M 0,0 3,3 0,6 8,3 0,0"
+         id="path10"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id144"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path13"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id145"
+       markerHeight="30"
+       markerWidth="30"
+       orient="auto"
+       refX="8"
+       refY="3">
+      <path
+         d="M 0,0 3,3 0,6 8,3 0,0"
+         id="path16"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id146"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path19"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id147"
+       markerHeight="30"
+       markerWidth="30"
+       orient="auto"
+       refX="8"
+       refY="3">
+      <path
+         d="M 0,0 3,3 0,6 8,3 0,0"
+         id="path22"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id148"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path25"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id149"
+       markerHeight="30"
+       markerWidth="30"
+       orient="auto"
+       refX="8"
+       refY="3">
+      <path
+         d="M 0,0 3,3 0,6 8,3 0,0"
+         id="path28"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id150"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path31"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id151"
+       markerHeight="30"
+       markerWidth="30"
+       orient="auto"
+       refX="8"
+       refY="3">
+      <path
+         d="M 0,0 3,3 0,6 8,3 0,0"
+         id="path34"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id152"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path37"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id153"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path40"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id154"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path43"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id155"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path46"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id156"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path49"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id157"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path52"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+    <marker
+       id="id158"
+       markerHeight="15"
+       markerWidth="15"
+       orient="auto"
+       refX="45"
+       refY="7.5">
+      <path
+         d="M 0,0 8,7.5 0,15 z"
+         id="path55"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000" />
+    </marker>
+    <marker
+       id="id155-9"
+       markerHeight="20"
+       markerWidth="30"
+       orient="auto"
+       refX="0"
+       refY="3">
+      <path
+         d="M 0,3 8,6 5,3 8,0 0,3"
+         id="path46-4"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </marker>
+  </defs>
+  <rect
+     height="800"
+     width="250"
+     x="-27.348045"
+     y="-98.75"
+     id="rect57"
+     style="fill:none;stroke:#0000ff;stroke-width:2.5" />
+  <polyline
+     points="55,250 195,250 195.0,263.1 128.85,263.1 128.85,536.9 195.0,536.9 195,550 55,550 55.0,536.9 121.15,536.9 121.15,263.1 55.0,263.1 55,250"
+     id="polyline59"
+     style="fill:none;stroke:#0000ff;stroke-width:2.5"
+     transform="translate(-27.348045,-98.75)" />
+  <rect
+     height="168"
+     width="10"
+     x="81.301956"
+     y="194.45001"
+     id="rect61"
+     style="fill:url(#pattern3280);stroke:#ffffff;stroke-width:2.5" />
+  <rect
+     height="188"
+     width="198"
+     x="-1.3480453"
+     y="194.45001"
+     id="rect63"
+     style="fill:none;stroke:#0000ff;stroke-width:2.5" />
+  <rect
+     height="168"
+     width="10"
+     x="104.00196"
+     y="198.45001"
+     id="rect65"
+     style="fill:url(#pattern3282);stroke:#ffffff;stroke-width:2.5" />
+  <circle
+     cx="45"
+     cy="312.20001"
+     r="6"
+     id="circle67"
+     sodipodi:cx="45"
+     sodipodi:cy="312.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="312.20001"
+     r="6"
+     id="circle69"
+     sodipodi:cx="205"
+     sodipodi:cy="312.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="213.45001"
+     y2="213.45001"
+     id="line71"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="224.45001"
+     y2="202.45001"
+     id="line73"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="213.45001"
+     y2="213.45001"
+     id="line75"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="224.45001"
+     y2="202.45001"
+     id="line77"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="312.20001"
+     r="6"
+     id="circle79"
+     sodipodi:cx="75"
+     sodipodi:cy="312.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="312.20001"
+     r="6"
+     id="circle81"
+     sodipodi:cx="175"
+     sodipodi:cy="312.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="213.45001"
+     y2="213.45001"
+     id="line83"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="224.45001"
+     y2="202.45001"
+     id="line85"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="213.45001"
+     y2="213.45001"
+     id="line87"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="224.45001"
+     y2="202.45001"
+     id="line89"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="45"
+     cy="342.20001"
+     r="6"
+     id="circle91"
+     sodipodi:cx="45"
+     sodipodi:cy="342.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="342.20001"
+     r="6"
+     id="circle93"
+     sodipodi:cx="205"
+     sodipodi:cy="342.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="243.45001"
+     y2="243.45001"
+     id="line95"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="254.45001"
+     y2="232.45001"
+     id="line97"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="243.45001"
+     y2="243.45001"
+     id="line99"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="254.45001"
+     y2="232.45001"
+     id="line101"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="342.20001"
+     r="6"
+     id="circle103"
+     sodipodi:cx="75"
+     sodipodi:cy="342.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="342.20001"
+     r="6"
+     id="circle105"
+     sodipodi:cx="175"
+     sodipodi:cy="342.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="243.45001"
+     y2="243.45001"
+     id="line107"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="254.45001"
+     y2="232.45001"
+     id="line109"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="243.45001"
+     y2="243.45001"
+     id="line111"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="254.45001"
+     y2="232.45001"
+     id="line113"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="45"
+     cy="372.20001"
+     r="6"
+     id="circle115"
+     sodipodi:cx="45"
+     sodipodi:cy="372.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="372.20001"
+     r="6"
+     id="circle117"
+     sodipodi:cx="205"
+     sodipodi:cy="372.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="273.45001"
+     y2="273.45001"
+     id="line119"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="284.45001"
+     y2="262.45001"
+     id="line121"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="273.45001"
+     y2="273.45001"
+     id="line123"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="284.45001"
+     y2="262.45001"
+     id="line125"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="372.20001"
+     r="6"
+     id="circle127"
+     sodipodi:cx="75"
+     sodipodi:cy="372.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="372.20001"
+     r="6"
+     id="circle129"
+     sodipodi:cx="175"
+     sodipodi:cy="372.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="273.45001"
+     y2="273.45001"
+     id="line131"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="284.45001"
+     y2="262.45001"
+     id="line133"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="273.45001"
+     y2="273.45001"
+     id="line135"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="284.45001"
+     y2="262.45001"
+     id="line137"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="45"
+     cy="402.20001"
+     r="6"
+     id="circle139"
+     sodipodi:cx="45"
+     sodipodi:cy="402.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="402.20001"
+     r="6"
+     id="circle141"
+     sodipodi:cx="205"
+     sodipodi:cy="402.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="303.45001"
+     y2="303.45001"
+     id="line143"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="314.45001"
+     y2="292.45001"
+     id="line145"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="303.45001"
+     y2="303.45001"
+     id="line147"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="314.45001"
+     y2="292.45001"
+     id="line149"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="402.20001"
+     r="6"
+     id="circle151"
+     sodipodi:cx="75"
+     sodipodi:cy="402.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="402.20001"
+     r="6"
+     id="circle153"
+     sodipodi:cx="175"
+     sodipodi:cy="402.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="303.45001"
+     y2="303.45001"
+     id="line155"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="314.45001"
+     y2="292.45001"
+     id="line157"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="303.45001"
+     y2="303.45001"
+     id="line159"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="314.45001"
+     y2="292.45001"
+     id="line161"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="45"
+     cy="432.20001"
+     r="6"
+     id="circle163"
+     sodipodi:cx="45"
+     sodipodi:cy="432.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="432.20001"
+     r="6"
+     id="circle165"
+     sodipodi:cx="205"
+     sodipodi:cy="432.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="333.45001"
+     y2="333.45001"
+     id="line167"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="344.45001"
+     y2="322.45001"
+     id="line169"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="333.45001"
+     y2="333.45001"
+     id="line171"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="344.45001"
+     y2="322.45001"
+     id="line173"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="432.20001"
+     r="6"
+     id="circle175"
+     sodipodi:cx="75"
+     sodipodi:cy="432.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="432.20001"
+     r="6"
+     id="circle177"
+     sodipodi:cx="175"
+     sodipodi:cy="432.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="333.45001"
+     y2="333.45001"
+     id="line179"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="344.45001"
+     y2="322.45001"
+     id="line181"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="333.45001"
+     y2="333.45001"
+     id="line183"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="344.45001"
+     y2="322.45001"
+     id="line185"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="45"
+     cy="462.20001"
+     r="6"
+     id="circle187"
+     sodipodi:cx="45"
+     sodipodi:cy="462.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="205"
+     cy="462.20001"
+     r="6"
+     id="circle189"
+     sodipodi:cx="205"
+     sodipodi:cy="462.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="28.651955"
+     x2="6.6519547"
+     y1="363.45001"
+     y2="363.45001"
+     id="line191"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="17.651955"
+     x2="17.651955"
+     y1="374.45001"
+     y2="352.45001"
+     id="line193"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="188.65195"
+     x2="166.65195"
+     y1="363.45001"
+     y2="363.45001"
+     id="line195"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="177.65195"
+     x2="177.65195"
+     y1="374.45001"
+     y2="352.45001"
+     id="line197"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <circle
+     cx="75"
+     cy="462.20001"
+     r="6"
+     id="circle199"
+     sodipodi:cx="75"
+     sodipodi:cy="462.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <circle
+     cx="175"
+     cy="462.20001"
+     r="6"
+     id="circle201"
+     sodipodi:cx="175"
+     sodipodi:cy="462.20001"
+     sodipodi:rx="6"
+     sodipodi:ry="6"
+     style="fill:none;stroke:#0000ff;stroke-width:1.5"
+     transform="translate(-27.348045,-98.75)" />
+  <line
+     x1="58.651955"
+     x2="36.651955"
+     y1="363.45001"
+     y2="363.45001"
+     id="line203"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="47.651955"
+     x2="47.651955"
+     y1="374.45001"
+     y2="352.45001"
+     id="line205"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="158.65195"
+     x2="136.65195"
+     y1="363.45001"
+     y2="363.45001"
+     id="line207"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <line
+     x1="147.65195"
+     x2="147.65195"
+     y1="374.45001"
+     y2="352.45001"
+     id="line209"
+     style="stroke:#000000;stroke-width:1;stroke-linecap:square" />
+  <text
+     font-size="28"
+     x="314.20108"
+     y="602.31781"
+     id="text269"
+     style="font-size:28px;fill:#000000;font-family:sans-serif">Beam</text>
+  <text
+     font-size="28"
+     x="-95.948044"
+     y="769.25"
+     id="text271"
+     style="font-size:28px;fill:#000000;font-family:sans-serif" />
+  <polyline
+     points="250,800 320.0,870.0 528.0,870.0"
+     id="polyline273"
+     style="fill:none;stroke:#000000;stroke-width:2.5;marker-start:url(#id154)"
+     transform="matrix(0.81794153,0,0,1.00336,18.048973,-101.55562)" />
+  <text
+     font-size="28"
+     x="313.45193"
+     y="753.25"
+     id="text275"
+     style="font-size:28px;fill:#000000;font-family:sans-serif">Column</text>
+  <text
+     font-size="28"
+     x="313.45193"
+     y="789.25"
+     id="text277"
+     style="font-size:28px;fill:#000000;font-family:sans-serif" />
+  <polyline
+     points="174.5,481.2 334.5,641.2 574.5,641.2"
+     id="polyline279"
+     style="fill:none;stroke:#000000;stroke-width:2.5;marker-start:url(#id155)"
+     transform="matrix(0.79727489,0,0,1.0016619,7.894541,-99.682608)" />
+  <text
+     font-size="28"
+     x="306.99939"
+     y="529.53473"
+     id="text281"
+     style="font-size:28px;fill:#000000;font-family:sans-serif">End Plate</text>
+  <text
+     font-size="28"
+     x="331.15195"
+     y="560.45001"
+     id="text283"
+     style="font-size:28px;fill:#000000;font-family:sans-serif" />
+  <text
+     font-size="28"
+     x="108.70196"
+     y="-99.650002"
+     id="text295"
+     style="font-size:28px;fill:#000000;font-family:sans-serif" />
+  <polyline
+     points="174.5,481.2 334.5,641.2 574.5,641.2"
+     id="polyline279-3"
+     style="fill:none;stroke:#000000;stroke-width:2.5;marker-start:url(#id155)"
+     transform="matrix(0.77194001,0,0,1.001884,9.4254032,-23.655594)" />
+</svg>
