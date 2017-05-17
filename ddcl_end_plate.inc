@@ -1,8 +1,8 @@
 <?php
 /**
- * Fetches and displays ddcl cleat angle form.
+ * Fetches and displays the form.
  */
-function ddcl_cleat_angle_form_page()
+function ddcl_end_plate_form_page()
 {
 	global $user;
 	$data = '';
@@ -11,8 +11,8 @@ function ddcl_cleat_angle_form_page()
 		$data .= "Please login to give feedback";
 	} //!$user
 	/************* check if user has already submitted a proposal **************/
-	$query = db_select('ddcl_cleat_angle_form_step1_feedback');
-	$query->fields('ddcl_cleat_angle_form_step1_feedback');
+	$query = db_select('ddcl_end_plate_form_step1_feedback');
+	$query->fields('ddcl_end_plate_form_step1_feedback');
 	$query->condition('uid', $user->uid);
 	$query->orderBy('id', 'DESC');
 	$query->range(0, 1);
@@ -29,20 +29,20 @@ function ddcl_cleat_angle_form_page()
 			} //$feedback_data->submitted == 1
 			else
 			{
-				$ddcl_cleat_angle_step1_form = drupal_get_form("ddcl_cleat_angle_step1_form");
-				$data .= drupal_render($ddcl_cleat_angle_step1_form);
+				$ddcl_end_plate_step1_form = drupal_get_form("ddcl_end_plate_step1_form");
+				$data .= drupal_render($ddcl_end_plate_step1_form);
 			}
 		} //$feedback_data = $feedback_q->fetchObject()
 		else
 		{
-			$ddcl_cleat_angle_step1_form = drupal_get_form("ddcl_cleat_angle_step1_form");
-			$data .= drupal_render($ddcl_cleat_angle_step1_form);
+			$ddcl_end_plate_step1_form = drupal_get_form("ddcl_end_plate_step1_form");
+			$data .= drupal_render($ddcl_end_plate_step1_form);
 		}
 	} //$feedback_q
-	//$data .= drupal_get_form('ddcl_cleat_angle_step1_form');
+	//$data .= drupal_get_form('ddcl_end_plate_step1_form');
 	return $data;
 }
-function ddcl_cleat_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step1_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	global $base_url;
@@ -53,8 +53,8 @@ function ddcl_cleat_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 		'#markup' => $markup_text,
 		'#required' => true
 	);
-	$query = db_select('ddcl_cleat_angle_form_step1_feedback');
-	$query->fields('ddcl_cleat_angle_form_step1_feedback');
+	$query = db_select('ddcl_end_plate_form_step1_feedback');
+	$query->fields('ddcl_end_plate_form_step1_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step1_data = $query->execute();
 	if ($form_step1_data)
@@ -105,24 +105,24 @@ function ddcl_cleat_angle_step1_form($form, &$form_state, $no_js_use = FALSE)
 		'#type' => 'submit',
 		'#value' => 'Save & Next',
 		'#submit' => array(
-			'ddcl_cleat_angle_step1_form_submit'
+			'ddcl_end_plate_step1_form_submit'
 		)
 	);
 	return $form;
 }
-function ddcl_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step1_form_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
-	$query = db_select('ddcl_cleat_angle_form_step1_feedback');
-	$query->fields('ddcl_cleat_angle_form_step1_feedback');
+	$query = db_select('ddcl_end_plate_form_step1_feedback');
+	$query->fields('ddcl_end_plate_form_step1_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step1_data = $query->execute();
 	if ($form_step1_data)
 	{
 		if ($step1_data = $form_step1_data->fetchObject())
 		{
-			$query = "UPDATE ddcl_cleat_angle_form_step1_feedback SET name=:name, email_id=:email_id, institute=:institute, current_position=:current_position WHERE uid=:uid ";
+			$query = "UPDATE ddcl_end_plate_form_step1_feedback SET name=:name, email_id=:email_id, institute=:institute, current_position=:current_position WHERE uid=:uid ";
 			$args = array(
 				":uid" => $user->uid,
 				":name" => _field_sentence_case($v['step1_field1_name']),
@@ -134,7 +134,7 @@ function ddcl_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FA
 		} //$step1_data = $form_step1_data->fetchObject()
 		else
 		{
-			$query = "INSERT INTO {ddcl_cleat_angle_form_step1_feedback} (uid, name, email_id, institute, current_position, data_reletion, inserted_on) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_reletion,:inserted_on)";
+			$query = "INSERT INTO {ddcl_end_plate_form_step1_feedback} (uid, name, email_id, institute, current_position, data_reletion, inserted_on) VALUES (:uid,:name,:email_id, :institute, :current_position, :data_reletion,:inserted_on)";
 			$args = array(
 				":uid" => $user->uid,
 				":name" => $v['step1_field1_name'],
@@ -147,19 +147,18 @@ function ddcl_cleat_angle_step1_form_submit($form, &$form_state, $no_js_use = FA
 			db_query($query, $args);
 		}
 	} //$form_step1_data
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step2/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step2/' . $user->uid;
 }
-/************************ Step 1 form ends *********************/
 /*************************************************************************/
 /************************ Step 2 form starts *********************/
-function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step2_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('a. Material strength'));
+	drupal_set_title(t('a. Material Strength'));
 	$markup_text = '
 	<b>a. Material Strength </b><br>
-		&emsp;&emsp;&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
+		&emsp; <b> i. Yield Stress limits </b>[Reference: Table-2, IS 800] <br>					
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>165</mn>
@@ -173,7 +172,7 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					</math>
 					</center>		
 		<br>
-		&emsp;&emsp;&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-2, IS 800] <br>
+		&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-2, IS 800] <br>
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>390</mn>
@@ -185,13 +184,8 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					<mo>&le;</mo>
 					<mn>690</mn>
 					</math>
-					</center>
-		<br>
-		<br>
-
-		&emsp;&emsp;&emsp; Note: All units in MPa
-		
-	<hr>';
+					</center>					
+			<hr>';
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -199,8 +193,8 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step2-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step2_feedback');
-	$query->fields('ddcl_cleat_angle_form_step2_feedback');
+	$query = db_select('ddcl_end_plate_form_step2_feedback');
+	$query->fields('ddcl_end_plate_form_step2_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step2_data = $query->execute();
 	if ($form_step2_data)
@@ -235,14 +229,14 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step2_data->id, $step2_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step2_data->id, $step2_data->data_relation);
 			$icom = 1;
-			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			$form['step2_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step2_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step2_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -308,14 +302,14 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step2_form_previous_submit'
+					'ddcl_end_plate_step2_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step2_form_next_submit'
+					'ddcl_end_plate_step2_form_next_submit'
 				)
 			);
 		} //$step2_data = $form_step2_data->fetchObject()
@@ -407,32 +401,32 @@ function ddcl_cleat_angle_step2_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step2_form_previous_submit'
+					'ddcl_end_plate_step2_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step2_form_next_submit'
+					'ddcl_end_plate_step2_form_next_submit'
 				)
 			);
 		} //$step2_data = $form_step2_data->fetchObject()
 	} //$form_step2_data
 	return $form;
 }
-function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step2_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step2_field1_fieldset']['step2_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step2_feedback');
-	$query->fields('ddcl_cleat_angle_form_step2_feedback');
+	$query = db_select('ddcl_end_plate_form_step2_feedback');
+	$query->fields('ddcl_end_plate_form_step2_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step2_data = $query->execute()->fetchObject();
 	if ($form_step2_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step2_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step2_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => 'question 1',
@@ -445,7 +439,7 @@ function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step2_data->id
 		));
 		$form_step2_comment_data = $query->fetchObject();
@@ -455,7 +449,7 @@ function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -480,7 +474,7 @@ function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step2_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step2_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step2_field1_fieldset']['step2_field1_question1'],
@@ -500,7 +494,7 @@ function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -523,20 +517,20 @@ function ddcl_cleat_angle_step2_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step1/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step1/' . $user->uid;
 }
-function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step2_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step2_field1_fieldset']['step2_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step2_feedback');
-	$query->fields('ddcl_cleat_angle_form_step2_feedback');
+	$query = db_select('ddcl_end_plate_form_step2_feedback');
+	$query->fields('ddcl_end_plate_form_step2_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step2_data = $query->execute()->fetchObject();
 	if ($form_step2_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step2_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step2_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => 'question 1',
@@ -549,7 +543,7 @@ function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step2_data->id
 		));
 		$form_step2_comment_data = $query->fetchObject();
@@ -559,7 +553,7 @@ function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -584,7 +578,7 @@ function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step2_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step2_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,:question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step2_field1_fieldset']['step2_field1_question1'],
@@ -604,7 +598,7 @@ function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -627,7 +621,7 @@ function ddcl_cleat_angle_step2_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step3/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step3/' . $user->uid;
 }
 /***************************************/
 /***************************************/
@@ -649,9 +643,8 @@ function step2_comment_add_more_callback($form, &$form_state)
 {
 	return $form['step2_field1_fieldset'];
 }
-/************************ Step 2 form ends *********************/
 /***************************************** step 3 form starts **************************/
-function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
@@ -660,9 +653,8 @@ function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 	<b> b. Bolt </b> <br>
 	&emsp; <b> i. Shear capacity of bolt </b> <br>
 	&emsp;&emsp; <b> 1) Black bolt </b> <br>
-	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the seated angle connection. <br>	
-	';
-	$markup_text1 = 'specimen text2';
+	&emsp;&emsp;&emsp;&emsp;This check will be the same, as implemented for the cleat angle connection.';
+	$markup_text1 = '';
 	$tooltip1 = '';
 	// All the real form fields.
 	$form = array();
@@ -672,8 +664,8 @@ function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step3-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step3_feedback');
-	$query->fields('ddcl_cleat_angle_form_step3_feedback');
+	$query = db_select('ddcl_end_plate_form_step3_feedback');
+	$query->fields('ddcl_end_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step3_data = $query->execute();
 	if ($form_step3_data)
@@ -716,14 +708,14 @@ function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step3_data->id, $step3_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
-			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step3_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step3_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step3_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -785,14 +777,14 @@ function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step3_form_previous_submit'
+					'ddcl_end_plate_step3_form_previous_submit'
 				)
 			);
 			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step3_form_next_submit'
+					'ddcl_end_plate_step3_form_next_submit'
 				)
 			);
 		} //$step3_data = $form_step3_data->fetchObject()
@@ -880,33 +872,33 @@ function ddcl_cleat_angle_step3_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step3_form_previous_submit'
+					'ddcl_end_plate_step3_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step3_form_next_submit'
+					'ddcl_end_plate_step3_form_next_submit'
 				)
 			);
 		} //$step3_data = $form_step3_data->fetchObject()
 	} //$form_step3_data
 	return $form;
 }
-function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step3_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step3_field1_fieldset']['step3_field1_question1'] = 'question 3';
-	$query = db_select('ddcl_cleat_angle_form_step3_feedback');
-	$query->fields('ddcl_cleat_angle_form_step3_feedback');
+	$query = db_select('ddcl_end_plate_form_step3_feedback');
+	$query->fields('ddcl_end_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step3_data = $query->execute()->fetchObject();
 	//var_dump($form_step2_data);die;
 	if ($form_step3_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step3_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step3_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
@@ -919,7 +911,7 @@ function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step3_data->id
 		));
 		$form_step3_comment_data = $query->fetchObject();
@@ -929,7 +921,7 @@ function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -954,7 +946,7 @@ function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step3_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step3_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
@@ -974,7 +966,7 @@ function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -997,21 +989,21 @@ function ddcl_cleat_angle_step3_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step2/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step2/' . $user->uid;
 }
-function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step3_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step3_field1_fieldset']['step3_field1_question1'] = 'question 3';
-	$query = db_select('ddcl_cleat_angle_form_step3_feedback');
-	$query->fields('ddcl_cleat_angle_form_step3_feedback');
+	$query = db_select('ddcl_end_plate_form_step3_feedback');
+	$query->fields('ddcl_end_plate_form_step3_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step3_data = $query->execute()->fetchObject();
 	//var_dump($form_step2_data);die;
 	if ($form_step3_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step3_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step3_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
@@ -1024,7 +1016,7 @@ function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step3_data->id
 		));
 		$form_step3_comment_data = $query->fetchObject();
@@ -1034,7 +1026,7 @@ function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1059,7 +1051,7 @@ function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step3_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step3_feedback} (uid, question1,question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
@@ -1079,7 +1071,7 @@ function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1102,7 +1094,7 @@ function ddcl_cleat_angle_step3_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step4/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step4/' . $user->uid;
 }
 /***************************************/
 function step3_comment_add_more_add_one($form, &$form_state)
@@ -1126,7 +1118,7 @@ function step3_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 3 form ends **************************/
 /************************ Step 4 form starts *********************/
-function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
@@ -1134,222 +1126,8 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> i. Shear capacity of bolt </b> <br>
-	&emsp;&emsp; <b> 2) HSFG bolt [Cl 10.4.3]</b> <br>
-	&emsp;&emsp;&emsp; Design for friction type bolting in which slip is required to be limited, a bolt subjected only to a factored design shear force, 
-			<math xmlns="http://www.w3.org/1998/Math/MathML">
-			  <msub>
-				<mi>V</mi>
-				<mrow class="MJX-TeXAtom-ORD">
-				  <mi>s</mi>
-				  <mi>f</mi>
-				</mrow>
-			  </msub>
-			</math>
-			in the interface of connections at which slip cannot be tolerated, shall satisfy the following: <br>
-							<center>
-							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							  <msub>
-								<mi>V</mi>
-								<mrow class="MJX-TeXAtom-ORD">
-								  <mi>s</mi>
-								  <mi>f</mi>
-								</mrow>
-							  </msub>
-							  <mo>&#x2264;</mo>
-							  <msub>
-								<mi>V</mi>
-								<mrow class="MJX-TeXAtom-ORD">
-								  <mi>d</mi>
-								  <mi>s</mi>
-								  <mi>f</mi>
-								</mrow>
-							  </msub>
-							</math>
-							</center>
-					
-					&emsp;&emsp;&emsp;&emsp;
-					Where, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>V</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>d</mi>
-							  <mi>s</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						  <mo>=</mo>
-						  <msub>
-							<mi>V</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>n</mi>
-							  <mi>s</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						  <mrow class="MJX-TeXAtom-ORD">
-							<mo>/</mo>
-						  </mrow>
-						  <msub>
-							<mi>&#x03B3;<!-- γ --></mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>m</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						</math>							
-						
-						<br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>V</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>n</mi>
-							  <mi>s</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						</math>
-						= nominal shear capacity of a bolt as governed by slip for friction type connection, calculated as follows: <br>
-						
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>V</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>n</mi>
-							  <mi>s</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						  <mo>=</mo>
-						  <msub>
-							<mi>&#x03BC;<!-- μ --></mi>
-							<mi>f</mi>
-						  </msub>
-						  <msub>
-							<mi>n</mi>
-							<mi>e</mi>
-						  </msub>
-						  <msub>
-							<mi>K</mi>
-							<mi>h</mi>
-						  </msub>
-						  <msub>
-							<mi>F</mi>
-							<mn>0</mn>
-						  </msub>
-						</math>
-							
-						<br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						Where, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>&#x03BC;<!-- μ --></mi>
-							<mi>f</mi>
-						  </msub>
-						</math>  = coefficient of friction (slip factor) as specified in Table 20 (default value=0.55), <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>n</mi>
-							<mi>e</mi>
-						  </msub>
-						</math>
-						= number of effective interfaces offering frictional resistance to slip, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>K</mi>
-							<mi>h</mi>
-						  </msub>
-						</math>
-						= 1.0 for fasteners in clearance holes, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						= 0.85 for fasteners in oversized and short slotted holes and for fasteners in long slotted <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						holes loaded perpendicular to the slot, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						= 0.7 for fasteners in long slotted holes loaded parallel to the slot, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>&#x03B3;<!-- γ --></mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>m</mi>
-							  <mi>f</mi>
-							</mrow>
-						  </msub>
-						</math>
-						=  1.10 (if slip resistance is designed at service load), <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						=  1.25 (if slip resistance is designed at ultimate load), <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>F</mi>
-							<mi>0</mi>
-						  </msub>
-						</math>
-						= minimum bolt tension (proof load) at installation and may be taken as 
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>A</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>n</mi>
-							  <mi>b</mi>
-							</mrow>
-						  </msub>
-						</math>
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>f</mi>
-							<mi>0</mi>
-						  </msub>
-						</math>
-						, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>A</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>n</mi>
-							  <mi>b</mi>
-							</mrow>
-						  </msub>
-						</math>
-						= net area of the bolt at threads, and <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>f</mi>
-							<mi>0</mi>
-						  </msub>
-						</math>
-						= proof stress (= 0.70
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>f</mi>
-							<mrow class="MJX-TeXAtom-ORD">
-							  <mi>u</mi>
-							  <mi>b</mi>
-							</mrow>
-						  </msub>
-						</math>
-						) <br>
-						
-					<br>
-					<p>Note: Designing the connection such that slip does not occur at ultimate loads <br>
-					
-					
-					<br>
-					<b>10.4.3.1 Long joints </b><br>
-					&emsp;&emsp;&emsp;The provision for the long joints 10.3.3.1 shall apply to friction grip connections also.
-
+	&emsp;&emsp; <b> 2) HSFG bolt</b> <br>
+	&emsp;&emsp;&emsp; This check will be the same, as implemented for the cleat angle connection.
 </p>
 	
 	<hr>';
@@ -1361,8 +1139,8 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step4-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step4_feedback');
-	$query->fields('ddcl_cleat_angle_form_step4_feedback');
+	$query = db_select('ddcl_end_plate_form_step4_feedback');
+	$query->fields('ddcl_end_plate_form_step4_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step4_data = $query->execute();
 	if ($form_step4_data)
@@ -1396,14 +1174,14 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step4_data->id, $step4_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
-			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step4_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step4_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step4_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1469,14 +1247,14 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step4_form_previous_submit'
+					'ddcl_end_plate_step4_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step4_form_next_submit'
+					'ddcl_end_plate_step4_form_next_submit'
 				)
 			);
 		} //$step4_data = $form_step4_data->fetchObject()
@@ -1568,33 +1346,33 @@ function ddcl_cleat_angle_step4_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step4_form_previous_submit'
+					'ddcl_end_plate_step4_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step4_form_next_submit'
+					'ddcl_end_plate_step4_form_next_submit'
 				)
 			);
 		} //$step4_data = $form_step4_data->fetchObject()
 	} //$form_step4_data
 	return $form;
 }
-function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step4_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step4_field1_fieldset']['step4_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step4_feedback');
-	$query->fields('ddcl_cleat_angle_form_step4_feedback');
+	$query = db_select('ddcl_end_plate_form_step4_feedback');
+	$query->fields('ddcl_end_plate_form_step4_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step4_data = $query->execute()->fetchObject();
 	//var_dump($form_step4_data);die;
 	if ($form_step4_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step4_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step4_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
@@ -1607,7 +1385,7 @@ function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step4_data->id
 		));
 		$form_step4_comment_data = $query->fetchObject();
@@ -1617,7 +1395,7 @@ function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1642,7 +1420,7 @@ function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step4_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step4_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step4_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
@@ -1662,7 +1440,7 @@ function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1685,21 +1463,21 @@ function ddcl_cleat_angle_step4_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step3/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step3/' . $user->uid;
 }
-function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step4_field1_fieldset']['step4_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step4_feedback');
-	$query->fields('ddcl_cleat_angle_form_step4_feedback');
+	$query = db_select('ddcl_end_plate_form_step4_feedback');
+	$query->fields('ddcl_end_plate_form_step4_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step4_data = $query->execute()->fetchObject();
 	//var_dump($form_step4_data);die;
 	if ($form_step4_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step4_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step4_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
@@ -1712,7 +1490,7 @@ function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step4_data->id
 		));
 		$form_step4_comment_data = $query->fetchObject();
@@ -1722,7 +1500,7 @@ function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1747,7 +1525,7 @@ function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step4_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step4_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step4_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
@@ -1767,7 +1545,7 @@ function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -1790,7 +1568,7 @@ function ddcl_cleat_angle_step4_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step5/' . $user->uid;
 }
 /***************************************/
 function step4_comment_add_more_add_one($form, &$form_state)
@@ -1814,7 +1592,7 @@ function step4_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 4 from ends ****************************/
 /************************ Step 5 form starts *********************/
-function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
@@ -1822,7 +1600,7 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 	$markup_text = '
 	<b> b. Bolt </b> <br>
 	&emsp; <b> ii. Bearing capacity of bolt </b> <br>	
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the seated angle connection.
+	&emsp;&emsp;&emsp; This check will be the same as implemented for the cleat angle connection.
 		
 	
 	<hr>';
@@ -1834,8 +1612,8 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step5-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step5_feedback');
-	$query->fields('ddcl_cleat_angle_form_step5_feedback');
+	$query = db_select('ddcl_end_plate_form_step5_feedback');
+	$query->fields('ddcl_end_plate_form_step5_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step5_data = $query->execute();
 	if ($form_step5_data)
@@ -1869,14 +1647,14 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step5_data->id, $step5_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
-			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step5_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step5_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step5_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -1942,14 +1720,14 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step5_form_previous_submit'
+					'ddcl_end_plate_step5_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step5_form_next_submit'
+					'ddcl_end_plate_step5_form_next_submit'
 				)
 			);
 		} //$step5_data = $form_step5_data->fetchObject()
@@ -2043,33 +1821,33 @@ function ddcl_cleat_angle_step5_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step5_form_previous_submit'
+					'ddcl_end_plate_step5_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step5_form_next_submit'
+					'ddcl_end_plate_step5_form_next_submit'
 				)
 			);
 		} //$step5_data = $form_step5_data->fetchObject()
 	} //$form_step5_data
 	return $form;
 }
-function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step5_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step5_field1_fieldset']['step5_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step5_feedback');
-	$query->fields('ddcl_cleat_angle_form_step5_feedback');
+	$query = db_select('ddcl_end_plate_form_step5_feedback');
+	$query->fields('ddcl_end_plate_form_step5_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step5_data = $query->execute()->fetchObject();
 	//var_dump($form_step5_data);die;
 	if ($form_step5_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step5_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step5_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
@@ -2082,7 +1860,7 @@ function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step5_data->id
 		));
 		$form_step5_comment_data = $query->fetchObject();
@@ -2092,7 +1870,7 @@ function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2117,7 +1895,7 @@ function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step5_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step5_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation, inserted_on) VALUES (:uid, :question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step5_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation, inserted_on) VALUES (:uid, :question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
@@ -2137,7 +1915,7 @@ function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2160,21 +1938,21 @@ function ddcl_cleat_angle_step5_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step4/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step4/' . $user->uid;
 }
-function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step5_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step5_field1_fieldset']['step5_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step5_feedback');
-	$query->fields('ddcl_cleat_angle_form_step5_feedback');
+	$query = db_select('ddcl_end_plate_form_step5_feedback');
+	$query->fields('ddcl_end_plate_form_step5_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step5_data = $query->execute()->fetchObject();
 	//var_dump($form_step5_data);die;
 	if ($form_step5_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step5_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step5_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
@@ -2187,7 +1965,7 @@ function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step5_data->id
 		));
 		$form_step5_comment_data = $query->fetchObject();
@@ -2197,7 +1975,7 @@ function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2222,7 +2000,7 @@ function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step5_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step5_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation, inserted_on) VALUES (:uid, :question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step5_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation, inserted_on) VALUES (:uid, :question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
@@ -2242,7 +2020,7 @@ function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2265,7 +2043,7 @@ function ddcl_cleat_angle_step5_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step6/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step6/' . $user->uid;
 }
 /***************************************/
 function step5_comment_add_more_add_one($form, &$form_state)
@@ -2289,7 +2067,7 @@ function step5_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 5 from ends ****************************/
 /************************ Step 6 form starts *********************/
-function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
@@ -2370,11 +2148,7 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 							  <mi>b</mi>
 							</mrow>
 						  </msub>
-						</math> - design bearing capacity of bolt 
-						<br>
-				<br>
-	&emsp; <b> iv. Number of bolts (n)</b> <br>
-	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) <br>
+						</math> - design bearing capacity of bolt <br>
 		
 	<hr>';
 	// All the real form fields.
@@ -2385,8 +2159,8 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step6-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step6_feedback');
-	$query->fields('ddcl_cleat_angle_form_step6_feedback');
+	$query = db_select('ddcl_end_plate_form_step6_feedback');
+	$query->fields('ddcl_end_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step6_data = $query->execute();
 	if ($form_step6_data)
@@ -2420,14 +2194,14 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step6_data->id, $step6_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
-			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step6_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step6_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step6_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -2493,14 +2267,14 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step6_form_previous_submit'
+					'ddcl_end_plate_step6_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step6_form_next_submit'
+					'ddcl_end_plate_step6_form_next_submit'
 				)
 			);
 		} //$step6_data = $form_step6_data->fetchObject()
@@ -2594,33 +2368,33 @@ function ddcl_cleat_angle_step6_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step6_form_previous_submit'
+					'ddcl_end_plate_step6_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step6_form_next_submit'
+					'ddcl_end_plate_step6_form_next_submit'
 				)
 			);
 		} //$step6_data = $form_step6_data->fetchObject()
 	} //$form_step6_data
 	return $form;
 }
-function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step6_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step6_field1_fieldset']['step6_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step6_feedback');
-	$query->fields('ddcl_cleat_angle_form_step6_feedback');
+	$query = db_select('ddcl_end_plate_form_step6_feedback');
+	$query->fields('ddcl_end_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step6_data = $query->execute()->fetchObject();
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step6_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step6_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
@@ -2633,7 +2407,7 @@ function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step6_data->id
 		));
 		$form_step6_comment_data = $query->fetchObject();
@@ -2643,7 +2417,7 @@ function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2668,7 +2442,7 @@ function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step6_feedback} (uid, question1, question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step6_feedback} (uid, question1, question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
@@ -2688,7 +2462,7 @@ function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2711,21 +2485,21 @@ function ddcl_cleat_angle_step6_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step5/' . $user->uid;
 }
-function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step6_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step6_field1_fieldset']['step6_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step6_feedback');
-	$query->fields('ddcl_cleat_angle_form_step6_feedback');
+	$query = db_select('ddcl_end_plate_form_step6_feedback');
+	$query->fields('ddcl_end_plate_form_step6_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step6_data = $query->execute()->fetchObject();
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step6_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step6_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
@@ -2738,7 +2512,7 @@ function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step6_data->id
 		));
 		$form_step6_comment_data = $query->fetchObject();
@@ -2748,7 +2522,7 @@ function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2773,7 +2547,7 @@ function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step6_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step6_feedback} (uid, question1, question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step6_feedback} (uid, question1, question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
@@ -2793,7 +2567,7 @@ function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step6_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -2816,7 +2590,7 @@ function ddcl_cleat_angle_step6_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step7/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step7/' . $user->uid;
 }
 /***************************************/
 function step6_comment_add_more_add_one($form, &$form_state)
@@ -2840,157 +2614,37 @@ function step6_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 6 from ends ****************************/
 /************************ Step 7 form starts *********************/
-function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt > v. Factored resultant shear force'));
-	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	drupal_set_title(t('b. Bolt > iv. Number of bolts and Bolt group capacity'));
 	$markup_text = '
 	<b> b. Bolt </b> <br>
-	&emsp; <b> v. Factored resultant shear force</b> <br>
-	&emsp;&emsp;&emsp; The bolts have to resist a resultant shear force arising due to the factored shear force (vertical, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>V</mi></msub></math>
-	) and shear force arising due the bolt eccentricity (horizontal, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>H</mi></msub></math>
-	) <br>
-	<br>
+	&emsp; <b>Number of bolts (n)</b> <br>
+	&emsp;&emsp;&emsp; n = roundup(Factored shear force/ bolt capacity) 
+		<br>
+		<br>
 	
-	&emsp;&emsp;&emsp; The resultant shear force, 
-			<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>R</mi></msub></math>
-	on each bolt is given by:
-			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			  <msub>
-				<mi>V</mi>
-				<mi>R</mi>
-			  </msub>
-			  <mo>=</mo>
-			  <msqrt>
-				<msubsup>
-				  <mi>V</mi>
-				  <mi>H</mi>
-				  <mn>2</mn>
-				</msubsup>
-				<mo>+</mo>
-				<msubsup>
-				  <mi>V</mi>
-				  <mi>V</mi>
-				  <mn>2</mn>
-				</msubsup>
-			  </msqrt>
-			</math>
-		
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Where, <br>				
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				  <msub>
-					<mi>V</mi>
-					<mi>H</mi>
-				  </msub>
-				  <mo>=</mo>
-				  <mfrac>
-					<mrow>
-					  <msub>
-						<mi>V</mi>
-						<mi>x</mi>
-					  </msub>
-					  <msub>
-						<mi>e</mi>
-						<mi>x</mi>
-					  </msub>
-					  <msub>
-						<mi>r</mi>
-						<mi>i</mi>
-					  </msub>
-					</mrow>
-					<mrow>
-					  <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
-					  <msubsup>
-						<mi>r</mi>
-						<mi>i</mi>
-						<mn>2</mn>
-					  </msubsup>
-					</mrow>
-				  </mfrac>
-				</math>				
-								
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				  <msub>
-					<mi>V</mi>
-					<mi>V</mi>
-				  </msub>
-				  <mo>=</mo>
-				  <mfrac>
-					<msub>
-					  <mi>V</mi>
-					  <mi>x</mi>
-					</msub>
-					<mi>n</mi>
-				  </mfrac>
-				</math>				
-			
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	&emsp; <b>Bolt group capacity </b>=
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>n</mi>
 					  <msub>
 						<mi>V</mi>
-						<mi>x</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>d</mi>
+						  <mi>b</mi>
+						</mrow>
 					  </msub>
-					</math> - applied shear force 
+					</math>
+					<br>
 					<br>
 					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	&emsp; Bolt group capacity 
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>e</mi>
-						<mi>x</mi>
-					  </msub>
-					</math> - eccentricity of bolt group [Refer below images] <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
-							<mi>e</mi>
-							<mi>xb</mi>
-						</msub></math> - eccentricity of beam-bolts <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML"><msub>
-							<mi>e</mi>
-							<mi>xc</mi>
-						</msub></math> - eccentricity of column-bolts <br>
-						
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<msub>
-							<mi>r</mi>
-							<mi>i</mi>
-						</msub>
-					</math> - distance of each bolt from C.G. of the bolt group, and <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mi>n</mi>
-					</math> - number of bolts <br>
-					
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" align="middle"/>	
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;
-			<b>Figure:</b> Cleat angle connection - Front view<br>
-			<br>
-			<br>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/cleatside.png" width="40%" height="40%" align="middle"/>
-			<br><br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;
-			<b>Figure:</b> Cleat angle connection - Side view<br>			
-			<br><br>
-			
-	
+					  <mo>&gt;</mo>
+					</math>
+					Factored shear force
 	
 	<hr>';
 	// All the real form fields.
@@ -3001,8 +2655,8 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step7-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step7_feedback');
-	$query->fields('ddcl_cleat_angle_form_step7_feedback');
+	$query = db_select('ddcl_end_plate_form_step7_feedback');
+	$query->fields('ddcl_end_plate_form_step7_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute();
 	if ($form_step7_data)
@@ -3036,14 +2690,14 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step7_data->id, $step7_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
-			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step7_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step7_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step7_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -3109,14 +2763,14 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step7_form_previous_submit'
+					'ddcl_end_plate_step7_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step7_form_next_submit'
+					'ddcl_end_plate_step7_form_next_submit'
 				)
 			);
 		} //$step7_data = $form_step7_data->fetchObject()
@@ -3210,33 +2864,33 @@ function ddcl_cleat_angle_step7_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step7_form_previous_submit'
+					'ddcl_end_plate_step7_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step7_form_next_submit'
+					'ddcl_end_plate_step7_form_next_submit'
 				)
 			);
 		} //$step7_data = $form_step7_data->fetchObject()
 	} //$form_step7_data
 	return $form;
 }
-function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step7_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step7_field1_fieldset']['step7_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step7_feedback');
-	$query->fields('ddcl_cleat_angle_form_step7_feedback');
+	$query = db_select('ddcl_end_plate_form_step7_feedback');
+	$query->fields('ddcl_end_plate_form_step7_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step7_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step7_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
@@ -3249,7 +2903,7 @@ function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step7_data->id
 		));
 		$form_step7_comment_data = $query->fetchObject();
@@ -3259,7 +2913,7 @@ function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3284,7 +2938,7 @@ function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
@@ -3304,7 +2958,7 @@ function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3327,21 +2981,21 @@ function ddcl_cleat_angle_step7_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step6/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step6/' . $user->uid;
 }
-function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step7_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step7_field1_fieldset']['step7_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step7_feedback');
-	$query->fields('ddcl_cleat_angle_form_step7_feedback');
+	$query = db_select('ddcl_end_plate_form_step7_feedback');
+	$query->fields('ddcl_end_plate_form_step7_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step7_data = $query->execute()->fetchObject();
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step7_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step7_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
@@ -3354,7 +3008,7 @@ function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step7_data->id
 		));
 		$form_step7_comment_data = $query->fetchObject();
@@ -3364,7 +3018,7 @@ function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3389,7 +3043,7 @@ function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step7_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
@@ -3409,7 +3063,7 @@ function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step7_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3432,7 +3086,7 @@ function ddcl_cleat_angle_step7_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step8/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step8/' . $user->uid;
 }
 /***************************************/
 function step7_comment_add_more_add_one($form, &$form_state)
@@ -3456,45 +3110,261 @@ function step7_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 7 from ends ****************************/
 /************************ Step 8 form starts *********************/
-function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Bolt > vi. Bolt capacity check'));
+	drupal_set_title(t('c. Plate > i. Plate height'));
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
-	<b> b. Bolt </b> <br>
-	&emsp; <b> vi. Bolt capacity check</b><br>
-	&emsp;&emsp;&emsp; The design strength of bolt, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML">
-		  <msub>
-			<mi>V</mi>
-			<mi>db</mi>
-		  </msub>
-		</math>
-	should be greater than the resultant shear force, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML">
-		  <msub>
-			<mi>V</mi>
-			<mi>R</mi>
-		  </msub>
-		</math>
-	on each bolt 
-
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-	  <msub>
-		<mi>V</mi>
-		<mrow class="MJX-TeXAtom-ORD">
-		  <mi>d</mi>
-		  <mi>b</mi>
-		</mrow>
-	  </msub>
-	  <mo>&gt;</mo>
-	  <msub>
-		<mi>V</mi>
-		<mi>R</mi>
-	  </msub>
-	</math>
-	
+	<b> c. Plate </b> <br>
+	&emsp; <b> i. Plate height (<math xmlns="http://www.w3.org/1998/Math/MathML">
+			  <msub>
+				<mi>h</mi>
+				<mi>p</mi>
+			  </msub>
+			</math>)
+			</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate height </b> [Reference: Steel Designers\' Manual - 6th Edition (2003) - Page 734] <br>
+				<center>
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <mi>h</mi>
+				  <mrow class="MJX-TeXAtom-ORD">
+					<mi>p</mi>
+					<mo>,</mo>
+					<mi>m</mi>
+					<mi>i</mi>
+					<mi>n</mi>
+				  </mrow>
+				  <mo>=</mo>
+				  <mn>0.6</mn>
+				  <mi>d</mi>
+				</math>
+				</center> <br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, 
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam  		
+				<br>				
+				<br>			
+				<hr>
+								
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;				
+				<img src="' . $img_path . '/ddcl_end_plate_step8_figure_0.PNG" width="60%" height="60%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Figure: (Ref) Steel Designers\' Manual - 6th Ed - Page 734
+				<br>
+				<br>
+				<hr>
+			
+			
+		&emsp;&emsp;&emsp; <b> Maximum plate height </b> [Based on reasoning]  <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to column connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x2061;</mo>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mn>2</mn>
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math>
+					</center>
+				
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where,
+					<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math> - root radius of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) (see image below)
+					<br>
+					<br>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddcl_end_plate_figure_1.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection - Side View
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)
+				<br>
+				<hr>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> For beam to beam connectivity: </b> <br>
+					<center>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>h</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mi>p</mi>
+						<mo>,</mo>
+						<mi>m</mi>
+						<mi>a</mi>
+						<mi>x</mi>
+					  </mrow>
+					  <mo>=</mo>
+					  <mi>d</mi>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mn>1</mn>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					  <mo>&#x2212;</mo>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>&#x3F5;</mo>
+					  </mrow>
+					</math>
+					</center>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>d</mi>
+					</math> - depth of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>s</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of supported beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>f</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - thickness of flange of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>r</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>1</mi>
+						  <mi>b</mi>
+						  <mi>p</mi>
+						</mrow>
+					  </msub>
+					</math>  - root radius of primary beam <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <mi>&#x03F5;<!-- ϵ --></mi>
+					</math> - assumed gap (5 mm) 
+					<br>
+					<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;
+			<img src="' . $img_path . '/ddcl_end_plate_figure_2.svg" width="30%" height="30%" align="middle" />
+			<br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<b> Figure: </b> End Plate Connection - Side View			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			(Beam web to Beam web connectivity)<br>
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -3504,8 +3374,8 @@ function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step8-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step8_feedback');
-	$query->fields('ddcl_cleat_angle_form_step8_feedback');
+	$query = db_select('ddcl_end_plate_form_step8_feedback');
+	$query->fields('ddcl_end_plate_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step8_data = $query->execute();
 	if ($form_step8_data)
@@ -3539,14 +3409,14 @@ function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step8_data->id, $step8_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step8_data->id, $step8_data->data_relation);
 			$icom = 1;
-			$form['step8_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step8_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr>Earlier comment<hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step8_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step8_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -3612,14 +3482,14 @@ function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step8_form_previous_submit'
+					'ddcl_end_plate_step8_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step8_form_next_submit'
+					'ddcl_end_plate_step8_form_next_submit'
 				)
 			);
 		} //$step8_data = $form_step8_data->fetchObject()
@@ -3713,33 +3583,33 @@ function ddcl_cleat_angle_step8_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step8_form_previous_submit'
+					'ddcl_end_plate_step8_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step8_form_next_submit'
+					'ddcl_end_plate_step8_form_next_submit'
 				)
 			);
 		} //$step8_data = $form_step8_data->fetchObject()
 	} //$form_step8_data
 	return $form;
 }
-function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step8_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step8_field1_fieldset']['step8_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step8_feedback');
-	$query->fields('ddcl_cleat_angle_form_step8_feedback');
+	$query = db_select('ddcl_end_plate_form_step8_feedback');
+	$query->fields('ddcl_end_plate_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step8_data = $query->execute()->fetchObject();
 	//var_dump($form_step8_data);die;
 	if ($form_step8_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step8_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step8_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
@@ -3752,7 +3622,7 @@ function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step8_data->id
 		));
 		$form_step8_comment_data = $query->fetchObject();
@@ -3762,7 +3632,7 @@ function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3787,7 +3657,7 @@ function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step8_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step8_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step8_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
@@ -3807,7 +3677,7 @@ function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3830,21 +3700,21 @@ function ddcl_cleat_angle_step8_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step7/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step7/' . $user->uid;
 }
-function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step8_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step8_field1_fieldset']['step8_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step8_feedback');
-	$query->fields('ddcl_cleat_angle_form_step8_feedback');
+	$query = db_select('ddcl_end_plate_form_step8_feedback');
+	$query->fields('ddcl_end_plate_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step8_data = $query->execute()->fetchObject();
 	//var_dump($form_step8_data);die;
 	if ($form_step8_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step8_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step8_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
@@ -3857,7 +3727,7 @@ function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step8_data->id
 		));
 		$form_step8_comment_data = $query->fetchObject();
@@ -3867,7 +3737,7 @@ function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3892,7 +3762,7 @@ function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step8_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step8_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step8_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
@@ -3912,7 +3782,7 @@ function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -3935,7 +3805,7 @@ function ddcl_cleat_angle_step8_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step9/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step9/' . $user->uid;
 }
 /***************************************/
 function step8_comment_add_more_add_one($form, &$form_state)
@@ -3959,125 +3829,222 @@ function step8_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 8 from ends ****************************/
 /************************ Step 9 form starts *********************/
-function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Cleat angle > i. Height'));
+	drupal_set_title(t('c. Plate > ii. Plate thickness'));
 	$markup_text = '
-	<b> c. Cleat angle </b> <br>
-	&emsp; <b> i. Minimum height</b> [Reference: INSDAG detailing manual p-733, Steel Designers Manual - 6th Edition (2003)] <br>
-	&emsp;&emsp;&emsp; Minimum height of the cleat angle shall be calculated as:
-			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			  <msub>
-				<mi>H</mi>
-				<mrow class="MJX-TeXAtom-ORD">
-				  <mi>m</mi>
-				  <mi>i</mi>
-				  <mi>n</mi>
-				</mrow>
-			  </msub>
-			  <mo>=</mo>
-			  <mn>0.6</mn>
-			  <mi>d</mi>
-			</math>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Where, <br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				  <msub>
-					<mi>H</mi>
-					<mi>min</mi>
-				  </msub>
-				</math> - Minimum height of cleat angle
-				<br>
-				
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				  <mi>d</mi>
-				</math> - beam depth
-				<br>
-				<br>
-				
-	&emsp; <b> ii. Maximum height</b> [Based on Reasoning]<br>
-	&emsp;&emsp;&emsp; Maximum height of the cleat angle shall be calculated as:
-					
-					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+	<b> c. Plate </b> <br>
+	&emsp; <b> ii. Plate thickness (<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
-						<mi>H</mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>m</mi>
-						  <mi>a</mi>
-						  <mi>x</mi>
-						</mrow>
+						<mi>t</mi>
+						<mi>p</mi>
 					  </msub>
-					  <mo>=</mo>
-					  <mi>d</mi>
-					  <mo>&#x2212;</mo>
-					  <mn>2</mn>
+					</math>)
+					</b> <br>
+	&emsp;&emsp;&emsp; <b> Minimum plate thickness </b> [Reference: N. Subramanian’s  Design of Steel Structures - Sec. 5.7.6 - Page 372] <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; For beam depth < 450 mm <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; For bolt grade < 4.60 <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
 						<mi>t</mi>
 						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>f</mi>
-						  <mi>b</mi>
+						  <mi>p</mi>
+						  <mo>,</mo>
+						  <mi>m</mi>
+						  <mi>i</mi>
+						  <mi>n</mi>
 						</mrow>
 					  </msub>
-					  <mo>&#x2212;</mo>
-					  <mn>2</mn>
-					  <msub>
-						<mi>r</mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mn>1</mn>
-						  <mi>b</mi>
-						</mrow>
-					  </msub>
-					  <mo>&#x2212;</mo>
-					  <mn>2</mn>
-					  <mo>&#x2217;</mo>
-					  <mn>5</mn>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>8</mn>
+					  <mo>,</mo>
+					  <mi>d</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>/</mo>
+					  </mrow>
+					  <mn>3</mn>
+					  <mo stretchy="false">)</mo>
 					</math>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; For bolt grade > 4.60 <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>p</mi>
+						  <mo>,</mo>
+						  <mi>m</mi>
+						  <mi>i</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>8</mn>
+					  <mo>,</mo>
+					  <mi>d</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>/</mo>
+					  </mrow>
+					  <mn>2</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<br>
+				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; For beam depth > 450 mm <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; For bolt grade < 4.60 <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>p</mi>
+						  <mo>,</mo>
+						  <mi>m</mi>
+						  <mi>i</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>10</mn>
+					  <mo>,</mo>
+					  <mi>d</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>/</mo>
+					  </mrow>
+					  <mn>3</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; For bolt grade > 4.60 <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>p</mi>
+						  <mo>,</mo>
+						  <mi>m</mi>
+						  <mi>i</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>10</mn>
+					  <mo>,</mo>
+					  <mi>d</mi>
+					  <mrow class="MJX-TeXAtom-ORD">
+						<mo>/</mo>
+					  </mrow>
+					  <mn>2</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				</math> - minimum plate thickness
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <mi>d</mi>
+				</math> - diameter of bolt				
+				<br>
+				<br>
+				
+			&emsp;&emsp;&emsp;
+			<b> Minimum plate thickness </b> <br>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mo>,</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					</mrow>
+				  </msub>
+				  <mo>&gt;</mo>
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>b</mi>
+					  <mi>w</mi>
+					</mrow>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					Where, <br>
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>H</mi>
-							<mi>max</mi>
-						  </msub>
-						</math> - Maximum height of cleat angle
-						<br>
-						
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <mi>d</mi>							
-						</math> - beam depth						
-						<br>
-						
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>t</mi>
-							<mi>fb</mi>
-						  </msub>
-						</math> - flange thickness of beam
-						<br>
-						
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
-							<mi>r</mi>
-							<mi>1b</mi>
-						  </msub>
-						</math> - root radius of beam
-						<br>
-						<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math>
+						<msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>p</mi>
+						  <mo>,</mo>
+						  <mi>m</mi>
+						  <mi>i</mi>
+						  <mi>n</mi>
+						</mrow>
+					  </msub>
+					</math> - minimum plate thickness  <br>
 					
-					Note: Assumed clearance of 5 mm on each side.
-
-	
-	
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>b</mi>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>  - beam web thickness  
+					<br>
+					<br>
+					
+				&emsp;&emsp;&emsp;
+				Note:  <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					1) It is assumed that the beam is designed to be safe against shear. 
+				<br>
+				<br>
+				
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -4087,8 +4054,8 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step9-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step9_feedback');
-	$query->fields('ddcl_cleat_angle_form_step9_feedback');
+	$query = db_select('ddcl_end_plate_form_step9_feedback');
+	$query->fields('ddcl_end_plate_form_step9_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step9_data = $query->execute();
 	if ($form_step9_data)
@@ -4122,14 +4089,14 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step9_data->id, $step9_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step9_data->id, $step9_data->data_relation);
 			$icom = 1;
-			$form['step9_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step9_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step9_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step9_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -4195,14 +4162,14 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step9_form_previous_submit'
+					'ddcl_end_plate_step9_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step9_form_next_submit'
+					'ddcl_end_plate_step9_form_next_submit'
 				)
 			);
 		} //$step9_data = $form_step9_data->fetchObject()
@@ -4296,33 +4263,33 @@ function ddcl_cleat_angle_step9_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step9_form_previous_submit'
+					'ddcl_end_plate_step9_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step9_form_next_submit'
+					'ddcl_end_plate_step9_form_next_submit'
 				)
 			);
 		} //$step9_data = $form_step9_data->fetchObject()
 	} //$form_step9_data
 	return $form;
 }
-function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step9_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step9_field1_fieldset']['step9_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step9_feedback');
-	$query->fields('ddcl_cleat_angle_form_step9_feedback');
+	$query = db_select('ddcl_end_plate_form_step9_feedback');
+	$query->fields('ddcl_end_plate_form_step9_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step9_data = $query->execute()->fetchObject();
 	//var_dump($form_step9_data);die;
 	if ($form_step9_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step9_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step9_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
@@ -4335,7 +4302,7 @@ function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step9_data->id
 		));
 		$form_step9_comment_data = $query->fetchObject();
@@ -4345,7 +4312,7 @@ function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -4370,7 +4337,7 @@ function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js
 	} //$form_step9_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step9_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step9_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
@@ -4390,7 +4357,7 @@ function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -4413,21 +4380,21 @@ function ddcl_cleat_angle_step9_form_previous_submit($form, &$form_state, $no_js
 			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step8/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step8/' . $user->uid;
 }
-function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step9_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step9_field1_fieldset']['step9_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step9_feedback');
-	$query->fields('ddcl_cleat_angle_form_step9_feedback');
+	$query = db_select('ddcl_end_plate_form_step9_feedback');
+	$query->fields('ddcl_end_plate_form_step9_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step9_data = $query->execute()->fetchObject();
 	//var_dump($form_step9_data);die;
 	if ($form_step9_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step9_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step9_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
@@ -4440,7 +4407,7 @@ function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
 			':step1_form_id' => $form_step9_data->id
 		));
 		$form_step9_comment_data = $query->fetchObject();
@@ -4450,7 +4417,7 @@ function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -4475,7 +4442,7 @@ function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use
 	} //$form_step9_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step9_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step9_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
@@ -4495,7 +4462,7 @@ function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use
 			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -4518,7 +4485,7 @@ function ddcl_cleat_angle_step9_form_next_submit($form, &$form_state, $no_js_use
 			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step10/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step10/' . $user->uid;
 }
 /***************************************/
 function step9_comment_add_more_add_one($form, &$form_state)
@@ -4542,1735 +4509,19 @@ function step9_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 9 from ends ****************************/
 /************************ Step 10 form starts *********************/
-function ddcl_cleat_angle_step10_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('c. Cleat angle > ii. Angle leg'));
-	$markup_text = '
-	<b> c. Cleat angle </b> <br>
-	&emsp; <b> ii. Maximum cleat angle leg</b> [Based on Reasoning]<br>
-	&emsp;&emsp;&emsp; Maximum cleat angle leg size for beam - column web connectivity:
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				  <mi>B</mi>
-				  <mo>=</mo>
-				  <mfrac>
-					<mrow>
-					  <msub>
-						<mi>d</mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>c</mi>
-						  <mi>o</mi>
-						  <mi>l</mi>
-						</mrow>
-					  </msub>
-					  <mo>&#x2212;</mo>
-					  <mn>2</mn>
-					  <msub>
-						<mi>t</mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>f</mi>
-						  <mi>c</mi>
-						</mrow>
-					  </msub>
-					  <mo>&#x2212;</mo>
-					  <msub>
-						<mi>t</mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>w</mi>
-						  <mi>b</mi>
-						</mrow>
-					  </msub>
-					  <mo>&#x2212;</mo>
-					  <mn>2*5</mn>
-					</mrow>
-					<mn>2</mn>
-				  </mfrac>
-				</math>
-		
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-						<mi>B</mi>						
-					</math> - maximum cleat angle leg
-					<br> 
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>d</mi>
-						<mi>col</mi>
-					  </msub>
-					</math> - depth of column
-					<br> 
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>t</mi>
-						<mi>fc</mi>
-					  </msub>
-					</math> - thickness of flange of column
-					<br> 
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>d</mi>
-						<mi>col</mi>
-					  </msub>
-					</math> - depth of column
-					<br> 
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>t</mi>
-						<mi>wb</mi>
-					  </msub>
-					</math> - thickness of web of beam
-					<br> 
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">					  
-						<mi>2*5</mi>
-					</math> mm - twice the minimum clearance from root radius
-
-	
-	<hr>';
-	// All the real form fields.
-	$form = array();
-	$form['step10_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step10-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step10_feedback');
-	$query->fields('ddcl_cleat_angle_form_step10_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step10_data = $query->execute();
-	if ($form_step10_data)
-	{
-		if ($step10_data = $form_step10_data->fetchObject())
-		{
-			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#default_value' => $step10_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				'#default_value' => $step10_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step10_data->id, $step10_data->data_relation);
-			$icom = 1;
-			$form['step10_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step10_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step10_num_comment']))
-			{
-				$form_state['step10_num_comment'] = 1;
-			} //empty($form_state['step10_num_comment'])
-			$step10_temp1 = 0;
-			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
-			{
-				$step10_temp1 = $step10_i;
-				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step10_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step10_field1_fieldset']["step10_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step10_temp1
-			);
-			$form['step10_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step10_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step10_comment_add_more_callback',
-					'wrapper' => 'step10-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step10_num_comment'] > 1)
-			{
-				$form['step10_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step10_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step10_comment_add_more_callback',
-						'wrapper' => 'step10-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step10_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step10_form_next_submit'
-				)
-			);
-		} //$step10_data = $form_step10_data->fetchObject()
-		else
-		{
-			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step10_num_comment']))
-			{
-				$form_state['step10_num_comment'] = 1;
-			} //empty($form_state['step10_num_comment'])
-			$step10_temp1 = 0;
-			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
-			{
-				$step10_temp1 = $step10_i;
-				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step10_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step10_field1_fieldset']["step10_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step10_temp1
-			);
-			$form['step10_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step10_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step10_comment_add_more_callback',
-					'wrapper' => 'step10-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step10_num_comment'] > 1)
-			{
-				$form['step10_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step10_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step10_comment_add_more_callback',
-						'wrapper' => 'step10-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step10_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step10_form_next_submit'
-				)
-			);
-		} //$step10_data = $form_step10_data->fetchObject()
-	} //$form_step10_data
-	return $form;
-}
-function ddcl_cleat_angle_step10_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step10_field1_fieldset']['step10_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step10_feedback');
-	$query->fields('ddcl_cleat_angle_form_step10_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step10_data = $query->execute()->fetchObject();
-	//var_dump($form_step10_data);die;
-	if ($form_step10_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step10_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
-			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
-			":data_relation" => "step10"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step10_data->id
-		));
-		$form_step10_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
-		{
-			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step10_data->id,
-					":number" => $i + $form_step10_comment_data->max + 1,
-					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step10",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
-	} //$form_step10_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step10_feedback} (uid, question1,  question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
-			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
-			":data_relation" => "step10",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
-		{
-			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step10",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step9/' . $user->uid;
-}
-function ddcl_cleat_angle_step10_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step10_field1_fieldset']['step10_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step10_feedback');
-	$query->fields('ddcl_cleat_angle_form_step10_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step10_data = $query->execute()->fetchObject();
-	//var_dump($form_step10_data);die;
-	if ($form_step10_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step10_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
-			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
-			":data_relation" => "step10"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step10_data->id
-		));
-		$form_step10_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
-		{
-			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step10_data->id,
-					":number" => $i + $form_step10_comment_data->max + 1,
-					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step10",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
-	} //$form_step10_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step10_feedback} (uid, question1,  question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
-			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
-			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
-			":data_relation" => "step10",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
-		{
-			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step10",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step11/' . $user->uid;
-}
-/***************************************/
-function step10_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step10_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step10_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step10_num_comment'] > 1)
-	{
-		$form_state['step10_num_comment']--;
-	} //$form_state['step10_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step10_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step10_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 10 from ends ****************************/
-/************************ Step 11 form starts *********************/
-function ddcl_cleat_angle_step11_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	drupal_set_title(t('c. Cleat Angle > iii. Angle thickness'));
-	$markup_text = '
-	<b> c. Cleat angle </b> <br>
-	&emsp; <b> iii. Angle thickness</b>	
-			(<math xmlns="http://www.w3.org/1998/Math/MathML">
-			  <msub>
-				<mi>t</mi>
-				<mi>c</mi>
-			  </msub>
-			</math>)
-	<br>
-	
-	&emsp;&emsp;&emsp; The thickness of the cleat angle shall be determined based on the following rules
-	<br>
-	&emsp;&emsp;&emsp;
-	[Reference: Steel Designers Manual - p733 - 6th Edition (2003)] 
-	<br>
-	<br>
-	
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> a) For beam depth less than 450 mm</b>	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
-							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							  <msub>
-								<mi>t</mi>
-								<mi>c</mi>
-							  </msub>
-							  <mo>=</mo>
-							  <mn>8</mn>
-							</math> mm
-							<br>
-	
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> b) For beam depth greater than 450 mm</b>	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
-							<math xmlns="http://www.w3.org/1998/Math/MathML">
-							  <msub>
-								<mi>t</mi>
-								<mi>c</mi>
-							  </msub>
-							  <mo>=</mo>
-							  <mn>12</mn>
-							</math> mm
-							<br>
-	
-	
-	
-	<hr>';
-	// All the real form fields.
-	$form = array();
-	$form['step11_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step11-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step11_feedback');
-	$query->fields('ddcl_cleat_angle_form_step11_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step11_data = $query->execute();
-	if ($form_step11_data)
-	{
-		if ($step11_data = $form_step11_data->fetchObject())
-		{
-			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#default_value' => $step11_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				'#default_value' => $step11_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step11_data->id, $step11_data->data_relation);
-			$icom = 1;
-			$form['step11_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step11_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step11_num_comment']))
-			{
-				$form_state['step11_num_comment'] = 1;
-			} //empty($form_state['step11_num_comment'])
-			$step11_temp1 = 0;
-			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
-			{
-				$step11_temp1 = $step11_i;
-				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step11_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step11_field1_fieldset']["step11_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step11_temp1
-			);
-			$form['step11_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step11_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step11_comment_add_more_callback',
-					'wrapper' => 'step11-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step11_num_comment'] > 1)
-			{
-				$form['step11_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step11_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step11_comment_add_more_callback',
-						'wrapper' => 'step11-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step11_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step11_form_next_submit'
-				)
-			);
-		} //$step11_data = $form_step11_data->fetchObject()
-		else
-		{
-			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step11_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step11_num_comment']))
-			{
-				$form_state['step11_num_comment'] = 1;
-			} //empty($form_state['step11_num_comment'])
-			$step11_temp1 = 0;
-			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
-			{
-				$step11_temp1 = $step11_i;
-				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step11_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step11_field1_fieldset']["step11_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step11_temp1
-			);
-			$form['step11_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step11_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step11_comment_add_more_callback',
-					'wrapper' => 'step11-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step11_num_comment'] > 1)
-			{
-				$form['step11_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step11_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step11_comment_add_more_callback',
-						'wrapper' => 'step11-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step11_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step11_form_next_submit'
-				)
-			);
-		} //$step11_data = $form_step11_data->fetchObject()
-	} //$form_step11_data
-	return $form;
-}
-function ddcl_cleat_angle_step11_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step11_field1_fieldset']['step11_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step11_feedback');
-	$query->fields('ddcl_cleat_angle_form_step11_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step11_data = $query->execute()->fetchObject();
-	//var_dump($form_step11_data);die;
-	if ($form_step11_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step11_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
-			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
-			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
-			":data_relation" => "step11"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step11_data->id
-		));
-		$form_step11_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
-		{
-			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step11_data->id,
-					":number" => $i + $form_step11_comment_data->max + 1,
-					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step11",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
-	} //$form_step11_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
-			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
-			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
-			":data_relation" => "step11",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
-		{
-			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step11",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step10/' . $user->uid;
-}
-function ddcl_cleat_angle_step11_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step11_field1_fieldset']['step11_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step11_feedback');
-	$query->fields('ddcl_cleat_angle_form_step11_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step11_data = $query->execute()->fetchObject();
-	//var_dump($form_step11_data);die;
-	if ($form_step11_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step11_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
-			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
-			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
-			":data_relation" => "step11"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step11_data->id
-		));
-		$form_step11_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
-		{
-			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step11_data->id,
-					":number" => $i + $form_step11_comment_data->max + 1,
-					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step11",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
-	} //$form_step11_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
-			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
-			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
-			":data_relation" => "step11",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
-		{
-			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step11",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step12/' . $user->uid;
-}
-/***************************************/
-function step11_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step11_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step11_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step11_num_comment'] > 1)
-	{
-		$form_state['step11_num_comment']--;
-	} //$form_state['step11_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step11_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step11_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 11 from ends ****************************/
-/************************ Step 12 form starts *********************/
-function ddcl_cleat_angle_step12_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	global $base_url;
+	drupal_set_title(t('c. Plate > iii. Block shear capacity check'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	drupal_set_title(t('c. Cleat angle > iv. Moment capacity check'));
-	$markup_text = '
-	<b> c. Cleat angle </b> <br>
-	&emsp; <b> iv. Moment capacity check</b><br>
-	&emsp;&emsp;&emsp; 1) The factored design moment due to shear force, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
-	shall satisfy
-			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			  <mi>M</mi>
-			  <mo>&lt;</mo>
-			  <msub>
-				<mi>M</mi>
-				<mi>d</mi>
-			  </msub>
-			</math>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Where, <br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				  <msub>
-					<mi>M</mi>
-					<mi>d</mi>
-				  </msub>
-				</math> - design bending strength of the the cleat angle leg, calculated as given in [Cl 8.2.1.2]
-				<br>
-				<br>
-	
-	&emsp;&emsp;&emsp; <b>2) Moment due to shear force, </b>
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi></math>
-	shall satisfy <br>
-			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			  <mi>M</mi>
-			  <mo>=</mo>
-			  <mn>0.5</mn>
-			  <msub>
-				<mi>V</mi>
-				<mrow class="MJX-TeXAtom-ORD">
-				  <mi>s</mi>
-				  <mi>f</mi>
-				</mrow>
-			  </msub>
-			  <msub>
-				<mi>e</mi>
-				<mrow class="MJX-TeXAtom-ORD">
-				  <msub>
-					<mi>x</mi>
-					<mi>b</mi>
-				  </msub>
-				</mrow>
-			  </msub>
-			</math>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Where, <br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				  <msub>
-					<mi>V</mi>
-					<mi>sf</mi>
-				  </msub>
-				</math> - shear force
-				<br>
-				
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				  <msub>
-					<mi>e</mi>
-					<mi>
-						<msub>
-							<mi>x</mi>
-							<mi>b</mi>
-						</msub>							
-					</mi>
-				  </msub>
-					</mi>
-				  </msub>
-				</math> &ensp; - eccentricity of beam-bolts
-				<br>
-				<br>
-								
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/cleatfront.png"  width="50%" height="50%" />			
-				<br><br><br>
-				<hr>
-				
-	&emsp;&emsp;&emsp;  <b> 3) Design Bending strength </b>[Cl 8.2.1.2]
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>d</mi></msub></math>
-	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; When the factored design shear force does not exceed 0
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>0.6V</mi><mi>d</mi></msub></math>
-	, where
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>0.6V</mi><mi>d</mi></msub></math>
-	is the design shear strength of the cross-section, the design bending strength, 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>M</mi><mi>d</mi></msub></math>
-	shall be taken as:
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				  <msub>
-					<mi>M</mi>
-					<mi>d</mi>
-				  </msub>
-				  <mo>=</mo>
-				  <mfrac>
-					<mrow>
-					  <mn>1.2</mn>
-					  <msub>
-						<mi>t</mi>
-						<mi>a</mi>
-					  </msub>
-					  <msubsup>
-						<mi>h</mi>
-						<mi>a</mi>
-						<mn>2</mn>
-					  </msubsup>
-					  <msub>
-						<mi>f</mi>
-						<mi>y</mi>
-					  </msub>
-					</mrow>
-					<mrow>
-					  <mn>6</mn>
-					  <msub>
-						<mi>&#x03B3;<!-- γ --></mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>m</mi>
-						  <mn>0</mn>
-						</mrow>
-					  </msub>
-					</mrow>
-				  </mfrac>
-				</math>
-			
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>t</mi>
-						<mi>a</mi>
-					  </msub>
-					</math> - thickness of cleat angle
-					<br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>h</mi>
-						<mi>a</mi>
-					  </msub>
-					</math> - height of cleat angle
-					<br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>f</mi>
-						<mi>y</mi>
-					  </msub>
-					</math> - yield stress of the cleat angle material
-					<br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					  <msub>
-						<mi>&#x03B3;<!-- γ --></mi>
-						<mrow class="MJX-TeXAtom-ORD">
-						  <mi>m</mi>
-						  <mn>0</mn>
-						</mrow>
-					  </msub>
-					</math> -  partial safety factor (= 1.1 )
-					<br>
-			
-				
-	
-	<hr>';
-	// All the real form fields.
-	$form = array();
-	$form['step12_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step12-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step12_feedback');
-	$query->fields('ddcl_cleat_angle_form_step12_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step12_data = $query->execute();
-	if ($form_step12_data)
-	{
-		if ($step12_data = $form_step12_data->fetchObject())
-		{
-			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#default_value' => $step12_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				'#default_value' => $step12_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step12_data->id, $step12_data->data_relation);
-			$icom = 1;
-			$form['step12_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment<strong><hr><br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step12_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step12_num_comment']))
-			{
-				$form_state['step12_num_comment'] = 1;
-			} //empty($form_state['step12_num_comment'])
-			$step12_temp1 = 0;
-			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
-			{
-				$step12_temp1 = $step12_i;
-				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step12_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step12_field1_fieldset']["step12_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step12_temp1
-			);
-			$form['step12_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step12_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step12_comment_add_more_callback',
-					'wrapper' => 'step12-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step12_num_comment'] > 1)
-			{
-				$form['step12_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step12_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step12_comment_add_more_callback',
-						'wrapper' => 'step12-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step12_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step12_form_next_submit'
-				)
-			);
-		} //$step12_data = $form_step12_data->fetchObject()
-		else
-		{
-			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step12_num_comment']))
-			{
-				$form_state['step12_num_comment'] = 1;
-			} //empty($form_state['step12_num_comment'])
-			$step12_temp1 = 0;
-			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
-			{
-				$step12_temp1 = $step12_i;
-				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step12_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step12_field1_fieldset']["step12_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step12_temp1
-			);
-			$form['step12_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step12_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step12_comment_add_more_callback',
-					'wrapper' => 'step12-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step12_num_comment'] > 1)
-			{
-				$form['step12_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step12_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step12_comment_add_more_callback',
-						'wrapper' => 'step12-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step12_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step12_form_next_submit'
-				)
-			);
-		} //$step12_data = $form_step12_data->fetchObject()
-	} //$form_step12_data
-	return $form;
-}
-function ddcl_cleat_angle_step12_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step12_feedback');
-	$query->fields('ddcl_cleat_angle_form_step12_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step12_data = $query->execute()->fetchObject();
-	//var_dump($form_step12_data);die;
-	if ($form_step12_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step12_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
-			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
-			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
-			":data_relation" => "step12"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step12_data->id
-		));
-		$form_step12_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
-		{
-			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step12_data->id,
-					":number" => $i + $form_step12_comment_data->max + 1,
-					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step12",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
-	} //$form_step12_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
-			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
-			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
-			":data_relation" => "step12",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
-		{
-			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step12",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step11/' . $user->uid;
-}
-function ddcl_cleat_angle_step12_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
-	$query = db_select('ddcl_cleat_angle_form_step12_feedback');
-	$query->fields('ddcl_cleat_angle_form_step12_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step12_data = $query->execute()->fetchObject();
-	//var_dump($form_step12_data);die;
-	if ($form_step12_data)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step12_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
-			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
-			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
-			":data_relation" => "step12"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step12_data->id
-		));
-		$form_step12_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
-		{
-			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step12_data->id,
-					":number" => $i + $form_step12_comment_data->max + 1,
-					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step12",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
-	} //$form_step12_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
-			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
-			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
-			":data_relation" => "step12",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
-		{
-			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step12",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step13/' . $user->uid;
-}
-/***************************************/
-function step12_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step12_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step12_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step12_num_comment'] > 1)
-	{
-		$form_state['step12_num_comment']--;
-	} //$form_state['step12_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step12_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step12_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 12 from ends ****************************/
-/************************ Step 13 form starts *********************/
-function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	$img_path = '';
-	drupal_set_title(t('c. Cleat angle > v. Block shear capacity check'));
 	$markup_text = '
 	
-	<b> c. Cleat angle </b> <br>
-	&emsp; <b> v. Block shear capacity check </b> [Cl. 6.4.1] <br>
+	
+	<b> c. Plate </b> <br>
+	&emsp; <b> iii. Block shear capacity check </b> [Cl. 6.4.1] <br>
 	&emsp;&emsp;&emsp;
-			Block shear capacity of the cleat angle should be greater than the factored applied shear force. <br>
+			Block shear capacity of the plate should be greater than the factored applied shear force. <br>
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
 					<mi>T</mi>
@@ -6305,8 +4556,8 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 					</math> - Shear force 
 					<br>
 					<br>
-			
-			Check adequacy of block shear capacity of angle leg on both column and beam. The block shear capacity is calculated as:
+	&emsp;&emsp;&emsp;
+			The block shear capacity is calculated as:
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 				  <msub>
 					<mi>T</mi>
@@ -6472,7 +4723,7 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 		
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
 						<mi>A</mi>
@@ -6481,7 +4732,7 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 						  <mi>n</mi>
 						</mrow>
 					  </msub>
-					</math>  - Minimum net area in tension from the bolt hole to the toe of the angle, end bolt line,
+					</math>  - Minimum net area in tension from the bolt hole to the edge of the plate, end bolt line,
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					perpendicular to the line of force. <br>
 					
@@ -6494,7 +4745,7 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 						  <mi>g</mi>
 						</mrow>
 					  </msub>
-					</math> - Minimum gross area in tension from the bolt hole to the toe of the angle, end bolt line, <br>
+					</math> - Minimum gross area in tension from the bolt hole to the edge of the plate, end bolt line, <br>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					perpendicular to the line of force. <br>
 					
@@ -6536,7 +4787,1894 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 					  </msub>
 					</math> - yield stress of the material <br>
 			
+	<hr>';
+	// All the real form fields.
+	$form = array();
+	$form['step10_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step10-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddcl_end_plate_form_step10_feedback');
+	$query->fields('ddcl_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute();
+	if ($form_step10_data)
+	{
+		if ($step10_data = $form_step10_data->fetchObject())
+		{
+			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step10_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step10_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step10_data->id, $step10_data->data_relation);
+			$icom = 1;
+			$form['step10_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step10_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step10_num_comment']))
+			{
+				$form_state['step10_num_comment'] = 1;
+			} //empty($form_state['step10_num_comment'])
+			$step10_temp1 = 0;
+			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
+			{
+				$step10_temp1 = $step10_i;
+				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step10_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step10_field1_fieldset']["step10_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step10_temp1
+			);
+			$form['step10_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step10_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step10_comment_add_more_callback',
+					'wrapper' => 'step10-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step10_num_comment'] > 1)
+			{
+				$form['step10_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step10_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step10_comment_add_more_callback',
+						'wrapper' => 'step10-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step10_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step10_form_next_submit'
+				)
+			);
+		} //$step10_data = $form_step10_data->fetchObject()
+		else
+		{
+			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			if (empty($form_state['step10_num_comment']))
+			{
+				$form_state['step10_num_comment'] = 1;
+			} //empty($form_state['step10_num_comment'])
+			$step10_temp1 = 0;
+			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
+			{
+				$step10_temp1 = $step10_i;
+				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step10_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step10_field1_fieldset']["step10_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step10_temp1
+			);
+			$form['step10_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step10_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step10_comment_add_more_callback',
+					'wrapper' => 'step10-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step10_num_comment'] > 1)
+			{
+				$form['step10_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step10_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step10_comment_add_more_callback',
+						'wrapper' => 'step10-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step10_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step10_form_next_submit'
+				)
+			);
+		} //$step10_data = $form_step10_data->fetchObject()
+	} //$form_step10_data
+	return $form;
+}
+function ddcl_end_plate_step10_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step10_field1_fieldset']['step10_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step10_feedback');
+	$query->fields('ddcl_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute()->fetchObject();
+	//var_dump($form_step10_data);die;
+	if ($form_step10_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step10_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
+			":data_relation" => "step10"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step10_data->id
+		));
+		$form_step10_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step10_data->id,
+					":number" => $i + $form_step10_comment_data->max + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	} //$form_step10_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step10_feedback} (uid, question1,  question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
+			":data_relation" => "step10",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step9/' . $user->uid;
+}
+function ddcl_end_plate_step10_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step10_field1_fieldset']['step10_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step10_feedback');
+	$query->fields('ddcl_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute()->fetchObject();
+	//var_dump($form_step10_data);die;
+	if ($form_step10_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step10_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
+			":data_relation" => "step10"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step10_data->id
+		));
+		$form_step10_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step10_data->id,
+					":number" => $i + $form_step10_comment_data->max + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	} //$form_step10_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step10_feedback} (uid, question1,  question_ok_not_ok,question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":question_ok_not_ok" => $v['step10_field1_fieldset']['step10_field1_question_ok'],
+			":question_not_ok_comment" => $v['step10_field1_fieldset']['step10_field1_question_not_ok_comment'],
+			":data_relation" => "step10",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step11/' . $user->uid;
+}
+/***************************************/
+function step10_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step10_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step10_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step10_num_comment'] > 1)
+	{
+		$form_state['step10_num_comment']--;
+	} //$form_state['step10_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step10_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step10_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 10 from ends ****************************/
+/************************ Step 11 form starts *********************/
+function ddcl_end_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	drupal_set_title(t('d. Weld > i. Shear strength of weld'));
+	$markup_text = '
+	
+	<b> d. Weld </b> <br>
+	&emsp; <b> Effective length of weld</b>  [Cl. 10.5.4.1] <br>
+	&emsp;&emsp;&emsp; The effective length of weld is calculated as:
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				  <msub>
+					<mi>L</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>e</mi>
+					  <mi>f</mi>
+					  <mi>f</mi>
+					  <mo>,</mo>
+					  <mi>w</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <msub>
+					<mi>h</mi>
+					<mi>p</mi>
+				  </msub>
+				  <mo>&#x2212;</mo>
+				  <mn>2</mn>
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>w</mi>
+					  <mi>e</mi>
+					  <mi>l</mi>
+					  <mi>d</mi>
+					</mrow>
+				  </msub>
+				</math>
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>h</mi>
+						<mi>p</mi>
+					  </msub>
+					</math> - height of the plate <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<msub>
+						<mi>t</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>e</mi>
+						  <mi>l</mi>
+						  <mi>d</mi>
+						</mrow>
+						</msub>
+					</math>- thickness of weld
+					<br>
+					<br>
+		
+	&emsp; <b>Shear strength of weld</b> [Cl. 10.5.7]<br>
+	&emsp;&emsp;&emsp; Vertical shear in weld (<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mi>W</mi>
+					  </msub>
+					</math>)
+					should be less than the weld strength (<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>						
+						<mi>f</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>d</mi>
+						</mrow>
+					  </msub>
+					</math>).
+					<br>
+					<br>
+	&emsp;&emsp;&emsp; Vertical shear is calculated as:					
 
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>V</mi>
+						<mi>w</mi>
+					  </msub>
+					  <mo>=</mo>
+					  <mfrac>
+						<mi>F</mi>
+						<mrow>
+						  <mn>2</mn>
+						  <msub>
+							<mi>L</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>e</mi>
+							  <mi>f</mi>
+							  <mi>f</mi>
+							  <mo>,</mo>
+							  <mi>w</mi>
+							</mrow>
+						  </msub>
+						</mrow>
+					  </mfrac>
+					</math>
+			
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>V</mi>
+						<mi>w</mi>
+					  </msub>
+					</math>   - Vertical shear in weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>L</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>e</mi>
+						  <mi>f</mi>
+						  <mi>f</mi>
+						  <mo>,</mo>
+						  <mi>w</mi>
+						</mrow>
+					  </msub>
+					</math>  - Effective length of the weld <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>F</mi>
+					  </msub>
+					</math> - Factored shear force
+					<br>
+					<br>
+					
+	&emsp;&emsp;&emsp; Shear strength of the weld is calculated as Cl. 10.5.7
+
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msub>
+						<mi>f</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+						  <mi>w</mi>
+						  <mi>d</mi>
+						</mrow>
+					  </msub>
+					  <mo>=</mo>
+					  <mfrac>
+						<mrow>
+						  <mn>0.7</mn>
+						  <msub>
+							<mi>t</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>w</mi>
+							  <mi>e</mi>
+							  <mi>l</mi>
+							  <mi>d</mi>
+							</mrow>
+						  </msub>
+						  <msub>
+							<mi>f</mi>
+							<mrow class="MJX-TeXAtom-ORD">
+							  <mi>u</mi>
+							</mrow>
+						  </msub>
+						</mrow>
+						<msqrt>
+						  <mn>3</mn>
+						</msqrt>
+					  </mfrac>
+					</math>
+			
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>wd</mi>
+					  </msub>
+					</math>  - Design weld strength<br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>f</mi>
+						<mi>u</mi>
+					  </msub>
+					</math> - Smaller of the ultimate stress of the weld or of the parent material<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					  <msub>
+						<mi>t</mi>
+						<mi>weld</mi>
+					  </msub>
+					</math> - Thickness of weld<br>
+					
+			
+	<hr>';
+	// All the real form fields.
+	$form = array();
+	$form['step11_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step11-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddcl_end_plate_form_step11_feedback');
+	$query->fields('ddcl_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute();
+	if ($form_step11_data)
+	{
+		if ($step11_data = $form_step11_data->fetchObject())
+		{
+			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step11_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step11_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step11_data->id, $step11_data->data_relation);
+			$icom = 1;
+			$form['step11_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step11_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step11_num_comment']))
+			{
+				$form_state['step11_num_comment'] = 1;
+			} //empty($form_state['step11_num_comment'])
+			$step11_temp1 = 0;
+			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
+			{
+				$step11_temp1 = $step11_i;
+				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step11_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step11_field1_fieldset']["step11_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step11_temp1
+			);
+			$form['step11_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step11_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step11_comment_add_more_callback',
+					'wrapper' => 'step11-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step11_num_comment'] > 1)
+			{
+				$form['step11_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step11_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step11_comment_add_more_callback',
+						'wrapper' => 'step11-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step11_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step11_form_next_submit'
+				)
+			);
+		} //$step11_data = $form_step11_data->fetchObject()
+		else
+		{
+			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step11_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			if (empty($form_state['step11_num_comment']))
+			{
+				$form_state['step11_num_comment'] = 1;
+			} //empty($form_state['step11_num_comment'])
+			$step11_temp1 = 0;
+			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
+			{
+				$step11_temp1 = $step11_i;
+				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step11_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step11_field1_fieldset']["step11_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step11_temp1
+			);
+			$form['step11_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step11_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step11_comment_add_more_callback',
+					'wrapper' => 'step11-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step11_num_comment'] > 1)
+			{
+				$form['step11_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step11_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step11_comment_add_more_callback',
+						'wrapper' => 'step11-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step11_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step11_form_next_submit'
+				)
+			);
+		} //$step11_data = $form_step11_data->fetchObject()
+	} //$form_step11_data
+	return $form;
+}
+function ddcl_end_plate_step11_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step11_field1_fieldset']['step11_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step11_feedback');
+	$query->fields('ddcl_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute()->fetchObject();
+	//var_dump($form_step11_data);die;
+	if ($form_step11_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step11_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
+			":data_relation" => "step11"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step11_data->id
+		));
+		$form_step11_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step11_data->id,
+					":number" => $i + $form_step11_comment_data->max + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	} //$form_step11_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
+			":data_relation" => "step11",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step10/' . $user->uid;
+}
+function ddcl_end_plate_step11_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step11_field1_fieldset']['step11_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step11_feedback');
+	$query->fields('ddcl_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute()->fetchObject();
+	//var_dump($form_step11_data);die;
+	if ($form_step11_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step11_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
+			":data_relation" => "step11"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step11_data->id
+		));
+		$form_step11_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step11_data->id,
+					":number" => $i + $form_step11_comment_data->max + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	} //$form_step11_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step11_feedback} (uid, question1,question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":question_ok_not_ok" => $v['step11_field1_fieldset']['step11_field1_question_ok'],
+			":question_not_ok_comment" => $v['step11_field1_fieldset']['step11_field1_question_not_ok_comment'],
+			":data_relation" => "step11",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step12/' . $user->uid;
+}
+/***************************************/
+function step11_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step11_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step11_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step11_num_comment'] > 1)
+	{
+		$form_state['step11_num_comment']--;
+	} //$form_state['step11_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step11_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step11_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 11 from ends ****************************/
+/************************ Step 12 form starts *********************/
+function ddcl_end_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	drupal_set_title(t('d. Weld > ii. Minimum weld thickness'));
+	$markup_text = '
+	
+	<b> d. Weld </b> <br>
+	&emsp; <b> ii. Minimum weld thickness</b> <br>
+	&emsp;&emsp;&emsp; The minimum weld thickness is selected based on thickness of column web/flange or primary beam web [Reference: Table 21, IS 800] 
+		<br>
+		<br>
+	
+	&emsp;&emsp;&emsp; Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				  </msub>
+				</math> denore the thickness of the thicker part:
+				<br>
+				<br>
+	
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>0</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>10</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>3</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>10</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>20</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>5</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>20</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>32</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>6</mn>
+				</math>
+			<br>
+			<br>
+
+	&emsp;&emsp;&emsp;&emsp;&emsp; For <math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mn>32</mn>
+				<mo>&lt;</mo>
+				<msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>p</mi>
+					  <mi>a</mi>
+					  <mi>r</mi>
+					  <mi>t</mi>
+					</mrow>
+				</msub>
+				<mo>&#x2264;<!-- ≤ --></mo>
+				<mn>50</mn>
+			</math>
+			<br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				  <msub>
+					<mi>t</mi>
+					<mrow class="MJX-TeXAtom-ORD">
+					  <mi>weld, min</mi>
+					</mrow>
+				  </msub>
+				  <mo>=</mo>
+				  <mn>10</mn>
+				</math>
+			<br>
+			<br>	
+	
+	
+	
+					
+					
+	<hr>';
+	// All the real form fields.
+	$form = array();
+	$form['step12_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step12-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddcl_end_plate_form_step12_feedback');
+	$query->fields('ddcl_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute();
+	if ($form_step12_data)
+	{
+		if ($step12_data = $form_step12_data->fetchObject())
+		{
+			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				'#default_value' => $step12_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				'#default_value' => $step12_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step12_data->id, $step12_data->data_relation);
+			$icom = 1;
+			$form['step12_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment<strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step12_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step12_num_comment']))
+			{
+				$form_state['step12_num_comment'] = 1;
+			} //empty($form_state['step12_num_comment'])
+			$step12_temp1 = 0;
+			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
+			{
+				$step12_temp1 = $step12_i;
+				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step12_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step12_field1_fieldset']["step12_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step12_temp1
+			);
+			$form['step12_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step12_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step12_comment_add_more_callback',
+					'wrapper' => 'step12-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step12_num_comment'] > 1)
+			{
+				$form['step12_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step12_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step12_comment_add_more_callback',
+						'wrapper' => 'step12-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step12_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step12_form_next_submit'
+				)
+			);
+		} //$step12_data = $form_step12_data->fetchObject()
+		else
+		{
+			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			if (empty($form_state['step12_num_comment']))
+			{
+				$form_state['step12_num_comment'] = 1;
+			} //empty($form_state['step12_num_comment'])
+			$step12_temp1 = 0;
+			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
+			{
+				$step12_temp1 = $step12_i;
+				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step12_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step12_field1_fieldset']["step12_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step12_temp1
+			);
+			$form['step12_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step12_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step12_comment_add_more_callback',
+					'wrapper' => 'step12-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step12_num_comment'] > 1)
+			{
+				$form['step12_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step12_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step12_comment_add_more_callback',
+						'wrapper' => 'step12-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step12_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step12_form_next_submit'
+				)
+			);
+		} //$step12_data = $form_step12_data->fetchObject()
+	} //$form_step12_data
+	return $form;
+}
+function ddcl_end_plate_step12_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step12_feedback');
+	$query->fields('ddcl_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step12_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step12_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
+			":data_relation" => "step12"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step12_data->id
+		));
+		$form_step12_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step12_data->id,
+					":number" => $i + $form_step12_comment_data->max + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	} //$form_step12_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
+			":data_relation" => "step12",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step11/' . $user->uid;
+}
+function ddcl_end_plate_step12_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step12_field1_fieldset']['step12_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step12_feedback');
+	$query->fields('ddcl_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step12_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step12_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
+			":data_relation" => "step12"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step12_data->id
+		));
+		$form_step12_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step12_data->id,
+					":number" => $i + $form_step12_comment_data->max + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	} //$form_step12_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step12_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok, :question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":question_ok_not_ok" => $v['step12_field1_fieldset']['step12_field1_question_ok'],
+			":question_not_ok_comment" => $v['step12_field1_fieldset']['step12_field1_question_not_ok_comment'],
+			":data_relation" => "step12",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step13/' . $user->uid;
+}
+/***************************************/
+function step12_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step12_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step12_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step12_num_comment'] > 1)
+	{
+		$form_state['step12_num_comment']--;
+	} //$form_state['step12_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step12_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step12_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 12 from ends ****************************/
+/************************ Step 13 form starts *********************/
+function ddcl_end_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	drupal_set_title(t('e. Detailing checks > i. Spacing limits'));	
+	$markup_text = '
+	
+	
+	<b> e. Detailing checks </b> <br>
+	&emsp; <b> i. Minimum spacing</b> [Cl 10.2.2] <br>
+	&emsp;&emsp;&emsp; The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
+				
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>p</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+						  <mi>g</mi>
+						  <mo>&#x2265;<!-- ≥ --></mo>
+						  <mn>2.5</mn>
+						  <mi>d</mi>
+						</math>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Where, <br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>p</mi>
+						</math>	- pitch distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>g</mi>
+						</math> - gauge distance <br>
+						
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+							<mi>d</mi>
+						</math> - nominal bolt diameter <br>
+						<br>
+				
+			
+	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
+	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mi>t</mi></math>
+	or 300 mm, whichever is less, where 
+		<math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>t</mi></math>
+	is the thickness of the thinner plate. <br>
+			
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>p</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>g</mi>
+					  <mo>&#x2264;</mo>
+					  <mi>m</mi>
+					  <mi>i</mi>
+					  <mi>n</mi>
+					  <mo stretchy="false">(</mo>
+					  <mn>32</mn>
+					  <mi>t</mi>
+					  <mo>,</mo>
+					  <mn>300</mn>
+					  <mo stretchy="false">)</mo>
+					</math>
+
+				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Where, <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>p</mi>
+					</math>	- pitch distance <br>
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>g</mi>
+					</math> - gauge distance <br>
+										
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
+						<mi>t</mi>
+					</math> - thickness of thinner plate 
+					<br>
+					<br>
+		
+	&emsp; <b> iii. Gauge1 limitations</b> [Reference: Steel Designers Manual - p733 - 6th Edition (2003)] <br>
+	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm):
+	<br>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			<msub>
+				<mi>g</mi>
+				<mi>1</mi>
+			</msub>
+			<mo>&lt;</mo>
+			<mn>140</mn>
+		</math>
+		
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			<msub>
+				<mi>g</mi>
+				<mi>1</mi>
+			</msub>
+			<mo>&gt;</mo>
+			<mn>90</mn>
+		</math>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		Where, <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<msub>
+					<mi>g</mi>
+					<mi>1</mi>
+				</msub>			
+			</math> - gauge1 <br><br>
+			<br>
+			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/ddcl_end_plate_figure_3.svg" width="20%" height="20%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			<b>Figure:</b> End plate connection<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Beam web - Column flange connectivity
+			
+	
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -6546,8 +6684,8 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 		'#prefix' => '<div id="step13-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step13_feedback');
-	$query->fields('ddcl_cleat_angle_form_step13_feedback');
+	$query = db_select('ddcl_end_plate_form_step13_feedback');
+	$query->fields('ddcl_end_plate_form_step13_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step13_data = $query->execute();
 	if ($form_step13_data)
@@ -6581,14 +6719,14 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step13_data->id, $step13_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step13_data->id, $step13_data->data_relation);
 			$icom = 1;
-			$form['step13_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step13_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step13_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step13_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -6654,14 +6792,14 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step13_form_previous_submit'
+					'ddcl_end_plate_step13_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step13_form_next_submit'
+					'ddcl_end_plate_step13_form_next_submit'
 				)
 			);
 		} //$step13_data = $form_step13_data->fetchObject()
@@ -6755,35 +6893,33 @@ function ddcl_cleat_angle_step13_form($form, &$form_state, $no_js_use = FALSE)
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step13_form_previous_submit'
+					'ddcl_end_plate_step13_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
-					'ddcl_cleat_angle_step13_form_next_submit'
+					'ddcl_end_plate_step13_form_next_submit'
 				)
 			);
 		} //$step13_data = $form_step13_data->fetchObject()
 	} //$form_step13_data
 	return $form;
 }
-function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step13_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step13_feedback');
+	$query->fields('ddcl_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step13_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
@@ -6795,7 +6931,7 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -6805,24 +6941,24 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step13_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step13_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
 		{
 			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
 					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step13",
 					":inserted_on" => date('Y-m-d')
@@ -6837,10 +6973,10 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 				} //$commentresult != 0
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step13_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
@@ -6853,7 +6989,7 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -6869,7 +7005,7 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -6892,23 +7028,21 @@ function ddcl_cleat_angle_step13_form_previous_submit($form, &$form_state, $no_j
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step12/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step12/' . $user->uid;
 }
-function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
 	$v['step13_field1_fieldset']['step13_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step13_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$query = db_select('ddcl_end_plate_form_step13_feedback');
+	$query->fields('ddcl_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step13_data);die;
+	if ($form_step13_data)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step13_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
@@ -6920,7 +7054,7 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -6930,24 +7064,24 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step13_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step13_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
 		{
 			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
 					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step13",
 					":inserted_on" => date('Y-m-d')
@@ -6965,7 +7099,7 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step13_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
@@ -6978,7 +7112,7 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 0
@@ -6994,7 +7128,7 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -7017,8 +7151,8 @@ function ddcl_cleat_angle_step13_form_next_submit($form, &$form_state, $no_js_us
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step14/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-end-plate/success';
+	$form_state['redirect'] = 'ddcl-end-plate/form/step14/' . $user->uid;
 }
 /***************************************/
 function step13_comment_add_more_add_one($form, &$form_state)
@@ -7042,650 +7176,7 @@ function step13_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 13 form ends ****************************/
 /************************ Step 14 form starts *********************/
-function ddcl_cleat_angle_step14_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	drupal_set_title(t('d. Detailing checks > i. Spacing limits'));
-	$markup_text = '
-	
-	<b> d . Detailing checks </b> <br>
-	&emsp; <b> i. Minimum spacing</b> [Cl 10.2.2] <br>
-	&emsp;&emsp;&emsp; The distance between centre of fasteners shall not be less than 2.5 times the nominal diameter of the fastener.
-				
-						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-						  <mi>p</mi>
-						  <mo>&#x2265;<!-- ≥ --></mo>
-						  <mn>2.5</mn>
-						  <mi>d</mi>
-						</math>
-						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-						  <mi>g</mi>
-						  <mo>&#x2265;<!-- ≥ --></mo>
-						  <mn>2.5</mn>
-						  <mi>d</mi>
-						</math>
-				
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>p</mi>
-					</math>	- pitch distance<br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>g</mi>
-					</math> - gauge distance <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>d</mi>
-					</math> - nominal bolt diameter <br>
-					<br>
-					
-			
-	&emsp; <b> ii. Maximum spacing</b> [Cl 10.2.3.1] <br>
-	&emsp;&emsp;&emsp; The distance between the centres of any two adjacent fasteners shall not exceed 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mi>t</mi></math>
-	or 300 mm, whichever is less, where 
-		<math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>t</mi></math>
-	is the thickness of the thinner plate. <br>
-			
-					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-					  <mi>p</mi>
-					  <mo>&#x2264;</mo>
-					  <mi>m</mi>
-					  <mi>i</mi>
-					  <mi>n</mi>
-					  <mo stretchy="false">(</mo>
-					  <mn>32</mn>
-					  <mi>t</mi>
-					  <mo>,</mo>
-					  <mn>300</mn>
-					  <mo stretchy="false">)</mo>
-					</math>
-					<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-					  <mi>g</mi>
-					  <mo>&#x2264;</mo>
-					  <mi>m</mi>
-					  <mi>i</mi>
-					  <mi>n</mi>
-					  <mo stretchy="false">(</mo>
-					  <mn>32</mn>
-					  <mi>t</mi>
-					  <mo>,</mo>
-					  <mn>300</mn>
-					  <mo stretchy="false">)</mo>
-					</math>
-
-				
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				Where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>p</mi>
-					</math>	- pitch distance <br>
-					
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>g</mi>
-					</math> - gauge distance <br>
-										
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML"> 
-						<mi>t</mi>
-					</math> - thickness of thinner plate <br>
-					<br>
-
-	&emsp; <b> iii. Gauge1 limitations</b> [Reference: Steel Designers Manual - p733 - 6th Edition (2003)] <br>
-	&emsp;&emsp;&emsp; Gauge1  (also called cross centre distance) values will be subject to the following limits (in mm).
-	<br>
-		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			<msub>
-				<mi>g</mi>
-				<mi>1</mi>
-			</msub>
-			<mo>&lt;</mo>
-			<mn>140</mn>
-		</math>
-		
-		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			<msub>
-				<mi>g</mi>
-				<mi>1</mi>
-			</msub>
-			<mo>&gt;</mo>
-			<mn>90</mn>
-		</math>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-		Where, <br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<math xmlns="http://www.w3.org/1998/Math/MathML">
-				<msub>
-					<mi>g</mi>
-					<mi>1</mi>
-				</msub>			
-			</math> - gauge1 <br><br>
-			<br>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/cleatside.png" width="40%" height="40%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<b>Figure:</b> Cleat angle connection - Side view<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Beam web - Column flange connectivity
-					
-	<hr>';
-	$img_path = '';
-	// All the real form fields.
-	$form = array();
-	$form['step14_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step14-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step14_feedback');
-	$query->fields('ddcl_cleat_angle_form_step14_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step14_data = $query->execute();
-	if ($form_step14_data)
-	{
-		if ($step14_data = $form_step14_data->fetchObject())
-		{
-			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step14_field1_fieldset']['step14_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#default_value' => $step14_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step14_field1_fieldset']['step14_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				'#default_value' => $step14_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step14_field1_fieldset\\[step14_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step14_data->id, $step14_data->data_relation);
-			$icom = 1;
-			$form['step14_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step14_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step14_num_comment']))
-			{
-				$form_state['step14_num_comment'] = 1;
-			} //empty($form_state['step14_num_comment'])
-			$step14_temp1 = 0;
-			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
-			{
-				$step14_temp1 = $step14_i;
-				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step14_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step14_field1_fieldset']["step14_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step14_temp1
-			);
-			$form['step14_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step14_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step14_comment_add_more_callback',
-					'wrapper' => 'step14-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step14_num_comment'] > 1)
-			{
-				$form['step14_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step14_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step14_comment_add_more_callback',
-						'wrapper' => 'step14-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step14_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step14_form_next_submit'
-				)
-			);
-		} //$step14_data = $form_step14_data->fetchObject()
-		else
-		{
-			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step14_field1_fieldset']['step14_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step14_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step14_field1_fieldset']['step14_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step14_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step14_field1_fieldset\\[step14_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step14_num_comment']))
-			{
-				$form_state['step14_num_comment'] = 1;
-			} //empty($form_state['step14_num_comment'])
-			$step14_temp1 = 0;
-			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
-			{
-				$step14_temp1 = $step14_i;
-				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step14_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step14_field1_fieldset']["step14_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step14_temp1
-			);
-			$form['step14_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step14_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step14_comment_add_more_callback',
-					'wrapper' => 'step14-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step14_num_comment'] > 1)
-			{
-				$form['step14_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step14_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step14_comment_add_more_callback',
-						'wrapper' => 'step14-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step14_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step14_form_next_submit'
-				)
-			);
-		} //$step14_data = $form_step14_data->fetchObject()
-	} //$form_step14_data
-	return $form;
-}
-function ddcl_cleat_angle_step14_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step14_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
-			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
-			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
-			":data_relation" => "step14"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
-		{
-			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
-					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step14",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
-			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
-			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
-			":data_relation" => "step14",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
-		{
-			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step14",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step13/' . $user->uid;
-}
-function ddcl_cleat_angle_step14_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step14_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
-			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
-			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
-			":data_relation" => "step14"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
-		{
-			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
-					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step14",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
-			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
-			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
-			":data_relation" => "step14",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
-		{
-			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step14",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
-	}
-	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step15/' . $user->uid;
-}
-/***************************************/
-function step14_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step14_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step14_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step14_num_comment'] > 1)
-	{
-		$form_state['step14_num_comment']--;
-	} //$form_state['step14_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step14_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step14_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 14 form ends ****************************/
-/************************ Step 15 form starts *********************/
-function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
@@ -7695,7 +7186,7 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 	<b> d. Detailing checks </b> <br>
 	&emsp; <b> ii. Edge and end distances </b> [Cl 10.2.4] <br>
 	&emsp;&emsp;&emsp; [Cl 10.2.4.2] <br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The minimum edge and end distances from the centre of any hole to the nearest edge of the beam/column/cleat angle shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The minimum edge and end distances from the centre of any hole to the nearest edge of the column/end plate shall not be less than 1.7 times the hole diameter in case of sheared or hand-flame cut edges; and 1.5 times the hole diameter in case of rolled, machine-flame cut, sawn and planed edges. <br>
 				
 						<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 						  <msub>
@@ -7814,7 +7305,7 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 				<mn>y</mn>
 			  </msub>
 			</math>
-			- yield strength of cleat angle <br>
+			- yield strength of end plate <br>
 			
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -7836,43 +7327,44 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 			</math> 
 			is the thickness of thinner connected plate.
 	
+	
 	<hr>';
 	// All the real form fields.
 	$form = array();
-	$form['step15_field1_fieldset'] = array(
+	$form['step14_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
-		'#prefix' => '<div id="step15-field1-fieldset-wrapper">',
+		'#prefix' => '<div id="step14-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
 	);
-	$query = db_select('ddcl_cleat_angle_form_step15_feedback');
-	$query->fields('ddcl_cleat_angle_form_step15_feedback');
+	$query = db_select('ddcl_end_plate_form_step14_feedback');
+	$query->fields('ddcl_end_plate_form_step14_feedback');
 	$query->condition('uid', $user->uid);
-	$form_step15_data = $query->execute();
-	if ($form_step15_data)
+	$form_step14_data = $query->execute();
+	if ($form_step14_data)
 	{
-		if ($step15_data = $form_step15_data->fetchObject())
+		if ($step14_data = $form_step14_data->fetchObject())
 		{
-			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			$form['step15_field1_fieldset']['step15_field1_question_ok'] = array(
+			$form['step14_field1_fieldset']['step14_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok</strong>',
 				'#type' => 'radios',
 				'#options' => array(
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				'#default_value' => $step15_data->question_ok_not_ok,
+				'#default_value' => $step14_data->question_ok_not_ok,
 				'#required' => true
 			);
-			$form['step15_field1_fieldset']['step15_field1_question_not_ok_comment'] = array(
+			$form['step14_field1_fieldset']['step14_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				'#default_value' => $step15_data->question_not_ok_comment,
+				'#default_value' => $step14_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
-						':input[name="step15_field1_fieldset\\[step15_field1_question_ok\\]"]' => array(
+						':input[name="step14_field1_fieldset\\[step14_field1_question_ok\\]"]' => array(
 							array(
 								'value' => t('Not ok')
 							)
@@ -7880,14 +7372,499 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 					)
 				)
 			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step15_data->id, $step15_data->data_relation);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step14_data->id, $step14_data->data_relation);
 			$icom = 1;
-			$form['step15_field1_fieldset']['exsiting_comments_title'] = array(
+			$form['step14_field1_fieldset']['existing_comments_title'] = array(
 				'#markup' => 'Earlier comment<br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
-				$form['step15_field1_fieldset']['exsiting_comments' . $icom] = array(
+				$form['step14_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step14_form_next_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+		else
+		{
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
+				'#markup' => $markup_text
+			);
+			$form['step14_field1_fieldset']['step14_field1_question_ok'] = array(
+				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#type' => 'radios',
+				'#options' => array(
+					'Ok' => 'Ok',
+					'Not ok' => 'Not ok'
+				),
+				//'#default_value' => $step14_data->question_ok_not_ok,
+				'#required' => true
+			);
+			$form['step14_field1_fieldset']['step14_field1_question_not_ok_comment'] = array(
+				//'#title' => 'If not, ple?',
+				'#type' => 'textarea',
+				//'#default_value' => $step14_data->question_not_ok_comment,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step14_field1_fieldset\\[step14_field1_question_ok\\]"]' => array(
+							array(
+								'value' => t('Not ok')
+							)
+						)
+					)
+				)
+			);
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddcl_end_plate_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddcl_end_plate_step14_form_next_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+	} //$form_step14_data
+	return $form;
+}
+function ddcl_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step14_feedback');
+	$query->fields('ddcl_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
+			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	} //$form_step14_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
+			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/form/step13/' . $user->uid;
+}
+function ddcl_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step14_field1_fieldset']['step14_field1_question1'] = 'question 1';
+	$query = db_select('ddcl_end_plate_form_step14_feedback');
+	$query->fields('ddcl_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step14_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
+			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step7_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	} //$form_step14_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step14_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":question_ok_not_ok" => $v['step14_field1_fieldset']['step14_field1_question_ok'],
+			":question_not_ok_comment" => $v['step14_field1_fieldset']['step14_field1_question_not_ok_comment'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	}
+	//$form_state['redirect'] = 'ddcl-end-plate/success';
+	$form_state['redirect'] = 'ddcl-end-plate/form/step15/' . $user->uid;
+}
+/***************************************/
+function step14_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step14_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step14_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step14_num_comment'] > 1)
+	{
+		$form_state['step14_num_comment']--;
+	} //$form_state['step14_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step14_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step14_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 14 form ends ****************************/
+
+/************************ Step 15 form starts *********************/
+function ddcl_end_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	drupal_set_title(t('Other recommendations'));
+	// All the real form fields.
+	$form = array();
+	$form['step15_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#title' => '<strong>Any other recommendation/Comment?</strong>',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step15-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddcl_end_plate_form_step15_feedback');
+	$query->fields('ddcl_end_plate_form_step15_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step15_data = $query->execute();
+	if ($form_step15_data)
+	{
+		if ($step15_data = $form_step15_data->fetchObject())
+		{
+			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
+				'#type' => 'hidden',
+				'#default_value' => 'other recommendations/ Comments',
+				'#required' => TRUE
+			);
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
+			$icom = 1;
+			$form['step15_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => ''
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step15_field1_fieldset']['existing_comments' . $icom] = array(
 					'#markup' => $rowcomment
 				);
 				$icom++;
@@ -7945,54 +7922,53 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 				} //!empty($form['step15_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step15_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step15_form_previous_submit'
+					'ddcl_end_plate_step15_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Save & Next',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
-					'ddcl_cleat_angle_step15_form_next_submit'
+					'ddcl_end_plate_step15_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_end_plate_step15_form_save_submit'
 				)
 			);
 		} //$step15_data = $form_step15_data->fetchObject()
 		else
 		{
 			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
-				'#markup' => $markup_text
+				'#type' => 'hidden',
+				'#default_value' => 'other recommendations/ Comments',
+				'#required' => TRUE
 			);
-			$form['step15_field1_fieldset']['step15_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step15_data->question_ok_not_ok,
-				'#required' => true
+			$earlier_comments = _fetch_existing_ddcl_end_plate_comments($step15_data->id, $step15_data->data_relation);
+			$icom = 1;
+			$form['step15_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => ''
 			);
-			$form['step15_field1_fieldset']['step15_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step15_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step15_field1_fieldset\\[step15_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step15_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step15_num_comment']))
 			{
 				$form_state['step15_num_comment'] = 1;
@@ -8046,55 +8022,66 @@ function ddcl_cleat_angle_step15_form($form, &$form_state, $no_js_use = FALSE)
 				} //!empty($form['step15_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step15_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
 			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
-					'ddcl_cleat_angle_step15_form_previous_submit'
+					'ddcl_end_plate_step15_form_previous_submit'
 				)
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Save & Next',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
-					'ddcl_cleat_angle_step15_form_next_submit'
+					'ddcl_end_plate_step15_form_previous_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddcl_end_plate_step15_form_save_submit'
 				)
 			);
 		} //$step15_data = $form_step15_data->fetchObject()
 	} //$form_step15_data
 	return $form;
 }
-function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
-	$v['step15_field1_fieldset']['step15_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step15_feedback WHERE uid=:uid";
+	/*$query = db_select('ddcl_end_plate_form_step8_feedback');
+	$query->fields('ddcl_end_plate_form_step8_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step7_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddcl_end_plate_form_step15_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$form_step15_data = db_query($query, $args);
+	$form_step15_data_count = $form_step15_data->rowCount();
+	$form_step15_data = $form_step15_data->fetchObject();	
+	if ($form_step15_data_count != 0)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step15_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step15_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
-			":question_ok_not_ok" => $v['step15_field1_fieldset']['step15_field1_question_ok'],
-			":question_not_ok_comment" => $v['step15_field1_fieldset']['step15_field1_question_not_ok_comment'],
 			":data_relation" => "step15"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -8104,24 +8091,24 @@ function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_j
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step15_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step15_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
 		{
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	(:step15_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step15_form_id" => $form_step15_data->id,
+					":number" => $i + $form_step15_comment_data->max + 1,
 					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step15",
 					":inserted_on" => date('Y-m-d')
@@ -8136,15 +8123,13 @@ function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_j
 				} //$commentresult != 0
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step15_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step15_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step15_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
-			":question_ok_not_ok" => $v['step15_field1_fieldset']['step15_field1_question_ok'],
-			":question_not_ok_comment" => $v['step15_field1_fieldset']['step15_field1_question_not_ok_comment'],
 			":data_relation" => "step15",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -8152,7 +8137,7 @@ function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_j
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -8168,7 +8153,7 @@ function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_j
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO 	ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -8191,35 +8176,33 @@ function ddcl_cleat_angle_step15_form_previous_submit($form, &$form_state, $no_j
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step14/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-end-plate/form/step14/' . $user->uid;
 }
-function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddcl_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
-	$v = $form_state['values'];
-	$v['step15_field1_fieldset']['step15_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step15_feedback WHERE uid=:uid";
+	$v = $form_state['values'];	
+	$query = "SELECT * FROM ddcl_end_plate_form_step15_feedback WHERE uid=:uid";
 	$args = array(
 		":uid" => $user->uid
 	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
+	$form_step15_data = db_query($query, $args);
+	$form_step15_data_count = $form_step15_data->rowCount();
+	$form_step15_data = $form_step15_data->fetchObject();
+	//var_dump($form_step15_data);die;
+	if ($form_step15_data_count != 0)
 	{
-		$query = "UPDATE ddcl_cleat_angle_form_step15_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddcl_end_plate_form_step15_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
-			":question_ok_not_ok" => $v['step15_field1_fieldset']['step15_field1_question_ok'],
-			":question_not_ok_comment" => $v['step15_field1_fieldset']['step15_field1_question_not_ok_comment'],
 			":data_relation" => "step15"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 1
@@ -8229,24 +8212,24 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step15_data->id
 		));
-		$form_step7_comment_data = $query->fetchObject();
+		$form_step15_comment_data = $query->fetchObject();
 		$comments = 0;
 		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
 		{
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
 	";
 				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
+					":step1_form_id" => $form_step15_data->id,
+					":number" => $i + $form_step15_comment_data->max + 1,
 					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
 					":data_relation" => "step15",
 					":inserted_on" => date('Y-m-d')
@@ -8261,15 +8244,13 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 				} //$commentresult != 0
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
-	} //$form_step7_data
+	} //$form_step15_data
 	else
 	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step15_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddcl_end_plate_form_step15_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
-			":question_ok_not_ok" => $v['step15_field1_fieldset']['step15_field1_question_ok'],
-			":question_not_ok_comment" => $v['step15_field1_fieldset']['step15_field1_question_not_ok_comment'],
 			":data_relation" => "step15",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -8277,7 +8258,128 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 1
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO 	ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddcl-end-plate/success/' . $user->uid;
+}
+function ddcl_end_plate_step15_form_save_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step15_field1_fieldset']['step15_field1_question1'] = 'question 1';
+	$query = "SELECT * FROM ddcl_end_plate_form_step15_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step15_data = db_query($query, $args);
+	$form_step15_data_count = $form_step15_data->rowCount();
+	$form_step15_data = $form_step15_data->fetchObject();
+	if ($form_step15_data_count != 0)
+	{
+		$query = "UPDATE ddcl_end_plate_form_step15_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":data_relation" => "step15"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step15_data->id
+		));
+		$form_step15_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddcl_end_plate_feedback_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step15_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step15_form_id" => $form_step15_data->id,
+					":number" => $i + $form_step15_comment_data->max + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	} //$form_step15_data
+	else
+	{
+		$query = "INSERT INTO {ddcl_end_plate_form_step15_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":data_relation" => "step15",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddcl_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
 			":submitted" => 0
@@ -8293,7 +8395,7 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
 			{
 				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
+	INSERT INTO ddcl_end_plate_feedback_form_comment
 	(step1_form_id, number, comment, data_relation, inserted_on)
 	VALUES
 	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
@@ -8316,8 +8418,8 @@ function ddcl_cleat_angle_step15_form_next_submit($form, &$form_state, $no_js_us
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step17/' . $user->uid;
+	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
+	drupal_goto('home');
 }
 /***************************************/
 function step15_comment_add_more_add_one($form, &$form_state)
@@ -8339,1151 +8441,22 @@ function step15_comment_add_more_callback($form, &$form_state)
 	return $form['step15_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 15 form ends ****************************/
-/************************ Step 16 form starts *********************/
-function ddcl_cleat_angle_step16_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	drupal_set_title(t('Other recommendations'));
-	$img_path = '';
-	$markup_text = 'Any other recommendation/Comment?<hr>';
-	// All the real form fields.
-	$form = array();
-	$form['step16_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step16-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step16_feedback');
-	$query->fields('ddcl_cleat_angle_form_step16_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step16_data = $query->execute();
-	if ($form_step16_data)
-	{
-		if ($step16_data = $form_step16_data->fetchObject())
-		{
-			$form['step16_field1_fieldset']['step16_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step16_field1_fieldset']['step16_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#default_value' => $step16_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step16_field1_fieldset']['step16_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				'#default_value' => $step16_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step16_field1_fieldset\\[step16_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step16_data->id, $step16_data->data_relation);
-			$icom = 1;
-			$form['step16_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => 'Earlier comment<br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step16_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step16_num_comment']))
-			{
-				$form_state['step16_num_comment'] = 1;
-			} //empty($form_state['step16_num_comment'])
-			$step16_temp1 = 0;
-			for ($step16_i = 0; $step16_i < $form_state['step16_num_comment']; $step16_i++)
-			{
-				$step16_temp1 = $step16_i;
-				$form['step16_field1_fieldset'][$step16_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step16_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step16_field1_fieldset']["step16_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step16_temp1
-			);
-			$form['step16_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step16_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step16_comment_add_more_callback',
-					'wrapper' => 'step16-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step16_num_comment'] > 1)
-			{
-				$form['step16_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step16_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step16_comment_add_more_callback',
-						'wrapper' => 'step16-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step16_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step16_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step16_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step16_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step16_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step16_form_next_submit'
-				)
-			);
-		} //$step16_data = $form_step16_data->fetchObject()
-		else
-		{
-			$form['step16_field1_fieldset']['step16_field1_question1'] = array(
-				'#markup' => $markup_text
-			);
-			$form['step16_field1_fieldset']['step16_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				//'#default_value' => $step16_data->question_ok_not_ok,
-				'#required' => true
-			);
-			$form['step16_field1_fieldset']['step16_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not, ple?',
-				'#type' => 'textarea',
-				//'#default_value' => $step16_data->question_not_ok_comment,
-				'#states' => array(
-					'visible' => array(
-						':input[name="step16_field1_fieldset\\[step16_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step16_num_comment']))
-			{
-				$form_state['step16_num_comment'] = 1;
-			} //empty($form_state['step16_num_comment'])
-			$step16_temp1 = 0;
-			for ($step16_i = 0; $step16_i < $form_state['step16_num_comment']; $step16_i++)
-			{
-				$step16_temp1 = $step16_i;
-				$form['step16_field1_fieldset'][$step16_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step16_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step16_field1_fieldset']["step16_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step16_temp1
-			);
-			$form['step16_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step16_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step16_comment_add_more_callback',
-					'wrapper' => 'step16-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step16_num_comment'] > 1)
-			{
-				$form['step16_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step16_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step16_comment_add_more_callback',
-						'wrapper' => 'step16-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step16_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step16_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step16_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step16_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step16_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save & Next',
-				'#submit' => array(
-					'ddcl_cleat_angle_step16_form_next_submit'
-				)
-			);
-		} //$step16_data = $form_step16_data->fetchObject()
-	} //$form_step16_data
-	return $form;
-}
-function ddcl_cleat_angle_step16_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step16_field1_fieldset']['step16_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step16_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step16_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
-			":question_ok_not_ok" => $v['step16_field1_fieldset']['step16_field1_question_ok'],
-			":question_not_ok_comment" => $v['step16_field1_fieldset']['step16_field1_question_not_ok_comment'],
-			":data_relation" => "step16"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
-		{
-			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
-					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step16",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step16_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1,  :question_ok_not_ok, :question_not_ok_comment,:data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
-			":question_ok_not_ok" => $v['step16_field1_fieldset']['step16_field1_question_ok'],
-			":question_not_ok_comment" => $v['step16_field1_fieldset']['step16_field1_question_not_ok_comment'],
-			":data_relation" => "step16",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
-		{
-			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step16",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step15/' . $user->uid;
-}
-function ddcl_cleat_angle_step16_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step16_field1_fieldset']['step16_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step16_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step7_data = db_query($query, $args);
-	$form_step7_data_count = $form_step7_data->rowCount();
-	$form_step7_data = $form_step7_data->fetchObject();
-	if ($form_step7_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step16_feedback SET question1=:question1, question_ok_not_ok=:question_ok_not_ok, question_not_ok_comment=:question_not_ok_comment, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
-			":question_ok_not_ok" => $v['step16_field1_fieldset']['step16_field1_question_ok'],
-			":question_not_ok_comment" => $v['step16_field1_fieldset']['step16_field1_question_not_ok_comment'],
-			":data_relation" => "step16"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step7_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
-		{
-			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step7_data->id,
-					":number" => $i + $form_step7_comment_data->max + 1,
-					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step16",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step16_feedback} (uid, question1, question_ok_not_ok, question_not_ok_comment, data_relation,inserted_on) VALUES (:uid,:question1, :question_ok_not_ok,:question_not_ok_comment, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
-			":question_ok_not_ok" => $v['step16_field1_fieldset']['step16_field1_question_ok'],
-			":question_not_ok_comment" => $v['step16_field1_fieldset']['step16_field1_question_not_ok_comment'],
-			":data_relation" => "step16",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
-		{
-			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step16",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
-	}
-	//$form_state['redirect'] = 'ddcl-cleat-angle/success';
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step17/' . $user->uid;
-}
-/***************************************/
-function step16_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step16_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step16_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step16_num_comment'] > 1)
-	{
-		$form_state['step16_num_comment']--;
-	} //$form_state['step16_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step16_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step16_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 16 form ends ****************************/
-/************************ Step 17 form starts *********************/
-function ddcl_cleat_angle_step17_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	// All the real form fields.
-	$form = array();
-	$form['step17_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step17-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddcl_cleat_angle_form_step17_feedback');
-	$query->fields('ddcl_cleat_angle_form_step17_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step17_data = $query->execute();
-	if ($form_step17_data)
-	{
-		if ($step17_data = $form_step17_data->fetchObject())
-		{
-			$form['step17_field1_fieldset']['step17_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
-				'#required' => TRUE
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step17_data->id, $step17_data->data_relation);
-			$icom = 1;
-			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step17_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step17_num_comment']))
-			{
-				$form_state['step17_num_comment'] = 1;
-			} //empty($form_state['step17_num_comment'])
-			$step17_temp1 = 0;
-			for ($step17_i = 0; $step17_i < $form_state['step17_num_comment']; $step17_i++)
-			{
-				$step17_temp1 = $step17_i;
-				$form['step17_field1_fieldset'][$step17_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step17_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step17_field1_fieldset']["step17_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step17_temp1
-			);
-			$form['step17_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step17_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step17_comment_add_more_callback',
-					'wrapper' => 'step17-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step17_num_comment'] > 1)
-			{
-				$form['step17_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step17_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step17_comment_add_more_callback',
-						'wrapper' => 'step17-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step17_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step17_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step17_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step17_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form['previous2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_save_submit'
-				)
-			);
-		} //$step17_data = $form_step17_data->fetchObject()
-		else
-		{
-			$form['step17_field1_fieldset']['step17_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
-				'#required' => TRUE
-			);
-			$earlier_comments = _fetch_exsiting_ddcl_cleat_angle_comments($step17_data->id, $step17_data->data_relation);
-			$icom = 1;
-			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step17_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step17_num_comment']))
-			{
-				$form_state['step17_num_comment'] = 1;
-			} //empty($form_state['step17_num_comment'])
-			$step17_temp1 = 0;
-			for ($step17_i = 0; $step17_i < $form_state['step17_num_comment']; $step17_i++)
-			{
-				$step17_temp1 = $step17_i;
-				$form['step17_field1_fieldset'][$step17_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step17_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step17_field1_fieldset']["step17_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step17_temp1
-			);
-			$form['step17_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step17_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step17_comment_add_more_callback',
-					'wrapper' => 'step17-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step17_num_comment'] > 1)
-			{
-				$form['step17_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step17_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step17_comment_add_more_callback',
-						'wrapper' => 'step17-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step17_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step17_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step17_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step17_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_previous_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddcl_cleat_angle_step17_form_save_submit'
-				)
-			);
-		} //$step17_data = $form_step17_data->fetchObject()
-	} //$form_step17_data
-	return $form;
-}
-function ddcl_cleat_angle_step17_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	/*$query = db_select('ddcl_cleat_angle_form_step8_feedback');
-	$query->fields('ddcl_cleat_angle_form_step8_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step17_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step17_data = db_query($query, $args);
-	$form_step17_data_count = $form_step17_data->rowCount();
-	$form_step17_data = $form_step17_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step17_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step17_data->id
-		));
-		$form_step7_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step17_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step17_form_id" => $form_step17_data->id,
-					":number" => $i + $form_step17_comment_data->max + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step8_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO 	ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/form/step15/' . $user->uid;
-}
-function ddcl_cleat_angle_step17_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	/*$query = db_select('ddcl_cleat_angle_form_step8_feedback');
-	$query->fields('ddcl_cleat_angle_form_step8_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step7_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step17_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step17_data = db_query($query, $args);
-	$form_step17_data_count = $form_step17_data->rowCount();
-	$form_step17_data = $form_step17_data->fetchObject();
-	//var_dump($form_step7_data);die;
-	if ($form_step17_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step17_data->id
-		));
-		$form_step17_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step17_data->id,
-					":number" => $i + $form_step17_comment_data->max + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 1
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step8_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO 	ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddcl-cleat-angle/success/' . $user->uid;
-}
-function ddcl_cleat_angle_step17_form_save_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step17_field1_fieldset']['step17_field1_question1'] = 'question 1';
-	$query = "SELECT * FROM ddcl_cleat_angle_form_step17_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step17_data = db_query($query, $args);
-	$form_step17_data_count = $form_step17_data->rowCount();
-	$form_step17_data = $form_step17_data->fetchObject();
-	if ($form_step17_data_count != 0)
-	{
-		$query = "UPDATE ddcl_cleat_angle_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step17_data->id
-		));
-		$form_step17_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step17_data->id,
-					":number" => $i + $form_step17_comment_data->max + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
-	} //$form_step17_data
-	else
-	{
-		$query = "INSERT INTO {ddcl_cleat_angle_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
-			":data_relation" => "step17",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddcl_cleat_angle_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
-		{
-			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddcl_cleat_angle_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step17",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
-	}
-	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
-	drupal_goto('home');
-}
-/***************************************/
-function step17_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step17_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step17_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step17_num_comment'] > 1)
-	{
-		$form_state['step17_num_comment']--;
-	} //$form_state['step17_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step17_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step17_field1_fieldset'];
-}
-/***************************************/
-/****************************************** step 17 form ends ****************************/
+/****************************************** step 15 form ends ****************************/
 /**
  * Displays simple confirmation page after finishing the whole process.
  */
-function ddcl_cleat_angle_success()
+function ddcl_end_plate_success()
 {
 	$data .= drupal_set_message(t('You have successfully submitted the feedback.'), 'status');
 	$data .= drupal_goto('home');
 	return $data;
 }
 /**********************************************/
-function ddcl_cleat_angle_result_page()
+function ddcl_end_plate_result_page()
 {
 	/* get pending proposals to be approved */
 	$output = "";
-	$output .= l("Download All Result in CSV", "ddcl-cleat-angle/form/result/download");
+	$output .= l("Download All Result in CSV", "ddcl-end-plate/form/result/download");
 	$feedback_rows = array();
 	$feedback_q = db_query('
 
@@ -9586,32 +8559,26 @@ step14.question_not_ok_comment as "step14_question_not_ok_comment",
 
 step15.id as "step15_id",
 step15.data_relation as "step15_data_relation",
-step15.question1 as "step15_question1",
-step15.question_ok_not_ok as "step15_question_ok_not_ok",
-step15.question_not_ok_comment as "step15_question_not_ok_comment",
-
-step17.id as "step17_id",
-step17.data_relation as "step17_data_relation",
-step17.question1 as "step17_question1"
+step15.question1 as "step15_question1"
 
 
-from ddcl_cleat_angle_form_step1_feedback step1
+from ddcl_end_plate_form_step1_feedback step1
 
-join ddcl_cleat_angle_form_step2_feedback step2 on step1.uid=step2.uid
-join ddcl_cleat_angle_form_step3_feedback step3 on step2.uid=step3.uid
-join ddcl_cleat_angle_form_step4_feedback step4 on step3.uid=step4.uid
-join ddcl_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
-join ddcl_cleat_angle_form_step6_feedback step6 on step5.uid=step6.uid
-join ddcl_cleat_angle_form_step7_feedback step7 on step6.uid=step7.uid
-join ddcl_cleat_angle_form_step8_feedback step8 on step7.uid=step8.uid
-join ddcl_cleat_angle_form_step9_feedback step9 on step8.uid=step9.uid
-join ddcl_cleat_angle_form_step10_feedback step10 on step9.uid=step10.uid
-join ddcl_cleat_angle_form_step11_feedback step11 on step10.uid=step11.uid
-join ddcl_cleat_angle_form_step12_feedback step12 on step11.uid=step12.uid
-join ddcl_cleat_angle_form_step13_feedback step13 on step12.uid=step13.uid
-join ddcl_cleat_angle_form_step14_feedback step14 on step13.uid=step14.uid
-join ddcl_cleat_angle_form_step15_feedback step15 on step14.uid=step15.uid
-join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
+join ddcl_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
+join ddcl_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_end_plate_form_step7_feedback step7 on step6.uid=step7.uid
+join ddcl_end_plate_form_step8_feedback step8 on step7.uid=step8.uid
+join ddcl_end_plate_form_step9_feedback step9 on step8.uid=step9.uid
+join ddcl_end_plate_form_step10_feedback step10 on step9.uid=step10.uid
+join ddcl_end_plate_form_step11_feedback step11 on step10.uid=step11.uid
+join ddcl_end_plate_form_step12_feedback step12 on step11.uid=step12.uid
+join ddcl_end_plate_form_step13_feedback step13 on step12.uid=step13.uid
+join ddcl_end_plate_form_step14_feedback step14 on step13.uid=step14.uid
+join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
+
 	');
 	$i = 1;
 	while ($feedback_data = $feedback_q->fetchObject())
@@ -9624,50 +8591,44 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 			$feedback_data->step1_current_position,
 			$feedback_data->step2_question_ok_not_ok,
 			$feedback_data->step2_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question_ok_not_ok,
 			$feedback_data->step3_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
 			$feedback_data->step4_question_ok_not_ok,
 			$feedback_data->step4_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
 			$feedback_data->step5_question_ok_not_ok,
 			$feedback_data->step5_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation),
 			$feedback_data->step6_question_ok_not_ok,
 			$feedback_data->step6_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step6_id, $feedback_data->step6_data_relation),
 			$feedback_data->step7_question_ok_not_ok,
 			$feedback_data->step7_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
 			$feedback_data->step8_question_ok_not_ok,
 			$feedback_data->step8_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
 			$feedback_data->step9_question_ok_not_ok,
 			$feedback_data->step9_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
 			$feedback_data->step10_question_ok_not_ok,
 			$feedback_data->step10_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
 			$feedback_data->step11_question_ok_not_ok,
 			$feedback_data->step11_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
 			$feedback_data->step12_question_ok_not_ok,
 			$feedback_data->step12_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
 			$feedback_data->step13_question_ok_not_ok,
 			$feedback_data->step13_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
 			$feedback_data->step14_question_ok_not_ok,
 			$feedback_data->step14_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
-			$feedback_data->step15_question_ok_not_ok,
-			$feedback_data->step15_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step15_id, $feedback_data->step15_data_relation),
-			$feedback_data->step16_question_ok_not_ok,
-			$feedback_data->step16_question_not_ok_comment,
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step16_id, $feedback_data->step16_data_relation),
-			_fetch_ddcl_cleat_angle_exsiting_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation)
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
+			_fetch_ddcl_end_plate_existing_comments_result($feedback_data->step15_id, $feedback_data->step15_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -9683,52 +8644,46 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 		'Name',
 		'Institute / Company',
 		'Current Position',
-		'Page 2 Is this ok/not ok',
-		'Page 2 Is this ok/not ok comment',
+		'Page 2 Material Strength',
+		'Page 2 Material Strength not-ok comment',
 		'Page 2 comments',
-		'Page 3 Is this ok/not ok',
-		'Page 3 Is this ok/not ok comment',
+		'Page 3 Bolt-shear-black bolt',
+		'Page 3 Bolt-shear-black bolt not-ok comment',
 		'Page 3 comments',
-		'Page 4 Is this ok/not ok',
-		'Page 4 Is this ok/not ok comment',
+		'Page 4 Bolt-shear-HSFG',
+		'Page 4 Bolt-shear-HSFG not-ok comment',
 		'Page 4 comments',
-		'Page 5 Is this ok/not ok',
-		'Page 5 Is this ok/not ok comment',
+		'Page 5 Bolt-bearing-capacity',
+		'Page 5 Bolt-bearing-capacity not-ok comment',
 		'Page 5 comments',
-		'Page 6 Is this ok/not ok',
-		'Page 6 Is this ok/not ok comment',
+		'Page 6 Bolt value ',
+		'Page 6 Bolt value not-ok comment',
 		'Page 6 comments',
-		'Page 7 Is this ok/not ok',
-		'Page 7 Is this ok/not ok comment',
+		'Page 7 Bolt-numbers-and-group-capacity',
+		'Page 7 Bolt-numbers-and-group-capacity not-ok comment',
 		'Page 7 comments',
-		'Page 8 Is this ok/not ok',
-		'Page 8 Is this ok/not ok comment',
+		'Page 8 Plate-height',
+		'Page 8 Plate-height not-ok comment',
 		'Page 8 comments',
-		'Page 9 Is this ok/not ok',
-		'Page 9 Is this ok/not ok comment',
+		'Page 9 Plate-thickness',
+		'Page 9 Plate-thickness not-ok comment',
 		'Page 9 comments',
-		'Page 10 Is this ok/not ok',
-		'Page 10 Is this ok/not ok comment',
+		'Page 10 Plate-block-shear',
+		'Page 10 Plate-block-shear not-ok comment',
 		'Page 10 comments',
-		'Page 11 Is this ok/not ok',
-		'Page 11 Is this ok/not ok comment',
+		'Page 11 Weld-shear-strength',
+		'Page 11 Weld-shear-strength not-ok comment',
 		'Page 11 comments',
-		'Page 12 Is this ok/not ok',
-		'Page 12 Is this ok/not ok comment',
+		'Page 12 Weld-minimum-thickness',
+		'Page 12 Weld-minimum-thickness not-ok comment',
 		'Page 12 comments',
-		'Page 13 Is this ok/not ok',
-		'Page 13 Is this ok/not ok comment',
+		'Page 13 Detailing-checks-spacing',
+		'Page 13 Detailing-checks-spacing not-ok comment',
 		'Page 13 comments',
-		'Page 14 Is this ok/not ok',
-		'Page 14 Is this ok/not ok comment',
+		'Page 14 Detailing-checks-end_edge',
+		'Page 14 Detailing-checks-end_edge not-ok comment',
 		'Page 14 comments',
-		'Page 15 Is this ok/not ok',
-		'Page 15 Is this ok/not ok comment',
-		'Page 15 comments',
-		'Page 16 Is this ok/not ok',
-		'Page 16 Is this ok/not ok comment',
-		'Page 16 comments',
-		'Page 17 Any other comments'
+		'Page 15 Any other comments'
 	);
 	$output .= theme('table', array(
 		'header' => $data_header,
@@ -9738,10 +8693,10 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 	return $output;
 }
 //displayed in user page
-function _fetch_exsiting_ddcl_cleat_angle_comments($step_id, $data_relation)
+function _fetch_existing_ddcl_end_plate_comments($step_id, $data_relation)
 {
 	global $base_url;
-	$query_for_comment = db_query("SELECT * FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
 		':data_relation' => $data_relation
 	));
@@ -9752,7 +8707,7 @@ function _fetch_exsiting_ddcl_cleat_angle_comments($step_id, $data_relation)
 		while ($row = $query_for_comment->fetchObject())
 		{
 			$comment[$i] = $i + 1 . ") " . $row->comment . "<br><h6 style='text-align: right;'>
-			<a href='{$base_url}/ddcl-cleat-angle/delete/{$row->data_relation}/{$row->id}'>Delete</a><br>" . $row->inserted_on . "</h6><br>";
+			<a href='{$base_url}/ddcl-end-plate/delete/{$row->data_relation}/{$row->id}'>Delete</a><br>" . $row->inserted_on . "</h6><br>";
 			$i++;
 		} //$row = $query_for_comment->fetchObject()
 	} //$query_for_comment == NULL
@@ -9762,14 +8717,14 @@ function _fetch_exsiting_ddcl_cleat_angle_comments($step_id, $data_relation)
 	}
 	return $comment;
 }
-function ddcl_cleat_angle_delete_comment()
+function ddcl_end_plate_delete_comment()
 {
 	global $base_url;
 	$comment_id = arg(3);
 	$comment_step = arg(2);
 	if ($comment_id)
 	{
-		$query = "DELETE FROM {ddcl_cleat_angle_feedback_form_comment} WHERE id = :id";
+		$query = "DELETE FROM {ddcl_end_plate_feedback_form_comment} WHERE id = :id";
 		$query_result = db_query($query, array(
 			':id' => $comment_id
 		));
@@ -9782,11 +8737,11 @@ function ddcl_cleat_angle_delete_comment()
 			drupal_set_message("MySQL Error: row deletion failed.");
 		}
 	} //$comment_id && user_access("osdag_feedback_form")
-	drupal_goto("{$base_url}/ddcl-cleat-angle/form/{$comment_step}/");
+	drupal_goto("{$base_url}/ddcl-end-plate/form/{$comment_step}/");
 }
-function _fetch_ddcl_cleat_angle_exsiting_comments($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments($step_id, $data_relation)
 {
-	$query_for_comment = db_query("SELECT * FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
 		':data_relation' => $data_relation
 	));
@@ -9806,9 +8761,9 @@ function _fetch_ddcl_cleat_angle_exsiting_comments($step_id, $data_relation)
 	}
 	return $comment;
 }
-function _fetch_ddcl_cleat_angle_exsiting_comments_result($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments_result($step_id, $data_relation)
 {
-	$query_for_comment = db_query("SELECT * FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
 		':data_relation' => $data_relation
 	));
@@ -9829,9 +8784,9 @@ function _fetch_ddcl_cleat_angle_exsiting_comments_result($step_id, $data_relati
 	//$query_for_comment == NULL
 	return $text;
 }
-function _fetch_ddcl_cleat_angle_exsiting_comments_result_csv($step_id, $data_relation)
+function _fetch_ddcl_end_plate_existing_comments_result_csv($step_id, $data_relation)
 {
-	$query_for_comment = db_query("SELECT * FROM ddcl_cleat_angle_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
+	$query_for_comment = db_query("SELECT * FROM ddcl_end_plate_feedback_form_comment WHERE step1_form_id = :step1_form_id AND data_relation=:data_relation ORDER BY number ASC", array(
 		':step1_form_id' => $step_id,
 		':data_relation' => $data_relation
 	));
@@ -9852,18 +8807,18 @@ function _fetch_ddcl_cleat_angle_exsiting_comments_result_csv($step_id, $data_re
 	//$query_for_comment == NULL
 	return trim($text);
 }
-function ddcl_cleat_angle_result_generate_csv()
+function ddcl_end_plate_result_generate_csv()
 {
 	global $user;
 	if ($user->uid != NULL)
 	{
-		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-downloads/ddcl-cleat-angle-form-result/{$user->uid}/";
+		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-downloads/ddcl-end-plate-form-result/{$user->uid}/";
 		if (!file_exists($result_dir))
 		{
 			mkdir($result_dir, 0755, TRUE);
 		} //!file_exists($result_dir)
-		$result_file = $result_dir . "ddcl-cleat-angle-result-{$user->uid}" . ".csv";
-		$csv_file = "ddcl-cleat-angle-result-{$user->uid}" . ".csv";
+		$result_file = $result_dir . "ddcl-end-plate-result-{$user->uid}" . ".csv";
+		$csv_file = "ddcl-end-plate-result-{$user->uid}" . ".csv";
 		$fp = fopen($result_file, "w");
 		/* making the first row */
 		$item = array(
@@ -9872,49 +8827,46 @@ function ddcl_cleat_angle_result_generate_csv()
 			'Name',
 			'Institute / Company',
 			'Current Position',
-			'Page 2 Is this ok/not ok',
-			'Page 2 Is this ok/not ok comment',
+			'Page 2 Material Strength',
+			'Page 2 Material Strength not-ok comment',
 			'Page 2 comments',
-			'Page 3 Is this ok/not ok',
-			'Page 3 Is this ok/not ok comment',
+			'Page 3 Bolt-shear-black bolt',
+			'Page 3 Bolt-shear-black bolt not-ok comment',
 			'Page 3 comments',
-			'Page 4 Is this ok/not ok',
-			'Page 4 Is this ok/not ok comment',
+			'Page 4 Bolt-shear-HSFG',
+			'Page 4 Bolt-shear-HSFG not-ok comment',
 			'Page 4 comments',
-			'Page 5 Is this ok/not ok',
-			'Page 5 Is this ok/not ok comment',
+			'Page 5 Bolt-bearing-capacity',
+			'Page 5 Bolt-bearing-capacity not-ok comment',
 			'Page 5 comments',
-			'Page 6 Is this ok/not ok',
-			'Page 6 Is this ok/not ok comment',
+			'Page 6 Bolt value ',
+			'Page 6 Bolt value not-ok comment',
 			'Page 6 comments',
-			'Page 7 Is this ok/not ok',
-			'Page 7 Is this ok/not ok comment',
+			'Page 7 Bolt-numbers-and-group-capacity',
+			'Page 7 Bolt-numbers-and-group-capacity not-ok comment',
 			'Page 7 comments',
-			'Page 8 Is this ok/not ok',
-			'Page 8 Is this ok/not ok comment',
+			'Page 8 Plate-height',
+			'Page 8 Plate-height not-ok comment',
 			'Page 8 comments',
-			'Page 9 Is this ok/not ok',
-			'Page 9 Is this ok/not ok comment',
+			'Page 9 Plate-thickness',
+			'Page 9 Plate-thickness not-ok comment',
 			'Page 9 comments',
-			'Page 10 Is this ok/not ok',
-			'Page 10 Is this ok/not ok comment',
+			'Page 10 Plate-block-shear',
+			'Page 10 Plate-block-shear not-ok comment',
 			'Page 10 comments',
-			'Page 11 Is this ok/not ok',
-			'Page 11 Is this ok/not ok comment',
+			'Page 11 Weld-shear-strength',
+			'Page 11 Weld-shear-strength not-ok comment',
 			'Page 11 comments',
-			'Page 12 Is this ok/not ok',
-			'Page 12 Is this ok/not ok comment',
+			'Page 12 Weld-minimum-thickness',
+			'Page 12 Weld-minimum-thickness not-ok comment',
 			'Page 12 comments',
-			'Page 13 Is this ok/not ok',
-			'Page 13 Is this ok/not ok comment',
+			'Page 13 Detailing-checks-spacing',
+			'Page 13 Detailing-checks-spacing not-ok comment',
 			'Page 13 comments',
-			'Page 14 Is this ok/not ok',
-			'Page 14 Is this ok/not ok comment',
+			'Page 14 Detailing-checks-end_edge',
+			'Page 14 Detailing-checks-end_edge not-ok comment',
 			'Page 14 comments',
-			'Page 15 Is this ok/not ok',
-			'Page 15 Is this ok/not ok comment',
-			'Page 15 comments',
-			'Page 17 Any other comments'
+			'Page 15 Any other comments'
 		);
 		fputcsv($fp, $item);
 		$query = '
@@ -10011,31 +8963,25 @@ step14.question_not_ok_comment as "step14_question_not_ok_comment",
 
 step15.id as "step15_id",
 step15.data_relation as "step15_data_relation",
-step15.question1 as "step15_question1",
-step15.question_ok_not_ok as "step15_question_ok_not_ok",
-step15.question_not_ok_comment as "step15_question_not_ok_comment",
+step15.question1 as "step15_question1"
 
-step17.id as "step17_id",
-step17.data_relation as "step17_data_relation",
-step17.question1 as "step17_question1"
+from ddcl_end_plate_form_step1_feedback step1
 
-from ddcl_cleat_angle_form_step1_feedback step1
+join ddcl_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
+join ddcl_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
+join ddcl_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
+join ddcl_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
+join ddcl_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddcl_end_plate_form_step7_feedback step7 on step6.uid=step7.uid
+join ddcl_end_plate_form_step8_feedback step8 on step7.uid=step8.uid
+join ddcl_end_plate_form_step9_feedback step9 on step8.uid=step9.uid
+join ddcl_end_plate_form_step10_feedback step10 on step9.uid=step10.uid
+join ddcl_end_plate_form_step11_feedback step11 on step10.uid=step11.uid
+join ddcl_end_plate_form_step12_feedback step12 on step11.uid=step12.uid
+join ddcl_end_plate_form_step13_feedback step13 on step12.uid=step13.uid
+join ddcl_end_plate_form_step14_feedback step14 on step13.uid=step14.uid
+join ddcl_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
 
-join ddcl_cleat_angle_form_step2_feedback step2 on step1.uid=step2.uid
-join ddcl_cleat_angle_form_step3_feedback step3 on step2.uid=step3.uid
-join ddcl_cleat_angle_form_step4_feedback step4 on step3.uid=step4.uid
-join ddcl_cleat_angle_form_step5_feedback step5 on step4.uid=step5.uid
-join ddcl_cleat_angle_form_step6_feedback step6 on step5.uid=step6.uid
-join ddcl_cleat_angle_form_step7_feedback step7 on step6.uid=step7.uid
-join ddcl_cleat_angle_form_step8_feedback step8 on step7.uid=step8.uid
-join ddcl_cleat_angle_form_step9_feedback step9 on step8.uid=step9.uid
-join ddcl_cleat_angle_form_step10_feedback step10 on step9.uid=step10.uid
-join ddcl_cleat_angle_form_step11_feedback step11 on step10.uid=step11.uid
-join ddcl_cleat_angle_form_step12_feedback step12 on step11.uid=step12.uid
-join ddcl_cleat_angle_form_step13_feedback step13 on step12.uid=step13.uid
-join ddcl_cleat_angle_form_step14_feedback step14 on step13.uid=step14.uid
-join ddcl_cleat_angle_form_step15_feedback step15 on step14.uid=step15.uid
-join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 
 			';
 		// $args = array(');
@@ -10051,47 +8997,44 @@ join ddcl_cleat_angle_form_step17_feedback step17 on step15.uid=step17.uid
 				$feedback_data->step1_current_position,
 				$feedback_data->step2_question_ok_not_ok,
 				$feedback_data->step2_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question_ok_not_ok,
 				$feedback_data->step3_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
 				$feedback_data->step4_question_ok_not_ok,
 				$feedback_data->step4_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),
 				$feedback_data->step5_question_ok_not_ok,
 				$feedback_data->step5_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation),
 				$feedback_data->step6_question_ok_not_ok,
 				$feedback_data->step6_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step6_id, $feedback_data->step6_data_relation),
 				$feedback_data->step7_question_ok_not_ok,
 				$feedback_data->step7_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
 				$feedback_data->step8_question_ok_not_ok,
 				$feedback_data->step8_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
 				$feedback_data->step9_question_ok_not_ok,
 				$feedback_data->step9_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
 				$feedback_data->step10_question_ok_not_ok,
 				$feedback_data->step10_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
 				$feedback_data->step11_question_ok_not_ok,
 				$feedback_data->step11_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
 				$feedback_data->step12_question_ok_not_ok,
 				$feedback_data->step12_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
 				$feedback_data->step13_question_ok_not_ok,
 				$feedback_data->step13_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
 				$feedback_data->step14_question_ok_not_ok,
 				$feedback_data->step14_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation),
-				$feedback_data->step15_question_ok_not_ok,
-				$feedback_data->step15_question_not_ok_comment,
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation),
-				_fetch_ddcl_cleat_angle_exsiting_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation)
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation),
+				_fetch_ddcl_end_plate_existing_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation)
 			);
 			fputcsv($fp, $item);
 			$i++;
