@@ -185,22 +185,69 @@ function ddq_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = FA
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'a. Minimum number of bolts is 2, on each side of the web of the supported beam. <br> &emsp;&emsp; This makes the minimum total number of bolts as 4.
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_1.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)
-				<br>
-				<br>
+				'#title' => '&emsp; <strong> a. Osdag Gui </strong> </b> <br> 
 				<hr>
+				&emsp;&emsp;&emsp; 1. List of inputs (input dock). 
 				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; i. Beam section * </br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; ii. Material strength <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Yield stress (F<sub>y</sub>)* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Ultimate stress (F<sub>u</sub>)* <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iii. Factored loads <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Maximum moment* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear force* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Axial force <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iv. Bolts <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Diameter (mm)* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Type* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Grade* <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; v. Plate <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > thickness (mm)* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > height (mm) <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > width (mm) <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; vi. Weld size <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam flange (mm)* <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam web (mm)* <br>
+
+				<hr>
+				&emsp;&emsp;&emsp; 2. List of outputs (output dock).
+				<br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; i. Bolt <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension acting on critical bolt <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension capacity of bolt <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear/bearing capacity of bolt <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Combined shear and tension capacity of bolt <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of bolts required <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of rows <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Pitch <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Gauge <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Cross-centre gauge <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > End distance <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Edge distance <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; ii. End plate <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Height <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Width <br>
+
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iii. Weld <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at flange <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at web <br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: Fields marked with * are mandatory <br>
+
+
+
+				<hr>
 				
-				Is this assumption ok?
+				Is this list of inputs and outputs ok?
+				You may suggest changes if any, by commenting in the comment section given below.
 				',
 				'#type' => 'radios',
 				'#options' => $step2_options,
@@ -668,23 +715,77 @@ function ddq_bb_splice_end_plate_step3_form($form, &$form_state, $no_js_use = FA
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
-				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)<br>
-				<br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-				<br>				
+		<b> &emsp;&emsp;&emsp; 1. Number of bolts. <br>
+		<br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: The configuration is assumed to have 2 columns of bolt <br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the assumption made above for calculating number of bolts correct? <br>
+		
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If No,<br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please provide suitable comment in the comment section below.  <br>
+		<br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Under what circumstances can we provide 4 columns of bolt? <br>
+		<hr>
+		
+		<b> &emsp;&emsp;&emsp; 2. Force in bolts. <br>
+		<br>
+		<b> &emsp;&emsp;&emsp;&emsp; i. Example 5.23, page 419 - N. Subramanian
+		<br>
+		<br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: Tension in critical bolt is calculated by taking moment about the 										centre of the bottom flange (method adopted by <br>
+		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Osdag) . <br>
+		<hr>
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_1.jpg" width="70%" height="80%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
+
+		<b> &emsp;&emsp;&emsp;&emsp; ii. BCSWA approach - section 6.7.1 and equation 6.35, page 6.39 - M.L Gambhir. <br>
+		<br>
+		 
+			<hr>
+
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/assumption.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_2.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
+		
+		<b> &emsp;&emsp;&emsp;&emsp; Among (i) and (ii), which method is more appropriate to calculate tension in critical bolt? 			<br>
+		<b> &emsp;&emsp;&emsp;&emsp; Please comment.
+	
+		<hr>
+
+		<b> &emsp;&emsp;&emsp; 3. Axial force in beam. <br>
+		<br> 
+		<b> &emsp;&emsp;&emsp;&emsp; The axial force is assumed to be passing through the C.G of the beam. <br>
+		<b> &emsp;&emsp;&emsp;&emsp; Is the above assumption correct? <br>
+		<b> &emsp;&emsp;&emsp;&emsp; If yes, should we consider moment due to axial force in the outermost (crtical) bolt? <br>
+		<hr>
+
+		<b> &emsp;&emsp;&emsp; 4. Type of bolt. <br>
+		<br> 
+		<b> &emsp;&emsp;&emsp;&emsp; AISC (Design guide 16) recommends use of HSFG bolts in design of splice connections due to 						high strength requirement. <br>
+		<b> &emsp;&emsp;&emsp;&emsp; Can we use bearing bolts in design of splice connection? <br>
+		
 				
-				
-				
+				<hr>
 				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#default_value' => $step3_data->question1,
@@ -1147,12 +1248,38 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				<b> &emsp;&emsp;&emsp; 1. End plate dimensions. <br>
 				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; i. Maximum height of end plate <br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; There is no specification given on maximum height of 					end plate. What could be the maximum limit of extension of end plate	<br> 	
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; beyond the flanges <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please comment below <br>
 				<br>				
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; NOTE: The moment capacity of the end plate does not 					depend on its height <br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum 				plate width as width of flange plus 25 mm on either sides. <br> 					<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
+
+				<hr> 
+	
+				<b> &emsp;&emsp;&emsp; 2. Moment capacity of end plate. <br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The moment capacity of end plate should be  based on its plastic 					or elastic capacity? <br>
+				<br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: We have adopted plastic capacity i.e. M<sub>p</sub> = (f<sub>y</sub>/1.10) (wT<sup>2</sup>/4) [Reference: equation 5.18, page 350, Design of steel structures <br>
+				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- N. Subramaniam] here, w is the width and T is the thickness of 					end plate. <br>
+
+				<hr> 
+	
+				<b> &emsp;&emsp;&emsp; 3. Should we have plate grade different from member (beam) grade? <br>
+				<br>
+				<hr>				
 				
 				',
 				'#type' => 'radios',
@@ -1583,12 +1710,26 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; d. Weld  
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				<b> &emsp;&emsp;&emsp; 1. Weld profile. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/4E.png" width="30%" height="40%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
+			<br>
+			<br>
+			<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Weld is provided throughout the perimeter of I section. However, the size of weld at flange will be greater than the size of weld <br> 
+			<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; at web. <br>
+				
+
+
+				<br>
+				Is the adopted weld profile correct? If No, please suggest a suitable profile.				
 				',
 				'#type' => 'radios',
 				'#options' => $step5_options,
@@ -2025,11 +2166,19 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 		if ($step6_data = $form_step6_data->fetchObject())
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; e. Stiffener. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<b> &emsp;&emsp;&emsp; 1. Under what circumstances should we provide stiffeners? <br>
+				<br>
+				<b> &emsp;&emsp;&emsp; 2. What should be the location of stiffeners? (top, bottom or both) <br>
+				<br>
+				<b> &emsp;&emsp;&emsp; 3. What should be the type of stiffener? (example, load bearing etc.) <br>
+				<br>
+				<b> &emsp;&emsp;&emsp; 4. If it is a load bearing stiffener will there be any reduction in prying force at 					tension flange or reaction at compression flange?  <br>
+				<b> &emsp;&emsp;&emsp;&emsp; If yes, than how much? <br>
+
+
 				<br>				
 				',
 				'#type' => 'radios',
@@ -2467,12 +2616,15 @@ function ddq_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = FA
 		if ($step7_data = $form_step7_data->fetchObject())
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; f. Block shear. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				<b> &emsp;&emsp;&emsp; For block shear failure what could be the possible critical path of failure?. <br>
+				<b> &emsp;&emsp;&emsp; Enumerate the critical path by using the figure given below. <br>
+
+
+				<br>
+				Is this ok?				
 				',
 				'#type' => 'radios',
 				'#options' => $step7_options,
