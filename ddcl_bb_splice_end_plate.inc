@@ -155,7 +155,7 @@ function ddcl_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = F
 {
 	global $base_url;
 	global $user;
-<<<<<<< Updated upstream
+
 	drupal_set_title(t('a. Number of bolts (N) > i. number of bolts in each column'));
 	$markup_text = '
 	<b> <strong> a. Number of bolts (N) </strong></br>
