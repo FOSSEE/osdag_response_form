@@ -155,6 +155,7 @@ function ddcl_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = F
 {
 	global $base_url;
 	global $user;
+<<<<<<< Updated upstream
 	drupal_set_title(t('a. Number of bolts (N) > i. number of bolts in each column'));
 	$markup_text = '
 	<b> <strong> a. Number of bolts (N) </strong></br>
@@ -248,6 +249,7 @@ function ddcl_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = F
 				</math>		
 
 					
+
 			<hr>';
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
@@ -712,7 +714,6 @@ function ddcl_bb_splice_end_plate_step3_form($form, &$form_state, $no_js_use = F
 	global $base_url;
 	global $user;
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	drupal_set_title(t('a. Number of bolts > ii. Selecting configuration based on number of bolts > 1. N=8 > 2. N=12 > 3. N=16'));
 	$markup_text = '
 	<b> <strong> a. Number of bolts  </strong> </b>
 	<hr>
@@ -1223,7 +1224,6 @@ function ddcl_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = F
 {
 	global $base_url;
 	global $user;
-	drupal_set_title(t('b. Material strength > i. Yield stress limits > ii. Ultimate strength limits'));
 	$markup_text = '
 	<b> <strong> b. Material Strength </strong></b><br>
 	<hr>
