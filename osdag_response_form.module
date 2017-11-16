@@ -1708,6 +1708,105 @@ List)'),
 		),
 		'file' => 'ddq_bb_splice_end_plate.inc'
 	);
+	$items['ddq-bb-splice-end-plate/form/step9'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step9_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step10'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step10_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step11'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step11_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step12'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step12_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step13'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step13_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+		$items['ddq-bb-splice-end-plate/form/step14'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step14_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step15'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step15_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step16'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step16_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
+	$items['ddq-bb-splice-end-plate/form/step17'] = array(
+		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries)'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddq_bb_splice_end_plate_step17_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddq_bb_splice_end_plate.inc'
+	);
 	// Delete the comment
 	$items['ddq-bb-splice-end-plate/delete'] = array(
 		'title' => t('BB Splice End plate DDQ (Design and Detailing Queries) successful!'),

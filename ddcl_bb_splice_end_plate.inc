@@ -158,98 +158,84 @@ function ddcl_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = F
 
 	drupal_set_title(t('a. Number of bolts (N) > i. number of bolts in each column'));
 	$markup_text = '
-	<b> <strong> a. Number of bolts (N) </strong></br>
-	
-	<hr>
-		&emsp; <b> i. Number of bolts in each column (n) </b> [Reference: equation 5.59, Design of steel structures by N. Subramanian]
-<br>
-		&emsp;&emsp;&emsp; <b> Assumption: </b> The configuration is assumed to have 2 columns of bolt.
-<br>					
-<br>
-		<center>
-				
-		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>n</mi>
-  <mo>=</mo>
-  <msqrt>
-    <mfrac>
-      <mrow>
-        <mn>6</mn>
-        <mi>M</mi>
-      </mrow>
-      <mrow>
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msup>
-    <mi>n</mi>
-    <mo>&#x2032;</mo>
-  </msup>
-        <mi>p</mi>
-        <msub>
-          <mi>V</mi>
-          <mrow class="MJX-TeXAtom-ORD">
-            <mi>s</mi>
-            <mi>d</mi>
-          </mrow>
-        </msub>
-      </mrow>
-    </mfrac>
-  </msqrt>
-</math>
-		</center>		
-<br>
-
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					where, <br>
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
+			 <strong> a. Number of bolts (N) </strong></br>
+			<hr>&emsp; 
+			 i. Number of bolts in each column (n) </b><br>&emsp;&emsp;
+			[Reference: equation 5.59, Design of steel structures by N. Subramanian]<br>
+			&emsp;&nbsp;&nbsp;&nbsp;
+			 Assumption: </b> The configuration is assumed to have 2 columns of bolt.<br>
+			<center>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <mi>n</mi>
+					  <mo>=</mo>
+					  <msqrt>
+					    <mfrac>
+					      <mrow>
+					        <mn>6</mn>
+					        <mi>M</mi>
+					      </mrow>
+					      <mrow>
+					        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					  <msup>
+					    <mi>n</mi>
+					    <mo>&#x2032;</mo>
+					  </msup>
+					        <mi>p</mi>
+					        <msub>
+					          <mi>V</mi>
+					          <mrow class="MJX-TeXAtom-ORD">
+					            <mi>s</mi>
+					            <mi>d</mi>
+					          </mrow>
+					        </msub>
+					      </mrow>
+					    </mfrac>
+					  </msqrt>
+				</math>
+			</center><br>&emsp;&emsp;&emsp;&emsp;
+			where, <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				    	<msub>
 							<mi>M</mi>
 							<mrow class="MJX-TeXAtom-ORD">
-						  </msub>
-						</math> - Applied moment (External factored moment + Moment due to factored axial force) kN-mm <br>
-
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-  							<msup>
-    							<mi>n</mi>
-    							<mo>&#x2032;</mo>
-  							</msup>
-						</math> - number of columns of bolts (assumed to be 2) <br>
-
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
+						 </msub>
+				</math> - Applied moment (External factored moment + Moment due to factored axial force) kN-mm <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+  						<msup>
+   							<mi>n</mi>
+   							<mo>&#x2032;</mo>
+						</msup>
+				</math> - number of columns of bolts (assumed to be 2) <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				        <msub>
 							<mi>V</mi>
 							<mrow class="MJX-TeXAtom-ORD">
 							  <mi>s</mi>
 							  <mi>d</mi>
 							</mrow>
-						  </msub>
-						</math> - design shear strength of a single bolt (kN) <br>
-
-					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<math xmlns="http://www.w3.org/1998/Math/MathML">
-						  <msub>
+						</msub>
+				</math> - design shear strength of a single bolt (kN) <br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+  					    <msub>
 							<mi>p</mi>
 							<mrow class="MJX-TeXAtom-ORD">
 							</mrow>
-						  </msub>
-						</math> - minimum pitch distance i.e. <math xmlns="http://www.w3.org/1998/Math/MathML" 
- 							 <mn>2.5</mn>
-  							<mi>d</mi>
-							</math> (mm) <br>
-				<br>
-
-				&emsp;&emsp;&emsp;  Therefore, the total number of bolts (N) is,
+						</msub>
+				</math> - minimum pitch distance i.e. 
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+ 						<mn>2.5</mn>
+  						<mi>d</mi>
+				</math> (mm) <br><br>
+			&emsp;&emsp;&emsp;&emsp;  Therefore, the total number of bolts (N) is,
 				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-					  <mi>N</mi>
-					  <mo>=</mo>
-  					  <mn>2</mn>
-					  <mi>n</mi>
+					    <mi>N</mi>
+					    <mo>=</mo>
+  					    <mn>2</mn>
+					    <mi>n</mi>
 				</math>		
-
-					
-
 			<hr>';
 	$form = array();
 	$form['step2_field1_fieldset'] = array(
@@ -513,12 +499,7 @@ function ddcl_bb_splice_end_plate_step2_form_previous_submit($form, &$form_state
 		{
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step2_data->id,
 					":number" => $i + $form_step2_comment_data->max + 1,
@@ -558,12 +539,7 @@ function ddcl_bb_splice_end_plate_step2_form_previous_submit($form, &$form_state
 		{
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -617,12 +593,7 @@ function ddcl_bb_splice_end_plate_step2_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step2_data->id,
 					":number" => $i + $form_step2_comment_data->max + 1,
@@ -662,12 +633,7 @@ function ddcl_bb_splice_end_plate_step2_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step2_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -715,47 +681,31 @@ function ddcl_bb_splice_end_plate_step3_form($form, &$form_state, $no_js_use = F
 	global $user;
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
-	<b> <strong> a. Number of bolts  </strong> </b>
+	 <strong> a. Number of bolts  </strong> </b>
 	<hr>
-	&emsp; <b> <strong> ii. Selecting configuration based on number of bolts </strong> </b> <br>	
-	<br>
-	&emsp;&emsp;&emsp;&emsp; <b> 1. If number of bolts; N &le; 8, take N = 8 (Figure 1)
+	&emsp; <strong> ii. Selecting configuration based on number of bolts </strong> </b> 
+	<br><br>
+	&emsp;&emsp;&emsp;&emsp;  1. If number of bolts; N &le; 8, take N = 8 (Figure 1)
 	</b><br>
-	&emsp;&emsp;&emsp;&emsp; <b> 2. If number of bolts; 8 &lt N &le; 12, take N = 12 (Figure 2)
+	&emsp;&emsp;&emsp;&emsp;  2. If number of bolts; 8 &lt N &le; 12, take N = 12 (Figure 2)
 	</b><br>
-	&emsp;&emsp;&emsp;&emsp; <b> 3. If number of bolts; 12 &lt N &le; 16, take N = 16 (Figure 3)
-	<br>
-	<br>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
+	&emsp;&emsp;&emsp;&emsp;  3. If number of bolts; 12 &lt N &le; 16, take N = 16 (Figure 3)
+	<br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<img src="' . $img_path . '/4_bolts.png" width="25%" height="30%" align="centre"/><br>
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			<b>Figure 1:</b> configuration with 8 bolts (unstiffened and stiffened)
+			Figure 1:</b> configuration with 8 bolts (unstiffened and stiffened)
 			<hr>
-			
-
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<img src="' . $img_path . '/MRE_1_2.png" width="15%" height="20%" align="centre"/><br>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			&emsp;&emsp;&emsp;
-			&emsp;&emsp;<b>Figure 2:</b> configuration with 12 bolts 
+			&emsp;&emsp;Figure 2:</b> configuration with 12 bolts 
 			<hr>
-			
-
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			
 			<img src="' . $img_path . '/8_bolts.png" width="25%" height="30%" align="centre"/><br>
-			<br>
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			<b>Figure 3:</b> configuration with 16 bolts (unstiffened and stiffened)
-			
-
-';
+			Figure 3:</b> configuration with 16 bolts (unstiffened and stiffened)';
 	$markup_text1 = '';
 	$tooltip1 = '';
 	// All the real form fields.
@@ -1067,12 +1017,7 @@ function ddcl_bb_splice_end_plate_step3_form_previous_submit($form, &$form_state
 		{
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -1127,12 +1072,7 @@ function ddcl_bb_splice_end_plate_step3_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment(step1_form_id, number, comment, data_relation, inserted_on)	VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step3_data->id,
 					":number" => $i + $form_step3_comment_data->max + 1,
@@ -1172,12 +1112,7 @@ function ddcl_bb_splice_end_plate_step3_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step3_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -1225,11 +1160,11 @@ function ddcl_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = F
 	global $base_url;
 	global $user;
 	$markup_text = '
-	<b> <strong> b. Material Strength </strong></b><br>
+	 <strong> b. Material Strength </strong></b><br>
 	<hr>
-	&emsp; <b> The values of material strength will be subjected to the following limits <br>
-	<br>
-		&emsp; <b> i. Yield Stress limits </b>[Reference: Table-1, IS 800] <br>					
+	&emsp; The values of material strength will be subjected to the following limits <br>
+	<br>&emsp; 
+	 i. Yield Stress limits </b>[Reference: Table-1, IS 800] <br>					
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>165</mn>
@@ -1242,8 +1177,8 @@ function ddcl_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = F
 					<mn>450</mn>
 					</math>
 					</center>		
-		<br>
-		&emsp; <b> ii. Ultimate Strength limits </b> [Reference: Table-1, IS 800] <br>
+	<br>
+	&emsp;  ii. Ultimate Strength limits </b> [Reference: Table-1, IS 800] <br>
 					<center>
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mn>290</mn>
@@ -1565,12 +1500,7 @@ function ddcl_bb_splice_end_plate_step4_form_previous_submit($form, &$form_state
 		{
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -1625,12 +1555,7 @@ function ddcl_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step4_data->id,
 					":number" => $i + $form_step4_comment_data->max + 1,
@@ -1670,12 +1595,7 @@ function ddcl_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -1725,25 +1645,20 @@ function ddcl_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = F
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	drupal_set_title(t('c. Detailing checks > i. Pitch distance > ii. Gauge distance > iii. Gauge1 distance'));
 	$markup_text = '
-	<b><strong> c. Detailing checks </strong></b> <br>
-	<hr>
-	&emsp; <b><strong> i. Pitch distance (p) </strong></b> [Reference: Cl.10.2.2, IS 800] <br>	
-	&emsp;
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
-
-	<br>
-	<hr>
-	
-	&emsp; <b><strong> ii. Gauge distance (g) </strong></b> [Reference: Cl.10.2.3.1, IS 800] <br>
-	&emsp;
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
-	
-	<br>
-	<hr>
-	
-	&emsp; <b><strong> iii. Gauge1 distance (<mi>g</mi> <mi>1</mi>) </strong></b> [Reference: SCI - Steel Designers Manual, page 733, 6th Edition (2003)] <br>
-	&emsp;
-	&emsp;&emsp;&emsp; Gauge1  (also called cross centre gauge distance) values will be subject to the following limits (in mm):
+	<strong> c. Detailing checks </strong></b> <br>
+	<hr>&emsp; 
+	<strong> i. Pitch distance (p) </strong></b> [Reference: Cl.10.2.2, IS 800] <br>	
+	&emsp;&emsp;&emsp;&emsp; 
+	This check will be the same as implemented for the shear connection modules (already reviewed).
+	<br><hr>
+	&emsp; <strong> ii. Gauge distance (g) </strong></b> [Reference: Cl.10.2.3.1, IS 800] <br>
+	&emsp;&emsp;&emsp;&emsp; 
+	This check will be the same as implemented for the shear connection modules (already reviewed).
+	<br><hr>
+	&emsp; <strong> iii. Gauge1 distance (<mi>g</mi> <mi>1</mi>) </strong></b> 
+		[Reference: SCI - Steel Designers Manual, page 733, 6th Edition (2003)] <br>
+	&emsp;&emsp;&emsp;&emsp; 
+	Gauge1  (also called cross centre gauge distance) values will be subject to the following limits (in mm):
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			<msub>
@@ -1753,7 +1668,6 @@ function ddcl_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = F
 			<mo>&gt;</mo>
 			<mn>90</mn>
 		</math>
-		
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			<msub>
 				<mi>g</mi>
@@ -1762,24 +1676,19 @@ function ddcl_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = F
 			<mo>&lt;</mo>
 			<mn>140</mn>
 		</math>
-		
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 		where, <br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
 				<msub>
 					<mi>g</mi>
 					<mi>1</mi>
 				</msub>			
-			</math> - gauge1 <br><br>
-			
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/g_1.png" width="30%" height="50%" align="middle"/><br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;<b><strong>Figure:</strong></b> beam to beam end plate splice connection showing gauge1 distance<br>
-	
+			</math> - gauge1 <br>			
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/g_1.png" width="30%" height="50%" align="center"/><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<strong>Figure:</strong></b> beam to beam end plate splice connection showing gauge1 distance<br>
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -2046,12 +1955,7 @@ function ddcl_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state
 		{
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step5_data->id,
 					":number" => $i + $form_step5_comment_data->max + 1,
@@ -2091,12 +1995,7 @@ function ddcl_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state
 		{
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -2151,12 +2050,7 @@ function ddcl_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step5_data->id,
 					":number" => $i + $form_step5_comment_data->max + 1,
@@ -2196,12 +2090,7 @@ function ddcl_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $n
 		{
 			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -2251,41 +2140,41 @@ function ddcl_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = F
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	drupal_set_title(t('c. Detailing checks > iv. End distance > v. Edge distance > vi. lv'));
 	$markup_text = '
-	<b> <strong> c. Detailing checks </strong></b> <br>
-	<hr>
-	&emsp; <b><strong> iv. End distance (e<sub>1</sub>) </strong></b> [Reference: Cl.10.2.4.2 & 10.2.4.3, IS 800] <br>	
-	&emsp;
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
-
-	<br>
-	<hr>
-	
-	&emsp; <b><strong> v. Edge distance (e<sub>2</sub>) </strong></b> [Reference: Cl.10.2.4.2 & 10.2.4.3, IS 800] <br>
-	&emsp;
-	&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
-	
-	<br>
-	<hr>
-	
-	&emsp; <b><strong> vi. Distance between the beam flange or toe of weld to the centre of the nearer bolt ( l<sub>v</sub> ) </strong></b> [Reference: AISC design guide 16] <br>
-	&emsp;
-	&emsp;&emsp;&emsp; l<sub>v</sub> values will be subject to the following limits (in mm):
-	<br>
-	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> 1. For bolts upto 24 mm diameter </b>
+	 <strong> c. Detailing checks </strong></b> <br>
+	<hr>&emsp; 
+	<strong> iv. End distance (e<sub>1</sub>) </strong></b> [Reference: Cl.10.2.4.2 & 10.2.4.3, IS 800] <br>	
+	&emsp;&emsp;&emsp;&emsp; 
+	This check will be the same as implemented for the shear connection modules (already reviewed).
+	<br><hr>
+	&emsp; 
+	<strong> v. Edge distance (e<sub>2</sub>) </strong></b> [Reference: Cl.10.2.4.2 & 10.2.4.3, IS 800] <br>
+	&emsp;&emsp;&emsp;&emsp; 
+	This check will be the same as implemented for the shear connection modules (already reviewed).
+	<br><hr>
+	&emsp; 
+		
+		<strong>
+			 vi. Distance between the beam flange or toe of weld to the centre of the nearer bolt ( l<sub>v</sub> ) 
+		</strong>
+	</b><br>&emsp;&emsp;&nbsp;&nbsp;[Reference: AISC design guide 16] <br>
+	&emsp;&emsp;&emsp;&emsp; 
+	l<sub>v</sub> values will be subject to the following limits (in mm):
+	<br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+	 1. For bolts upto 24 mm diameter </b>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-			<msub>
-				<mi>l</mi>
-				<mi>v</mi>
-			</msub>
-			<mo>&ge;</mo>
-			<mn> (d + 12.5) mm </mn>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				<msub>
+					<mi>l</mi>
+					<mi>v</mi>
+				</msub>
+				<mo>&ge;</mo>
+				<mn> (d + 12.5) mm </mn>
 		</math>	
-	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> 2. For bolts greater than 24 mm diameter </b>
+	<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+	 2. For bolts greater than 24 mm diameter </b>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			<msub>
 				<mi>l</mi>
 				<mi>v</mi>
@@ -2294,10 +2183,10 @@ function ddcl_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = F
 			<mn> (d + 18.75) mm</mn>
 		</math>	
 	
-	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> 3. In general (bolt of any diameter)</b>
+	<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+	 3. In general (bolt of any diameter)</b>
 	&emsp;&emsp;&emsp;&emsp;
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
 			<msub>
 				<mi>l</mi>
 				<mi>v</mi>
@@ -2305,24 +2194,21 @@ function ddcl_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = F
 			<mo>&ge;</mo>
 			<mn> 50 to 62.5 mm</mn>
 		</math>	
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-		where, <br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	where, <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
 				
 					<mi>d</mi>
 						
 			</math> - diameter of bolt <br><br>
-			
-			&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/l_v.png" width="50%" height="40%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<b>Figure:</b> distance between the beam flange or toe of weld to the centre of the nearer bolt <mi>l</mi> <mi>v</mi> <br>
-		
-	<hr>';
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	<img src="' . $img_path . '/l_v.png" width="50%" height="40%" align="middle"/><br>
+	<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	Figure:</b> distance between the beam flange or toe of weld to the centre of the nearer bolt 
+		<mi>l</mi>
+		<mi>v</mi>
+	<br><hr>';
 	// All the real form fields.
 	$form = array();
 	$form['step6_field1_fieldset'] = array(
@@ -2792,9 +2678,9 @@ function ddcl_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = F
 	global $user;
 	drupal_set_title(t('d. Plate dimensions > i. Minimum plate height > ii. Plate width > 1. Minimum plate width > 2. Maximum plate width'));
 	$markup_text = '
-	<b> <strong> d. Plate dimensions </strong> </b> <br>
+	 <strong> d. Plate dimensions </strong> </b> <br>
 	<hr>
-	&emsp;&emsp;<b> <strong> i. Minimum plate height ( h<sub>p<sub> minimum</sub></sub> ) </strong> [Reference: based on reasoning]</b> <br>
+	&emsp;&emsp; <strong> i. Minimum plate height ( h<sub>p<sub> minimum</sub></sub> ) </strong> [Reference: based on reasoning]</b> <br>
 	&emsp;
 	
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -2889,9 +2775,9 @@ function ddcl_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = F
 							</msub>
 						</math> - minimum end distance <br>
 	<hr>
-		&emsp;&emsp;<b><strong> ii. Plate width ( w<sub>p </sub>) </strong> </b> <br>
+		&emsp;&emsp;<strong> ii. Plate width ( w<sub>p </sub>) </strong> </b> <br>
 		<br>
-		&emsp;&emsp;&emsp;&emsp;<b><strong> 1. Minimum plate width - w<sub>p<sub> minimum</sub></sub> </strong> [Reference: based on reasoning] </b> <br>
+		&emsp;&emsp;&emsp;&emsp;<strong> 1. Minimum plate width - w<sub>p<sub> minimum</sub></sub> </strong> [Reference: based on reasoning] </b> <br>
 	&emsp;
 	
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -2970,7 +2856,7 @@ function ddcl_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = F
 							</msub>
 						</math> - minimum edge distance <br>
 		<br>
-		&emsp;&emsp;&emsp;&emsp;<b><strong> 2. Maximum plate width - w<sub>p<sub> maximum</sub></sub> </strong>  [Reference: AISC design guide 16] </b> <br>
+		&emsp;&emsp;&emsp;&emsp;<strong> 2. Maximum plate width - w<sub>p<sub> maximum</sub></sub> </strong>  [Reference: AISC design guide 16] </b> <br>
 		
 
 
@@ -3486,13 +3372,13 @@ function ddcl_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = F
 	drupal_set_title(t('e. Bolt forces > i. Tension in bolts > ii. Prying forces'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
-	<b><strong> e. Bolt forces </strong> </b> <br>
-	&emsp;&emsp; <b><strong> Assumption: </strong></b> The line of rotation or neutral axis is assumed to pass through the centre of the bottom flange. [Reference: example <br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b> 5.23, Design of steel structures - N. Subramanian ] <br>
+	<strong> e. Bolt forces </strong> </b> <br>
+	&emsp;&emsp; <strong> Assumption: </strong></b> The line of rotation or neutral axis is assumed to pass through the centre of the bottom flange. <br>&emsp;&emsp;&emsp;&emsp;[Reference: example 
+ 5.23, Design of steel structures - N. Subramanian ] <br>
 <br>					
 <hr>
 
-	&emsp;&emsp;&emsp; <b><strong> i. Tension in i<sup> th </sup> bolt ( T<sub>i</sub> ) </strong></b> [Reference: equation 6.35, page 6.39 - M.L Gambhir] </br>
+	&emsp;&emsp;&emsp; <strong> i. Tension in i<sup> th </sup> bolt ( T<sub>i</sub> ) </strong></b> [Reference: equation 6.35, page 6.39 - M.L Gambhir] </br>
   <br>
 <br>
 				<center>
@@ -3598,7 +3484,7 @@ function ddcl_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = F
 					
 <hr>		
 
-	&emsp;&emsp;&emsp; <b><strong> ii. Prying forces (Q) </strong></b> [ Reference: Cl 10.4.7 - IS 800 ]<b><br>
+	&emsp;&emsp;&emsp; <strong> ii. Prying forces (Q) </strong></b> [ Reference: Cl 10.4.7 - IS 800 ]<br>
 	
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -4235,11 +4121,11 @@ function ddcl_bb_splice_end_plate_step9_form($form, &$form_state, $no_js_use = F
 	global $user;
 	drupal_set_title(t('f. Bolt > i. Tension capacity of bolt > 1. Tension capacity of HSFG bolt > 2. Tension capacity of bearing bolt'));
 	$markup_text = '
-	<b><strong> f. Bolt </strong></b> <br>
+	<strong> f. Bolt </strong></b> <br>
 	<hr>
-	&emsp; <b><strong> i. Tension capacity of bolt </strong><br>
+	&emsp; <strong> i. Tension capacity of bolt </strong><br>
 	<br>
-	&emsp;&emsp;&emsp;&emsp;&emsp; <b> 1. Tension capacity of HSFG bolt  (T<sub>df</sub>) </b> [Reference: Cl 10.4.5, IS 800]
+	&emsp;&emsp;&emsp;&emsp;&emsp;  1. Tension capacity of HSFG bolt  (T<sub>df</sub>) </b> [Reference: Cl 10.4.5, IS 800]
 	<br>
 <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -4385,7 +4271,7 @@ function ddcl_bb_splice_end_plate_step9_form($form, &$form_state, $no_js_use = F
 					</math> - shank area of the bolt
 				<br>	
 <hr>
-	&emsp;&emsp;&emsp;&emsp;&emsp; <b> 2. Tension capacity of bearing bolt  (T<sub>db</sub>) </b> [Reference: Cl 10.3.5, IS 800]
+	&emsp;&emsp;&emsp;&emsp;&emsp;  2. Tension capacity of bearing bolt  (T<sub>db</sub>) </b> [Reference: Cl 10.3.5, IS 800]
 	<br>
 <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -5009,14 +4895,14 @@ function ddcl_bb_splice_end_plate_step10_form($form, &$form_state, $no_js_use = 
 	$markup_text = '
 	
 	
-	<b><strong> f. Bolt </strong></b> <br>
-	&emsp; <b><strong> ii. Shear and bearing capacities of bolt </strong><br>
+	<strong> f. Bolt </strong></b> <br>
+	&emsp; <strong> ii. Shear and bearing capacities of bolt </strong><br>
 <hr>
-	&emsp;&emsp;&emsp;<b> 1. HSFG bolt </b><br>
+	&emsp;&emsp;&emsp; 1. HSFG bolt </b><br>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
 
 <hr>
-&emsp;&emsp;&emsp;<b> 2. Bearing bolt (also known as black bolt) </b><br>
+&emsp;&emsp;&emsp; 2. Bearing bolt (also known as black bolt) </b><br>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; This check will be the same as implemented for the shear connection modules (already reviewed).
 	
 
@@ -5492,11 +5378,11 @@ function ddcl_bb_splice_end_plate_step11_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('f. Bolt > iii. Combined shear and tension capacity of bolt > 1. HSFG bolt > 2. Bearing bolt'));
 	$markup_text = '
 	
-	<b><strong> f. Bolt </strong></b> <br>
-	&emsp;&emsp; <b><strong> iii. Combined shear and tension capacity of bolt </strong></b><br>
+	<strong> f. Bolt </strong></b> <br>
+	&emsp;&emsp; <strong> iii. Combined shear and tension capacity of bolt </strong></b><br>
 	<hr>
 	
-	&emsp;&emsp;&emsp;&emsp; <b><strong> 1. HSFG bolt </strong> [Reference: Cl 10.4.6 - IS 800] </b><br>
+	&emsp;&emsp;&emsp;&emsp; <strong> 1. HSFG bolt </strong> [Reference: Cl 10.4.6 - IS 800] </b><br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mo stretchy="false">(</mo>
@@ -5584,7 +5470,7 @@ function ddcl_bb_splice_end_plate_step11_form($form, &$form_state, $no_js_use = 
 					</math> - design tension strength				
 <hr>
 
-				&emsp;&emsp;&emsp;&emsp; <b><strong> 2. Bearing bolt </strong> [Reference: Cl 10.3.6 - IS 800] </b><br>
+				&emsp;&emsp;&emsp;&emsp; <strong> 2. Bearing bolt </strong> [Reference: Cl 10.3.6 - IS 800] </b><br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mo stretchy="false">(</mo>
@@ -6143,30 +6029,22 @@ function ddcl_bb_splice_end_plate_step12_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('g. End plate > i. Thickness of end plate'));
 	$markup_text = '
 	
-	<b><strong> g. End plate </strong></b> <br>
-	&emsp; <b><strong> i. Thickness of end plate </strong> [Reference: equation 5.19 and example 5.23, Design of steel structures - N. Subramanian] </b> 
+	<strong> g. End plate </strong> <br>
+	&emsp; <strong> i. Thickness of end plate </strong> <br><br>
+	&emsp;&emsp;[Reference: equation 5.19 and example 5.23, Design of steel structures - N. Subramanian] 
 <hr>
 	
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			
-			<img src="' . $img_path . '/prying.jpg" width="50%" height="60%" align="middle"/><br>
+			<img src="' . $img_path . '/prying.jpg" width="50%" height="60%" /><br>
 			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>
-
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/tp.jpg" width="80%" height="90%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/tp.jpg" width="80%" height="90%" /><br>
+			
 			<hr>
 
-	&emsp;&emsp;&emsp; The plastic moment capacity of end plate (M<sub>p</sub>) is given as; <br><br>
-
-	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+	 The plastic moment capacity of end plate (M<sub>p</sub>) is given as; <br><br>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>M</mi>
     <mi>p</mi>
@@ -6240,14 +6118,14 @@ function ddcl_bb_splice_end_plate_step12_form($form, &$form_state, $no_js_use = 
 		&emsp;&emsp;&emsp;&emsp;&emsp;
 				where,  
 				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 					  <msub>
 								<mi>M</mi>
 								<mi>p</mi>
 					</msub>
-					</math> - Plastic moment capacity of plate [Reference: equation 5.17, page 350 - N. Subramanian]
-				&emsp;&emsp;&emsp;&emsp;&emsp;
+					</math> - Plastic moment capacity of plate<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Reference: equation 5.17, page 350 - N. Subramanian]
 				
 				<br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -6748,8 +6626,8 @@ function ddcl_bb_splice_end_plate_step13_form($form, &$form_state, $no_js_use = 
 	$markup_text = '
 	
 	
-	<b><strong> g. End plate </strong></b> <br>
-	&emsp; <b><strong> ii. Shear yielding of end plate </strong></b> [Reference: Cl. 8.4.1, IS 800] <br>
+	<strong> g. End plate </strong></b> <br>
+	&emsp; <strong> ii. Shear yielding of end plate </strong></b> [Reference: Cl. 8.4.1, IS 800] <br>
 	<hr>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -6850,7 +6728,7 @@ function ddcl_bb_splice_end_plate_step13_form($form, &$form_state, $no_js_use = 
 				
 				<br>
 				<hr>
-&emsp; <b><strong> iii. Shear rupture of end plate </strong></b> [Reference: Cl. 8.4.1, IS 800] <br>
+&emsp; <strong> iii. Shear rupture of end plate </strong></b> [Reference: Cl. 8.4.1, IS 800] <br>
 <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -7469,7 +7347,7 @@ function ddcl_bb_splice_end_plate_step14_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('g. End plate > iv. Block shear capacity of end plate'));
 	$img_path = '';
 	$markup_text = '
-	&emsp; <b><strong> iv. Block shear capacity of end plate </strong> [Reference: Cl 6.4.1 - IS 800] <br>
+	&emsp; <strong> iv. Block shear capacity of end plate </strong> [Reference: Cl 6.4.1 - IS 800] <br>
 	<br>
 	&emsp;&emsp;&emsp;  This check will be the same as implemented for the shear connection modules (already reviewed). 
 	<br> 
@@ -7982,9 +7860,9 @@ function ddcl_bb_splice_end_plate_step15_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('h. Member checks > i. Strength of flange under compression'));
 	$img_path = '';
 	$markup_text = '
-	<b><strong> h. Member checks </strong></b> <br>
+	<strong> h. Member checks </strong></b> <br>
 <hr>
-	&emsp;&emsp; <b><strong> i. Strength of flange under compression </strong> [Reference: example 5.23 & 5.27, Design of steel structures - N. Subramanian ]<br>
+	&emsp;&emsp; <strong> i. Strength of flange under compression </strong> <br>&emsp;&emsp;&nbsp;&nbsp;[Reference: example 5.23 & 5.27, Design of steel structures - N. Subramanian ]
 
 <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -8668,36 +8546,25 @@ function ddcl_bb_splice_end_plate_step16_form($form, &$form_state, $no_js_use = 
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	drupal_set_title(t('i. Design of weld > i. Weld profile'));
 	$markup_text = '
-	<b><strong> i. Design of weld </strong></b> <br>
+	<strong> i. Design of weld </strong></b> <br>
 	<hr>
-	&emsp;<b><strong> i. Weld profile </strong> [Reference: based on reasoning] </b> <br>
+	&emsp;<strong> i. Weld profile </strong> [Reference: based on reasoning] </b> <br>
 	<br>
-	&emsp;&emsp;&emsp; <b><strong> Assumption: </strong></b> Weld is provided throughout the perimeter of I section. However, the size of weld at flange will be greater than the   </br>
-&emsp;&emsp;&emsp; <b> size of weld at web. </br></b>
-&emsp;&emsp;&emsp; <b> Weld at flange resists bending moment whereas weld at beam web resists shear + axial force   </br>
+	&emsp;&emsp;&emsp; <strong> Assumption: </strong></b> Weld is provided throughout the perimeter of I section. 
+	<br>&emsp;&emsp;&emsp;&nbsp;However, the size of weld at flange will be greater than the 
+	 size of weld at web. </br></b>
+	&emsp;&emsp;&emsp;  Weld at flange resists bending moment whereas weld at beam web resists shear + axial force</br>
 	<br>
-			
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/weld_side.png" width="30%" height="45%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
-			<br>
-			<br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			
-			<img src="' . $img_path . '/weld_front.png" width="60%" height="90%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (front view)
-			<br>
-			<br>
-
-	
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	<img src="' . $img_path . '/weld_side.png" width="30%" height="45%" align="middle"/><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+	Figure:</b> Weld profile (side view)
+	<br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;		
+	<img src="' . $img_path . '/weld_front.png" width="60%" height="90%" align="middle"/><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	Figure:</b> Weld profile (front view)
+	<br><br>
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -9206,225 +9073,222 @@ function ddcl_bb_splice_end_plate_step17_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('i. Design of weld > ii. Size of weld at beam flange > 1. Minimum weld thickness'));
 	$img_path = '';
 	$markup_text = '
-	&emsp; <b><strong> ii. Size of weld at beam flange </strong></b> <br>
+	&emsp; <strong> ii. Size of weld at beam flange </strong></b> <br>
 	<hr>
-	&emsp;&emsp;&emsp; <b><strong> 1. Minimum weld thickness ( t<sub>w<sub>minimum</sub></sub> ) </strong> - for dropdown list of weld thickness in Gui [Reference: Table 21, IS 800] <br>
+	&emsp;&emsp;&emsp; 
+	<strong> 1. Minimum weld thickness ( t<sub>w<sub>minimum</sub></sub> ) </strong> - for dropdown list of weld thickness in Gui <br>
+	&emsp;&emsp;&emsp;&emsp;[Reference: Table 21, IS 800] <br>
 	&emsp;&emsp;&emsp;&emsp; Minimum weld thickness depends on the thickness of the thicker part
 	<br>
+	&emsp;&emsp;&emsp;&emsp; For weld at flange, 
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+			  <msub>
+			    <mi>t</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>t</mi>
+			      <mi>h</mi>
+			      <mi>i</mi>
+			      <mi>c</mi>
+			      <mi>k</mi>
+			      <mi>e</mi>
+			      <mi>r</mi>
+			    </mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mi>m</mi>
+			  <mi>a</mi>
+			  <mi>x</mi>
+			  <mi>i</mi>
+			  <mi>m</mi>
+			  <mi>u</mi>
+			  <mi>m</mi>
+			  <mo stretchy="false">(</mo>
+			  <msub>
+			    <mi>T</mi>
+			    <mi>f</mi>
+			  </msub>
+			  <mo>,</mo>
+			  <mtext>&#xA0;</mtext>
+			  <msub>
+			    <mi>t</mi>
+			    <mi>w</mi>
+			  </msub>
+			  <mo>,</mo>
+			  <mtext>&#xA0;</mtext>
+			  <msub>
+			    <mi>t</mi>
+			    <mi>p</mi>
+			  </msub>
+			  <mo stretchy="false">)</mo>
+		</math> 
 	<br>
-	&emsp;&emsp;&emsp;&emsp; For weld at flange, <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>t</mi>
-      <mi>h</mi>
-      <mi>i</mi>
-      <mi>c</mi>
-      <mi>k</mi>
-      <mi>e</mi>
-      <mi>r</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mi>m</mi>
-  <mi>a</mi>
-  <mi>x</mi>
-  <mi>i</mi>
-  <mi>m</mi>
-  <mi>u</mi>
-  <mi>m</mi>
-  <mo stretchy="false">(</mo>
-  <msub>
-    <mi>T</mi>
-    <mi>f</mi>
-  </msub>
-  <mo>,</mo>
-  <mtext>&#xA0;</mtext>
-  <msub>
-    <mi>t</mi>
-    <mi>w</mi>
-  </msub>
-  <mo>,</mo>
-  <mtext>&#xA0;</mtext>
-  <msub>
-    <mi>t</mi>
-    <mi>p</mi>
-  </msub>
-  <mo stretchy="false">)</mo>
-</math> <br>
-
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>I</mi>
-  <mi>f</mi>
-  <mo>,</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>t</mi>
-      <mi>h</mi>
-      <mi>i</mi>
-      <mi>c</mi>
-      <mi>k</mi>
-      <mi>e</mi>
-      <mi>r</mi>
-    </mrow>
-  </msub>
-  <mo>&#x2264;</mo>
-  <mn>10</mn>
-  <mo>mm</mo>
-  <mo>,</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <msub>
-        <mi>w</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>m</mi>
-          <mi>i</mi>
-          <mi>n</mi>
-          <mi>i</mi>
-          <mi>m</mi>
-          <mi>u</mi>
-          <mi>m</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>3</mn>
-  <mo>mm</mo>
-</math>
-
-<br>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mn>10</mn>
-  <mo>mm</mo>
-  <mo>&#x2264;</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>t</mi>
-      <mi>h</mi>
-      <mi>i</mi>
-      <mi>c</mi>
-      <mi>k</mi>
-      <mi>e</mi>
-      <mi>r</mi>
-    </mrow>
-  </msub>
-  <mo>&#x2264;</mo>
-  <mn>20</mn>
-  <mo>mm</mo>
-  <mo>,</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <msub>
-        <mi>w</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>m</mi>
-          <mi>i</mi>
-          <mi>n</mi>
-          <mi>i</mi>
-          <mi>m</mi>
-          <mi>u</mi>
-          <mi>m</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>5</mn>
-  <mo>mm</mo>
-</math>
-
-<br>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mn>20</mn>
-  <mo>mm</mo>
-  <mo>&#x2264;</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>t</mi>
-      <mi>h</mi>
-      <mi>i</mi>
-      <mi>c</mi>
-      <mi>k</mi>
-      <mi>e</mi>
-      <mi>r</mi>
-    </mrow>
-  </msub>
-  <mo>&#x2264;</mo>
-  <mn>32</mn>
-  <mo>mm</mo>
-  <mo>,</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <msub>
-        <mi>w</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>m</mi>
-          <mi>i</mi>
-          <mi>n</mi>
-          <mi>i</mi>
-          <mi>m</mi>
-          <mi>u</mi>
-          <mi>m</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>6</mn>
-  <mo>mm</mo>
-</math>
-
-<br>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mn>32</mn>
-  <mo>mm</mo>
-  <mo>&#x2264;</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>t</mi>
-      <mi>h</mi>
-      <mi>i</mi>
-      <mi>c</mi>
-      <mi>k</mi>
-      <mi>e</mi>
-      <mi>r</mi>
-    </mrow>
-  </msub>
-  <mo>&#x2264;</mo>
-  <mn>50</mn>
-  <mo>mm</mo>
-  <mo>,</mo>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <msub>
-        <mi>w</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>m</mi>
-          <mi>i</mi>
-          <mi>n</mi>
-          <mi>i</mi>
-          <mi>m</mi>
-          <mi>u</mi>
-          <mi>m</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>8</mn>
-  <mo>mm</mo>
-</math>	
-	
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		  <mi>I</mi>
+		  <mi>f</mi>
+		  <mo>,</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <mi>t</mi>
+		      <mi>h</mi>
+		      <mi>i</mi>
+		      <mi>c</mi>
+		      <mi>k</mi>
+		      <mi>e</mi>
+		      <mi>r</mi>
+		    </mrow>
+		  </msub>
+		  <mo>&#x2264;</mo>
+		  <mn>10</mn>
+		  <mo>mm</mo>
+		  <mo>,</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <msub>
+		        <mi>w</mi>
+		        <mrow class="MJX-TeXAtom-ORD">
+		          <mi>m</mi>
+		          <mi>i</mi>
+		          <mi>n</mi>
+		          <mi>i</mi>
+		          <mi>m</mi>
+		          <mi>u</mi>
+		          <mi>m</mi>
+		        </mrow>
+		      </msub>
+		    </mrow>
+		  </msub>
+		  <mo>=</mo>
+		  <mn>3</mn>
+		  <mo>mm</mo>
+		</math>
+	<br>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		  <mn>10</mn>
+		  <mo>mm</mo>
+		  <mo>&#x2264;</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <mi>t</mi>
+		      <mi>h</mi>
+		      <mi>i</mi>
+		      <mi>c</mi>
+		      <mi>k</mi>
+		      <mi>e</mi>
+		      <mi>r</mi>
+		    </mrow>
+		  </msub>
+		  <mo>&#x2264;</mo>
+		  <mn>20</mn>
+		  <mo>mm</mo>
+		  <mo>,</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <msub>
+		        <mi>w</mi>
+		        <mrow class="MJX-TeXAtom-ORD">
+		          <mi>m</mi>
+		          <mi>i</mi>
+		          <mi>n</mi>
+		          <mi>i</mi>
+		          <mi>m</mi>
+		          <mi>u</mi>
+		          <mi>m</mi>
+		        </mrow>
+		      </msub>
+		    </mrow>
+		  </msub>
+		  <mo>=</mo>
+		  <mn>5</mn>
+		  <mo>mm</mo>
+		</math>
+	<br>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		  <mn>20</mn>
+		  <mo>mm</mo>
+		  <mo>&#x2264;</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <mi>t</mi>
+		      <mi>h</mi>
+		      <mi>i</mi>
+		      <mi>c</mi>
+		      <mi>k</mi>
+		      <mi>e</mi>
+		      <mi>r</mi>
+		    </mrow>
+		  </msub>
+		  <mo>&#x2264;</mo>
+		  <mn>32</mn>
+		  <mo>mm</mo>
+		  <mo>,</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <msub>
+		        <mi>w</mi>
+		        <mrow class="MJX-TeXAtom-ORD">
+		          <mi>m</mi>
+		          <mi>i</mi>
+		          <mi>n</mi>
+		          <mi>i</mi>
+		          <mi>m</mi>
+		          <mi>u</mi>
+		          <mi>m</mi>
+		        </mrow>
+		      </msub>
+		    </mrow>
+		  </msub>
+		  <mo>=</mo>
+		  <mn>6</mn>
+		  <mo>mm</mo>
+		</math>
+	<br>
+		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+		  <mn>32</mn>
+		  <mo>mm</mo>
+		  <mo>&#x2264;</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <mi>t</mi>
+		      <mi>h</mi>
+		      <mi>i</mi>
+		      <mi>c</mi>
+		      <mi>k</mi>
+		      <mi>e</mi>
+		      <mi>r</mi>
+		    </mrow>
+		  </msub>
+		  <mo>&#x2264;</mo>
+		  <mn>50</mn>
+		  <mo>mm</mo>
+		  <mo>,</mo>
+		  <msub>
+		    <mi>t</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <msub>
+		        <mi>w</mi>
+		        <mrow class="MJX-TeXAtom-ORD">
+		          <mi>m</mi>
+		          <mi>i</mi>
+		          <mi>n</mi>
+		          <mi>i</mi>
+		          <mi>m</mi>
+		          <mi>u</mi>
+		          <mi>m</mi>
+		        </mrow>
+		      </msub>
+		    </mrow>
+		  </msub>
+		  <mo>=</mo>
+		  <mn>8</mn>
+		  <mo>mm</mo>
+		</math>	
 	<hr>';
 	// All the real form fields.
 	$form = array();
@@ -9700,12 +9564,7 @@ function ddcl_bb_splice_end_plate_step17_form_previous_submit($form, &$form_stat
 		{
 			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step17_data->id,
 					":number" => $i + $form_step17_comment_data->max + 1,
@@ -9754,12 +9613,7 @@ function ddcl_bb_splice_end_plate_step17_form_previous_submit($form, &$form_stat
 		{
 			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES (:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -9823,12 +9677,7 @@ function ddcl_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $
 		{
 			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step17_data->id,
 					":number" => $i + $form_step17_comment_data->max + 1,
@@ -9877,12 +9726,7 @@ function ddcl_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $
 		{
 			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment (step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $result,
 					":number" => $i + 1,
@@ -9933,73 +9777,72 @@ function ddcl_bb_splice_end_plate_step18_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('i. Design of weld > ii. Size of weld at beam flange > 2. Capacity of unit weld > 3. Effective weld length > 4. Area of weld'));
 	$img_path = '';
 	$markup_text = '
-	&emsp;&emsp; <b><strong> 2. Capacity of unit weld </strong> [Reference: Clause 10.5.7, IS 800] </b> <br>
+	&emsp;&emsp; <strong> 2. Capacity of unit weld </strong> [Reference: Clause 10.5.7, IS 800] </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>C</mi>
-  <mi>a</mi>
-  <mi>p</mi>
-  <mi>a</mi>
-  <mi>c</mi>
-  <mi>i</mi>
-  <mi>t</mi>
-  <mi>y</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>o</mi>
-  <mi>f</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>w</mi>
-  <mi>e</mi>
-  <mi>l</mi>
-  <mi>d</mi>
-  <mo stretchy="false">(</mo>
-  <mi>u</mi>
-  <mi>n</mi>
-  <mi>i</mi>
-  <mi>t</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>t</mi>
-  <mi>h</mi>
-  <mi>r</mi>
-  <mi>o</mi>
-  <mi>a</mi>
-  <mi>t</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>t</mi>
-  <mi>h</mi>
-  <mi>i</mi>
-  <mi>c</mi>
-  <mi>k</mi>
-  <mi>n</mi>
-  <mi>e</mi>
-  <mi>s</mi>
-  <mi>s</mi>
-  <mo stretchy="false">)</mo>
-  <mo>=</mo>
-  <mi>K</mi>
-  <msub>
-    <mi>f</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>u</mi>
-    </mrow>
-  </msub>
-  <mrow class="MJX-TeXAtom-ORD">
-    <mo>/</mo>
-  </mrow>
-  <msqrt>
-    <mn>3</mn>
-  </msqrt>
-  <msub>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mo>&#x3B3;</mo>
-    </mrow>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>m</mi>
-      <mi>w</mi>
-    </mrow>
-  </msub>
-</math>
-	
+			  <mi>C</mi>
+			  <mi>a</mi>
+			  <mi>p</mi>
+			  <mi>a</mi>
+			  <mi>c</mi>
+			  <mi>i</mi>
+			  <mi>t</mi>
+			  <mi>y</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>o</mi>
+			  <mi>f</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>w</mi>
+			  <mi>e</mi>
+			  <mi>l</mi>
+			  <mi>d</mi>
+			  <mo stretchy="false">(</mo>
+			  <mi>u</mi>
+			  <mi>n</mi>
+			  <mi>i</mi>
+			  <mi>t</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>t</mi>
+			  <mi>h</mi>
+			  <mi>r</mi>
+			  <mi>o</mi>
+			  <mi>a</mi>
+			  <mi>t</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>t</mi>
+			  <mi>h</mi>
+			  <mi>i</mi>
+			  <mi>c</mi>
+			  <mi>k</mi>
+			  <mi>n</mi>
+			  <mi>e</mi>
+			  <mi>s</mi>
+			  <mi>s</mi>
+			  <mo stretchy="false">)</mo>
+			  <mo>=</mo>
+			  <mi>K</mi>
+			  <msub>
+			    <mi>f</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>u</mi>
+			    </mrow>
+			  </msub>
+			  <mrow class="MJX-TeXAtom-ORD">
+			    <mo>/</mo>
+			  </mrow>
+			  <msqrt>
+			    <mn>3</mn>
+			  </msqrt>
+			  <msub>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mo>&#x3B3;</mo>
+			    </mrow>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>m</mi>
+			      <mi>w</mi>
+			    </mrow>
+			  </msub>
+	</math>
 	&emsp;&emsp;&emsp;&emsp;&emsp;
 	where,  
 				<br>
@@ -10030,156 +9873,156 @@ function ddcl_bb_splice_end_plate_step18_form($form, &$form_state, $no_js_use = 
 					</math> - partial safety factor [Reference: Table 5, IS 800]
 <br>
 <hr>
-	&emsp;&emsp; <b><strong> 3. Effective weld length ( L<sub>effective</sub> ) </strong> [Reference: based on weld profile and Cl. 10.5.4, IS 800] </b> <br>
+	&emsp;&emsp; <strong> 3. Effective weld length ( L<sub>effective</sub> ) </strong> [Reference: based on weld profile and Cl. 10.5.4, IS 800] </b> <br>
 	<br>
-	&emsp;&emsp;&emsp; <b> at flange
+	&emsp;&emsp;&emsp;  at flange
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>L</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>e</mi>
-      <mi>f</mi>
-      <mi>f</mi>
-      <mi>e</mi>
-      <mi>c</mi>
-      <mi>t</mi>
-      <mi>i</mi>
-      <mi>v</mi>
-      <mi>e</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>2</mn>
-  <mtext>&#xA0;</mtext>
-  <mo stretchy="false">[</mo>
-  <mn>2</mn>
-  <msub>
-    <mi>b</mi>
-    <mi>f</mi>
-  </msub>
-  <mtext>&#xA0;</mtext>
-  <mo>+</mo>
-  <mtext>&#xA0;</mtext>
-  <mn>2</mn>
-  <mo stretchy="false">(</mo>
-  <msub>
-    <mi>b</mi>
-    <mi>f</mi>
-  </msub>
-  <mo>&#x2212;<!-- − --></mo>
-  <msub>
-    <mi>t</mi>
-    <mi>w</mi>
-  </msub>
-  <mo stretchy="false">)</mo>
-  <mtext>&#xA0;</mtext>
-  <mo>+</mo>
-  <mn>4</mn>
-  <msub>
-    <mi>T</mi>
-    <mi>f</mi>
-  </msub>
-  <mtext>&#xA0;</mtext>
-  <mo>+</mo>
-  <mn>2</mn>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>w</mi>
-      <mi>e</mi>
-      <mi>l</mi>
-      <mi>d</mi>
-    </mrow>
-  </msub>
-  <mo stretchy="false">]</mo>
-</math>
+			  <msub>
+			    <mi>L</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>e</mi>
+			      <mi>f</mi>
+			      <mi>f</mi>
+			      <mi>e</mi>
+			      <mi>c</mi>
+			      <mi>t</mi>
+			      <mi>i</mi>
+			      <mi>v</mi>
+			      <mi>e</mi>
+			    </mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mn>2</mn>
+			  <mtext>&#xA0;</mtext>
+			  <mo stretchy="false">[</mo>
+			  <mn>2</mn>
+			  <msub>
+			    <mi>b</mi>
+			    <mi>f</mi>
+			  </msub>
+			  <mtext>&#xA0;</mtext>
+			  <mo>+</mo>
+			  <mtext>&#xA0;</mtext>
+			  <mn>2</mn>
+			  <mo stretchy="false">(</mo>
+			  <msub>
+			    <mi>b</mi>
+			    <mi>f</mi>
+			  </msub>
+			  <mo>&#x2212;<!-- − --></mo>
+			  <msub>
+			    <mi>t</mi>
+			    <mi>w</mi>
+			  </msub>
+			  <mo stretchy="false">)</mo>
+			  <mtext>&#xA0;</mtext>
+			  <mo>+</mo>
+			  <mn>4</mn>
+			  <msub>
+			    <mi>T</mi>
+			    <mi>f</mi>
+			  </msub>
+			  <mtext>&#xA0;</mtext>
+			  <mo>+</mo>
+			  <mn>2</mn>
+			  <msub>
+			    <mi>t</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>w</mi>
+			      <mi>e</mi>
+			      <mi>l</mi>
+			      <mi>d</mi>
+			    </mrow>
+			  </msub>
+			  <mo stretchy="false">]</mo>
+	</math>
 <br>
 	&emsp;&emsp;&emsp;  at web
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>L</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>e</mi>
-      <mi>f</mi>
-      <mi>f</mi>
-      <mi>e</mi>
-      <mi>c</mi>
-      <mi>t</mi>
-      <mi>i</mi>
-      <mi>v</mi>
-      <mi>e</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mn>2</mn>
-  <mtext>&#xA0;</mtext>
-  <mo stretchy="false">[</mo>
-  <mi>D</mi>
-  <mo>&#x2212;<!-- − --></mo>
-  <mn>2</mn>
-  <msub>
-    <mi>t</mi>
-    <mi>f</mi>
-  </msub>
-  <mo stretchy="false">]</mo>
-</math>
+		  <msub>
+		    <mi>L</mi>
+		    <mrow class="MJX-TeXAtom-ORD">
+		      <mi>e</mi>
+		      <mi>f</mi>
+		      <mi>f</mi>
+		      <mi>e</mi>
+		      <mi>c</mi>
+		      <mi>t</mi>
+		      <mi>i</mi>
+		      <mi>v</mi>
+		      <mi>e</mi>
+		    </mrow>
+		  </msub>
+		  <mo>=</mo>
+		  <mn>2</mn>
+		  <mtext>&#xA0;</mtext>
+		  <mo stretchy="false">[</mo>
+		  <mi>D</mi>
+		  <mo>&#x2212;<!-- − --></mo>
+		  <mn>2</mn>
+		  <msub>
+		    <mi>t</mi>
+		    <mi>f</mi>
+		  </msub>
+		  <mo stretchy="false">]</mo>
+	</math>
 	<br>
 	<hr>
-	&emsp;&emsp; <b><strong> 4. Area of weld ( A<sub>weld</sub> ) </strong></b> [Reference: Cl 10.5.3, IS 800] </b> <br>
+	&emsp;&emsp; <strong> 4. Area of weld ( A<sub>weld</sub> ) </strong></b> [Reference: Cl 10.5.3, IS 800] </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>A</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>w</mi>
-      <mi>e</mi>
-      <mi>l</mi>
-      <mi>d</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <msub>
-    <mi>L</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>e</mi>
-      <mi>f</mi>
-      <mi>f</mi>
-      <mi>e</mi>
-      <mi>c</mi>
-      <mi>t</mi>
-      <mi>i</mi>
-      <mi>v</mi>
-      <mi>e</mi>
-    </mrow>
-  </msub>
-  <mo>&#x2217;<!-- ∗ --></mo>
-  <mi>e</mi>
-  <mi>f</mi>
-  <mi>f</mi>
-  <mi>e</mi>
-  <mi>c</mi>
-  <mi>t</mi>
-  <mi>i</mi>
-  <mi>v</mi>
-  <mi>e</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>t</mi>
-  <mi>h</mi>
-  <mi>r</mi>
-  <mi>o</mi>
-  <mi>a</mi>
-  <mi>t</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>t</mi>
-  <mi>h</mi>
-  <mi>i</mi>
-  <mi>c</mi>
-  <mi>k</mi>
-  <mi>n</mi>
-  <mi>e</mi>
-  <mi>s</mi>
-  <mi>s</mi>
-</math>
+			  <msub>
+			    <mi>A</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>w</mi>
+			      <mi>e</mi>
+			      <mi>l</mi>
+			      <mi>d</mi>
+			    </mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <msub>
+			    <mi>L</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>e</mi>
+			      <mi>f</mi>
+			      <mi>f</mi>
+			      <mi>e</mi>
+			      <mi>c</mi>
+			      <mi>t</mi>
+			      <mi>i</mi>
+			      <mi>v</mi>
+			      <mi>e</mi>
+			    </mrow>
+			  </msub>
+			  <mo>&#x2217;<!-- ∗ --></mo>
+			  <mi>e</mi>
+			  <mi>f</mi>
+			  <mi>f</mi>
+			  <mi>e</mi>
+			  <mi>c</mi>
+			  <mi>t</mi>
+			  <mi>i</mi>
+			  <mi>v</mi>
+			  <mi>e</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>t</mi>
+			  <mi>h</mi>
+			  <mi>r</mi>
+			  <mi>o</mi>
+			  <mi>a</mi>
+			  <mi>t</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>t</mi>
+			  <mi>h</mi>
+			  <mi>i</mi>
+			  <mi>c</mi>
+			  <mi>k</mi>
+			  <mi>n</mi>
+			  <mi>e</mi>
+			  <mi>s</mi>
+			  <mi>s</mi>
+	</math>
 	<br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;
 	where,
@@ -10592,12 +10435,7 @@ function ddcl_bb_splice_end_plate_step18_form_next_submit($form, &$form_state, $
 		{
 			if ($v['step18_field1_fieldset'][$i]["comment"] != "")
 			{
-				$commentquery = "
-	INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
+				$commentquery = "INSERT INTO ddcl_bb_splice_end_plate_feedback_form_comment	(step1_form_id, number, comment, data_relation, inserted_on) VALUES	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)";
 				$commentargs = array(
 					":step1_form_id" => $form_step18_data->id,
 					":number" => $i + $form_step18_comment_data->max + 1,
@@ -10703,35 +10541,35 @@ function ddcl_bb_splice_end_plate_step19_form($form, &$form_state, $no_js_use = 
 	$img_path = '';
 	$markup_text = '
 	
-	&emsp;&emsp; <b><strong> 5. Stresses on weld </strong></b> <br>
+	&emsp;&emsp; <strong> 5. Stresses on weld </strong></b> <br>
 	<br>
-	&emsp;&emsp;&emsp;&emsp; <b> a. Direct stress (DS) </b> <br>
+	&emsp;&emsp;&emsp;&emsp;  a. Direct stress (DS) </b> <br>
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>D</mi>
-  <mi>S</mi>
-  <mo>=</mo>
-  <mn>0</mn>
-</math>
+		  <mi>D</mi>
+		  <mi>S</mi>
+		  <mo>=</mo>
+		  <mn>0</mn>
+		</math>
 
-	&emsp;&emsp;&emsp;&emsp; <b> There is no direct stress acting on weld at beam flange (assumed) </b> <br>
+	&emsp;&emsp;&emsp;&emsp;  There is no direct stress acting on weld at beam flange (assumed) </b> <br>
 
 	<br>
 	<br>
-	&emsp;&emsp;&emsp;&emsp; <b> b. Bending stress (BS) </b> <br>
+	&emsp;&emsp;&emsp;&emsp;  b. Bending stress (BS) </b> <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>B</mi>
-  <mi>S</mi>
-  <mo>=</mo>
-  <msub>
-    <mi>M</mi>
-    <mi>u</mi>
-  </msub>
-  <mrow class="MJX-TeXAtom-ORD">
-    <mo>/</mo>
-  </mrow>
-  <mi>Z</mi>
-</math>
+		  <mi>B</mi>
+		  <mi>S</mi>
+		  <mo>=</mo>
+		  <msub>
+		    <mi>M</mi>
+		    <mi>u</mi>
+		  </msub>
+		  <mrow class="MJX-TeXAtom-ORD">
+		    <mo>/</mo>
+		  </mrow>
+		  <mi>Z</mi>
+	</math>
 	<br>
 
 	&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -10748,19 +10586,19 @@ function ddcl_bb_splice_end_plate_step19_form($form, &$form_state, $no_js_use = 
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
 						  	 <mi>Z</mi>
-  <mo>=</mo>
-  <msub>
-    <mi>I</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>z</mi>
-      <mi>z</mi>
-    </mrow>
-  </msub>
-  <mrow class="MJX-TeXAtom-ORD">
-    <mo>/</mo>
-  </mrow>
-  <mi>y</mi>
-					</math> - section modulus of extreme fibre [Reference: Design of steel structures by N. Subramanian, table 6.7]
+						  <mo>=</mo>
+						  <msub>
+						    <mi>I</mi>
+						    <mrow class="MJX-TeXAtom-ORD">
+						      <mi>z</mi>
+						      <mi>z</mi>
+						    </mrow>
+						  </msub>
+						  <mrow class="MJX-TeXAtom-ORD">
+						    <mo>/</mo>
+						  </mrow>
+						  <mi>y</mi>
+					</math> - section modulus of extreme fibre <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Reference: Design of steel structures by N. Subramanian, table 6.7]
 
 	<br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -10782,24 +10620,24 @@ function ddcl_bb_splice_end_plate_step19_form($form, &$form_state, $no_js_use = 
  
 	<br>
 	<br>
-	&emsp;&emsp;&emsp;&emsp; <b><strong> c. Resultant (R) </strong></b> <br>
+	&emsp;&emsp;&emsp;&emsp; <strong> c. Resultant (R) </strong></b> <br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>R</mi>
-  <mo>=</mo>
-  <msqrt>
-    <mi>D</mi>
-    <msup>
-      <mi>S</mi>
-      <mn>2</mn>
-    </msup>
-    <mo>+</mo>
-    <mi>B</mi>
-    <msup>
-      <mi>S</mi>
-      <mn>2</mn>
-    </msup>
-  </msqrt>
-</math>
+		  <mi>R</mi>
+		  <mo>=</mo>
+		  <msqrt>
+		    <mi>D</mi>
+		    <msup>
+		      <mi>S</mi>
+		      <mn>2</mn>
+		    </msup>
+		    <mo>+</mo>
+		    <mi>B</mi>
+		    <msup>
+		      <mi>S</mi>
+		      <mn>2</mn>
+		    </msup>
+		  </msqrt>
+	</math>
 <br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;
 	where,  
@@ -10820,55 +10658,55 @@ function ddcl_bb_splice_end_plate_step19_form($form, &$form_state, $no_js_use = 
 					</math> - bending stress acting on weld (as calculated above)
 				<br>
 <hr>
-&emsp;&emsp; <b><strong> 6. Size of weld (provided) </strong></b> <br>
+&emsp;&emsp; <strong> 6. Size of weld (provided) </strong></b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>w</mi>
-      <mi>e</mi>
-      <mi>l</mi>
-      <mi>d</mi>
-    </mrow>
-  </msub>
-  <mo>=</mo>
-  <mi>R</mi>
-  <mi>e</mi>
-  <mi>s</mi>
-  <mi>u</mi>
-  <mi>l</mi>
-  <mi>t</mi>
-  <mi>a</mi>
-  <mi>n</mi>
-  <mi>t</mi>
-  <mtext>&#xA0;</mtext>
-  <mrow class="MJX-TeXAtom-ORD">
-    <mo>/</mo>
-  </mrow>
-  <mtext>&#xA0;</mtext>
-  <mi>c</mi>
-  <mi>a</mi>
-  <mi>p</mi>
-  <mi>a</mi>
-  <mi>c</mi>
-  <mi>i</mi>
-  <mi>t</mi>
-  <mi>y</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>o</mi>
-  <mi>f</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>u</mi>
-  <mi>n</mi>
-  <mi>i</mi>
-  <mi>t</mi>
-  <mtext>&#xA0;</mtext>
-  <mi>w</mi>
-  <mi>e</mi>
-  <mi>l</mi>
-  <mi>d</mi>
-</math>
+			  <msub>
+			    <mi>t</mi>
+			    <mrow class="MJX-TeXAtom-ORD">
+			      <mi>w</mi>
+			      <mi>e</mi>
+			      <mi>l</mi>
+			      <mi>d</mi>
+			    </mrow>
+			  </msub>
+			  <mo>=</mo>
+			  <mi>R</mi>
+			  <mi>e</mi>
+			  <mi>s</mi>
+			  <mi>u</mi>
+			  <mi>l</mi>
+			  <mi>t</mi>
+			  <mi>a</mi>
+			  <mi>n</mi>
+			  <mi>t</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mrow class="MJX-TeXAtom-ORD">
+			    <mo>/</mo>
+			  </mrow>
+			  <mtext>&#xA0;</mtext>
+			  <mi>c</mi>
+			  <mi>a</mi>
+			  <mi>p</mi>
+			  <mi>a</mi>
+			  <mi>c</mi>
+			  <mi>i</mi>
+			  <mi>t</mi>
+			  <mi>y</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>o</mi>
+			  <mi>f</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>u</mi>
+			  <mi>n</mi>
+			  <mi>i</mi>
+			  <mi>t</mi>
+			  <mtext>&#xA0;</mtext>
+			  <mi>w</mi>
+			  <mi>e</mi>
+			  <mi>l</mi>
+			  <mi>d</mi>
+	</math>
 <br>
 &emsp;&emsp;&emsp;&emsp;&emsp;
 	where,  
@@ -11391,10 +11229,10 @@ function ddcl_bb_splice_end_plate_step20_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('i. Design of weld > iii. Size of weld at beam web > 1. Minimum weld thickness > 2. Size of weld (provided)'));
 	$img_path = '';
 	$markup_text = '
-	&emsp;&emsp; <b><strong> iii. Size of weld at beam web </strong></b> <br>
+	&emsp;&emsp; <strong> iii. Size of weld at beam web </strong></b> <br>
 
 	<hr>
-	&emsp;&emsp;&emsp; <b><strong> 1. Minimum weld thickness ( t<sub>w<sub>minimum</sub></sub> ) </strong> - for dropdown list of weld thickness in Gui [Reference: Table 21, IS 800] <br>
+	&emsp;&emsp;&emsp; <strong> 1. Minimum weld thickness ( t<sub>w<sub>minimum</sub></sub> ) </strong> - for dropdown list of weld thickness in Gui <br>&emsp;&emsp;&emsp;&emsp;[Reference: Table 21, IS 800] <br>
 	&emsp;&emsp;&emsp;&emsp;  Minimum weld thickness depends on the thickness of the thicker part 
 	<br>
 	&emsp;&emsp;&emsp;&emsp; For weld at web <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -11616,7 +11454,7 @@ function ddcl_bb_splice_end_plate_step20_form($form, &$form_state, $no_js_use = 
 </math><br>
 <hr>
 
-	&emsp;&emsp;&emsp; <b> 2. Size of weld ( provided ) <br></b>
+	&emsp;&emsp;&emsp;  2. Size of weld ( provided ) <br></b>
 	<br>
 
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -12223,11 +12061,11 @@ function ddcl_bb_splice_end_plate_step21_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('j. Weld checks > i. Maximum weld thickness > 1. at flange > 2. at web > ii. Check for stresses in weld due to individual force (weld at flange) > 1. Normal stress > 2. Shear stress > 3. Combined stress'));
 	$img_path = '';
 	$markup_text = '
-	<b><strong> j. Weld checks </strong></b> <br>
+	<strong> j. Weld checks </strong></b> <br>
 	<hr>
-	&emsp;&emsp; <b><strong> i. Maximum weld thickness </strong></b> [Reference: Cl 10.5.3, IS 800] <br>
+	&emsp;&emsp; <strong> i. Maximum weld thickness </strong></b> [Reference: Cl 10.5.3, IS 800] <br>
 	<br>
-	&emsp;&emsp;&emsp; <b> 1. Weld connecting beam flange to end plate </b> <br>
+	&emsp;&emsp;&emsp;  1. Weld connecting beam flange to end plate </b> <br>
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -12264,7 +12102,7 @@ function ddcl_bb_splice_end_plate_step21_form($form, &$form_state, $no_js_use = 
   <mo stretchy="false">)</mo>
 </math>
 <br>
-	&emsp;&emsp;&emsp; <b> 2. Weld connecting beam web to end plate </b> <br>
+	&emsp;&emsp;&emsp;  2. Weld connecting beam web to end plate </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -12301,9 +12139,9 @@ function ddcl_bb_splice_end_plate_step21_form($form, &$form_state, $no_js_use = 
   <mo stretchy="false">)</mo>
 </math>
 <hr>
-	&emsp;&emsp; <b><strong> ii. Check for stresses in weld due to individual forces (weld at flange) </strong> [Reference: Cl 10.5.9, IS 800] </b> <br>
+	&emsp;&emsp; <strong> ii. Check for stresses in weld due to individual forces (weld at flange) </strong> [Reference: Cl 10.5.9, IS 800] </b> <br>
 	<br>
-	&emsp;&emsp;&emsp; <b> 1. Check for normal stress </b> <br>
+	&emsp;&emsp;&emsp;  1. Check for normal stress </b> <br>
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -12868,11 +12706,11 @@ function ddcl_bb_splice_end_plate_step22_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('j. Weld checks > ii. Check for stresses in weld due to individual force (weld at beam web) > 1. Normal stress > 2. Shear stress > 3. Combined stress '));
 	$img_path = '';
 	$markup_text = '
-	<b><strong> j. Weld checks </strong></b> <br>
+	<strong> j. Weld checks </strong></b> <br>
 	<hr>
-	&emsp;&emsp; <b><strong> ii. Check for stresses in weld due to individual forces (weld at beam web) </strong> [Reference: Cl 10.5.9, IS 800] </b> <br>
+	&emsp;&emsp; <strong> ii. Check for stresses in weld due to individual forces (weld at beam web) </strong> [Reference: Cl 10.5.9, IS 800] </b> <br>
 	<br>
-	&emsp;&emsp;&emsp; <b> 1. Check for normal stress </b> <br>
+	&emsp;&emsp;&emsp;  1. Check for normal stress </b> <br>
 	<br>
 		<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -12927,7 +12765,7 @@ function ddcl_bb_splice_end_plate_step22_form($form, &$form_state, $no_js_use = 
 					</math> - effective length of weld at beam web 
 				<br>
 	<br>
-	&emsp;&emsp;&emsp; <b> 2. Check for shear stress </b> <br>
+	&emsp;&emsp;&emsp;  2. Check for shear stress </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>q</mi>
@@ -12975,7 +12813,7 @@ function ddcl_bb_splice_end_plate_step22_form($form, &$form_state, $no_js_use = 
 					</math> - effective length of weld at beam web 
 <br>
 <br>
-	&emsp;&emsp;&emsp; <b> 3. Combination of stress [Reference: Cl 10.5.10.1.1, IS 800]</b> <br>
+	&emsp;&emsp;&emsp;  3. Combination of stress [Reference: Cl 10.5.10.1.1, IS 800]</b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -13537,9 +13375,9 @@ function ddcl_bb_splice_end_plate_step23_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('k. Design of stiffener (optional) > i. Stiffener configuration > ii. height of stiffener > iii. length of stiffener'));
 	
 	$markup_text = '
-	<b><strong> k. Design of stiffener (optional) </strong> [Reference: AISC design guide 4, page 16] </b> <br>
+	<strong> k. Design of stiffener (optional) </strong> [Reference: AISC design guide 4, page 16] </b> <br>
 	<hr>
-	&emsp;&emsp; <b><strong> i. Stiffener configuration  </strong></b> <br>
+	&emsp;&emsp; <strong> i. Stiffener configuration  </strong></b> <br>
 	<br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			
@@ -13547,11 +13385,11 @@ function ddcl_bb_splice_end_plate_step23_form($form, &$form_state, $no_js_use = 
 			
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> stiffener configuration
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Figure:</b> stiffener configuration
 			<br>
 			<br>
 
-	&emsp;&emsp; <b><strong> ii. height of stiffener ( h<sub>st</sub> ) </strong> mm. </b> <br>
+	&emsp;&emsp; <strong> ii. height of stiffener ( h<sub>st</sub> ) </strong> mm. </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -13616,7 +13454,7 @@ function ddcl_bb_splice_end_plate_step23_form($form, &$form_state, $no_js_use = 
 					</math> - end distance  
 				<br>
 	<br>
-	&emsp;&emsp; <b><strong> iii. length of stiffener ( l<sub>st</sub> ) </strong> [Reference: based on geometry] mm. </b> <br>
+	&emsp;&emsp; <strong> iii. length of stiffener ( l<sub>st</sub> ) </strong> [Reference: based on geometry] mm. </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -14162,9 +14000,9 @@ function ddcl_bb_splice_end_plate_step24_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('k. Design of stiffener (optional) > iv. thickness of stiffener > v. check of stiffener against local buckling '));
 	$img_path = '';
 	$markup_text = '
-	<b><strong> k. Design of stiffener (optional) </strong></b> <br>
+	<strong> k. Design of stiffener (optional) </strong></b> <br>
 	<hr>
-	&emsp;&emsp; <b><strong> iv. thickness of stiffener ( t<sub>s</sub> ) </strong> mm. </b> <br>
+	&emsp;&emsp; <strong> iv. thickness of stiffener ( t<sub>s</sub> ) </strong> mm. </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -14180,7 +14018,7 @@ function ddcl_bb_splice_end_plate_step24_form($form, &$form_state, $no_js_use = 
     <mi>w</mi>
   </msub>
 </math>
-
+<br>
 
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -14237,7 +14075,7 @@ function ddcl_bb_splice_end_plate_step24_form($form, &$form_state, $no_js_use = 
     <mi>w</mi>
   </msub>
 </math>
-
+<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
     <mi>t</mi>
@@ -14273,6 +14111,7 @@ function ddcl_bb_splice_end_plate_step24_form($form, &$form_state, $no_js_use = 
   </msub>
   <mo stretchy="false">)</mo>
 </math>
+<br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;
 	where,  
 				<br>
@@ -14285,7 +14124,7 @@ function ddcl_bb_splice_end_plate_step24_form($form, &$form_state, $no_js_use = 
 					</math> - thickness of beam web
 <br>
 	<br>
-	&emsp;&emsp; <b><strong> v. check of stiffener against local buckling </strong> </b> <br>
+	&emsp;&emsp; <strong> v. check of stiffener against local buckling </strong> </b> <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub>
@@ -14837,9 +14676,9 @@ function ddcl_bb_splice_end_plate_step25_form($form, &$form_state, $no_js_use = 
 	drupal_set_title(t('l. Additional checks > i. check for shear rupture strength of bolts in compression > ii. check for bolt bearing/tear out failure of end plate'));
 	$img_path = '';
 	$markup_text = '
-	<b><strong> l. Additional checks </strong></b> <br>
+	<strong> l. Additional checks </strong></b> <br>
 	<hr>
-	&emsp; <b><strong> i. Check for shear rupture strength of bolts in compression </strong></b> [Reference: equation 3.17, AISC Design guide 4] <br>
+	&emsp; <strong> i. Check for shear rupture strength of bolts in compression </strong></b> <br>&emsp;&emsp;[Reference: equation 3.17, AISC Design guide 4] <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>V</mi>
@@ -14905,7 +14744,7 @@ function ddcl_bb_splice_end_plate_step25_form($form, &$form_state, $no_js_use = 
 					</math> - area of bolt (area at thread)
 				<br>
 	<br>
-	&emsp; <b><strong> ii. Check for bolt bearing/tear out failure of end plate </strong></b> [Reference: equation 3.18, AISC Design guide 4] <br>
+	&emsp; <strong> ii. Check for bolt bearing/tear out failure of end plate </strong></b> [Reference: equation 3.18, AISC Design guide 4] <br>
 	<br>
 	<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>V</mi>

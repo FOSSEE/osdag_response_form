@@ -2,6 +2,7 @@
 /**
  * Fetches and displays the form.
  */
+
 function ddq_bb_splice_end_plate_form_page()
 {
 	global $user;
@@ -185,62 +186,62 @@ function ddq_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = FA
 		if ($step2_data = $form_step2_data->fetchObject())
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => '&emsp; <strong> a. Osdag Gui </strong> </b> <br> 
+				'#title' => '&emsp; <strong> a. Osdag Gui </strong> <br> 
 				<hr>
 				&emsp;&emsp;&emsp; 1. List of inputs (input dock). 
 				<br>
 				<br>
 				&emsp;&emsp;&emsp;&emsp;&emsp; i. Beam section * </br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; ii. Material strength <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Yield stress (F<sub>y</sub>)* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Ultimate stress (F<sub>u</sub>)* <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp; ii. Material strength <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Yield stress (F<sub>y</sub>)* <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Ultimate stress (F<sub>u</sub>)* <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iii. Factored loads <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Maximum moment* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear force* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Axial force <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; iii. Factored loads <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Maximum moment* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear force* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Axial force <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iv. Bolts <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Diameter (mm)* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Type* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Grade* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; iv. Bolts <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Diameter (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Type* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Grade* <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; v. Plate <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > thickness (mm)* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > height (mm) <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > width (mm) <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; v. Plate <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > thickness (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > height (mm) <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > width (mm) <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; vi. Weld size <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam flange (mm)* <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam web (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; vi. Weld size <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam flange (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam web (mm)* <br>
 
 				<hr>
 				&emsp;&emsp;&emsp; 2. List of outputs (output dock).
 				<br>
 				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; i. Bolt <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension acting on critical bolt <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension capacity of bolt <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear/bearing capacity of bolt <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Combined shear and tension capacity of bolt <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of bolts required <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of rows <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Pitch <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Gauge <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Cross-centre gauge <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > End distance <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Edge distance <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp; i. Bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension acting on critical bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear/bearing capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Combined shear and tension capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of bolts required <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of rows <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Pitch <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Gauge <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Cross-centre gauge <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > End distance <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Edge distance <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; ii. End plate <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Height <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Width <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; ii. End plate <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Height <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Width <br>
 
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp; iii. Weld <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at flange <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at web <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp; iii. Weld <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at flange <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at web <br>
 				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: Fields marked with * are mandatory <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: Fields marked with * are mandatory <br>
 
 
 
@@ -717,76 +718,16 @@ function ddq_bb_splice_end_plate_step3_form($form, &$form_state, $no_js_use = FA
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
 				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-		<b> &emsp;&emsp;&emsp; 1. Number of bolts. <br>
-		<br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: The configuration is assumed to have 2 columns of bolt <br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the assumption made above for calculating number of bolts correct? <br>
+		 &emsp;&emsp;&emsp; 1. Number of bolts. <br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: The configuration is assumed to have 2 columns of bolt <br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the assumption made above for calculating number of bolts correct? <br>
 		
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If No,<br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please provide suitable comment in the comment section below.  <br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If No,<br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please provide suitable comment in the comment section below.
 		<br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Under what circumstances can we provide 4 columns of bolt? <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Under what circumstances can we provide 4 columns of bolt? <br>
 		<hr>
-		
-		<b> &emsp;&emsp;&emsp; 2. Force in bolts. <br>
-		<br>
-		<b> &emsp;&emsp;&emsp;&emsp; i. Example 5.23, page 419 - N. Subramanian
-		<br>
-		<br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: Tension in critical bolt is calculated by taking moment about the 										centre of the bottom flange (method adopted by <br>
-		<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Osdag) . <br>
-		<hr>
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/fig_1.jpg" width="70%" height="80%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
-			<hr>
-
-		<b> &emsp;&emsp;&emsp;&emsp; ii. BCSWA approach - section 6.7.1 and equation 6.35, page 6.39 - M.L Gambhir. <br>
-		<br>
-		 
-			<hr>
-
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/assumption.jpg" width="70%" height="80%" align="centre"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
-
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/fig_2.jpg" width="70%" height="80%" align="centre"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
-			<hr>
-		
-		<b> &emsp;&emsp;&emsp;&emsp; Among (i) and (ii), which method is more appropriate to calculate tension in critical bolt? 			<br>
-		<b> &emsp;&emsp;&emsp;&emsp; Please comment.
-	
-		<hr>
-
-		<b> &emsp;&emsp;&emsp; 3. Axial force in beam. <br>
-		<br> 
-		<b> &emsp;&emsp;&emsp;&emsp; The axial force is assumed to be passing through the C.G of the beam. <br>
-		<b> &emsp;&emsp;&emsp;&emsp; Is the above assumption correct? <br>
-		<b> &emsp;&emsp;&emsp;&emsp; If yes, should we consider moment due to axial force in the outermost (crtical) bolt? <br>
-		<hr>
-
-		<b> &emsp;&emsp;&emsp; 4. Type of bolt. <br>
-		<br> 
-		<b> &emsp;&emsp;&emsp;&emsp; AISC (Design guide 16) recommends use of HSFG bolts in design of splice connections due to 						high strength requirement. <br>
-		<b> &emsp;&emsp;&emsp;&emsp; Can we use bearing bolts in design of splice connection? <br>
-		
-				
-				<hr>
-				Is this assumption ok? ',
+						Is this assumption ok? ',
 				'#type' => 'radios',
 				'#default_value' => $step3_data->question1,
 				'#options' => $step3_options,
@@ -1221,18 +1162,18 @@ function step3_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 3 form ends **************************/
-/************************ Step 4 form starts *********************/
+/***************************************** step 4 form starts **************************/
 function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	// All the real form fields.
+	$form = array();
 	$step4_options = array(
 		'Yes' => 'Yes',
 		'No' => 'No'
 	);
-	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -1248,44 +1189,63 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '&emsp; c. End plate.
-				<hr> 
-	
-				<b> &emsp;&emsp;&emsp; 1. End plate dimensions. <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; i. Maximum height of end plate <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; There is no specification given on maximum height of 					end plate. What could be the maximum limit of extension of end plate	<br> 	
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; beyond the flanges <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please comment below <br>
-				<br>				
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; NOTE: The moment capacity of the end plate does not 					depend on its height <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum 				plate width as width of flange plus 25 mm on either sides. <br> 					<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
+				<hr>
+		&emsp;&emsp;&emsp; 2. Force in bolts. <br>
+		<br>
+		&emsp;&emsp;&emsp;&emsp; i. Example 5.23, page 419 - N. Subramanian
+		<br><br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: Tension in critical bolt is calculated by taking moment about the centre of the bottom flange<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; (method adopted by Osdag) . <br>
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_1.jpg" width="70%" height="80%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
 
-				<hr> 
-	
-				<b> &emsp;&emsp;&emsp; 2. Moment capacity of end plate. <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The moment capacity of end plate should be  based on its plastic 					or elastic capacity? <br>
-				<br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: We have adopted plastic capacity i.e. M<sub>p</sub> = (f<sub>y</sub>/1.10) (wT<sup>2</sup>/4) [Reference: equation 5.18, page 350, Design of steel structures <br>
-				<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- N. Subramaniam] here, w is the width and T is the thickness of 					end plate. <br>
+		 &emsp;&emsp;&emsp;&emsp; ii. BCSWA approach - section 6.7.1 and equation 6.35, page 6.39 - M.L Gambhir. <br>
+		<br>
 
-				<hr> 
-	
-				<b> &emsp;&emsp;&emsp; 3. Should we have plate grade different from member (beam) grade? <br>
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/assumption.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_2.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
+		
+		 &emsp;&emsp;&emsp;&emsp; Among (i) and (ii), which method is more appropriate to calculate tension in critical bolt? 			<br>
+		 &emsp;&emsp;&emsp;&emsp; Please comment.
 				<br>
-				<hr>				
-				
-				',
+				 Is this assumption ok? ',
 				'#type' => 'radios',
-				'#options' => $step4_options,
 				'#default_value' => $step4_data->question1,
+				'#options' => $step4_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
+			);
+			$form['step4_field1_fieldset']['step4_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				'#default_value' => $step4_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step4_field1_fieldset\\[step4_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
 			);
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step4_data->id, $step4_data->data_relation);
 			$icom = 1;
@@ -1352,18 +1312,14 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step4_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
 					'ddq_bb_splice_end_plate_step4_form_previous_submit'
 				)
 			);
-			$form['next2'] = array(
+			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
@@ -1374,17 +1330,40 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
+				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)<br>
+				<br>
+				<hr>
 				<br>				
-				',
+				
+
+				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#options' => $step4_options,
-				//'#default_value' => $step4_data->question1,
 				'#required' => true
+			);
+			$form['step4_field1_fieldset']['step4_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				//'#default_value' => $step4_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step4_field1_fieldset\\[step4_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
 			);
 			if (empty($form_state['step4_num_comment']))
 			{
@@ -1439,10 +1418,6 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step4_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
 			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
@@ -1472,10 +1447,11 @@ function ddq_bb_splice_end_plate_step4_form_previous_submit($form, &$form_state,
 	//var_dump($form_step4_data);die;
 	if ($form_step4_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step4_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question2" => $v['step4_field1_fieldset']['step4_field1_question2'],
 			":data_relation" => "step4"
 		);
 		/* storing the row id in $result */
@@ -1484,7 +1460,7 @@ function ddq_bb_splice_end_plate_step4_form_previous_submit($form, &$form_state,
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step4_data->id
+			':step1_form_id' => $form_step2_data->id
 		));
 		$form_step4_comment_data = $query->fetchObject();
 		$comments = 0;
@@ -1515,13 +1491,14 @@ function ddq_bb_splice_end_plate_step4_form_previous_submit($form, &$form_state,
 				} //$commentresult != 0
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
-	} //$form_step4_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step4_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question2" => $v['step4_field1_fieldset']['step4_field1_question2'],
 			":data_relation" => "step4",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -1572,10 +1549,11 @@ function ddq_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $no
 	//var_dump($form_step4_data);die;
 	if ($form_step4_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step4_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question2" => $v['step4_field1_fieldset']['step4_field1_question2'],
 			":data_relation" => "step4"
 		);
 		/* storing the row id in $result */
@@ -1615,13 +1593,14 @@ function ddq_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $no
 				} //$commentresult != 0
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
-	} //$form_step4_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step4_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":question2" => $v['step4_field1_fieldset']['step4_field1_question2'],
 			":data_relation" => "step4",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -1681,20 +1660,19 @@ function step4_comment_add_more_callback($form, &$form_state)
 	return $form['step4_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 4 from ends ****************************/
-
-/************************ Step 5 form starts *********************/
+/***************************************** step 4 form ends **************************/
+/***************************************** step 5 form starts **************************/
 function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	// All the real form fields.
+	$form = array();
 	$step5_options = array(
 		'Yes' => 'Yes',
 		'No' => 'No'
 	);
-	$form = array();
 	$form['step5_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -1710,37 +1688,39 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 		if ($step5_data = $form_step5_data->fetchObject())
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => '&emsp; d. Weld  
-				<br>
-				<br>
-				<b> &emsp;&emsp;&emsp; 1. Weld profile. <br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/4E.png" width="30%" height="40%" align="middle"/><br>
-			<br>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
-			<br>
-			<br>
-			<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Weld is provided throughout the perimeter of I section. However, the size of weld at flange will be greater than the size of weld <br> 
-			<b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; at web. <br>
-				
-
-
-				<br>
-				Is the adopted weld profile correct? If No, please suggest a suitable profile.				
-				',
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
+				<hr>
+		&emsp;&emsp;&emsp; 3. Axial force in beam. <br>
+		<br> 
+		 &emsp;&emsp;&emsp;&emsp; The axial force is assumed to be passing through the C.G of the beam. <br>
+		&emsp;&emsp;&emsp;&emsp; Is the above assumption correct? <br>
+		&emsp;&emsp;&emsp;&emsp; If yes, should we consider moment due to axial force in the outermost (crtical) bolt? <br>
+		<hr>
+				Is this assumption ok? ',
 				'#type' => 'radios',
-				'#options' => $step5_options,
 				'#default_value' => $step5_data->question1,
+				'#options' => $step5_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
-			
+			$form['step5_field1_fieldset']['step5_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				'#default_value' => $step5_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step5_data->id, $step5_data->data_relation);
 			$icom = 1;
 			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -1802,18 +1782,14 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step5_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step5_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
 					'ddq_bb_splice_end_plate_step5_form_previous_submit'
 				)
 			);
-			$form['next2'] = array(
+			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
@@ -1824,19 +1800,41 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
+				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)<br>
+				<br>
+				<hr>
 				<br>				
-				',
+				
+
+				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#options' => $step5_options,
-				//'#default_value' => $step5_data->question1,
 				'#required' => true
 			);
-			
+			$form['step5_field1_fieldset']['step5_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				//'#default_value' => $step5_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step5_field1_fieldset\\[step5_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
+			);
 			if (empty($form_state['step5_num_comment']))
 			{
 				$form_state['step5_num_comment'] = 1;
@@ -1890,10 +1888,6 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step5_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step5_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
 			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
@@ -1923,11 +1917,11 @@ function ddq_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state,
 	//var_dump($form_step5_data);die;
 	if ($form_step5_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step5_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step5_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step5_field1_fieldset']['step5_field1_question2'],
 			":data_relation" => "step5"
 		);
 		/* storing the row id in $result */
@@ -1936,7 +1930,7 @@ function ddq_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state,
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step5_data->id
+			':step1_form_id' => $form_step2_data->id
 		));
 		$form_step5_comment_data = $query->fetchObject();
 		$comments = 0;
@@ -1967,14 +1961,14 @@ function ddq_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state,
 				} //$commentresult != 0
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	} //$form_step5_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step5_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step5_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step5_field1_fieldset']['step5_field1_question2'],
 			":data_relation" => "step5",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2025,11 +2019,11 @@ function ddq_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $no
 	//var_dump($form_step5_data);die;
 	if ($form_step5_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step5_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step5_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step5_field1_fieldset']['step5_field1_question2'],
 			":data_relation" => "step5"
 		);
 		/* storing the row id in $result */
@@ -2069,14 +2063,14 @@ function ddq_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $no
 				} //$commentresult != 0
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	} //$form_step5_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step5_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step5_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":if_yes" => $v['step5_field1_fieldset']['step5_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step5_field1_fieldset']['step5_field1_question2'],
 			":data_relation" => "step5",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2136,21 +2130,19 @@ function step5_comment_add_more_callback($form, &$form_state)
 	return $form['step5_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 5 from ends ****************************/
-
-
-/************************ Step 6 form starts *********************/
+/***************************************** step 5 form ends **************************/
+/***************************************** step 6 form starts **************************/
 function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
-	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	// All the real form fields.
+	$form = array();
 	$step6_options = array(
 		'Yes' => 'Yes',
 		'No' => 'No'
 	);
-	$form = array();
 	$form['step6_field1_fieldset'] = array(
 		'#type' => 'fieldset',
 		'#tree' => TRUE,
@@ -2166,31 +2158,40 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 		if ($step6_data = $form_step6_data->fetchObject())
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => '&emsp; e. Stiffener. 
-				<br>
-				<br>
-				<b> &emsp;&emsp;&emsp; 1. Under what circumstances should we provide stiffeners? <br>
-				<br>
-				<b> &emsp;&emsp;&emsp; 2. What should be the location of stiffeners? (top, bottom or both) <br>
-				<br>
-				<b> &emsp;&emsp;&emsp; 3. What should be the type of stiffener? (example, load bearing etc.) <br>
-				<br>
-				<b> &emsp;&emsp;&emsp; 4. If it is a load bearing stiffener will there be any reduction in prying force at 					tension flange or reaction at compression flange?  <br>
-				<b> &emsp;&emsp;&emsp;&emsp; If yes, than how much? <br>
-
-
-				<br>				
-				',
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
+				<hr>
+			 &emsp;&emsp;&emsp; 4. Type of bolt. <br>
+		<br> 
+		&emsp;&emsp;&emsp;&emsp; AISC (Design guide 16) recommends use of HSFG bolts in design of splice connections due to high strength <br>&emsp;&emsp;&emsp;&emsp; requirement. <br>
+		&emsp;&emsp;&emsp;&emsp; Can we use bearing bolts in design of splice connection? <br>
+		
+				
+				<hr>
+				Is this assumption ok? ',
 				'#type' => 'radios',
-				'#options' => $step6_options,
 				'#default_value' => $step6_data->question1,
+				'#options' => $step6_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
-			
+			$form['step6_field1_fieldset']['step6_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				'#default_value' => $step6_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
+			);
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step6_data->id, $step6_data->data_relation);
 			$icom = 1;
 			$form['step6_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -2252,18 +2253,14 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step6_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step6_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
 					'ddq_bb_splice_end_plate_step6_form_previous_submit'
 				)
 			);
-			$form['next2'] = array(
+			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
@@ -2274,19 +2271,41 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
+				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
+				<br><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<b> Figure: </b> End Plate Connection<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				(Beam web to Column flange connectivity)<br>
+				<br>
+				<hr>
 				<br>				
-				',
+				
+
+				Is this assumption ok? ',
 				'#type' => 'radios',
 				'#options' => $step6_options,
-				//'#default_value' => $step6_data->question1,
 				'#required' => true
 			);
-			
+			$form['step6_field1_fieldset']['step6_field1_question2'] = array(
+				'#title' => 'specimen text3-3',
+				'#type' => 'textarea',
+				//'#default_value' => $step6_data->question2,
+				'#states' => array(
+					'visible' => array(
+						':input[name="step6_field1_fieldset\\[step6_field1_question1\\]"]' => array(
+							array(
+								'filled' => false
+							)
+						)
+					)
+				)
+			);
 			if (empty($form_state['step6_num_comment']))
 			{
 				$form_state['step6_num_comment'] = 1;
@@ -2340,10 +2359,6 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step6_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step6_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
 			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
@@ -2373,11 +2388,11 @@ function ddq_bb_splice_end_plate_step6_form_previous_submit($form, &$form_state,
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step6_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step6_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
-			":if_yes" => $v['step6_field1_fieldset']['step6_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step6_field1_fieldset']['step6_field1_question2'],
 			":data_relation" => "step6"
 		);
 		/* storing the row id in $result */
@@ -2386,7 +2401,7 @@ function ddq_bb_splice_end_plate_step6_form_previous_submit($form, &$form_state,
 		));
 		/* For adding comments */
 		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step6_data->id
+			':step1_form_id' => $form_step2_data->id
 		));
 		$form_step6_comment_data = $query->fetchObject();
 		$comments = 0;
@@ -2417,14 +2432,14 @@ function ddq_bb_splice_end_plate_step6_form_previous_submit($form, &$form_state,
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step6_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step6_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step6_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
-			":if_yes" => $v['step6_field1_fieldset']['step6_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step6_field1_fieldset']['step6_field1_question2'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2475,11 +2490,11 @@ function ddq_bb_splice_end_plate_step6_form_next_submit($form, &$form_state, $no
 	//var_dump($form_step6_data);die;
 	if ($form_step6_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step6_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step6_feedback SET question1=:question1,question2=:question2, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
-			":if_yes" => $v['step6_field1_fieldset']['step6_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step6_field1_fieldset']['step6_field1_question2'],
 			":data_relation" => "step6"
 		);
 		/* storing the row id in $result */
@@ -2519,14 +2534,14 @@ function ddq_bb_splice_end_plate_step6_form_next_submit($form, &$form_state, $no
 				} //$commentresult != 0
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
-	} //$form_step6_data
+	} //$form_step2_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step6_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step6_feedback} (uid, question1, question2, data_relation,inserted_on) VALUES (:uid,:question1,:question2, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step6_field1_fieldset']['step6_field1_question1'],
-			":if_yes" => $v['step6_field1_fieldset']['step6_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":question2" => $v['step6_field1_fieldset']['step6_field1_question2'],
 			":data_relation" => "step6",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2586,8 +2601,7 @@ function step6_comment_add_more_callback($form, &$form_state)
 	return $form['step6_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 6 from ends ****************************/
-
+/***************************************** step 6 form ends **************************/
 
 /************************ Step 7 form starts *********************/
 function ddq_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = FALSE)
@@ -2616,26 +2630,29 @@ function ddq_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = FA
 		if ($step7_data = $form_step7_data->fetchObject())
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#title' => '&emsp; f. Block shear. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				 &emsp;&emsp;&emsp; 1. End plate dimensions. 				<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; i. Maximum height of end plate <br>
+				
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; There is no specification given on maximum height of end plate. What could be the maximum limit of <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;extension of end plate beyond the flanges<br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please comment below <br>
+				<br>				
+				<b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; NOTE: The moment capacity of the end plate does not depend on its height <br>
 				<br>
-				<br>
-				<b> &emsp;&emsp;&emsp; For block shear failure what could be the possible critical path of failure?. <br>
-				<b> &emsp;&emsp;&emsp; Enumerate the critical path by using the figure given below. <br>
-
-
-				<br>
-				Is this ok?				
+				<hr>				
+				Is this assumption ok?
 				',
 				'#type' => 'radios',
 				'#options' => $step7_options,
 				'#default_value' => $step7_data->question1,
 				'#required' => true
 			);
-			
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step7_data->id, $step7_data->data_relation);
 			$icom = 1;
 			$form['step7_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -2731,7 +2748,6 @@ function ddq_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = FA
 				//'#default_value' => $step7_data->question1,
 				'#required' => true
 			);
-			
 			if (empty($form_state['step7_num_comment']))
 			{
 				$form_state['step7_num_comment'] = 1;
@@ -2818,11 +2834,10 @@ function ddq_bb_splice_end_plate_step7_form_previous_submit($form, &$form_state,
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step7_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step7_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
-			":if_yes" => $v['step7_field1_fieldset']['step7_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step7"
 		);
 		/* storing the row id in $result */
@@ -2865,11 +2880,10 @@ function ddq_bb_splice_end_plate_step7_form_previous_submit($form, &$form_state,
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step7_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step7_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
-			":if_yes" => $v['step7_field1_fieldset']['step7_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step7",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -2920,11 +2934,10 @@ function ddq_bb_splice_end_plate_step7_form_next_submit($form, &$form_state, $no
 	//var_dump($form_step7_data);die;
 	if ($form_step7_data)
 	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step7_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step7_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
-			":if_yes" => $v['step7_field1_fieldset']['step7_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step7"
 		);
 		/* storing the row id in $result */
@@ -2967,11 +2980,10 @@ function ddq_bb_splice_end_plate_step7_form_next_submit($form, &$form_state, $no
 	} //$form_step7_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step7_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step7_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step7_field1_fieldset']['step7_field1_question1'],
-			":if_yes" => $v['step7_field1_fieldset']['step7_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step7",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -3033,16 +3045,20 @@ function step7_comment_add_more_callback($form, &$form_state)
 /***************************************/
 /***************************************** step 7 from ends ****************************/
 
-/***************************************** step 8 form starts **************************/
+/************************ Step 8 form starts *********************/
 function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
 	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step8_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
 	$form = array();
 	$form['step8_field1_fieldset'] = array(
 		'#type' => 'fieldset',
-		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
 		'#tree' => TRUE,
 		'#prefix' => '<div id="step8-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
@@ -3056,13 +3072,25 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 		if ($step8_data = $form_step8_data->fetchObject())
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'Other recommendations/ Comments',
-				'#required' => TRUE
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				&emsp;&emsp;&emsp; 1. End plate dimensions. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm on either sides. <br> 	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
+				Is this assumption ok?',
+				'#type' => 'radios',
+				'#options' => $step8_options,
+				'#default_value' => $step8_data->question1,
+				'#required' => true
 			);
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step8_data->id, $step8_data->data_relation);
+			$icom = 1;
 			$form['step8_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -3124,7 +3152,11 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step8_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step8_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form['previous2'] = array(
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
@@ -3133,31 +3165,26 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddq_bb_splice_end_plate_step8_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_end_plate_step8_form_save_submit'
 				)
 			);
 		} //$step8_data = $form_step8_data->fetchObject()
 		else
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
-				'#required' => TRUE
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step8_options,
+				//'#default_value' => $step8_data->question1,
+				'#required' => true
 			);
 			if (empty($form_state['step8_num_comment']))
 			{
@@ -3212,6 +3239,10 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 				} //!empty($form['step8_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step8_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
 			$form['previous1'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
@@ -3221,22 +3252,9 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
+				'#value' => 'Save & Next',
 				'#submit' => array(
 					'ddq_bb_splice_end_plate_step8_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_end_plate_step8_form_save_submit'
 				)
 			);
 		} //$step8_data = $form_step8_data->fetchObject()
@@ -3247,21 +3265,12 @@ function ddq_bb_splice_end_plate_step8_form_previous_submit($form, &$form_state,
 {
 	global $user;
 	$v = $form_state['values'];
-	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_end_plate_form_step8_feedback');
+	$query = db_select('ddq_bb_splice_end_plate_form_step8_feedback');
 	$query->fields('ddq_bb_splice_end_plate_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step8_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step8_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step8_data = db_query($query, $args);
-	$form_step8_data_count = $form_step8_data->rowCount();
-	$form_step8_data = $form_step8_data->fetchObject();
 	//var_dump($form_step8_data);die;
-	if ($form_step8_data_count != 0)
+	if ($form_step8_data)
 	{
 		$query = "UPDATE ddq_bb_splice_end_plate_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -3271,15 +3280,6 @@ function ddq_bb_splice_end_plate_step8_form_previous_submit($form, &$form_state,
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3327,15 +3327,6 @@ function ddq_bb_splice_end_plate_step8_form_previous_submit($form, &$form_state,
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3370,25 +3361,16 @@ function ddq_bb_splice_end_plate_step8_form_previous_submit($form, &$form_state,
 	}
 	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step7/' . $user->uid;
 }
-function ddq_bb_splice_end_plate_step8_form_save_submit($form, &$form_state, $no_js_use = FALSE)
+function ddq_bb_splice_end_plate_step8_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
-	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_end_plate_form_step8_feedback');
+	$query = db_select('ddq_bb_splice_end_plate_form_step8_feedback');
 	$query->fields('ddq_bb_splice_end_plate_form_step8_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step8_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step8_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step8_data = db_query($query, $args);
-	$form_step8_data_count = $form_step8_data->rowCount();
-	$form_step8_data = $form_step8_data->fetchObject();
 	//var_dump($form_step8_data);die;
-	if ($form_step8_data_count != 0)
+	if ($form_step8_data)
 	{
 		$query = "UPDATE ddq_bb_splice_end_plate_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
@@ -3398,15 +3380,6 @@ function ddq_bb_splice_end_plate_step8_form_save_submit($form, &$form_state, $no
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -3456,15 +3429,6 @@ function ddq_bb_splice_end_plate_step8_form_save_submit($form, &$form_state, $no
 		$result = db_query($query, $args, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
 		/* For adding comments */
 		$comments = 0;
 		for ($i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++)
@@ -3495,135 +3459,7 @@ function ddq_bb_splice_end_plate_step8_form_save_submit($form, &$form_state, $no
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
-	drupal_goto('home');
-}
-function ddq_bb_splice_end_plate_step8_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step8_field1_fieldset']['step8_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_end_plate_form_step8_feedback');
-	$query->fields('ddq_bb_splice_end_plate_form_step8_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step8_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step8_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step8_data = db_query($query, $args);
-	$form_step8_data_count = $form_step8_data->rowCount();
-	$form_step8_data = $form_step8_data->fetchObject();
-	//var_dump($form_step8_data);die;
-	if ($form_step8_data_count != 0)
-	{
-		$query = "UPDATE ddq_bb_splice_end_plate_form_step8_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
-			":data_relation" => "step8"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step8_data->id
-		));
-		$form_step8_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++)
-		{
-			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_end_plate_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step8_data->id,
-					":number" => $i + $form_step8_comment_data->max + 1,
-					":comment" => $v['step8_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step8",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	} //$form_step7_data
-	else
-	{
-		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step8_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step8_field1_fieldset']['step8_field1_question1'],
-			":data_relation" => "step8",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++)
-		{
-			if ($v['step8_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_end_plate_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step8_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step8",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddq-bb-splice-end-plate/success';
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step9/' . $user->uid;
 }
 /***************************************/
 function step8_comment_add_more_add_one($form, &$form_state)
@@ -3645,7 +3481,4146 @@ function step8_comment_add_more_callback($form, &$form_state)
 	return $form['step8_field1_fieldset'];
 }
 /***************************************/
-/***************************************** step 8 form ends **************************/
+/***************************************** step 8 from ends ****************************/
+
+/************************ Step 9 form starts *********************/
+function ddq_bb_splice_end_plate_step9_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step9_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step9_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step9-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step9_data = $query->execute();
+	if ($form_step9_data)
+	{
+		if ($step9_data = $form_step9_data->fetchObject())
+		{
+			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				&emsp;&emsp;&emsp; 2. Moment capacity of end plate. <br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The moment capacity of end plate should be  based on its plastic 					or elastic capacity? <br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: We have adopted plastic capacity i.e. M<sub>p</sub> = (f<sub>y</sub>/1.10) (wT<sup>2</sup>/4) <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Reference: equation 5.18, page 350, Design of steel structures- N. Subramaniam] here, w is the width and T is the thickness of end plate. <br>
+				<hr>				
+				Is this assumption ok?
+				',
+				'#type' => 'radios',
+				'#options' => $step9_options,
+				'#default_value' => $step9_data->question1,
+				'#required' => true
+			);
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step9_data->id, $step9_data->data_relation);
+			$icom = 1;
+			$form['step9_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step9_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step9_num_comment']))
+			{
+				$form_state['step9_num_comment'] = 1;
+			} //empty($form_state['step9_num_comment'])
+			$step9_temp1 = 0;
+			for ($step9_i = 0; $step9_i < $form_state['step9_num_comment']; $step9_i++)
+			{
+				$step9_temp1 = $step9_i;
+				$form['step9_field1_fieldset'][$step9_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step9_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step9_field1_fieldset']["step9_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step9_temp1
+			);
+			$form['step9_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step9_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step9_comment_add_more_callback',
+					'wrapper' => 'step9-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step9_num_comment'] > 1)
+			{
+				$form['step9_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step9_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step9_comment_add_more_callback',
+						'wrapper' => 'step9-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step9_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step9_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step9_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step9_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step9_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step9_form_next_submit'
+				)
+			);
+		} //$step9_data = $form_step9_data->fetchObject()
+		else
+		{
+			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step9_options,
+				//'#default_value' => $step9_data->question1,
+				'#required' => true
+			);
+			if (empty($form_state['step9_num_comment']))
+			{
+				$form_state['step9_num_comment'] = 1;
+			} //empty($form_state['step9_num_comment'])
+			$step9_temp1 = 0;
+			for ($step9_i = 0; $step9_i < $form_state['step9_num_comment']; $step9_i++)
+			{
+				$step9_temp1 = $step9_i;
+				$form['step9_field1_fieldset'][$step9_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step9_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step9_field1_fieldset']["step9_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step9_temp1
+			);
+			$form['step9_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step9_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step9_comment_add_more_callback',
+					'wrapper' => 'step9-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step9_num_comment'] > 1)
+			{
+				$form['step9_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step9_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step9_comment_add_more_callback',
+						'wrapper' => 'step9-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step9_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step9_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step9_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step9_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step9_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step9_form_next_submit'
+				)
+			);
+		} //$step9_data = $form_step9_data->fetchObject()
+	} //$form_step9_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step9_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step9_data = $query->execute()->fetchObject();
+	//var_dump($form_step9_data);die;
+	if ($form_step9_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step9_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
+			":data_relation" => "step9"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step9_data->id
+		));
+		$form_step9_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++)
+		{
+			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step9_data->id,
+					":number" => $i + $form_step9_comment_data->max + 1,
+					":comment" => $v['step9_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step9",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
+	} //$form_step9_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step9_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
+			":data_relation" => "step9",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++)
+		{
+			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step9_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step9",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step8/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step9_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step9_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step9_data = $query->execute()->fetchObject();
+	//var_dump($form_step9_data);die;
+	if ($form_step9_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step9_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
+			":data_relation" => "step9"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step9_data->id
+		));
+		$form_step9_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++)
+		{
+			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step9_data->id,
+					":number" => $i + $form_step9_comment_data->max + 1,
+					":comment" => $v['step9_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step9",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
+	} //$form_step9_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step9_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step9_field1_fieldset']['step9_field1_question1'],
+			":data_relation" => "step9",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++)
+		{
+			if ($v['step9_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step9_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step9",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step10/' . $user->uid;
+}
+/***************************************/
+function step9_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step9_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step9_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step9_num_comment'] > 1)
+	{
+		$form_state['step9_num_comment']--;
+	} //$form_state['step9_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step9_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step9_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 9 from ends ****************************/
+
+/************************ Step 10 form starts *********************/
+function ddq_bb_splice_end_plate_step10_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step10_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step10_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step10-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute();
+	if ($form_step10_data)
+	{
+		if ($step10_data = $form_step10_data->fetchObject())
+		{
+			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+ &emsp;&emsp;&emsp; 3. Should we have plate grade different from member (beam) grade? <br>
+				<br>
+				<hr>				
+				Is this assumption ok?
+				',
+				'#type' => 'radios',
+				'#options' => $step10_options,
+				'#default_value' => $step10_data->question1,
+				'#required' => true
+			);
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step10_data->id, $step10_data->data_relation);
+			$icom = 1;
+			$form['step10_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step10_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step10_num_comment']))
+			{
+				$form_state['step10_num_comment'] = 1;
+			} //empty($form_state['step10_num_comment'])
+			$step10_temp1 = 0;
+			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
+			{
+				$step10_temp1 = $step10_i;
+				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step10_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step10_field1_fieldset']["step10_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step10_temp1
+			);
+			$form['step10_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step10_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step10_comment_add_more_callback',
+					'wrapper' => 'step10-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step10_num_comment'] > 1)
+			{
+				$form['step10_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step10_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step10_comment_add_more_callback',
+						'wrapper' => 'step10-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step10_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step10_form_next_submit'
+				)
+			);
+		} //$step10_data = $form_step10_data->fetchObject()
+		else
+		{
+			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step10_options,
+				//'#default_value' => $step10_data->question1,
+				'#required' => true
+			);
+			if (empty($form_state['step10_num_comment']))
+			{
+				$form_state['step10_num_comment'] = 1;
+			} //empty($form_state['step10_num_comment'])
+			$step10_temp1 = 0;
+			for ($step10_i = 0; $step10_i < $form_state['step10_num_comment']; $step10_i++)
+			{
+				$step10_temp1 = $step10_i;
+				$form['step10_field1_fieldset'][$step10_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step10_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step10_field1_fieldset']["step10_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step10_temp1
+			);
+			$form['step10_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step10_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step10_comment_add_more_callback',
+					'wrapper' => 'step10-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step10_num_comment'] > 1)
+			{
+				$form['step10_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step10_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step10_comment_add_more_callback',
+						'wrapper' => 'step10-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step10_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step10_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step10_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step10_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step10_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step10_form_next_submit'
+				)
+			);
+		} //$step10_data = $form_step10_data->fetchObject()
+	} //$form_step10_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step10_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute()->fetchObject();
+	//var_dump($form_step10_data);die;
+	if ($form_step10_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step10_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":data_relation" => "step10"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step10_data->id
+		));
+		$form_step10_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step10_data->id,
+					":number" => $i + $form_step10_comment_data->max + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	} //$form_step10_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step10_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":data_relation" => "step10",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step9/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step10_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step10_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step10_data = $query->execute()->fetchObject();
+	//var_dump($form_step10_data);die;
+	if ($form_step10_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step10_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":data_relation" => "step10"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step10_data->id
+		));
+		$form_step10_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step10_data->id,
+					":number" => $i + $form_step10_comment_data->max + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	} //$form_step10_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step10_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step10_field1_fieldset']['step10_field1_question1'],
+			":data_relation" => "step10",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++)
+		{
+			if ($v['step10_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step10_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step10",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step11/' . $user->uid;
+}
+/***************************************/
+function step10_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step10_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step10_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step10_num_comment'] > 1)
+	{
+		$form_state['step10_num_comment']--;
+	} //$form_state['step10_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step10_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step10_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 10 from ends ****************************/
+
+/************************ step 11 form starts *********************/
+function ddq_bb_splice_end_plate_step11_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step11_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step11_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step11-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute();
+	if ($form_step11_data)
+	{
+		if ($step11_data = $form_step11_data->fetchObject())
+		{
+			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
+				'#title' => '&emsp; d. Weld  
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; 1. Weld profile. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/weld_profile_side.svg" width="30%" height="40%" align="middle"/><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
+			<br>
+			 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Weld is provided throughout the perimeter of I section. However, the size of weld at flange will be greater than the size of weld at web. <br>
+				
+
+
+				<br>
+				Is the adopted weld profile correct? If No, please suggest a suitable profile.				
+				',
+				'#type' => 'radios',
+				'#options' => $step11_options,
+				'#default_value' => $step11_data->question1,
+				'#required' => true
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step11_data->id, $step11_data->data_relation);
+			$icom = 1;
+			$form['step11_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step11_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step11_num_comment']))
+			{
+				$form_state['step11_num_comment'] = 1;
+			} //empty($form_state['step11_num_comment'])
+			$step11_temp1 = 0;
+			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
+			{
+				$step11_temp1 = $step11_i;
+				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step11_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step11_field1_fieldset']["step11_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step11_temp1
+			);
+			$form['step11_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step11_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step11_comment_add_more_callback',
+					'wrapper' => 'step11-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step11_num_comment'] > 1)
+			{
+				$form['step11_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step11_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step11_comment_add_more_callback',
+						'wrapper' => 'step11-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step11_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step11_form_next_submit'
+				)
+			);
+		} //$step11_data = $form_step11_data->fetchObject()
+		else
+		{
+			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step11_options,
+				//'#default_value' => $step11_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step11_num_comment']))
+			{
+				$form_state['step11_num_comment'] = 1;
+			} //empty($form_state['step11_num_comment'])
+			$step11_temp1 = 0;
+			for ($step11_i = 0; $step11_i < $form_state['step11_num_comment']; $step11_i++)
+			{
+				$step11_temp1 = $step11_i;
+				$form['step11_field1_fieldset'][$step11_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step11_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step11_field1_fieldset']["step11_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step11_temp1
+			);
+			$form['step11_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step11_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step11_comment_add_more_callback',
+					'wrapper' => 'step11-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step11_num_comment'] > 1)
+			{
+				$form['step11_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step11_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step11_comment_add_more_callback',
+						'wrapper' => 'step11-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step11_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step11_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step11_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step11_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step11_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step11_form_next_submit'
+				)
+			);
+		} //$step11_data = $form_step11_data->fetchObject()
+	} //$form_step11_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step11_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute()->fetchObject();
+	//var_dump($form_step11_data);die;
+	if ($form_step11_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step11_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":if_yes" => $v['step11_field1_fieldset']['step11_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step11"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step11_data->id
+		));
+		$form_step11_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step11_data->id,
+					":number" => $i + $form_step11_comment_data->max + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	} //$form_step11_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step11_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":if_yes" => $v['step11_field1_fieldset']['step11_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step11",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step10/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step11_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step11_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step11_data = $query->execute()->fetchObject();
+	//var_dump($form_step11_data);die;
+	if ($form_step11_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step11_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":if_yes" => $v['step11_field1_fieldset']['step11_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step11"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step11_data->id
+		));
+		$form_step11_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step11_data->id,
+					":number" => $i + $form_step11_comment_data->max + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	} //$form_step11_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step11_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step11_field1_fieldset']['step11_field1_question1'],
+			":if_yes" => $v['step11_field1_fieldset']['step11_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step11",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++)
+		{
+			if ($v['step11_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step11_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step11",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step12/' . $user->uid;
+}
+/***************************************/
+function step11_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step11_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step11_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step11_num_comment'] > 1)
+	{
+		$form_state['step11_num_comment']--;
+	} //$form_state['step11_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step11_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step11_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 11 from ends ****************************/
+
+/************************ Step 12 form starts *********************/
+function ddq_bb_splice_end_plate_step12_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	
+	$form = array();
+	$form['step12_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step12-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute();
+	if ($form_step12_data)
+	{
+		if ($step12_data = $form_step12_data->fetchObject())
+		{
+			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
+				'#title' => '&emsp; e. Stiffener. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; 1. Under what circumstances should we provide stiffeners? <br>
+				<br>				
+				',
+				'#type' => 'radios',
+				'#default_value' => $step12_data->question1,
+					
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step12_data->id, $step12_data->data_relation);
+			$icom = 1;
+			$form['step12_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step12_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step12_num_comment']))
+			{
+				$form_state['step12_num_comment'] = 1;
+			} //empty($form_state['step12_num_comment'])
+			$step12_temp1 = 0;
+			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
+			{
+				$step12_temp1 = $step12_i;
+				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step12_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step12_field1_fieldset']["step12_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step12_temp1
+			);
+			$form['step12_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step12_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step12_comment_add_more_callback',
+					'wrapper' => 'step12-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step12_num_comment'] > 1)
+			{
+				$form['step12_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step12_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step12_comment_add_more_callback',
+						'wrapper' => 'step12-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step12_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step12_form_next_submit'
+				)
+			);
+		} //$step12_data = $form_step12_data->fetchObject()
+		else
+		{
+			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step12_options,
+				//'#default_value' => $step12_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step12_num_comment']))
+			{
+				$form_state['step12_num_comment'] = 1;
+			} //empty($form_state['step12_num_comment'])
+			$step12_temp1 = 0;
+			for ($step12_i = 0; $step12_i < $form_state['step12_num_comment']; $step12_i++)
+			{
+				$step12_temp1 = $step12_i;
+				$form['step12_field1_fieldset'][$step12_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step12_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step12_field1_fieldset']["step12_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step12_temp1
+			);
+			$form['step12_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step12_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step12_comment_add_more_callback',
+					'wrapper' => 'step12-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step12_num_comment'] > 1)
+			{
+				$form['step12_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step12_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step12_comment_add_more_callback',
+						'wrapper' => 'step12-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step12_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step12_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step12_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step12_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step12_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step12_form_next_submit'
+				)
+			);
+		} //$step12_data = $form_step12_data->fetchObject()
+	} //$form_step12_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step12_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step12_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step12_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":if_yes" => $v['step12_field1_fieldset']['step12_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step12"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step12_data->id
+		));
+		$form_step12_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step12_data->id,
+					":number" => $i + $form_step12_comment_data->max + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	} //$form_step12_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step12_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":if_yes" => $v['step12_field1_fieldset']['step12_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step12",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step11/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step12_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step12_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step12_data = $query->execute()->fetchObject();
+	//var_dump($form_step12_data);die;
+	if ($form_step12_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step12_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":if_yes" => $v['step12_field1_fieldset']['step12_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step12"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step12_data->id
+		));
+		$form_step12_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step12_data->id,
+					":number" => $i + $form_step12_comment_data->max + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	} //$form_step12_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step12_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step12_field1_fieldset']['step12_field1_question1'],
+			":if_yes" => $v['step12_field1_fieldset']['step12_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step12",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++)
+		{
+			if ($v['step12_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step12_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step12",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step13/' . $user->uid;
+}
+/***************************************/
+function step12_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step12_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step12_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step12_num_comment'] > 1)
+	{
+		$form_state['step12_num_comment']--;
+	} //$form_state['step12_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step12_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step12_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 12 from ends ****************************/
+
+
+
+/************************ Step 13 form starts *********************/
+function ddq_bb_splice_end_plate_step13_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step13_options = array(
+		'Top' => 'Top',
+		'Bottom' => 'Bottom',
+		'Both' => 'Both'
+	);
+	$form = array();
+	$form['step13_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step13-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute();
+	if ($form_step13_data)
+	{
+		if ($step13_data = $form_step13_data->fetchObject())
+		{
+			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
+				'#title' => '&emsp; e. Stiffener. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; 2. What should be the location of stiffeners? (top, bottom or both)				
+				',
+				'#type' => 'radios',
+				'#options' => $step13_options,
+				'#default_value' => $step13_data->question1,
+				'#required' => true
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step13_data->id, $step13_data->data_relation);
+			$icom = 1;
+			$form['step13_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step13_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step13_num_comment']))
+			{
+				$form_state['step13_num_comment'] = 1;
+			} //empty($form_state['step13_num_comment'])
+			$step13_temp1 = 0;
+			for ($step13_i = 0; $step13_i < $form_state['step13_num_comment']; $step13_i++)
+			{
+				$step13_temp1 = $step13_i;
+				$form['step13_field1_fieldset'][$step13_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step13_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step13_field1_fieldset']["step13_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step13_temp1
+			);
+			$form['step13_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step13_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step13_comment_add_more_callback',
+					'wrapper' => 'step13-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step13_num_comment'] > 1)
+			{
+				$form['step13_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step13_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step13_comment_add_more_callback',
+						'wrapper' => 'step13-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step13_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step13_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step13_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step13_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step13_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step13_form_next_submit'
+				)
+			);
+		} //$step13_data = $form_step13_data->fetchObject()
+		else
+		{
+			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step13_options,
+				//'#default_value' => $step13_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step13_num_comment']))
+			{
+				$form_state['step13_num_comment'] = 1;
+			} //empty($form_state['step13_num_comment'])
+			$step13_temp1 = 0;
+			for ($step13_i = 0; $step13_i < $form_state['step13_num_comment']; $step13_i++)
+			{
+				$step13_temp1 = $step13_i;
+				$form['step13_field1_fieldset'][$step13_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step13_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step13_field1_fieldset']["step13_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step13_temp1
+			);
+			$form['step13_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step13_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step13_comment_add_more_callback',
+					'wrapper' => 'step13-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step13_num_comment'] > 1)
+			{
+				$form['step13_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step13_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step13_comment_add_more_callback',
+						'wrapper' => 'step13-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step13_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step13_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step13_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step13_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step13_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step13_form_next_submit'
+				)
+			);
+		} //$step13_data = $form_step13_data->fetchObject()
+	} //$form_step13_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step13_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step13_data);die;
+	if ($form_step13_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step13_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":if_yes" => $v['step13_field1_fieldset']['step13_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step13"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step13_data->id
+		));
+		$form_step13_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+		{
+			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
+					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step13",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
+	} //$form_step13_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step13_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":if_yes" => $v['step13_field1_fieldset']['step13_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step13",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+		{
+			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step13",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step12/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step13_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step13_data = $query->execute()->fetchObject();
+	//var_dump($form_step13_data);die;
+	if ($form_step13_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step13_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":if_yes" => $v['step13_field1_fieldset']['step13_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step13"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step13_data->id
+		));
+		$form_step13_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+		{
+			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step13_data->id,
+					":number" => $i + $form_step13_comment_data->max + 1,
+					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step13",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
+	} //$form_step13_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step13_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step13_field1_fieldset']['step13_field1_question1'],
+			":if_yes" => $v['step13_field1_fieldset']['step13_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step13",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++)
+		{
+			if ($v['step13_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step13_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step13",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step14/' . $user->uid;
+}
+/***************************************/
+function step13_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step13_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step13_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step13_num_comment'] > 1)
+	{
+		$form_state['step13_num_comment']--;
+	} //$form_state['step13_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step13_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step13_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 13 from ends ****************************/
+
+
+
+/************************ Step 14 form starts *********************/
+function ddq_bb_splice_end_plate_step14_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step14_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step14_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step14-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute();
+	if ($form_step14_data)
+	{
+		if ($step14_data = $form_step14_data->fetchObject())
+		{
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
+				'#title' => '&emsp; e. Stiffener. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; 3. What should be the type of stiffener? (example, load bearing etc.) 
+			
+				',
+				'#type' => 'radios',
+				'#options' => $step14_options,
+				'#default_value' => $step14_data->question1,
+				'#required' => true
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step14_data->id, $step14_data->data_relation);
+			$icom = 1;
+			$form['step14_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step14_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step14_form_next_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+		else
+		{
+			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step14_options,
+				//'#default_value' => $step14_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step14_num_comment']))
+			{
+				$form_state['step14_num_comment'] = 1;
+			} //empty($form_state['step14_num_comment'])
+			$step14_temp1 = 0;
+			for ($step14_i = 0; $step14_i < $form_state['step14_num_comment']; $step14_i++)
+			{
+				$step14_temp1 = $step14_i;
+				$form['step14_field1_fieldset'][$step14_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step14_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step14_field1_fieldset']["step14_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step14_temp1
+			);
+			$form['step14_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step14_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step14_comment_add_more_callback',
+					'wrapper' => 'step14-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step14_num_comment'] > 1)
+			{
+				$form['step14_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step14_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step14_comment_add_more_callback',
+						'wrapper' => 'step14-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step14_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step14_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step14_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step14_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step14_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step14_form_next_submit'
+				)
+			);
+		} //$step14_data = $form_step14_data->fetchObject()
+	} //$form_step14_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step14_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step14_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":if_yes" => $v['step14_field1_fieldset']['step14_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	} //$form_step14_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step14_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":if_yes" => $v['step14_field1_fieldset']['step14_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step13/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step14_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step14_data = $query->execute()->fetchObject();
+	//var_dump($form_step14_data);die;
+	if ($form_step14_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step14_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":if_yes" => $v['step14_field1_fieldset']['step14_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step14"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step14_data->id
+		));
+		$form_step14_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step14_data->id,
+					":number" => $i + $form_step14_comment_data->max + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	} //$form_step14_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step14_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step14_field1_fieldset']['step14_field1_question1'],
+			":if_yes" => $v['step14_field1_fieldset']['step14_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step14",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++)
+		{
+			if ($v['step14_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step14_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step14",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step15/' . $user->uid;
+}
+/***************************************/
+function step14_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step14_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step14_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step14_num_comment'] > 1)
+	{
+		$form_state['step14_num_comment']--;
+	} //$form_state['step14_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step14_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step14_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 14 from ends ****************************/
+
+
+/************************ Step 15 form starts *********************/
+function ddq_bb_splice_end_plate_step15_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step15_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step15_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step15-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step15_data = $query->execute();
+	if ($form_step15_data)
+	{
+		if ($step15_data = $form_step15_data->fetchObject())
+		{
+			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
+				'#title' => '&emsp; e. Stiffener. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; 4. If it is a load bearing stiffener will there be any reduction in prying force at tension flange or reaction at compression flange?  <br>
+				&emsp;&emsp;&emsp;&emsp; If yes, than how much?			
+				',
+				'#type' => 'radios',
+				'#options' => $step15_options,
+				'#default_value' => $step15_data->question1,
+				'#required' => true
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step15_data->id, $step15_data->data_relation);
+			$icom = 1;
+			$form['step15_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step15_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step15_num_comment']))
+			{
+				$form_state['step15_num_comment'] = 1;
+			} //empty($form_state['step15_num_comment'])
+			$step15_temp1 = 0;
+			for ($step15_i = 0; $step15_i < $form_state['step15_num_comment']; $step15_i++)
+			{
+				$step15_temp1 = $step15_i;
+				$form['step15_field1_fieldset'][$step15_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step15_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step15_field1_fieldset']["step15_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step15_temp1
+			);
+			$form['step15_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step15_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step15_comment_add_more_callback',
+					'wrapper' => 'step15-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step15_num_comment'] > 1)
+			{
+				$form['step15_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step15_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step15_comment_add_more_callback',
+						'wrapper' => 'step15-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step15_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step15_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step15_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step15_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step15_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step15_form_next_submit'
+				)
+			);
+		} //$step15_data = $form_step15_data->fetchObject()
+		else
+		{
+			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step15_options,
+				//'#default_value' => $step15_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step15_num_comment']))
+			{
+				$form_state['step15_num_comment'] = 1;
+			} //empty($form_state['step15_num_comment'])
+			$step15_temp1 = 0;
+			for ($step15_i = 0; $step15_i < $form_state['step15_num_comment']; $step15_i++)
+			{
+				$step15_temp1 = $step15_i;
+				$form['step15_field1_fieldset'][$step15_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step15_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step15_field1_fieldset']["step15_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step15_temp1
+			);
+			$form['step15_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step15_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step15_comment_add_more_callback',
+					'wrapper' => 'step15-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step15_num_comment'] > 1)
+			{
+				$form['step15_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step15_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step15_comment_add_more_callback',
+						'wrapper' => 'step15-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step15_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step15_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step15_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step15_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step15_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step15_form_next_submit'
+				)
+			);
+		} //$step15_data = $form_step15_data->fetchObject()
+	} //$form_step15_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step15_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step15_data = $query->execute()->fetchObject();
+	//var_dump($form_step15_data);die;
+	if ($form_step15_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step15_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":if_yes" => $v['step15_field1_fieldset']['step15_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step15"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step15_data->id
+		));
+		$form_step15_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step15_data->id,
+					":number" => $i + $form_step15_comment_data->max + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	} //$form_step15_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step15_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":if_yes" => $v['step15_field1_fieldset']['step15_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step15",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step14/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step15_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step15_data = $query->execute()->fetchObject();
+	//var_dump($form_step15_data);die;
+	if ($form_step15_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step15_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":if_yes" => $v['step15_field1_fieldset']['step15_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step15"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step15_data->id
+		));
+		$form_step15_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step15_data->id,
+					":number" => $i + $form_step15_comment_data->max + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	} //$form_step15_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step15_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step15_field1_fieldset']['step15_field1_question1'],
+			":if_yes" => $v['step15_field1_fieldset']['step15_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step15",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++)
+		{
+			if ($v['step15_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step15_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step15",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step16/' . $user->uid;
+}
+/***************************************/
+function step15_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step15_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step15_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step15_num_comment'] > 1)
+	{
+		$form_state['step15_num_comment']--;
+	} //$form_state['step15_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step15_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step15_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 15 from ends ****************************/
+
+/************************ Step 16 form starts *********************/
+function ddq_bb_splice_end_plate_step16_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
+	$step16_options = array(
+		'Yes' => 'Yes',
+		'No' => 'No'
+	);
+	$form = array();
+	$form['step16_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step16-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step16_data = $query->execute();
+	if ($form_step16_data)
+	{
+		if ($step16_data = $form_step16_data->fetchObject())
+		{
+			$form['step16_field1_fieldset']['step16_field1_question1'] = array(
+				'#title' => '&emsp; f. Block shear. 
+				<br>
+				 &emsp;&emsp;&emsp; For block shear failure what could be the possible critical path of failure?. <br>
+				&emsp;&emsp;&emsp; Enumerate the critical path by using the figure given below. <br>	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="' . $img_path . '/4_bolts.png" width="50%" height="40%" align="centre"/><br>
+			<br>		
+				',
+				'#type' => 'radios',
+				'#default_value' => $step16_data->question1,
+				
+			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step16_data->id, $step16_data->data_relation);
+			$icom = 1;
+			$form['step16_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step16_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step16_num_comment']))
+			{
+				$form_state['step16_num_comment'] = 1;
+			} //empty($form_state['step16_num_comment'])
+			$step16_temp1 = 0;
+			for ($step16_i = 0; $step16_i < $form_state['step16_num_comment']; $step16_i++)
+			{
+				$step16_temp1 = $step16_i;
+				$form['step16_field1_fieldset'][$step16_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step16_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step16_field1_fieldset']["step16_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step16_temp1
+			);
+			$form['step16_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step16_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step16_comment_add_more_callback',
+					'wrapper' => 'step16-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step16_num_comment'] > 1)
+			{
+				$form['step16_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step16_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step16_comment_add_more_callback',
+						'wrapper' => 'step16-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step16_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step16_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step16_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step16_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step16_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step16_form_next_submit'
+				)
+			);
+		} //$step16_data = $form_step16_data->fetchObject()
+		else
+		{
+			$form['step16_field1_fieldset']['step16_field1_question1'] = array(
+				'#title' => 'This is a specimen page. 
+				<br>
+				<br>
+				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
+				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				<br>				
+				',
+				'#type' => 'radios',
+				'#options' => $step16_options,
+				//'#default_value' => $step16_data->question1,
+				'#required' => true
+			);
+			
+			if (empty($form_state['step16_num_comment']))
+			{
+				$form_state['step16_num_comment'] = 1;
+			} //empty($form_state['step16_num_comment'])
+			$step16_temp1 = 0;
+			for ($step16_i = 0; $step16_i < $form_state['step16_num_comment']; $step16_i++)
+			{
+				$step16_temp1 = $step16_i;
+				$form['step16_field1_fieldset'][$step16_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step16_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step16_field1_fieldset']["step16_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step16_temp1
+			);
+			$form['step16_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step16_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step16_comment_add_more_callback',
+					'wrapper' => 'step16-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step16_num_comment'] > 1)
+			{
+				$form['step16_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step16_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step16_comment_add_more_callback',
+						'wrapper' => 'step16-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step16_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step16_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step16_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step16_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form["step1_page_id"] = array(
+				"#type" => "hidden",
+				"#value" => "step1"
+			);
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step16_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save & Next',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step16_form_next_submit'
+				)
+			);
+		} //$step16_data = $form_step16_data->fetchObject()
+	} //$form_step16_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step16_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step16_data = $query->execute()->fetchObject();
+	//var_dump($form_step16_data);die;
+	if ($form_step16_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step16_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
+			":if_yes" => $v['step16_field1_fieldset']['step16_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step16"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step16_data->id
+		));
+		$form_step16_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
+		{
+			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step16_data->id,
+					":number" => $i + $form_step16_comment_data->max + 1,
+					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step16",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
+	} //$form_step16_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step16_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
+			":if_yes" => $v['step16_field1_fieldset']['step16_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step16",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
+		{
+			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step16",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step15/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step16_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$query = db_select('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step16_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step16_data = $query->execute()->fetchObject();
+	//var_dump($form_step16_data);die;
+	if ($form_step16_data)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step16_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
+			":if_yes" => $v['step16_field1_fieldset']['step16_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step16"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step16_data->id
+		));
+		$form_step16_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
+		{
+			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step16_data->id,
+					":number" => $i + $form_step16_comment_data->max + 1,
+					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step16",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
+	} //$form_step16_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step16_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step16_field1_fieldset']['step16_field1_question1'],
+			":if_yes" => $v['step16_field1_fieldset']['step16_field2_what_IS_code_clauses_and_references_should_be_followed'],
+			":data_relation" => "step16",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++)
+		{
+			if ($v['step16_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step16_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step16",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step17/' . $user->uid;
+}
+/***************************************/
+function step16_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step16_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step16_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step16_num_comment'] > 1)
+	{
+		$form_state['step16_num_comment']--;
+	} //$form_state['step16_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step16_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step16_field1_fieldset'];
+}
+/***************************************/
+/***************************************** step 16 from ends ****************************/
+function ddq_bb_splice_end_plate_step17_form($form, &$form_state, $no_js_use = FALSE)
+{
+	global $base_url;
+	global $user;
+	// All the real form fields.
+	$form = array();
+	$form['step17_field1_fieldset'] = array(
+		'#type' => 'fieldset',
+		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
+		'#tree' => TRUE,
+		'#prefix' => '<div id="step17-field1-fieldset-wrapper">',
+		'#suffix' => '</div>'
+	);
+	$query = db_select('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step17_data = $query->execute();
+	if ($form_step17_data)
+	{
+		if ($step17_data = $form_step17_data->fetchObject())
+		{
+			$form['step17_field1_fieldset']['step17_field1_question1'] = array(
+				'#type' => 'hidden',
+				'#default_value' => 'Other recommendations/ Comments',
+				'#required' => TRUE
+			);
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_end_plate_comments($step17_data->id, $step17_data->data_relation);
+			$form['step17_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step17_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
+			if (empty($form_state['step17_num_comment']))
+			{
+				$form_state['step17_num_comment'] = 1;
+			} //empty($form_state['step17_num_comment'])
+			$step17_temp1 = 0;
+			for ($step17_i = 0; $step17_i < $form_state['step17_num_comment']; $step17_i++)
+			{
+				$step17_temp1 = $step17_i;
+				$form['step17_field1_fieldset'][$step17_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step17_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step17_field1_fieldset']["step17_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step17_temp1
+			);
+			$form['step17_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step17_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step17_comment_add_more_callback',
+					'wrapper' => 'step17-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step17_num_comment'] > 1)
+			{
+				$form['step17_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step17_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step17_comment_add_more_callback',
+						'wrapper' => 'step17-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step17_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step17_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step17_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step17_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form['previous2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_save_submit'
+				)
+			);
+		} //$step17_data = $form_step17_data->fetchObject()
+		else
+		{
+			$form['step17_field1_fieldset']['step17_field1_question1'] = array(
+				'#type' => 'hidden',
+				'#default_value' => 'other recommendations/ Comments',
+				'#required' => TRUE
+			);
+			if (empty($form_state['step17_num_comment']))
+			{
+				$form_state['step17_num_comment'] = 1;
+			} //empty($form_state['step17_num_comment'])
+			$step17_temp1 = 0;
+			for ($step17_i = 0; $step17_i < $form_state['step17_num_comment']; $step17_i++)
+			{
+				$step17_temp1 = $step17_i;
+				$form['step17_field1_fieldset'][$step17_i]["comment"] = array(
+					"#type" => "textarea",
+					"#title" => "Comment " . ($step17_temp1 + 1),
+					"#default_value" => ""
+				);
+			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
+			$form['step17_field1_fieldset']["step17_comment_count"] = array(
+				"#type" => "hidden",
+				"#value" => $step17_temp1
+			);
+			$form['step17_field1_fieldset']['add_comment'] = array(
+				'#type' => 'submit',
+				'#value' => t('Add more comment'),
+				'#limit_validation_errors' => array(),
+				'#submit' => array(
+					'step17_comment_add_more_add_one'
+				),
+				'#ajax' => array(
+					'callback' => 'step17_comment_add_more_callback',
+					'wrapper' => 'step17-field1-fieldset-wrapper'
+				)
+			);
+			if ($form_state['step17_num_comment'] > 1)
+			{
+				$form['step17_field1_fieldset']['remove_comment'] = array(
+					'#type' => 'submit',
+					'#value' => t('Remove comment'),
+					'#limit_validation_errors' => array(),
+					'#submit' => array(
+						'step17_comment_add_more_remove_one'
+					),
+					'#ajax' => array(
+						'callback' => 'step17_comment_add_more_callback',
+						'wrapper' => 'step17-field1-fieldset-wrapper'
+					)
+				);
+			} //$form_state['step1_num_comment'] > 1
+			if ($no_js_use)
+			{
+				if (!empty($form['step17_field1_fieldset']['remove_comment']['#ajax']))
+				{
+					unset($form['step17_field1_fieldset']['remove_comment']['#ajax']);
+				} //!empty($form['step17_field1_fieldset']['remove_comment']['#ajax'])
+				unset($form['step17_field1_fieldset']['add_comment']['#ajax']);
+			} //$no_js_use
+			$form['previous1'] = array(
+				'#type' => 'submit',
+				'#value' => 'Previous',
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_previous_submit'
+				)
+			);
+			$form['next2'] = array(
+				'#type' => 'submit',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_end_plate_step17_form_save_submit'
+				)
+			);
+		} //$step17_data = $form_step17_data->fetchObject()
+	} //$form_step17_data
+	return $form;
+}
+function ddq_bb_splice_end_plate_step17_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step17_field1_fieldset']['step17_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step17_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step17_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step17_data = db_query($query, $args);
+	$form_step17_data_count = $form_step17_data->rowCount();
+	$form_step17_data = $form_step17_data->fetchObject();
+	//var_dump($form_step17_data);die;
+	if ($form_step17_data_count != 0)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step17_data->id
+		));
+		$form_step17_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step17_data->id,
+					":number" => $i + $form_step17_comment_data->max + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	} //$form_step17_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/form/step7/' . $user->uid;
+}
+function ddq_bb_splice_end_plate_step17_form_save_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step17_field1_fieldset']['step17_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step17_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step17_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step17_data = db_query($query, $args);
+	$form_step17_data_count = $form_step17_data->rowCount();
+	$form_step17_data = $form_step17_data->fetchObject();
+	//var_dump($form_step17_data);die;
+	if ($form_step17_data_count != 0)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step17_data->id
+		));
+		$form_step17_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step17_data->id,
+					":number" => $i + $form_step17_comment_data->max + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	} //$form_step17_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	}
+	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
+	drupal_goto('home');
+}
+function ddq_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step17_field1_fieldset']['step17_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->fields('ddq_bb_splice_end_plate_form_step17_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step17_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_end_plate_form_step17_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step17_data = db_query($query, $args);
+	$form_step17_data_count = $form_step17_data->rowCount();
+	$form_step17_data = $form_step17_data->fetchObject();
+	//var_dump($form_step17_data);die;
+	if ($form_step17_data_count != 0)
+	{
+		$query = "UPDATE ddq_bb_splice_end_plate_form_step17_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_end_plate_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step17_data->id
+		));
+		$form_step17_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step17_data->id,
+					":number" => $i + $form_step17_comment_data->max + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	} //$form_step7_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_end_plate_form_step17_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step17_field1_fieldset']['step17_field1_question1'],
+			":data_relation" => "step17",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++)
+		{
+			if ($v['step17_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_end_plate_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step17_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step17",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-end-plate/success';
+}
+/***************************************/
+function step17_comment_add_more_add_one($form, &$form_state)
+{
+	$form_state['step17_num_comment']++;
+	$form_state['rebuild'] = TRUE;
+	//$form_state['no_redirect'] = TRUE;
+}
+function step17_comment_add_more_remove_one($form, &$form_state)
+{
+	if ($form_state['step17_num_comment'] > 1)
+	{
+		$form_state['step17_num_comment']--;
+	} //$form_state['step17_num_comment'] > 1
+	$form_state['rebuild'] = TRUE;
+}
+function step17_comment_add_more_callback($form, &$form_state)
+{
+	return $form['step17_field1_fieldset'];
+}
+/***************************************/
+
 function ddq_bb_splice_end_plate_result_page()
 {
 	/* get pending proposals to be approved */
@@ -3688,15 +7663,60 @@ step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
 step8.question1 as "step8_question1"
 
+step9.id as "step9_id",
+step9.data_relation as "step9_data_relation",
+step9.question1 as "step9_question1"
+
+step10.id as "step10_id",
+step10.data_relation as "step10_data_relation",
+step10.question1 as "step10_question1"
+
+step11.id as "step11_id",
+step11.data_relation as "step11_data_relation",
+step11.question1 as "step11_question1"
+
+step12.id as "step12_id",
+step12.data_relation as "step12_data_relation",
+step12.question1 as "step12_question1"
+
+step13.id as "step13_id",
+step13.data_relation as "step13_data_relation",
+step13.question1 as "step13_question1"
+
+step14.id as "step14_id",
+step14.data_relation as "step14_data_relation",
+step14.question1 as "step14_question1"
+
+step15.id as "step15_id",
+step15.data_relation as "step15_data_relation",
+step15.question1 as "step15_question1"
+
+step16.id as "step16_id",
+step16.data_relation as "step16_data_relation",
+step16.question1 as "step16_question1"
+
+step17.id as "step17_id",
+step17.data_relation as "step17_data_relation",
+step17.question1 as "step17_question1"
+
 from ddq_bb_splice_end_plate_form_step1_feedback step1
 
 join ddq_bb_splice_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_bb_splice_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step4 on step3.uid=step4.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step5 on step4.uid=step5.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step6 on step5.uid=step6.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step7 on step6.uid=step7.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step8 on step7.uid=step8.uid
+join ddq_bb_splice_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
+join ddq_bb_splice_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
+join ddq_bb_splice_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddq_bb_splice_end_plate_form_step7_feedback step7 on step6.uid=step7.uid
+join ddq_bb_splice_end_plate_form_step8_feedback step8 on step7.uid=step8.uid
+join ddq_bb_splice_end_plate_form_step9_feedback step9 on step8.uid=step9.uid
+join ddq_bb_splice_end_plate_form_step10_feedback step10 on step9.uid=step10.uid
+join ddq_bb_splice_end_plate_form_step11_feedback step11 on step10.uid=step11.uid
+join ddq_bb_splice_end_plate_form_step12_feedback step12 on step11.uid=step12.uid
+join ddq_bb_splice_end_plate_form_step13_feedback step13 on step12.uid=step13.uid
+join ddq_bb_splice_end_plate_form_step14_feedback step14 on step13.uid=step14.uid
+join ddq_bb_splice_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
+join ddq_bb_splice_end_plate_form_step16_feedback step16 on step15.uid=step16.uid
+join ddq_bb_splice_end_plate_form_step17_feedback step17 on step16.uid=step17.uid
 
 	');
 	$i = 1;
@@ -3719,7 +7739,25 @@ join ddq_bb_splice_end_plate_form_step3_feedback step8 on step7.uid=step8.uid
 			$feedback_data->step7_question1,
 			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step7_id, $feedback_data->step7_data_relation),
 			$feedback_data->step8_question1,
-			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation)
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step8_id, $feedback_data->step8_data_relation),
+			$feedback_data->step9_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step9_id, $feedback_data->step9_data_relation),
+			$feedback_data->step10_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step10_id, $feedback_data->step10_data_relation),
+			$feedback_data->step11_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step11_id, $feedback_data->step11_data_relation),
+			$feedback_data->step12_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step12_id, $feedback_data->step12_data_relation),
+			$feedback_data->step13_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step13_id, $feedback_data->step13_data_relation),
+			$feedback_data->step14_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step14_id, $feedback_data->step14_data_relation),
+			$feedback_data->step15_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step15_id, $feedback_data->step15_data_relation),
+			$feedback_data->step16_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step16_id, $feedback_data->step16_data_relation),
+			$feedback_data->step17_question1,
+			_fetch_exsiting_ddq_bb_splice_end_plate_comments_result($feedback_data->step17_id, $feedback_data->step17_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -3906,15 +7944,61 @@ step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
 step8.question1 as "step8_question1"
 
+step9.id as "step9_id",
+step9.data_relation as "step9_data_relation",
+step9.question1 as "step9_question1"
+
+step10.id as "step10_id",
+step10.data_relation as "step10_data_relation",
+step10.question1 as "step10_question1"
+
+step11.id as "step11_id",
+step11.data_relation as "step11_data_relation",
+step11.question1 as "step11_question1"
+
+
+step12.id as "step12_id",
+step12.data_relation as "step12_data_relation",
+step12.question1 as "step12_question1"
+
+step13.id as "step13_id",
+step13.data_relation as "step13_data_relation",
+step13.question1 as "step13_question1"
+
+step14.id as "step14_id",
+step14.data_relation as "step14_data_relation",
+step14.question1 as "step14_question1"
+
+step15.id as "step15_id",
+step15.data_relation as "step15_data_relation",
+step15.question1 as "step15_question1"
+
+step16.id as "step16_id",
+step16.data_relation as "step16_data_relation",
+step16.question1 as "step16_question1"
+
+step17.id as "step17_id",
+step17.data_relation as "step17_data_relation",
+step17.question1 as "step17_question1"
+
 from ddq_bb_splice_end_plate_form_step1_feedback step1
 
 join ddq_bb_splice_end_plate_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_bb_splice_end_plate_form_step3_feedback step3 on step2.uid=step3.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step4 on step3.uid=step4.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step5 on step4.uid=step5.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step6 on step5.uid=step6.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step7 on step6.uid=step7.uid
-join ddq_bb_splice_end_plate_form_step3_feedback step8 on step7.uid=step8.uid
+join ddq_bb_splice_end_plate_form_step4_feedback step4 on step3.uid=step4.uid
+join ddq_bb_splice_end_plate_form_step5_feedback step5 on step4.uid=step5.uid
+join ddq_bb_splice_end_plate_form_step6_feedback step6 on step5.uid=step6.uid
+join ddq_bb_splice_end_plate_form_step7_feedback step7 on step6.uid=step7.uid
+join ddq_bb_splice_end_plate_form_step8_feedback step8 on step7.uid=step8.uid
+join ddq_bb_splice_end_plate_form_step9_feedback step9 on step8.uid=step9.uid
+join ddq_bb_splice_end_plate_form_step10_feedback step10 on step9.uid=step10.uid
+join ddq_bb_splice_end_plate_form_step11_feedback step11 on step10.uid=step11.uid
+join ddq_bb_splice_end_plate_form_step12_feedback step12 on step11.uid=step12.uid
+join ddq_bb_splice_end_plate_form_step13_feedback step13 on step12.uid=step13.uid
+join ddq_bb_splice_end_plate_form_step14_feedback step14 on step13.uid=step14.uid
+join ddq_bb_splice_end_plate_form_step15_feedback step15 on step14.uid=step15.uid
+join ddq_bb_splice_end_plate_form_step16_feedback step16 on step15.uid=step16.uid
+join ddq_bb_splice_end_plate_form_step17_feedback step17 on step16.uid=step17.uid
 
 	';
 // $args = array(');
@@ -3941,7 +8025,25 @@ join ddq_bb_splice_end_plate_form_step3_feedback step8 on step7.uid=step8.uid
 				$feedback_data->step7_question1,
 				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step7_id, $feedback_data->step7_data_relation),
 				$feedback_data->step8_question1,
-				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation)
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step8_id, $feedback_data->step8_data_relation),
+				$feedback_data->step9_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step9_id, $feedback_data->step9_data_relation),
+				$feedback_data->step10_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step10_id, $feedback_data->step10_data_relation),
+				$feedback_data->step11_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step11_id, $feedback_data->step11_data_relation),
+				$feedback_data->step12_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step12_id, $feedback_data->step12_data_relation),
+				$feedback_data->step13_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step13_id, $feedback_data->step13_data_relation),
+				$feedback_data->step14_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step14_id, $feedback_data->step14_data_relation),
+				$feedback_data->step15_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step15_id, $feedback_data->step15_data_relation),
+				$feedback_data->step16_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step16_id, $feedback_data->step16_data_relation),
+				$feedback_data->step17_question1,
+				_fetch_exsiting_ddq_bb_splice_end_plate_comments_result_csv($feedback_data->step17_id, $feedback_data->step17_data_relation)
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()
