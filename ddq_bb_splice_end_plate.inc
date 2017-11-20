@@ -356,25 +356,73 @@ function ddq_bb_splice_end_plate_step2_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => 'a. Minimum number of bolts is 2, on each side of the web of the supported beam. <br> &emsp;&emsp; This makes the minimum total number of bolts as 4.
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_1.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)
-				<br>
-				<br>
+				'#title' => '&emsp; <strong> a. Osdag Gui </strong> <br> 
 				<hr>
+				&emsp;&emsp;&emsp; 1. List of inputs (input dock). 
 				<br>
+				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp; i. Beam section * </br>
+
+				 &emsp;&emsp;&emsp;&emsp;&emsp; ii. Material strength <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Yield stress (F<sub>y</sub>)* <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Ultimate stress (F<sub>u</sub>)* <br>
+
+				&emsp;&emsp;&emsp;&emsp;&emsp; iii. Factored loads <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Maximum moment* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear force* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Axial force <br>
+
+				&emsp;&emsp;&emsp;&emsp;&emsp; iv. Bolts <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Diameter (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Type* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Grade* <br>
+
+				&emsp;&emsp;&emsp;&emsp;&emsp; v. Plate <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > thickness (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > height (mm) <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > width (mm) <br>
+
+				&emsp;&emsp;&emsp;&emsp;&emsp; vi. Weld size <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam flange (mm)* <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > At beam web (mm)* <br>
+
+				<hr>
+				&emsp;&emsp;&emsp; 2. List of outputs (output dock).
+				<br>
+				<br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp; i. Bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension acting on critical bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Tension capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Shear/bearing capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Combined shear and tension capacity of bolt <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of bolts required <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Number of rows <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Pitch <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Gauge <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Cross-centre gauge <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > End distance <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Edge distance <br>
+
+				&emsp;&emsp;&emsp;&emsp;&emsp; ii. End plate <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Height <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Width <br>
+
+				 &emsp;&emsp;&emsp;&emsp;&emsp; iii. Weld <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at flange <br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; > Critical stress in weld at web <br>
+				<br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: Fields marked with * are mandatory <br>
+
+
+
+				<hr>
 				
-				Is this assumption ok?',
+				Is this list of inputs and outputs ok?
+				You may suggest changes if any, by commenting in the comment section given below.
+				',
 				'#type' => 'radios',
 				'#options' => $step2_options,
-				//'#default_value' => $step2_data->question1,
+				'#default_value' => $step2_data->question1,
 				'#required' => true
 			);
 			$form['step2_field1_fieldset']['step2_field2_reasoning_including_reference_from_literature'] = array(
@@ -831,26 +879,23 @@ function ddq_bb_splice_end_plate_step3_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
-				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)<br>
-				<br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-				<br>				
-				
-
-				Is this assumption ok? ',
+		 &emsp;&emsp;&emsp; 1. Number of bolts. <br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: The configuration is assumed to have 2 columns of bolt <br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the assumption made above for calculating number of bolts correct? <br>
+		
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If No,<br>
+		 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please provide suitable comment in the comment section below.
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Under what circumstances can we provide 4 columns of bolt? <br>
+		<hr>
+						Is this assumption ok? ',
 				'#type' => 'radios',
+				'#default_value' => $step3_data->question1,
 				'#options' => $step3_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step3_field1_fieldset']['step3_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -1330,26 +1375,49 @@ function ddq_bb_splice_end_plate_step4_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
-				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)<br>
-				<br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-				<br>				
-				
+		&emsp;&emsp;&emsp; 2. Force in bolts. <br>
+		<br>
+		&emsp;&emsp;&emsp;&emsp; i. Example 5.23, page 419 - N. Subramanian
+		<br><br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Assumption: Tension in critical bolt is calculated by taking moment about the centre of the bottom flange<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; (method adopted by Osdag) . <br>
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_1.jpg" width="70%" height="80%" align="middle"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
 
-				Is this assumption ok? ',
+		 &emsp;&emsp;&emsp;&emsp; ii. BCSWA approach - section 6.7.1 and equation 6.35, page 6.39 - M.L Gambhir. <br>
+		<br>
+
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/assumption.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<br><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/fig_2.jpg" width="70%" height="80%" align="centre"/><br>
+			<br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> force in bolts
+			<hr>
+		
+		 &emsp;&emsp;&emsp;&emsp; Among (i) and (ii), which method is more appropriate to calculate tension in critical bolt? 			<br>
+		 &emsp;&emsp;&emsp;&emsp; Please comment.
+				<br>
+				 Is this assumption ok? ',
 				'#type' => 'radios',
+				'#default_value' => $step4_data->question1,
 				'#options' => $step4_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step4_field1_fieldset']['step4_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -1800,26 +1868,20 @@ function ddq_bb_splice_end_plate_step5_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
-				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)<br>
-				<br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-				<br>				
-				
-
+		&emsp;&emsp;&emsp; 3. Axial force in beam. <br>
+		<br> 
+		 &emsp;&emsp;&emsp;&emsp; The axial force is assumed to be passing through the C.G of the beam. <br>
+		&emsp;&emsp;&emsp;&emsp; Is the above assumption correct? <br>
+		&emsp;&emsp;&emsp;&emsp; If yes, should we consider moment due to axial force in the outermost (crtical) bolt? <br>
+		<hr>
 				Is this assumption ok? ',
 				'#type' => 'radios',
+				'#default_value' => $step5_data->question1,
 				'#options' => $step5_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step5_field1_fieldset']['step5_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -2271,26 +2333,21 @@ function ddq_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step6_field1_fieldset']['step6_field1_question1'] = array(
-				'#title' => 'b. The maximum number of column of bolts is 2 on each side of the web of the supported beam.  <br>
-				&emsp; &emsp; This makes the maximum total number of bolt column = 4.				
-				<br>
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<img src="' . $img_path . '/ddq_bb_splice_end_plate_figure_2.svg" width="25%" height="25%" align="middle" />
-				<br><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<b> Figure: </b> End Plate Connection<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				(Beam web to Column flange connectivity)<br>
-				<br>
+				'#title' => '&emsp; b. Bolt and bolt forces <br> 
 				<hr>
-				<br>				
+			 &emsp;&emsp;&emsp; 4. Type of bolt. <br>
+		<br> 
+		&emsp;&emsp;&emsp;&emsp; AISC (Design guide 16) recommends use of HSFG bolts in design of splice connections due to high strength <br>&emsp;&emsp;&emsp;&emsp; requirement. <br>
+		&emsp;&emsp;&emsp;&emsp; Can we use bearing bolts in design of splice connection? <br>
+		
 				
-
+				<hr>
 				Is this assumption ok? ',
 				'#type' => 'radios',
+				'#default_value' => $step6_data->question1,
 				'#options' => $step6_options,
 				'#required' => true
+				//'#description' => "Note: You may give 'None' or 'N/A', if you feel that this is not applicable"
 			);
 			$form['step6_field1_fieldset']['step6_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
@@ -2736,16 +2793,23 @@ function ddq_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step7_field1_fieldset']['step7_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
-				<br>
-				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				 &emsp;&emsp;&emsp; 1. End plate dimensions. 				<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; i. Maximum height of end plate <br>
+				
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; There is no specification given on maximum height of end plate. What could be the maximum limit of <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;extension of end plate beyond the flanges<br>
+				 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Please comment below <br>
 				<br>				
+				<b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; NOTE: The moment capacity of the end plate does not depend on its height <br>
+				<br>
+				<hr>				
+				Is this assumption ok?
 				',
 				'#type' => 'radios',
 				'#options' => $step7_options,
-				//'#default_value' => $step7_data->question1,
+				'#default_value' => $step7_data->question1,
 				'#required' => true
 			);
 			if (empty($form_state['step7_num_comment']))
@@ -3174,16 +3238,19 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step8_field1_fieldset']['step8_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				&emsp;&emsp;&emsp; 1. End plate dimensions. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
 				<br>
-				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
-				',
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm on either sides. <br> 	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
+				Is this assumption ok?',
 				'#type' => 'radios',
 				'#options' => $step8_options,
-				//'#default_value' => $step8_data->question1,
+				'#default_value' => $step8_data->question1,
 				'#required' => true
 			);
 			if (empty($form_state['step8_num_comment']))
@@ -3614,16 +3681,21 @@ function ddq_bb_splice_end_plate_step9_form($form, &$form_state, $no_js_use = FA
 		else
 		{
 			$form['step9_field1_fieldset']['step9_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+	
+				&emsp;&emsp;&emsp; 2. Moment capacity of end plate. <br>
 				<br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The moment capacity of end plate should be  based on its plastic 					or elastic capacity? <br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note: We have adopted plastic capacity i.e. M<sub>p</sub> = (f<sub>y</sub>/1.10) (wT<sup>2</sup>/4) <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Reference: equation 5.18, page 350, Design of steel structures- N. Subramaniam] here, w is the width and T is the thickness of end plate. <br>
+				<hr>				
+				Is this assumption ok?
 				',
 				'#type' => 'radios',
 				'#options' => $step9_options,
-				//'#default_value' => $step9_data->question1,
+				'#default_value' => $step9_data->question1,
 				'#required' => true
 			);
 			if (empty($form_state['step9_num_comment']))
@@ -4049,16 +4121,16 @@ function ddq_bb_splice_end_plate_step10_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step10_field1_fieldset']['step10_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; c. End plate.
+				<hr> 
+ &emsp;&emsp;&emsp; 3. Should we have plate grade different from member (beam) grade? <br>
 				<br>
-				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				<hr>				
+				Is this assumption ok?
 				',
 				'#type' => 'radios',
 				'#options' => $step10_options,
-				//'#default_value' => $step10_data->question1,
+				'#default_value' => $step10_data->question1,
 				'#required' => true
 			);
 			if (empty($form_state['step10_num_comment']))
@@ -4495,19 +4567,28 @@ function ddq_bb_splice_end_plate_step11_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step11_field1_fieldset']['step11_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; d. Weld  
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				&emsp;&emsp;&emsp; 1. Weld profile. <br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;
+			<img src="' . $img_path . '/weld_profile_side.svg" width="30%" height="40%" align="middle"/><br>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
+			<br>
+			 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Weld is provided throughout the perimeter of I section. However, the size of weld at flange will be greater than the size of weld at web. <br>
+				
+
+
+				<br>
+				Is the adopted weld profile correct? If No, please suggest a suitable profile.				
 				',
 				'#type' => 'radios',
 				'#options' => $step11_options,
-				//'#default_value' => $step11_data->question1,
+				'#default_value' => $step11_data->question1,
 				'#required' => true
 			);
-			
 			if (empty($form_state['step11_num_comment']))
 			{
 				$form_state['step11_num_comment'] = 1;
@@ -4931,17 +5012,15 @@ function ddq_bb_splice_end_plate_step12_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step12_field1_fieldset']['step12_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; e. Stiffener. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
+				&emsp;&emsp;&emsp; 1. Under what circumstances should we provide stiffeners? <br>
 				<br>				
 				',
 				'#type' => 'radios',
-				'#options' => $step12_options,
-				//'#default_value' => $step12_data->question1,
-				'#required' => true
+				'#default_value' => $step12_data->question1,
+					
 			);
 			
 			if (empty($form_state['step12_num_comment']))
@@ -5373,16 +5452,14 @@ function ddq_bb_splice_end_plate_step13_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step13_field1_fieldset']['step13_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; e. Stiffener. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				&emsp;&emsp;&emsp; 2. What should be the location of stiffeners? (top, bottom or both)				
 				',
 				'#type' => 'radios',
 				'#options' => $step13_options,
-				//'#default_value' => $step13_data->question1,
+				'#default_value' => $step13_data->question1,
 				'#required' => true
 			);
 			
@@ -5815,16 +5892,15 @@ function ddq_bb_splice_end_plate_step14_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step14_field1_fieldset']['step14_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; e. Stiffener. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				&emsp;&emsp;&emsp; 3. What should be the type of stiffener? (example, load bearing etc.) 
+			
 				',
 				'#type' => 'radios',
 				'#options' => $step14_options,
-				//'#default_value' => $step14_data->question1,
+				'#default_value' => $step14_data->question1,
 				'#required' => true
 			);
 			
@@ -6256,16 +6332,15 @@ function ddq_bb_splice_end_plate_step15_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step15_field1_fieldset']['step15_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; e. Stiffener. 
 				<br>
 				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				&emsp;&emsp;&emsp; 4. If it is a load bearing stiffener will there be any reduction in prying force at tension flange or reaction at compression flange?  <br>
+				&emsp;&emsp;&emsp;&emsp; If yes, than how much?			
 				',
 				'#type' => 'radios',
 				'#options' => $step15_options,
-				//'#default_value' => $step15_data->question1,
+				'#default_value' => $step15_data->question1,
 				'#required' => true
 			);
 			
@@ -6696,17 +6771,16 @@ function ddq_bb_splice_end_plate_step16_form($form, &$form_state, $no_js_use = F
 		else
 		{
 			$form['step16_field1_fieldset']['step16_field1_question1'] = array(
-				'#title' => 'This is a specimen page. 
+				'#title' => '&emsp; f. Block shear. 
 				<br>
-				<br>
-				&emsp;&emsp;&emsp; Please do not select any option (ok/not-ok) on this page. 
-				&emsp;&emsp;&emsp; Please do not enter any comment on this page. 
-				<br>				
+				 &emsp;&emsp;&emsp; For block shear failure what could be the possible critical path of failure?. <br>
+				&emsp;&emsp;&emsp; Enumerate the critical path by using the figure given below. <br>	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="' . $img_path . '/4_bolts.png" width="50%" height="40%" align="centre"/><br>
+			<br>		
 				',
 				'#type' => 'radios',
-				'#options' => $step16_options,
-				//'#default_value' => $step16_data->question1,
-				'#required' => true
+				'#default_value' => $step16_data->question1,
+				
 			);
 			
 			if (empty($form_state['step16_num_comment']))
@@ -7661,39 +7735,39 @@ step7.question1 as "step7_question1",
 
 step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
-step8.question1 as "step8_question1"
+step8.question1 as "step8_question1",
 
 step9.id as "step9_id",
 step9.data_relation as "step9_data_relation",
-step9.question1 as "step9_question1"
+step9.question1 as "step9_question1",
 
 step10.id as "step10_id",
 step10.data_relation as "step10_data_relation",
-step10.question1 as "step10_question1"
+step10.question1 as "step10_question1",
 
 step11.id as "step11_id",
 step11.data_relation as "step11_data_relation",
-step11.question1 as "step11_question1"
+step11.question1 as "step11_question1",
 
 step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
-step12.question1 as "step12_question1"
+step12.question1 as "step12_question1",
 
 step13.id as "step13_id",
 step13.data_relation as "step13_data_relation",
-step13.question1 as "step13_question1"
+step13.question1 as "step13_question1",
 
 step14.id as "step14_id",
 step14.data_relation as "step14_data_relation",
-step14.question1 as "step14_question1"
+step14.question1 as "step14_question1",
 
 step15.id as "step15_id",
 step15.data_relation as "step15_data_relation",
-step15.question1 as "step15_question1"
+step15.question1 as "step15_question1",
 
 step16.id as "step16_id",
 step16.data_relation as "step16_data_relation",
-step16.question1 as "step16_question1"
+step16.question1 as "step16_question1",
 
 step17.id as "step17_id",
 step17.data_relation as "step17_data_relation",
@@ -7942,40 +8016,40 @@ step7.question1 as "step7_question1",
 
 step8.id as "step8_id",
 step8.data_relation as "step8_data_relation",
-step8.question1 as "step8_question1"
+step8.question1 as "step8_question1",
 
 step9.id as "step9_id",
 step9.data_relation as "step9_data_relation",
-step9.question1 as "step9_question1"
+step9.question1 as "step9_question1",
 
 step10.id as "step10_id",
 step10.data_relation as "step10_data_relation",
-step10.question1 as "step10_question1"
+step10.question1 as "step10_question1",
 
 step11.id as "step11_id",
 step11.data_relation as "step11_data_relation",
-step11.question1 as "step11_question1"
+step11.question1 as "step11_question1",
 
 
 step12.id as "step12_id",
 step12.data_relation as "step12_data_relation",
-step12.question1 as "step12_question1"
+step12.question1 as "step12_question1",
 
 step13.id as "step13_id",
 step13.data_relation as "step13_data_relation",
-step13.question1 as "step13_question1"
+step13.question1 as "step13_question1",
 
 step14.id as "step14_id",
 step14.data_relation as "step14_data_relation",
-step14.question1 as "step14_question1"
+step14.question1 as "step14_question1",
 
 step15.id as "step15_id",
 step15.data_relation as "step15_data_relation",
-step15.question1 as "step15_question1"
+step15.question1 as "step15_question1",
 
 step16.id as "step16_id",
 step16.data_relation as "step16_data_relation",
-step16.question1 as "step16_question1"
+step16.question1 as "step16_question1",
 
 step17.id as "step17_id",
 step17.data_relation as "step17_data_relation",
