@@ -2203,7 +2203,7 @@ function ddcl_bb_splice_end_plate_step6_form($form, &$form_state, $no_js_use = F
 						
 			</math> - diameter of bolt <br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	<img src="' . $img_path . '/l_v.png" width="50%" height="40%" align="middle"/><br>
+	<img src="' . $img_path . '/l_v(1).png" width="50%" height="40%" align="middle"/><br>
 	<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	Figure:</b> distance between the beam flange or toe of weld to the centre of the nearer bolt 
 		<mi>l</mi>
@@ -2886,7 +2886,7 @@ function ddcl_bb_splice_end_plate_step7_form($form, &$form_state, $no_js_use = F
     <mi>f</mi>
   </msub>
   <mo>+</mo>
-  <mn>50</mn>
+  <mn>25</mn>
   <mi>mm</mi>
 </math>
 		</centre>
@@ -11487,54 +11487,11 @@ function ddcl_bb_splice_end_plate_step20_form($form, &$form_state, $no_js_use = 
     <mi>t</mi>
     <mi>p</mi>
   </msub>
-  <mo>,</mo>
-  <mtext>&#xA0;</mtext>
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>w</mi>
-      <mi>e</mi>
-      <mi>l</mi>
-      <msub>
-        <mi>d</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>f</mi>
-          <mi>l</mi>
-          <mi>a</mi>
-          <mi>n</mi>
-          <mi>g</mi>
-          <mi>e</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
+  
   <mo stretchy="false">)</mo>
 </math>
 &emsp;&emsp;&emsp;&emsp;&emsp;
-	where,  
-				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-					<math xmlns="http://www.w3.org/1998/Math/MathML" align="left">
-  <msub>
-    <mi>t</mi>
-    <mrow class="MJX-TeXAtom-ORD">
-      <mi>w</mi>
-      <mi>e</mi>
-      <mi>l</mi>
-      <msub>
-        <mi>d</mi>
-        <mrow class="MJX-TeXAtom-ORD">
-          <mi>f</mi>
-          <mi>l</mi>
-          <mi>a</mi>
-          <mi>n</mi>
-          <mi>g</mi>
-          <mi>e</mi>
-        </mrow>
-      </msub>
-    </mrow>
-  </msub>
-</math> - weld provided at beam flange
+	where,    
 				<br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -16348,79 +16305,55 @@ join ddcl_bb_splice_end_plate_form_step15_feedback step26 on step25.uid=step26.u
 		'Name',
 		'Institute / Company',
 		'Current Position',
-		'Page 2 Material Strength',
-		'Page 2 Material Strength not-ok comment',
-		'Page 2 comments',
-		'Page 3 Bolt-shear-black bolt',
-		'Page 3 Bolt-shear-black bolt not-ok comment',
-		'Page 3 comments',
-		'Page 4 Bolt-shear-HSFG',
-		'Page 4 Bolt-shear-HSFG not-ok comment',
-		'Page 4 comments',
-		'Page 5 Bolt-bearing-capacity',
-		'Page 5 Bolt-bearing-capacity not-ok comment',
-		'Page 5 comments',
-		'Page 6 Bolt value ',
-		'Page 6 Bolt value not-ok comment',
-		'Page 6 comments',
-		'Page 7 Bolt-numbers-and-group-capacity',
-		'Page 7 Bolt-numbers-and-group-capacity not-ok comment',
-		'Page 7 comments',
-		'Page 8 Plate-height',
-		'Page 8 Plate-height not-ok comment',
-		'Page 8 comments',
-		'Page 9 Plate-thickness',
-		'Page 9 Plate-thickness not-ok comment',
-		'Page 9 comments',
-		'Page 10 Plate-block-shear',
-		'Page 10 Plate-block-shear not-ok comment',
-		'Page 10 comments',
-		'Page 11 Weld-shear-strength',
-		'Page 11 Weld-shear-strength not-ok comment',
-		'Page 11 comments',
-		'Page 12 Weld-minimum-thickness',
-		'Page 12 Weld-minimum-thickness not-ok comment',
-		'Page 12 comments',
-		'Page 13 Detailing-checks-spacing',
-		'Page 13 Detailing-checks-spacing not-ok comment',
-		'Page 13 comments',
-		'Page 14 Detailing-checks-end_edge',
-		'Page 14 Detailing-checks-end_edge not-ok comment',
-		'Page 14 comments',
-		'Page 15 Sample',
-		'Page 15 Sample',
-		'Page 15 comments',
-		'Page 16 Sample',
-		'Page 16 Sample',
-		'Page 16 comments',
-		'Page 17 Sample',
-		'Page 17 Sample',
-		'Page 17 comments',
-		'Page 18 Sample',
-		'Page 18 Sample',
-		'Page 18 comments',
-		'Page 19 Sample',
-		'Page 19 Sample',
-		'Page 19 comments',
-		'Page 20 Sample',
-		'Page 20 Sample',
-		'Page 20 comments',
-		'Page 21 Sample',
-		'Page 21 Sample',
-		'Page 21 comments',
-		'Page 22 Sample',
-		'Page 22 Sample',
-		'Page 22 comments',
-		'Page 23 Sample',
-		'Page 23 Sample',
-		'Page 23 comments',
-		'Page 24 Sample',
-		'Page 24 Sample',
-		'Page 24 comments',
-		'Page 25 Sample',
-		'Page 25 Sample',
-		'Page 25 comments',
-		'Page 26 Any other comments'
+		'    STEP 2 - a. Number of bolts (N) ',
+		'comment',
+    'STEP 3 - a. Number of bolts > ii. Selecting configuration based on number of bolts ',
+    'comment',
+    'STEP 4 -  b. Material Strength ',
+    'comment',
+    'STEP 5 -  c. Detailing Checks ',
+    'comment',
+    'STEP 6 - c. Detailing Checks ',
+    'comment',
+    'STEP 7 - d. Plate dimensions ',
+    'comment',
+    'STEP 8 - e. Bolt forces ',
+    'comment',
+   ' STEP 9 - f. Bolt > i. Tension Capacity of bolt',
+   'comment',
+    'STEP 10 -   f. Bolt > ii. Shear and bearing capacities of bolt ',
+    'comment',
+    'STEP 11 -   f. Bolt > iii. Combined shear and tension capacity of bolt  ',
+    'comment',
+    'STEP 12 - g. End plate > i. Thickness of end plate ',
+    'comment',
+    'STEP 13 -  g. End plate  > ii. Shear yielding of end plate > iii. Shear rupture of end plate',
+    'comment',
+    'STEP 14 -  g. End plate  >  iv. Block shear capacity of end plate',
+    'comment',
+    'STEP 15 -  h. Member checks > i. Strength of flange under compression ',
+    'comment',
+    'STEP 16 -  i. Design of weld > i. Weld profile   ',
+    'comment',
+    'STEP 17 -    i. Design of weld >  ii. Size of weld at beam flange  >  1. Minimum weld thickness',
+    'comment',
+    'STEP 18 -  i. Design of weld > 2 Capacity of unit weld > 3.  Effective weld length > 4. Area of weld ',
+    'comment',
+    'STEP 19 -  i. Design of weld >    5. Stresses on weld > 6.  Size of weld (provided) ',
+'comment',
+    'STEP 20 -  i. Design of weld >  iii. Size of weld at beam web >  1. Minimum weld thickness > 2. Size of weld ( provided ) ',
+    'comment',
+    'STEP 21 - j. Weld checks >  i. Maximum weld thickness  >  ii. Check for stresses in weld due to individual forces (weld at flange)',
+    'comment',
+    'STEP 22 - j. Weld checks >  ii. Check for stresses in weld due to individual forces (weld at beam web) > ',
+    'comment',    
+    'STEP 23 - k. Design of stiffener >  i. Stiffener configuration  >  ii. height of stiffener >  iii. length of stiffener',
+    'comment',
+    'STEP 24 - k. Design of stiffener >  iv. thickness of stiffener >  v. check of stiffener against local buckling ',
+    'comment',
+    'STEP 25 -l.  Additional checks ',
+    'comment',
+    'STEP 26 - Other comments',
 	);
 	$output .= theme('table', array(
 		'header' => $data_header,

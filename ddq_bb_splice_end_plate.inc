@@ -3142,7 +3142,7 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 				&emsp;&emsp;&emsp; 1. End plate dimensions. <br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
 				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm on either sides. <br> 	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm. <br> 	
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
 				Is this assumption ok?',
@@ -3244,7 +3244,7 @@ function ddq_bb_splice_end_plate_step8_form($form, &$form_state, $no_js_use = FA
 				&emsp;&emsp;&emsp; 1. End plate dimensions. <br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ii. Maximum width of end plate <br>
 				<br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm on either sides. <br> 	
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; AISC (design guide 16, page 12) recommends maximum plate width as width of flange plus 25 mm . <br> 	
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Is the above recommendation valid?. <br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If no, then please recommend. <br>
 				Is this assumption ok?',
@@ -4463,7 +4463,8 @@ function ddq_bb_splice_end_plate_step11_form($form, &$form_state, $no_js_use = F
 				&emsp;&emsp;&emsp; 1. Weld profile. <br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			&emsp;&emsp;&emsp;&emsp;&emsp;
-			<img src="' . $img_path . '/weld_profile_side.svg" width="30%" height="40%" align="middle"/><br>
+			
+			<img src="' . $img_path . '/weld_side.png" align="middle" width="30%" height="50%"><br>
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Figure:</b> Weld profile (side view)
 			<br>
@@ -7845,12 +7846,24 @@ join ddq_bb_splice_end_plate_form_step17_feedback step17 on step16.uid=step17.ui
 		'No.',
 		'Date of Submission',
 		'User',
-		'The minimum number of bolts is 2, on each side of the web of the supported beam. This makes the minimum total number of bolts as 4. Is this assumption ok?',
-		'comments',
-		'The maximum number of column of bolts is 2 on each side of the web of the supported beam. This makes the maximum total number of bolt columns as 4. Is this assumption ok? ',
-		'comments',		
-		'Any other recommendation/ Comments?',
-		'comments'
+		'STEP 1 - a. Osdag Gui' ,
+		'STEP 2 -  b. Bolt and bolt forces >  1. Number of bolts.',
+		'STEP 3 -  b. Bolt and bolt forces >  2. Force in bolts. ',
+		'STEP 4 - b. Bolt and bolt forces > 3. Axial force in beam. ',
+		'STEP 5 - b. Bolt and bolt forces >  4. Type of bolt. ',
+		'STEP 6 - c. End plate. >  1. End plate dimensions.',
+		'STEP 7 - c. End plate. > 1. End plate dimensions.',
+		'STEP 8 - c. End plate. > 2. Moment capacity of end plate.',
+		'STEP 9 -  c. End plate. > 2. Moment capacity of end plate.', 
+		'STEP 10 -  c. End plate. > Plate grade    ',
+		'STEP 11 - d. Weld > 1. Weld profile. ',
+		'STEP 12 -  e. Stiffener.      ',
+		'STEP 13 -  e. Stiffener. > Location of stiffener ',
+		'STEP 14 -  e. Stiffener. > Type of stiffener ',
+		'STEP 15 - e. Stiffener.',
+		'STEP 16 - f. Block shear.',
+		'STEP 17 - Other comments'
+		
 	);
 	$output .= theme('table', array(
 		'header' => $data_header,
