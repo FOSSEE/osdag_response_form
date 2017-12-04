@@ -147,7 +147,7 @@ function ddcl_bb_splice_end_plate_step1_form_submit($form, &$form_state, $no_js_
 			db_query($query, $args);
 		}
 	} //$form_step1_data
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step2/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step2/' . $user->uid;
 }
 /*************************************************************************/
 /************************ Step 2 form starts *********************/
@@ -558,7 +558,7 @@ function ddcl_bb_splice_end_plate_step2_form_previous_submit($form, &$form_state
 			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step1/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step1/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step2_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -652,7 +652,7 @@ function ddcl_bb_splice_end_plate_step2_form_next_submit($form, &$form_state, $n
 			} //$v['step2_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step2_field1_fieldset']["step2_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step3/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step3/' . $user->uid;
 }
 /***************************************/
 /***************************************/
@@ -1036,7 +1036,7 @@ function ddcl_bb_splice_end_plate_step3_form_previous_submit($form, &$form_state
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step2/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step2/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step3_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -1131,7 +1131,7 @@ function ddcl_bb_splice_end_plate_step3_form_next_submit($form, &$form_state, $n
 			} //$v['step3_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step3_field1_fieldset']["step3_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step4/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step4/' . $user->uid;
 }
 /***************************************/
 function step3_comment_add_more_add_one($form, &$form_state)
@@ -1519,7 +1519,7 @@ function ddcl_bb_splice_end_plate_step4_form_previous_submit($form, &$form_state
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step3/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step3/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -1614,7 +1614,7 @@ function ddcl_bb_splice_end_plate_step4_form_next_submit($form, &$form_state, $n
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step5/' . $user->uid;
 }
 /***************************************/
 function step4_comment_add_more_add_one($form, &$form_state)
@@ -2014,7 +2014,7 @@ function ddcl_bb_splice_end_plate_step5_form_previous_submit($form, &$form_state
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step4/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step4/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -2109,7 +2109,7 @@ function ddcl_bb_splice_end_plate_step5_form_next_submit($form, &$form_state, $n
 			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step6/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step6/' . $user->uid;
 }
 /***************************************/
 function step5_comment_add_more_add_one($form, &$form_state)
@@ -2543,7 +2543,7 @@ function ddcl_bb_splice_end_plate_step6_form_previous_submit($form, &$form_state
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step5/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step5/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step6_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -2648,7 +2648,7 @@ function ddcl_bb_splice_end_plate_step6_form_next_submit($form, &$form_state, $n
 			} //$v['step6_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step6_field1_fieldset']["step6_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step7/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step7/' . $user->uid;
 }
 /***************************************/
 function step6_comment_add_more_add_one($form, &$form_state)
@@ -3236,7 +3236,7 @@ function ddcl_bb_splice_end_plate_step7_form_previous_submit($form, &$form_state
 			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step6/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step6/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step7_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -3341,7 +3341,7 @@ function ddcl_bb_splice_end_plate_step7_form_next_submit($form, &$form_state, $n
 			} //$v['step7_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step7_field1_fieldset']["step7_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step8/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step8/' . $user->uid;
 }
 /***************************************/
 function step7_comment_add_more_add_one($form, &$form_state)
@@ -3986,7 +3986,7 @@ function ddcl_bb_splice_end_plate_step8_form_previous_submit($form, &$form_state
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step7/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step7/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step8_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -4091,7 +4091,7 @@ function ddcl_bb_splice_end_plate_step8_form_next_submit($form, &$form_state, $n
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step8_field1_fieldset']["step8_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step9/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step9/' . $user->uid;
 }
 /***************************************/
 function step8_comment_add_more_add_one($form, &$form_state)
@@ -4757,7 +4757,7 @@ function ddcl_bb_splice_end_plate_step9_form_previous_submit($form, &$form_state
 			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step8/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step8/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step9_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -4862,7 +4862,7 @@ function ddcl_bb_splice_end_plate_step9_form_next_submit($form, &$form_state, $n
 			} //$v['step9_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step9_field1_fieldset']["step9_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step10/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step10/' . $user->uid;
 }
 /***************************************/
 function step9_comment_add_more_add_one($form, &$form_state)
@@ -5242,7 +5242,7 @@ function ddcl_bb_splice_end_plate_step10_form_previous_submit($form, &$form_stat
 			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step9/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step9/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step10_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -5347,7 +5347,7 @@ function ddcl_bb_splice_end_plate_step10_form_next_submit($form, &$form_state, $
 			} //$v['step10_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step10_field1_fieldset']["step10_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step11/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step11/' . $user->uid;
 }
 /***************************************/
 function step10_comment_add_more_add_one($form, &$form_state)
@@ -5892,7 +5892,7 @@ function ddcl_bb_splice_end_plate_step11_form_previous_submit($form, &$form_stat
 			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step10/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step10/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step11_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -5997,7 +5997,7 @@ function ddcl_bb_splice_end_plate_step11_form_next_submit($form, &$form_state, $
 			} //$v['step11_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step11_field1_fieldset']["step11_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step12/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step12/' . $user->uid;
 }
 /***************************************/
 function step11_comment_add_more_add_one($form, &$form_state)
@@ -6488,7 +6488,7 @@ function ddcl_bb_splice_end_plate_step12_form_previous_submit($form, &$form_stat
 			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step11/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step11/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step12_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -6593,7 +6593,7 @@ function ddcl_bb_splice_end_plate_step12_form_next_submit($form, &$form_state, $
 			} //$v['step12_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step12_field1_fieldset']["step12_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step13/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step13/' . $user->uid;
 }
 /***************************************/
 function step12_comment_add_more_add_one($form, &$form_state)
@@ -7192,7 +7192,7 @@ function ddcl_bb_splice_end_plate_step13_form_previous_submit($form, &$form_stat
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step12/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step12/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step13_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -7315,8 +7315,8 @@ function ddcl_bb_splice_end_plate_step13_form_next_submit($form, &$form_state, $
 			} //$v['step13_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step13_field1_fieldset']["step13_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step14/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step14/' . $user->uid;
 }
 /***************************************/
 function step13_comment_add_more_add_one($form, &$form_state)
@@ -7705,7 +7705,7 @@ function ddcl_bb_splice_end_plate_step14_form_previous_submit($form, &$form_stat
 			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step13/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step13/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step14_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -7828,8 +7828,8 @@ function ddcl_bb_splice_end_plate_step14_form_next_submit($form, &$form_state, $
 			} //$v['step14_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step14_field1_fieldset']["step14_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step15/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step15/' . $user->uid;
 }
 /***************************************/
 function step14_comment_add_more_add_one($form, &$form_state)
@@ -8391,7 +8391,7 @@ function ddcl_bb_splice_end_plate_step15_form_previous_submit($form, &$form_stat
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step14/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step14/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step15_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -8514,8 +8514,8 @@ function ddcl_bb_splice_end_plate_step15_form_next_submit($form, &$form_state, $
 			} //$v['step15_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step15_field1_fieldset']["step15_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step16/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step16/' . $user->uid;
 }
 /***************************************/
 function step15_comment_add_more_add_one($form, &$form_state)
@@ -8918,7 +8918,7 @@ function ddcl_bb_splice_end_plate_step16_form_previous_submit($form, &$form_stat
 			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step15/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step15/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step16_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -9041,8 +9041,8 @@ function ddcl_bb_splice_end_plate_step16_form_next_submit($form, &$form_state, $
 			} //$v['step16_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step16_field1_fieldset']["step16_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step17/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step17/' . $user->uid;
 }
 /***************************************/
 function step16_comment_add_more_add_one($form, &$form_state)
@@ -9632,7 +9632,7 @@ function ddcl_bb_splice_end_plate_step17_form_previous_submit($form, &$form_stat
 			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step16/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step16/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -9745,8 +9745,8 @@ function ddcl_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $
 			} //$v['step17_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step17_field1_fieldset']["step17_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step18/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step18/' . $user->uid;
 }
 /***************************************/
 function step17_comment_add_more_add_one($form, &$form_state)
@@ -10390,7 +10390,7 @@ function ddcl_bb_splice_end_plate_step18_form_previous_submit($form, &$form_stat
 			} //$v['step18_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step18_field1_fieldset']["step18_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step17/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step17/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step18_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -10508,8 +10508,8 @@ function ddcl_bb_splice_end_plate_step18_form_next_submit($form, &$form_state, $
 			} //$v['step18_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step18_field1_fieldset']["step18_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step19/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step19/' . $user->uid;
 }
 /***************************************/
 function step18_comment_add_more_add_one($form, &$form_state)
@@ -11074,7 +11074,7 @@ function ddcl_bb_splice_end_plate_step19_form_previous_submit($form, &$form_stat
 			} //$v['step19_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step19_field1_fieldset']["step19_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step18/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step18/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step19_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -11197,8 +11197,8 @@ function ddcl_bb_splice_end_plate_step19_form_next_submit($form, &$form_state, $
 			} //$v['step19_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step19_field1_fieldset']["step19_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step20/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step20/' . $user->uid;
 }
 /***************************************/
 function step19_comment_add_more_add_one($form, &$form_state)
@@ -11863,7 +11863,7 @@ function ddcl_bb_splice_end_plate_step20_form_previous_submit($form, &$form_stat
 			} //$v['step20_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step20_field1_fieldset']["step20_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step19/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step19/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step20_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -11986,8 +11986,8 @@ function ddcl_bb_splice_end_plate_step20_form_next_submit($form, &$form_state, $
 			} //$v['step20_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step20_field1_fieldset']["step20_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step21/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step21/' . $user->uid;
 }
 /***************************************/
 function step20_comment_add_more_add_one($form, &$form_state)
@@ -12507,7 +12507,7 @@ function ddcl_bb_splice_end_plate_step21_form_previous_submit($form, &$form_stat
 			} //$v['step21_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step21_field1_fieldset']["step21_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step20/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step20/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step21_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -12630,8 +12630,8 @@ function ddcl_bb_splice_end_plate_step21_form_next_submit($form, &$form_state, $
 			} //$v['step21_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step21_field1_fieldset']["step21_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step22/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step22/' . $user->uid;
 }
 /***************************************/
 function step21_comment_add_more_add_one($form, &$form_state)
@@ -13175,7 +13175,7 @@ function ddcl_bb_splice_end_plate_step22_form_previous_submit($form, &$form_stat
 			} //$v['step22_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step22_field1_fieldset']["step22_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step21/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step21/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step22_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -13298,8 +13298,8 @@ function ddcl_bb_splice_end_plate_step22_form_next_submit($form, &$form_state, $
 			} //$v['step22_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step22_field1_fieldset']["step22_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step23/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step23/' . $user->uid;
 }
 /***************************************/
 function step22_comment_add_more_add_one($form, &$form_state)
@@ -13801,7 +13801,7 @@ function ddcl_bb_splice_end_plate_step23_form_previous_submit($form, &$form_stat
 			} //$v['step23_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step23_field1_fieldset']["step23_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step22/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step22/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step23_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -13924,8 +13924,8 @@ function ddcl_bb_splice_end_plate_step23_form_next_submit($form, &$form_state, $
 			} //$v['step23_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step23_field1_fieldset']["step23_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step24/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step24/' . $user->uid;
 }
 /***************************************/
 function step23_comment_add_more_add_one($form, &$form_state)
@@ -14477,7 +14477,7 @@ function ddcl_bb_splice_end_plate_step24_form_previous_submit($form, &$form_stat
 			} //$v['step24_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step24_field1_fieldset']["step24_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step23/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step23/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step24_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -14600,8 +14600,8 @@ function ddcl_bb_splice_end_plate_step24_form_next_submit($form, &$form_state, $
 			} //$v['step24_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step24_field1_fieldset']["step24_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step25/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step25/' . $user->uid;
 }
 /***************************************/
 function step24_comment_add_more_add_one($form, &$form_state)
@@ -15231,7 +15231,7 @@ function ddcl_bb_splice_end_plate_step25_form_previous_submit($form, &$form_stat
 			} //$v['step25_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step25_field1_fieldset']["step25_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step24/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step24/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step25_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -15354,8 +15354,8 @@ function ddcl_bb_splice_end_plate_step25_form_next_submit($form, &$form_state, $
 			} //$v['step25_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step25_field1_fieldset']["step25_comment_count"]; $i++
 	}
-	//$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success';
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step26/' . $user->uid;
+	//$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success';
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step26/' . $user->uid;
 }
 /***************************************/
 function step25_comment_add_more_add_one($form, &$form_state)
@@ -15726,7 +15726,7 @@ function ddcl_bb_splice_end_plate_step26_form_previous_submit($form, &$form_stat
 			} //$v['step26_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step26_field1_fieldset']["step26_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/form/step25/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/form/step25/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step26_form_next_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -15847,7 +15847,7 @@ function ddcl_bb_splice_end_plate_step26_form_next_submit($form, &$form_state, $
 			} //$v['step8_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step26_field1_fieldset']["step26_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddcl-bb-splice-end-plate/success/' . $user->uid;
+	$form_state['redirect'] = 'ddcl-bb-splice-extended-end-plate/success/' . $user->uid;
 }
 function ddcl_bb_splice_end_plate_step26_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
@@ -16006,7 +16006,7 @@ function ddcl_bb_splice_end_plate_result_page()
 {
 	/* get pending proposals to be approved */
 	$output = "";
-	$output .= l("Download All Result in CSV", "ddcl-bb-splice-end-plate/form/result/download");
+	$output .= l("Download All Result in CSV", "ddcl-bb-splice-extended-end-plate/form/result/download");
 	$feedback_rows = array();
 	$feedback_q = db_query('
 
@@ -16401,7 +16401,7 @@ function _fetch_existing_ddcl_bb_splice_end_plate_comments($step_id, $data_relat
 		while ($row = $query_for_comment->fetchObject())
 		{
 			$comment[$i] = $i + 1 . ") " . $row->comment . "<br><h6 style='text-align: right;'>
-			<a href='{$base_url}/ddcl-bb-splice-end-plate/delete/{$row->data_relation}/{$row->id}'>Delete</a><br>" . $row->inserted_on . "</h6><br>";
+			<a href='{$base_url}/ddcl-bb-splice-extended-end-plate/delete/{$row->data_relation}/{$row->id}'>Delete</a><br>" . $row->inserted_on . "</h6><br>";
 			$i++;
 		} //$row = $query_for_comment->fetchObject()
 	} //$query_for_comment == NULL
@@ -16431,7 +16431,7 @@ function ddcl_bb_splice_end_plate_delete_comment()
 			drupal_set_message("MySQL Error: row deletion failed.");
 		}
 	} //$comment_id && user_access("osdag_feedback_form")
-	drupal_goto("{$base_url}/ddcl-bb-splice-end-plate/{$comment_step}/");
+	drupal_goto("{$base_url}/ddcl-bb-splice-extended-end-plate/{$comment_step}/");
 }
 function _fetch_ddcl_bb_splice_end_plate_existing_comments($step_id, $data_relation)
 {
@@ -16506,13 +16506,13 @@ function ddcl_bb_splice_end_plate_result_generate_csv()
 	global $user;
 	if ($user->uid != NULL)
 	{
-		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-downloads/ddcl-bb-splice-end-plate-result/{$user->uid}/";
+		$result_dir = $_SERVER['DOCUMENT_ROOT'] . base_path() . "osdag-downloads/ddcl-bb-splice-extended-end-plate-result/{$user->uid}/";
 		if (!file_exists($result_dir))
 		{
 			mkdir($result_dir, 0755, TRUE);
 		} //!file_exists($result_dir)
-		$result_file = $result_dir . "ddcl-bb-splice-end-plate-result-{$user->uid}" . ".csv";
-		$csv_file = "ddcl-bb-splice-end-plate-result-{$user->uid}" . ".csv";
+		$result_file = $result_dir . "ddcl-bb-splice-extended-end-plate-result-{$user->uid}" . ".csv";
+		$csv_file = "ddcl-bb-splice-extended-end-plate-result-{$user->uid}" . ".csv";
 		$fp = fopen($result_file, "w");
 		/* making the first row */
 		$item = array(
