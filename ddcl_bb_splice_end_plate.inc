@@ -7279,7 +7279,7 @@ function ddcl_bb_splice_end_plate_step13_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -7792,7 +7792,7 @@ function ddcl_bb_splice_end_plate_step14_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -8478,7 +8478,7 @@ function ddcl_bb_splice_end_plate_step15_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -9005,7 +9005,7 @@ function ddcl_bb_splice_end_plate_step16_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -9714,7 +9714,7 @@ function ddcl_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -10472,7 +10472,7 @@ function ddcl_bb_splice_end_plate_step18_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -11161,7 +11161,7 @@ function ddcl_bb_splice_end_plate_step19_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -11950,7 +11950,7 @@ function ddcl_bb_splice_end_plate_step20_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -12594,7 +12594,7 @@ function ddcl_bb_splice_end_plate_step21_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -13262,7 +13262,7 @@ function ddcl_bb_splice_end_plate_step22_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -13888,7 +13888,7 @@ function ddcl_bb_splice_end_plate_step23_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -14564,7 +14564,7 @@ function ddcl_bb_splice_end_plate_step24_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -15318,7 +15318,7 @@ function ddcl_bb_splice_end_plate_step25_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -15811,7 +15811,7 @@ function ddcl_bb_splice_end_plate_step26_form_next_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -15932,7 +15932,7 @@ function ddcl_bb_splice_end_plate_step26_form_save_submit($form, &$form_state, $
 		$queryfinish = "UPDATE ddcl_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -16431,7 +16431,7 @@ function ddcl_bb_splice_end_plate_delete_comment()
 			drupal_set_message("MySQL Error: row deletion failed.");
 		}
 	} //$comment_id && user_access("osdag_feedback_form")
-	drupal_goto("{$base_url}/ddcl-bb-splice-extended-end-plate/{$comment_step}/");
+	drupal_goto("{$base_url}/ddcl-bb-splice-extended-end-plate/form/{$comment_step}/");
 }
 function _fetch_ddcl_bb_splice_end_plate_existing_comments($step_id, $data_relation)
 {

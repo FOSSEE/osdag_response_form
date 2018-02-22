@@ -7326,7 +7326,7 @@ function ddq_bb_splice_end_plate_step17_form_previous_submit($form, &$form_state
 		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -7382,7 +7382,7 @@ function ddq_bb_splice_end_plate_step17_form_previous_submit($form, &$form_state
 		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -7509,7 +7509,7 @@ function ddq_bb_splice_end_plate_step17_form_save_submit($form, &$form_state, $n
 		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -7581,7 +7581,7 @@ function ddq_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $n
 		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
@@ -7637,7 +7637,7 @@ function ddq_bb_splice_end_plate_step17_form_next_submit($form, &$form_state, $n
 		$queryfinish = "UPDATE ddq_bb_splice_end_plate_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
 		$args_finish = array(
 			":uid" => $user->uid,
-			":submitted" => 0
+			":submitted" => 1
 		);
 		/* storing the row id in $result */
 		$resultfinish = db_query($queryfinish, $args_finish, array(
