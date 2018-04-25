@@ -2244,6 +2244,61 @@ List)'),
 		),
 		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
 	);
+	$items['ddcl-bb-splice-cover-plate-bolted/form/step27'] = array(
+		'title' => t('DDCL BB Splice Cover Plate Bolted'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_bb_splice_cover_plate_bolted_step27_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
+	);
+	$items['ddcl-bb-splice-cover-plate-bolted/form/step28'] = array(
+		'title' => t('DDCL BB Splice Cover Plate Bolted'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_bb_splice_cover_plate_bolted_step28_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
+	);
+	$items['ddcl-bb-splice-cover-plate-bolted/form/step29'] = array(
+		'title' => t('DDCL BB Splice Cover Plate Bolted'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_bb_splice_cover_plate_bolted_step29_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
+	);
+	$items['ddcl-bb-splice-cover-plate-bolted/form/step30'] = array(
+		'title' => t('DDCL BB Splice Cover Plate Bolted'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_bb_splice_cover_plate_bolted_step30_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
+	);
+	$items['ddcl-bb-splice-cover-plate-bolted/form/step31'] = array(
+		'title' => t('DDCL BB Splice Cover Plate Bolted'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array(
+			'ddcl_bb_splice_cover_plate_bolted_step31_form'
+		),
+		'access arguments' => array(
+			'access osdag_feedback_form'
+		),
+		'file' => 'ddcl_bb_splice_cover_plate_bolted.inc'
+	);
 	// Delete the comment
 	$items['ddcl-bb-splice-cover-plate-bolted/delete'] = array(
 		'title' => t('DDCL BB Splice Cover Plate Bolted'),
@@ -2342,39 +2397,6 @@ List)'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array(
 			'ddq_bb_splice_cover_plate_bolted_step5_form'
-		),
-		'access arguments' => array(
-			'access osdag_feedback_form'
-		),
-		'file' => 'ddq_bb_splice_cover_plate_bolted.inc'
-	);
-	$items['ddq-bb-splice-cover-plate-bolted/form/step6'] = array(
-		'title' => t('DDQ BB Splice Cover Plate Bolted'),
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array(
-			'ddq_bb_splice_cover_plate_bolted_step6_form'
-		),
-		'access arguments' => array(
-			'access osdag_feedback_form'
-		),
-		'file' => 'ddq_bb_splice_cover_plate_bolted.inc'
-	);
-	$items['ddq-bb-splice-cover-plate-bolted/form/step7'] = array(
-		'title' => t('DDQ BB Splice Cover Plate Bolted'),
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array(
-			'ddq_bb_splice_cover_plate_bolted_step7_form'
-		),
-		'access arguments' => array(
-			'access osdag_feedback_form'
-		),
-		'file' => 'ddq_bb_splice_cover_plate_bolted.inc'
-	);
-	$items['ddq-bb-splice-cover-plate-bolted/form/step8'] = array(
-		'title' => t('DDQ BB Splice Cover Plate Bolted'),
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array(
-			'ddq_bb_splice_cover_plate_bolted_step8_form'
 		),
 		'access arguments' => array(
 			'access osdag_feedback_form'
