@@ -2392,17 +2392,7 @@ List)'),
 		),
 		'file' => 'ddq_bb_splice_cover_plate_bolted.inc'
 	);
-	$items['ddq-bb-splice-cover-plate-bolted/form/step5'] = array(
-		'title' => t('DDQ BB Splice Cover Plate Bolted'),
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array(
-			'ddq_bb_splice_cover_plate_bolted_step5_form'
-		),
-		'access arguments' => array(
-			'access osdag_feedback_form'
-		),
-		'file' => 'ddq_bb_splice_cover_plate_bolted.inc'
-	);
+
 	// Delete the comment
 	$items['ddq-bb-splice-cover-plate-bolted/delete'] = array(
 		'title' => t('DDQ BB Splice Cover Plate Bolted successful!'),

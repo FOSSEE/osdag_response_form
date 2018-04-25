@@ -206,81 +206,6 @@ function ddcl_bb_splice_cover_plate_bolted_step2_form($form, &$form_state, $no_j
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
-			$form['step2_field1_fieldset']['step2_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok?</strong>',
-				'#type' => 'radios',
-				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
-				),
-				'#required' => true
-			);
-			$form['step2_field1_fieldset']['step2_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not?',
-				'#type' => 'textarea',
-				'#states' => array(
-					'visible' => array(
-						':input[name="step2_field1_fieldset\\[step2_field1_question_ok\\]"]' => array(
-							array(
-								'value' => t('Not ok')
-							)
-						)
-					)
-				)
-			);
-			if (empty($form_state['step2_num_comment']))
-			{
-				$form_state['step2_num_comment'] = 1;
-			} //empty($form_state['step2_num_comment'])
-			$step2_temp1 = 0;
-			for ($step2_i = 0; $step2_i < $form_state['step2_num_comment']; $step2_i++)
-			{
-				$step2_temp1 = $step2_i;
-				$form['step2_field1_fieldset'][$step2_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step2_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step2_field1_fieldset']["step2_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step2_temp1
-			);
-			$form['step2_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step2_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step2_comment_add_more_callback',
-					'wrapper' => 'step2-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step2_num_comment'] > 1)
-			{
-				$form['step2_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step2_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step2_comment_add_more_callback',
-						'wrapper' => 'step2-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step2_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step2_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step2_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
 			$form["step1_page_id"] = array(
 				"#type" => "hidden",
 				"#value" => "step1"
@@ -735,7 +660,8 @@ function ddcl_bb_splice_cover_plate_bolted_step3_form($form, &$form_state, $no_j
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#markup' => $markup_text
+				'#markup' => $markup_text,
+				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
@@ -744,11 +670,13 @@ function ddcl_bb_splice_cover_plate_bolted_step3_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
+				'#default_value' => $step3_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step3_field1_fieldset']['step3_field1_question_not_ok_comment'] = array(
-				//'#title' => 'If not?',
+				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
+				'#default_value' => $step3_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step3_field1_fieldset\\[step3_field1_question_ok\\]"]' => array(
@@ -759,6 +687,18 @@ function ddcl_bb_splice_cover_plate_bolted_step3_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step3_data->id, $step3_data->data_relation);
+			$icom = 1;
+			$form['step3_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step3_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step3_num_comment']))
 			{
 				$form_state['step3_num_comment'] = 1;
@@ -1328,6 +1268,15 @@ function ddcl_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_j
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
 				'#markup' => $markup_text
 			);
+			$form['step4_field1_fieldset']['tooltip1'] = array(
+				'#type' => 'fieldset',
+				'#title' => $tooltip1,
+				'#collapsible' => TRUE, // Added
+				'#collapsed' => TRUE // Added
+			);
+			$form['step4_field1_fieldset']['tooltip1']['tooltip1_text'] = array(
+				'#markup' => $markup_text1
+			);
 			$form['step4_field1_fieldset']['step4_field1_question_ok'] = array(
 				'#title' => '<strong>Is this ok/not ok?</strong>',
 				'#type' => 'radios',
@@ -1335,11 +1284,13 @@ function ddcl_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
+				'#default_value' => $step4_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step4_field1_fieldset']['step4_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not?',
 				'#type' => 'textarea',
+				'#default_value' => $step4_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step4_field1_fieldset\\[step4_field1_question_ok\\]"]' => array(
@@ -1350,6 +1301,18 @@ function ddcl_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step4_data->id, $step4_data->data_relation);
+			$icom = 1;
+			$form['step4_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step4_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step4_num_comment']))
 			{
 				$form_state['step4_num_comment'] = 1;
@@ -1403,14 +1366,14 @@ function ddcl_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_j
 				} //!empty($form['step4_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
 					'ddcl_bb_splice_cover_plate_bolted_step4_form_previous_submit'
 				)
 			);
-			$form['next2'] = array(
+			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
@@ -1869,11 +1832,13 @@ function ddcl_bb_splice_cover_plate_bolted_step5_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
+				'#default_value' => $step5_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step5_field1_fieldset']['step5_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
+				'#default_value' => $step5_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step5_field1_fieldset\\[step5_field1_question_ok\\]"]' => array(
@@ -1884,6 +1849,18 @@ function ddcl_bb_splice_cover_plate_bolted_step5_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step5_data->id, $step5_data->data_relation);
+			$icom = 1;
+			$form['step5_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr>Earlier comment<hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step5_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step5_num_comment']))
 			{
 				$form_state['step5_num_comment'] = 1;
@@ -2467,13 +2444,13 @@ function ddcl_bb_splice_cover_plate_bolted_step6_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step6_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step6_field1_fieldset']['step6_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step6_data->question_not_ok_comment,
+				'#default_value' => $step6_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step6_field1_fieldset\\[step6_field1_question_ok\\]"]' => array(
@@ -2484,6 +2461,18 @@ function ddcl_bb_splice_cover_plate_bolted_step6_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step6_data->id, $step6_data->data_relation);
+			$icom = 1;
+			$form['step6_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step6_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step6_num_comment']))
 			{
 				$form_state['step6_num_comment'] = 1;
@@ -3079,13 +3068,13 @@ function ddcl_bb_splice_cover_plate_bolted_step7_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step7_data->question_ok_not_ok,
+				'#default_value' => $step7_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step7_field1_fieldset']['step7_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step7_data->question_not_ok_comment,
+				'#default_value' => $step7_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step7_field1_fieldset\\[step7_field1_question_ok\\]"]' => array(
@@ -3096,6 +3085,18 @@ function ddcl_bb_splice_cover_plate_bolted_step7_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step7_data->id, $step7_data->data_relation);
+			$icom = 1;
+			$form['step7_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr>Earlier comment<hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step7_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step7_num_comment']))
 			{
 				$form_state['step7_num_comment'] = 1;
@@ -3705,13 +3706,13 @@ function ddcl_bb_splice_cover_plate_bolted_step8_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step8_data->question_ok_not_ok,
+				'#default_value' => $step8_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step8_field1_fieldset']['step8_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step8_data->question_not_ok_comment,
+				'#default_value' => $step8_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step8_field1_fieldset\\[step8_field1_question_ok\\]"]' => array(
@@ -3722,6 +3723,18 @@ function ddcl_bb_splice_cover_plate_bolted_step8_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step8_data->id, $step8_data->data_relation);
+			$icom = 1;
+			$form['step8_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr>Earlier comment<hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step8_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step8_num_comment']))
 			{
 				$form_state['step8_num_comment'] = 1;
@@ -4262,13 +4275,13 @@ function ddcl_bb_splice_cover_plate_bolted_step9_form($form, &$form_state, $no_j
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step9_data->question_ok_not_ok,
+				'#default_value' => $step9_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step9_field1_fieldset']['step9_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step9_data->question_not_ok_comment,
+				'#default_value' => $step9_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step9_field1_fieldset\\[step9_field1_question_ok\\]"]' => array(
@@ -4279,6 +4292,18 @@ function ddcl_bb_splice_cover_plate_bolted_step9_form($form, &$form_state, $no_j
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step9_data->id, $step9_data->data_relation);
+			$icom = 1;
+			$form['step9_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr>Earlier comment<hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step9_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step9_num_comment']))
 			{
 				$form_state['step9_num_comment'] = 1;
@@ -4815,13 +4840,13 @@ function ddcl_bb_splice_cover_plate_bolted_step10_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step10_data->question_ok_not_ok,
+				'#default_value' => $step10_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step10_field1_fieldset']['step10_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step10_data->question_not_ok_comment,
+				'#default_value' => $step10_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step10_field1_fieldset\\[step10_field1_question_ok\\]"]' => array(
@@ -4832,6 +4857,18 @@ function ddcl_bb_splice_cover_plate_bolted_step10_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step10_data->id, $step10_data->data_relation);
+			$icom = 1;
+			$form['step10_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step10_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step10_num_comment']))
 			{
 				$form_state['step10_num_comment'] = 1;
@@ -5311,13 +5348,13 @@ function ddcl_bb_splice_cover_plate_bolted_step11_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step11_data->question_ok_not_ok,
+				'#default_value' => $step11_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step11_field1_fieldset']['step11_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step11_data->question_not_ok_comment,
+				'#default_value' => $step11_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step11_field1_fieldset\\[step11_field1_question_ok\\]"]' => array(
@@ -5328,6 +5365,18 @@ function ddcl_bb_splice_cover_plate_bolted_step11_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step11_data->id, $step11_data->data_relation);
+			$icom = 1;
+			$form['step11_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step11_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step11_num_comment']))
 			{
 				$form_state['step11_num_comment'] = 1;
@@ -5908,13 +5957,13 @@ function ddcl_bb_splice_cover_plate_bolted_step12_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step12_data->question_ok_not_ok,
+				'#default_value' => $step12_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step12_field1_fieldset']['step12_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step12_data->question_not_ok_comment,
+				'#default_value' => $step12_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step12_field1_fieldset\\[step12_field1_question_ok\\]"]' => array(
@@ -5925,6 +5974,18 @@ function ddcl_bb_splice_cover_plate_bolted_step12_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step12_data->id, $step12_data->data_relation);
+			$icom = 1;
+			$form['step12_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step12_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step12_num_comment']))
 			{
 				$form_state['step12_num_comment'] = 1;
@@ -5996,7 +6057,7 @@ function ddcl_bb_splice_cover_plate_bolted_step12_form($form, &$form_state, $no_
 					'ddcl_bb_splice_cover_plate_bolted_step12_form_next_submit'
 				)
 			);
-		} //$step12_data = $form_step12_data->fetchObject()
+		}  //$step12_data = $form_step12_data->fetchObject()
 	} //$form_step12_data
 	return $form;
 }
@@ -6427,13 +6488,13 @@ function ddcl_bb_splice_cover_plate_bolted_step13_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step13_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step13_field1_fieldset']['step13_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step13_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step13_field1_fieldset\\[step13_field1_question_ok\\]"]' => array(
@@ -6444,6 +6505,18 @@ function ddcl_bb_splice_cover_plate_bolted_step13_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step13_data->id, $step13_data->data_relation);
+			$icom = 1;
+			$form['step13_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step13_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step13_num_comment']))
 			{
 				$form_state['step13_num_comment'] = 1;
@@ -6916,19 +6989,19 @@ function ddcl_bb_splice_cover_plate_bolted_step14_form($form, &$form_state, $no_
 				'#markup' => $markup_text
 			);
 			$form['step14_field1_fieldset']['step14_field1_question_ok'] = array(
-				'#title' => '<strong>Is this ok/not ok</strong>',
+				'#title' => '<strong> Our module currently focuses on splicing beams of same size. Which of the above options do you suggest us to implement in our design. </strong> ',
 				'#type' => 'radios',
 				'#options' => array(
-					'Ok' => 'Ok',
-					'Not ok' => 'Not ok'
+					'Option b' => 'Option b',
+					'Option c' => 'Option c'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step14_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step14_field1_fieldset']['step14_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step14_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step14_field1_fieldset\\[step14_field1_question_ok\\]"]' => array(
@@ -6939,6 +7012,18 @@ function ddcl_bb_splice_cover_plate_bolted_step14_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step14_data->id, $step14_data->data_relation);
+			$icom = 1;
+			$form['step14_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step14_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step14_num_comment']))
 			{
 				$form_state['step14_num_comment'] = 1;
@@ -7427,13 +7512,13 @@ function ddcl_bb_splice_cover_plate_bolted_step15_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step15_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step15_field1_fieldset']['step15_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step15_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step15_field1_fieldset\\[step15_field1_question_ok\\]"]' => array(
@@ -7444,6 +7529,18 @@ function ddcl_bb_splice_cover_plate_bolted_step15_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step15_data->id, $step15_data->data_relation);
+			$icom = 1;
+			$form['step15_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step15_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step15_num_comment']))
 			{
 				$form_state['step15_num_comment'] = 1;
@@ -7979,13 +8076,13 @@ function ddcl_bb_splice_cover_plate_bolted_step16_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step16_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step16_field1_fieldset']['step16_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step16_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step16_field1_fieldset\\[step16_field1_question_ok\\]"]' => array(
@@ -7996,6 +8093,18 @@ function ddcl_bb_splice_cover_plate_bolted_step16_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step16_data->id, $step16_data->data_relation);
+			$icom = 1;
+			$form['step16_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step16_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step16_num_comment']))
 			{
 				$form_state['step16_num_comment'] = 1;
@@ -8536,13 +8645,13 @@ function ddcl_bb_splice_cover_plate_bolted_step17_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step17_data->question_ok_not_ok,
+				'#default_value' => $step17_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step17_field1_fieldset']['step17_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step17_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step17_field1_fieldset\\[step17_field1_question_ok\\]"]' => array(
@@ -8553,6 +8662,18 @@ function ddcl_bb_splice_cover_plate_bolted_step17_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step17_data->id, $step17_data->data_relation);
+			$icom = 1;
+			$form['step17_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>' 
+			); 
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step17_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step17_num_comment']))
 			{
 				$form_state['step17_num_comment'] = 1;
@@ -9073,13 +9194,13 @@ function ddcl_bb_splice_cover_plate_bolted_step18_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step2_data->question_ok_not_ok,
+				'#default_value' => $step18_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step18_field1_fieldset']['step18_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question_not_ok_comment,
+				'#default_value' => $step18_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step18_field1_fieldset\\[step18_field1_question_ok\\]"]' => array(
@@ -9090,6 +9211,18 @@ function ddcl_bb_splice_cover_plate_bolted_step18_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step18_data->id, $step18_data->data_relation);
+			$icom = 1;
+			$form['step18_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comment<strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step18_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step18_num_comment']))
 			{
 				$form_state['step18_num_comment'] = 1;
@@ -9654,13 +9787,13 @@ function ddcl_bb_splice_cover_plate_bolted_step19_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step19_data->question_ok_not_ok,
+				'#default_value' => $step19_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step19_field1_fieldset']['step19_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step19_data->question_not_ok_comment,
+				'#default_value' => $step19_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step19_field1_fieldset\\[step19_field1_question_ok\\]"]' => array(
@@ -9671,6 +9804,18 @@ function ddcl_bb_splice_cover_plate_bolted_step19_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step19_data->id, $step19_data->data_relation);
+			$icom = 1;
+			$form['step19_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step19_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step19_num_comment']))
 			{
 				$form_state['step19_num_comment'] = 1;
@@ -10350,13 +10495,13 @@ function ddcl_bb_splice_cover_plate_bolted_step20_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step20_data->question_ok_not_ok,
+				'#default_value' => $step20_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step20_field1_fieldset']['step20_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step20_data->question_not_ok_comment,
+				'#default_value' => $step20_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step20_field1_fieldset\\[step20_field1_question_ok\\]"]' => array(
@@ -10367,6 +10512,18 @@ function ddcl_bb_splice_cover_plate_bolted_step20_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step20_data->id, $step20_data->data_relation);
+			$icom = 1;
+			$form['step20_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step20_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step20_num_comment']))
 			{
 				$form_state['step20_num_comment'] = 1;
@@ -11123,13 +11280,13 @@ function ddcl_bb_splice_cover_plate_bolted_step21_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step21_data->question_ok_not_ok,
+				'#default_value' => $step21_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step21_field1_fieldset']['step21_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step21_data->question_not_ok_comment,
+				'#default_value' => $step21_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step21_field1_fieldset\\[step21_field1_question_ok\\]"]' => array(
@@ -11140,6 +11297,18 @@ function ddcl_bb_splice_cover_plate_bolted_step21_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step21_data->id, $step21_data->data_relation);
+			$icom = 1;
+			$form['step21_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step21_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step21_num_comment']))
 			{
 				$form_state['step21_num_comment'] = 1;
@@ -11786,13 +11955,13 @@ function ddcl_bb_splice_cover_plate_bolted_step22_form($form, &$form_state, $no_
           'Ok' => 'Ok',
           'Not ok' => 'Not ok'
         ),
-        //'#default_value' => $step22_data->question_ok_not_ok,
+        '#default_value' => $step22_data->question_ok_not_ok,
         '#required' => true
       );
       $form['step22_field1_fieldset']['step22_field1_question_not_ok_comment'] = array(
         //'#title' => 'If not, ple?',
         '#type' => 'textarea',
-        //'#default_value' => $step22_data->question_not_ok_comment,
+        '#default_value' => $step22_data->question_not_ok_comment,
         '#states' => array(
           'visible' => array(
             ':input[name="step22_field1_fieldset\\[step22_field1_question_ok\\]"]' => array(
@@ -11803,6 +11972,18 @@ function ddcl_bb_splice_cover_plate_bolted_step22_form($form, &$form_state, $no_
           )
         )
       );
+      $earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step22_data->id, $step22_data->data_relation);
+      $icom = 1;
+      $form['step22_field1_fieldset']['existing_comments_title'] = array(
+        '#markup' => 'Earlier comment<br>'
+      );
+      foreach ($earlier_comments as $rowcomment)
+      {
+        $form['step22_field1_fieldset']['existing_comments' . $icom] = array(
+          '#markup' => $rowcomment
+        );
+        $icom++;
+      } //$earlier_comments as $rowcomment
       if (empty($form_state['step22_num_comment']))
       {
         $form_state['step22_num_comment'] = 1;
@@ -12453,13 +12634,13 @@ function ddcl_bb_splice_cover_plate_bolted_step23_form($form, &$form_state, $no_
           'Ok' => 'Ok',
           'Not ok' => 'Not ok'
         ),
-        //'#default_value' => $step23_data->question_ok_not_ok,
+        '#default_value' => $step23_data->question_ok_not_ok,
         '#required' => true
       );
       $form['step23_field1_fieldset']['step23_field1_question_not_ok_comment'] = array(
         //'#title' => 'If not, ple?',
         '#type' => 'textarea',
-        //'#default_value' => $step23_data->question_not_ok_comment,
+        '#default_value' => $step23_data->question_not_ok_comment,
         '#states' => array(
           'visible' => array(
             ':input[name="step23_field1_fieldset\\[step23_field1_question_ok\\]"]' => array(
@@ -12470,6 +12651,18 @@ function ddcl_bb_splice_cover_plate_bolted_step23_form($form, &$form_state, $no_
           )
         )
       );
+      $earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step23_data->id, $step23_data->data_relation);
+      $icom = 1;
+      $form['step23_field1_fieldset']['existing_comments_title'] = array(
+        '#markup' => 'Earlier comment<br>'
+      );
+      foreach ($earlier_comments as $rowcomment)
+      {
+        $form['step23_field1_fieldset']['existing_comments' . $icom] = array(
+          '#markup' => $rowcomment
+        );
+        $icom++;
+      } //$earlier_comments as $rowcomment
       if (empty($form_state['step23_num_comment']))
       {
         $form_state['step23_num_comment'] = 1;
@@ -13059,13 +13252,13 @@ function ddcl_bb_splice_cover_plate_bolted_step24_form($form, &$form_state, $no_
           'Ok' => 'Ok',
           'Not ok' => 'Not ok'
         ),
-        //'#default_value' => $step24_data->question_ok_not_ok,
+        '#default_value' => $step24_data->question_ok_not_ok,
         '#required' => true
       );
       $form['step24_field1_fieldset']['step24_field1_question_not_ok_comment'] = array(
         //'#title' => 'If not, ple?',
         '#type' => 'textarea',
-        //'#default_value' => $step24_data->question_not_ok_comment,
+        '#default_value' => $step24_data->question_not_ok_comment,
         '#states' => array(
           'visible' => array(
             ':input[name="step24_field1_fieldset\\[step24_field1_question_ok\\]"]' => array(
@@ -13076,6 +13269,18 @@ function ddcl_bb_splice_cover_plate_bolted_step24_form($form, &$form_state, $no_
           )
         )
       );
+      $earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step24_data->id, $step24_data->data_relation);
+      $icom = 1;
+      $form['step24_field1_fieldset']['existing_comments_title'] = array(
+        '#markup' => 'Earlier comment<br>'
+      );
+      foreach ($earlier_comments as $rowcomment)
+      {
+        $form['step24_field1_fieldset']['existing_comments' . $icom] = array(
+          '#markup' => $rowcomment
+        );
+        $icom++;
+      } //$earlier_comments as $rowcomment
       if (empty($form_state['step24_num_comment']))
       {
         $form_state['step24_num_comment'] = 1;
@@ -13663,13 +13868,13 @@ function ddcl_bb_splice_cover_plate_bolted_step25_form($form, &$form_state, $no_
           'Ok' => 'Ok',
           'Not ok' => 'Not ok'
         ),
-        //'#default_value' => $step25_data->question_ok_not_ok,
+        '#default_value' => $step25_data->question_ok_not_ok,
         '#required' => true
       );
       $form['step25_field1_fieldset']['step25_field1_question_not_ok_comment'] = array(
         //'#title' => 'If not, ple?',
         '#type' => 'textarea',
-        //'#default_value' => $step25_data->question_not_ok_comment,
+        '#default_value' => $step25_data->question_not_ok_comment,
         '#states' => array(
           'visible' => array(
             ':input[name="step25_field1_fieldset\\[step25_field1_question_ok\\]"]' => array(
@@ -13680,6 +13885,18 @@ function ddcl_bb_splice_cover_plate_bolted_step25_form($form, &$form_state, $no_
           )
         )
       );
+      $earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step25_data->id, $step25_data->data_relation);
+      $icom = 1;
+      $form['step25_field1_fieldset']['existing_comments_title'] = array(
+        '#markup' => 'Earlier comment<br>'
+      );
+      foreach ($earlier_comments as $rowcomment)
+      {
+        $form['step25_field1_fieldset']['existing_comments' . $icom] = array(
+          '#markup' => $rowcomment
+        );
+        $icom++;
+      } //$earlier_comments as $rowcomment
       if (empty($form_state['step25_num_comment']))
       {
         $form_state['step25_num_comment'] = 1;
@@ -14201,13 +14418,13 @@ function ddcl_bb_splice_cover_plate_bolted_step26_form($form, &$form_state, $no_
           'Ok' => 'Ok',
           'Not ok' => 'Not ok'
         ),
-        //'#default_value' => $step26_data->question_ok_not_ok,
+        '#default_value' => $step26_data->question_ok_not_ok,
         '#required' => true
       );
       $form['step26_field1_fieldset']['step26_field1_question_not_ok_comment'] = array(
         //'#title' => 'If not, ple?',
         '#type' => 'textarea',
-        //'#default_value' => $step26_data->question_not_ok_comment,
+        '#default_value' => $step26_data->question_not_ok_comment,
         '#states' => array(
           'visible' => array(
             ':input[name="step26_field1_fieldset\\[step26_field1_question_ok\\]"]' => array(
@@ -14218,6 +14435,18 @@ function ddcl_bb_splice_cover_plate_bolted_step26_form($form, &$form_state, $no_
           )
         )
       );
+      $earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step26_data->id, $step26_data->data_relation);
+      $icom = 1;
+      $form['step26_field1_fieldset']['existing_comments_title'] = array(
+        '#markup' => 'Earlier comment<br>'
+      );
+      foreach ($earlier_comments as $rowcomment)
+      {
+        $form['step26_field1_fieldset']['existing_comments' . $icom] = array(
+          '#markup' => $rowcomment
+        );
+        $icom++;
+      } //$earlier_comments as $rowcomment
       if (empty($form_state['step26_num_comment']))
       {
         $form_state['step26_num_comment'] = 1;
@@ -14775,13 +15004,13 @@ function ddcl_bb_splice_cover_plate_bolted_step27_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step27_data->question_ok_not_ok,
+				'#default_value' => $step27_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step27_field1_fieldset']['step27_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step27_data->question_not_ok_comment,
+				'#default_value' => $step27_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step27_field1_fieldset\\[step27_field1_question_ok\\]"]' => array(
@@ -14792,6 +15021,18 @@ function ddcl_bb_splice_cover_plate_bolted_step27_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step27_data->id, $step27_data->data_relation);
+			$icom = 1;
+			$form['step27_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step27_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step27_num_comment']))
 			{
 				$form_state['step27_num_comment'] = 1;
@@ -15460,13 +15701,13 @@ function ddcl_bb_splice_cover_plate_bolted_step28_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step28_data->question_ok_not_ok,
+				'#default_value' => $step28_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step28_field1_fieldset']['step28_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step28_data->question_not_ok_comment,
+				'#default_value' => $step28_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step28_field1_fieldset\\[step28_field1_question_ok\\]"]' => array(
@@ -15477,6 +15718,18 @@ function ddcl_bb_splice_cover_plate_bolted_step28_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step28_data->id, $step28_data->data_relation);
+			$icom = 1;
+			$form['step28_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step28_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step28_num_comment']))
 			{
 				$form_state['step28_num_comment'] = 1;
@@ -16142,13 +16395,13 @@ function ddcl_bb_splice_cover_plate_bolted_step29_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step29_data->question_ok_not_ok,
+				'#default_value' => $step29_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step29_field1_fieldset']['step29_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step29_data->question_not_ok_comment,
+				'#default_value' => $step29_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step29_field1_fieldset\\[step29_field1_question_ok\\]"]' => array(
@@ -16159,6 +16412,18 @@ function ddcl_bb_splice_cover_plate_bolted_step29_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step29_data->id, $step29_data->data_relation);
+			$icom = 1;
+			$form['step29_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step29_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step29_num_comment']))
 			{
 				$form_state['step29_num_comment'] = 1;
@@ -16920,13 +17185,13 @@ function ddcl_bb_splice_cover_plate_bolted_step30_form($form, &$form_state, $no_
 					'Ok' => 'Ok',
 					'Not ok' => 'Not ok'
 				),
-				//'#default_value' => $step30_data->question_ok_not_ok,
+				'#default_value' => $step30_data->question_ok_not_ok,
 				'#required' => true
 			);
 			$form['step30_field1_fieldset']['step30_field1_question_not_ok_comment'] = array(
 				//'#title' => 'If not, ple?',
 				'#type' => 'textarea',
-				//'#default_value' => $step30_data->question_not_ok_comment,
+				'#default_value' => $step30_data->question_not_ok_comment,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step30_field1_fieldset\\[step30_field1_question_ok\\]"]' => array(
@@ -16937,6 +17202,18 @@ function ddcl_bb_splice_cover_plate_bolted_step30_form($form, &$form_state, $no_
 					)
 				)
 			);
+			$earlier_comments = _fetch_existing_ddcl_bb_splice_cover_plate_bolted_comments($step30_data->id, $step30_data->data_relation);
+			$icom = 1;
+			$form['step30_field1_fieldset']['existing_comments_title'] = array(
+				'#markup' => 'Earlier comment<br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step30_field1_fieldset']['existing_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step30_num_comment']))
 			{
 				$form_state['step30_num_comment'] = 1;
@@ -17474,7 +17751,7 @@ function ddcl_bb_splice_cover_plate_bolted_step31_form($form, &$form_state, $no_
 				} //!empty($form['step31_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step31_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
@@ -17488,7 +17765,7 @@ function ddcl_bb_splice_cover_plate_bolted_step31_form($form, &$form_state, $no_
 					"onclick" => "return confirm('Are you sure?')"
 				),
 				'#submit' => array(
-					'ddcl_bb_splice_cover_plate_bolted_step31_form_previous_submit'
+					'ddcl_bb_splice_cover_plate_bolted_step31_form_next_submit'
 				)
 			);
 			$form['save_submit'] = array(

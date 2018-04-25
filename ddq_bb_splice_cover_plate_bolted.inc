@@ -293,7 +293,7 @@ function ddq_bb_splice_cover_plate_bolted_step2_form($form, &$form_state, $no_js
 		else
 		{
 			$form['step2_field1_fieldset']['step2_field1_question1'] = array(
-				'#title' => '1)
+				'#title' => '
 				1. Should we design web splice for some minimum shear force even when user specifies shear force as zero?
 				<hr>
 
@@ -307,7 +307,7 @@ function ddq_bb_splice_cover_plate_bolted_step2_form($form, &$form_state, $no_js
 			$form['step2_field1_fieldset']['step2_field1_question2'] = array(
 				'#title' => 'specimen text3-3',
 				'#type' => 'textarea',
-				//'#default_value' => $step2_data->question2,
+				'#default_value' => $step2_data->question2,
 				'#states' => array(
 					'visible' => array(
 						':input[name="step2_field1_fieldset\\[step2_field1_question1\\]"]' => array(
@@ -318,6 +318,18 @@ function ddq_bb_splice_cover_plate_bolted_step2_form($form, &$form_state, $no_js
 					)
 				)
 			);
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step2_data->id, $step2_data->data_relation);
+			$icom = 1;
+			$form['step2_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step2_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step2_num_comment']))
 			{
 				$form_state['step2_num_comment'] = 1;
@@ -371,14 +383,14 @@ function ddq_bb_splice_cover_plate_bolted_step2_form($form, &$form_state, $no_js
 				} //!empty($form['step2_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step2_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
 					'ddq_bb_splice_cover_plate_bolted_step2_form_previous_submit'
 				)
 			);
-			$form['next2'] = array(
+			$form['next3'] = array(
 				'#type' => 'submit',
 				'#value' => 'Save & Next',
 				'#submit' => array(
@@ -614,17 +626,17 @@ function step2_comment_add_more_callback($form, &$form_state)
 }
 /***************************************/
 /***************************************** step 2 form ends **************************/
-/************************ Step 3 form starts *********************/
+/************************ Step 4 form starts *********************/
 function ddq_bb_splice_cover_plate_bolted_step3_form($form, &$form_state, $no_js_use = FALSE)
 {
 	global $base_url;
 	global $user;
 	// All the real form fields.
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	$step3_options = array(
+	/*$step3_options = array(
 		'Yes' => 'Yes',
 		'No' => 'No'
-	);
+	);*/
 	$form = array();
 	$form['step3_field1_fieldset'] = array(
 		'#type' => 'fieldset',
@@ -641,20 +653,23 @@ function ddq_bb_splice_cover_plate_bolted_step3_form($form, &$form_state, $no_js
 		if ($step3_data = $form_step3_data->fetchObject())
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '
-2. Do we need to consider axial force for the design?
-<hr>
-Please specify your input				
+				'#title' => '2. Practically what should be the gap between two beams when they are spliced using flange splice plates? Please specify the value or range of values.
+   				<br>
+   				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				   <img src="' . $img_path . '\coverplate_beamgap.png" width="75%" height="75%" align="middle" /><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figure: Beam-beam cover plate splice connection [Reference: SCI]
+				<br>	
+   								
 				',
 				'#type' => 'radios',
-				'#options' => $step3_options,
 				'#default_value' => $step3_data->question1,
-				'#required' => true
+				
 			);
+			
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step3_data->id, $step3_data->data_relation);
 			$icom = 1;
 			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments: </strong><hr><br>'
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
 			foreach ($earlier_comments as $rowcomment)
 			{
@@ -738,16 +753,31 @@ Please specify your input
 		else
 		{
 			$form['step3_field1_fieldset']['step3_field1_question1'] = array(
-				'#title' => '
-2. Do we need to consider axial force for the design?
-<hr>
-Please specify your input				
+				'#title' => '2. Practically what should be the gap between two beams when they are spliced using flange splice plates? Please specify the value or range of values.
+   				<br>
+   				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				   <img src="' . $img_path . '\coverplate_beamgap.png" width="75%" height="75%" align="middle" /><br>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figure: Beam-beam cover plate splice connection [Reference: SCI]
+				<br>	
+   								
 				',
 				'#type' => 'radios',
-				'#options' => $step3_options,
 				'#default_value' => $step3_data->question1,
-				'#required' => true
+				
 			);
+			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step3_data->id, $step3_data->data_relation);
+			$icom = 1;
+			$form['step3_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step3_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step3_num_comment']))
 			{
 				$form_state['step3_num_comment'] = 1;
@@ -834,10 +864,11 @@ function ddq_bb_splice_cover_plate_bolted_step3_form_previous_submit($form, &$fo
 	//var_dump($form_step3_data);die;
 	if ($form_step3_data)
 	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step3_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step3_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":if_yes" => $v['step3_field1_fieldset']['step3_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
@@ -880,10 +911,11 @@ function ddq_bb_splice_cover_plate_bolted_step3_form_previous_submit($form, &$fo
 	} //$form_step3_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step3_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step3_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":if_yes" => $v['step3_field1_fieldset']['step3_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step3",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -934,10 +966,11 @@ function ddq_bb_splice_cover_plate_bolted_step3_form_next_submit($form, &$form_s
 	//var_dump($form_step3_data);die;
 	if ($form_step3_data)
 	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step3_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step3_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":if_yes" => $v['step3_field1_fieldset']['step3_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step3"
 		);
 		/* storing the row id in $result */
@@ -980,10 +1013,11 @@ function ddq_bb_splice_cover_plate_bolted_step3_form_next_submit($form, &$form_s
 	} //$form_step3_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step3_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step3_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step3_field1_fieldset']['step3_field1_question1'],
+			":if_yes" => $v['step3_field1_fieldset']['step3_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step3",
 			":inserted_on" => date('Y-m-d')
 		);
@@ -1050,14 +1084,10 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 	global $base_url;
 	global $user;
 	// All the real form fields.
-	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
-	/*$step4_options = array(
-		'Yes' => 'Yes',
-		'No' => 'No'
-	);*/
 	$form = array();
 	$form['step4_field1_fieldset'] = array(
 		'#type' => 'fieldset',
+		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
 		'#tree' => TRUE,
 		'#prefix' => '<div id="step4-field1-fieldset-wrapper">',
 		'#suffix' => '</div>'
@@ -1071,21 +1101,11 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 		if ($step4_data = $form_step4_data->fetchObject())
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '3. Practically what should be the gap between two beams when they are spliced using flange splice plates? Please specify the value or range of values.
-   				<br>
-   				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				   <img src="' . $img_path . '\coverplate_beamgap.png" width="75%" height="75%" align="middle" /><br>
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Figure: Beam-beam cover plate splice connection [Reference: SCI]
-				<br>	
-   								
-				',
-				'#type' => 'radios',
-				'#default_value' => $step4_data->question1,
-				
+				'#type' => 'hidden',
+				'#default_value' => 'Other recommendations/ Comments',
+				'#required' => TRUE
 			);
-			
 			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step4_data->id, $step4_data->data_relation);
-			$icom = 1;
 			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
 				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
 			);
@@ -1149,11 +1169,7 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 				} //!empty($form['step4_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
@@ -1162,24 +1178,43 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Save & Next',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddq_bb_splice_cover_plate_bolted_step4_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_cover_plate_bolted_step4_form_save_submit'
 				)
 			);
 		} //$step4_data = $form_step4_data->fetchObject()
 		else
 		{
 			$form['step4_field1_fieldset']['step4_field1_question1'] = array(
-				'#title' => '3. Practically what should be the gap between two beams when they are spliced using flange splice plates?
-   				<br>
-   				Please specify the value or range of values, with proper reasoning.				
-				',
-				'#type' => 'radios',
-				'#default_value' => $step4_data->question1,
-				
+				'#type' => 'hidden',
+				'#default_value' => 'Other recommendations/ Comments',
+				'#required' => TRUE
 			);
-			
+			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step4_data->id, $step4_data->data_relation);
+			$form['step4_field1_fieldset']['exsiting_comments_title'] = array(
+				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
+			);
+			foreach ($earlier_comments as $rowcomment)
+			{
+				$form['step4_field1_fieldset']['exsiting_comments' . $icom] = array(
+					'#markup' => $rowcomment
+				);
+				$icom++;
+			} //$earlier_comments as $rowcomment
 			if (empty($form_state['step4_num_comment']))
 			{
 				$form_state['step4_num_comment'] = 1;
@@ -1233,11 +1268,7 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 				} //!empty($form['step4_field1_fieldset']['remove_comment']['#ajax'])
 				unset($form['step4_field1_fieldset']['add_comment']['#ajax']);
 			} //$no_js_use
-			$form["step1_page_id"] = array(
-				"#type" => "hidden",
-				"#value" => "step1"
-			);
-			$form['previous1'] = array(
+			$form['previous2'] = array(
 				'#type' => 'submit',
 				'#value' => 'Previous',
 				'#submit' => array(
@@ -1246,9 +1277,22 @@ function ddq_bb_splice_cover_plate_bolted_step4_form($form, &$form_state, $no_js
 			);
 			$form['next2'] = array(
 				'#type' => 'submit',
-				'#value' => 'Save & Next',
+				'#value' => 'Submit',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
 				'#submit' => array(
 					'ddq_bb_splice_cover_plate_bolted_step4_form_next_submit'
+				)
+			);
+			$form['save_submit'] = array(
+				'#type' => 'submit',
+				'#value' => 'Save as draft',
+				'#attributes' => array(
+					"onclick" => "return confirm('Are you sure?')"
+				),
+				'#submit' => array(
+					'ddq_bb_splice_cover_plate_bolted_step4_form_save_submit'
 				)
 			);
 		} //$step4_data = $form_step4_data->fetchObject()
@@ -1259,22 +1303,39 @@ function ddq_bb_splice_cover_plate_bolted_step4_form_previous_submit($form, &$fo
 {
 	global $user;
 	$v = $form_state['values'];
-	$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
+	$v['step4_field1_fieldset']['step4_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
 	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step4_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step4_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step4_data = db_query($query, $args);
+	$form_step4_data_count = $form_step4_data->rowCount();
+	$form_step4_data = $form_step4_data->fetchObject();
 	//var_dump($form_step4_data);die;
-	if ($form_step4_data)
+	if ($form_step4_data_count != 0)
 	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step4_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
-			":if_yes" => $v['step4_field1_fieldset']['step4_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step4"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -1313,16 +1374,24 @@ function ddq_bb_splice_cover_plate_bolted_step4_form_previous_submit($form, &$fo
 	} //$form_step4_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step4_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
-			":if_yes" => $v['step4_field1_fieldset']['step4_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step4",
 			":inserted_on" => date('Y-m-d')
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -1357,26 +1426,43 @@ function ddq_bb_splice_cover_plate_bolted_step4_form_previous_submit($form, &$fo
 	}
 	$form_state['redirect'] = 'ddq-bb-splice-cover-plate-bolted/form/step3/' . $user->uid;
 }
-function ddq_bb_splice_cover_plate_bolted_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+function ddq_bb_splice_cover_plate_bolted_step4_form_save_submit($form, &$form_state, $no_js_use = FALSE)
 {
 	global $user;
 	$v = $form_state['values'];
-	$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
+	$v['step4_field1_fieldset']['step4_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
 	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
 	$query->condition('uid', $user->uid);
 	$form_step4_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step4_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step4_data = db_query($query, $args);
+	$form_step4_data_count = $form_step4_data->rowCount();
+	$form_step4_data = $form_step4_data->fetchObject();
 	//var_dump($form_step4_data);die;
-	if ($form_step4_data)
+	if ($form_step4_data_count != 0)
 	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step4_feedback SET question1=:question1, what_IS_code_clauses_and_references_should_be_followed=:if_yes, data_relation=:data_relation WHERE uid=:uid ";
+		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
-			":if_yes" => $v['step4_field1_fieldset']['step4_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step4"
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -1415,16 +1501,24 @@ function ddq_bb_splice_cover_plate_bolted_step4_form_next_submit($form, &$form_s
 	} //$form_step4_data
 	else
 	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step4_feedback} (uid, question1,what_IS_code_clauses_and_references_should_be_followed, data_relation,inserted_on) VALUES (:uid,:question1,:if_yes, :data_relation,:inserted_on)";
+		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
 		$args = array(
 			":uid" => $user->uid,
 			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
-			":if_yes" => $v['step4_field1_fieldset']['step4_field2_what_IS_code_clauses_and_references_should_be_followed'],
 			":data_relation" => "step4",
 			":inserted_on" => date('Y-m-d')
 		);
 		/* storing the row id in $result */
 		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
 			'return' => Database::RETURN_INSERT_ID
 		));
 		/* For adding comments */
@@ -1457,7 +1551,135 @@ function ddq_bb_splice_cover_plate_bolted_step4_form_next_submit($form, &$form_s
 			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
 		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
 	}
-	$form_state['redirect'] = 'ddq-bb-splice-cover-plate-bolted/form/step5/' . $user->uid;
+	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
+	//drupal_goto('home');
+}
+function ddq_bb_splice_cover_plate_bolted_step4_form_next_submit($form, &$form_state, $no_js_use = FALSE)
+{
+	global $user;
+	$v = $form_state['values'];
+	$v['step4_field1_fieldset']['step4_field1_question1'] = 'other recommendations/ Comments';
+	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
+	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step4_feedback');
+	$query->condition('uid', $user->uid);
+	$form_step4_data = $query->execute()->fetchObject();
+	*/
+	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step4_feedback WHERE uid=:uid";
+	$args = array(
+		":uid" => $user->uid
+	);
+	$form_step4_data = db_query($query, $args);
+	$form_step4_data_count = $form_step4_data->rowCount();
+	$form_step4_data = $form_step4_data->fetchObject();
+	//var_dump($form_step4_data);die;
+	if ($form_step4_data_count != 0)
+	{
+		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step4_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":data_relation" => "step4"
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_cover_plate_bolted_form_comment WHERE step1_form_id = :step1_form_id", array(
+			':step1_form_id' => $form_step4_data->id
+		));
+		$form_step4_comment_data = $query->fetchObject();
+		$comments = 0;
+		for ($i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++)
+		{
+			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $form_step4_data->id,
+					":number" => $i + $form_step4_comment_data->max + 1,
+					":comment" => $v['step4_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step4",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
+	} //$form_step4_data
+	else
+	{
+		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step4_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
+		$args = array(
+			":uid" => $user->uid,
+			":question1" => $v['step4_field1_fieldset']['step4_field1_question1'],
+			":data_relation" => "step4",
+			":inserted_on" => date('Y-m-d')
+		);
+		/* storing the row id in $result */
+		$result = db_query($query, $args, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
+		$args_finish = array(
+			":uid" => $user->uid,
+			":submitted" => 0
+		);
+		/* storing the row id in $result */
+		$resultfinish = db_query($queryfinish, $args_finish, array(
+			'return' => Database::RETURN_INSERT_ID
+		));
+		/* For adding comments */
+		$comments = 0;
+		for ($i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++)
+		{
+			if ($v['step4_field1_fieldset'][$i]["comment"] != "")
+			{
+				$commentquery = "
+	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
+	(step1_form_id, number, comment, data_relation, inserted_on)
+	VALUES
+	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
+	";
+				$commentargs = array(
+					":step1_form_id" => $result,
+					":number" => $i + 1,
+					":comment" => $v['step4_field1_fieldset'][$i]["comment"],
+					":data_relation" => "step4",
+					":inserted_on" => date('Y-m-d')
+				);
+				/* storing the row id in $result */
+				$commentresult = db_query($commentquery, $commentargs, array(
+					'return' => Database::RETURN_INSERT_ID
+				));
+				if ($commentresult != 0)
+				{
+					$comments++;
+				} //$commentresult != 0
+			} //$v['step4_field1_fieldset'][$i]["comment"] != ""
+		} //$i = 0; $i <= $v['step4_field1_fieldset']["step4_comment_count"]; $i++
+	}
+	$form_state['redirect'] = 'ddq-bb-splice-cover-plate-bolted/success';
 }
 /***************************************/
 function step4_comment_add_more_add_one($form, &$form_state)
@@ -1477,619 +1699,6 @@ function step4_comment_add_more_remove_one($form, &$form_state)
 function step4_comment_add_more_callback($form, &$form_state)
 {
 	return $form['step4_field1_fieldset'];
-}
-/***************************************/
-/***************************************** step 4 from ends ****************************/
-/************************ Step 5 form starts *********************/
-function ddq_bb_splice_cover_plate_bolted_step5_form($form, &$form_state, $no_js_use = FALSE)
-{
-	global $base_url;
-	global $user;
-	// All the real form fields.
-	$form = array();
-	$form['step5_field1_fieldset'] = array(
-		'#type' => 'fieldset',
-		'#title' => '<strong>Any other recommendations/ Comments?</strong>',
-		'#tree' => TRUE,
-		'#prefix' => '<div id="step5-field1-fieldset-wrapper">',
-		'#suffix' => '</div>'
-	);
-	$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step5_data = $query->execute();
-	if ($form_step5_data)
-	{
-		if ($step5_data = $form_step5_data->fetchObject())
-		{
-			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'Other recommendations/ Comments',
-				'#required' => TRUE
-			);
-			$earlier_comments = _fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments($step5_data->id, $step5_data->data_relation);
-			$form['step5_field1_fieldset']['exsiting_comments_title'] = array(
-				'#markup' => '<hr><strong>Earlier comments:</strong><hr><br>'
-			);
-			foreach ($earlier_comments as $rowcomment)
-			{
-				$form['step5_field1_fieldset']['exsiting_comments' . $icom] = array(
-					'#markup' => $rowcomment
-				);
-				$icom++;
-			} //$earlier_comments as $rowcomment
-			if (empty($form_state['step5_num_comment']))
-			{
-				$form_state['step5_num_comment'] = 1;
-			} //empty($form_state['step5_num_comment'])
-			$step5_temp1 = 0;
-			for ($step5_i = 0; $step5_i < $form_state['step5_num_comment']; $step5_i++)
-			{
-				$step5_temp1 = $step5_i;
-				$form['step5_field1_fieldset'][$step5_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step5_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step5_field1_fieldset']["step5_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step5_temp1
-			);
-			$form['step5_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step5_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step5_comment_add_more_callback',
-					'wrapper' => 'step5-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step5_num_comment'] > 1)
-			{
-				$form['step5_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step5_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step5_comment_add_more_callback',
-						'wrapper' => 'step5-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step5_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step5_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step5_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step5_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form['previous2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_save_submit'
-				)
-			);
-		} //$step5_data = $form_step5_data->fetchObject()
-		else
-		{
-			$form['step5_field1_fieldset']['step5_field1_question1'] = array(
-				'#type' => 'hidden',
-				'#default_value' => 'other recommendations/ Comments',
-				'#required' => TRUE
-			);
-			if (empty($form_state['step5_num_comment']))
-			{
-				$form_state['step5_num_comment'] = 1;
-			} //empty($form_state['step5_num_comment'])
-			$step5_temp1 = 0;
-			for ($step5_i = 0; $step5_i < $form_state['step5_num_comment']; $step5_i++)
-			{
-				$step5_temp1 = $step5_i;
-				$form['step5_field1_fieldset'][$step5_i]["comment"] = array(
-					"#type" => "textarea",
-					"#title" => "Comment " . ($step5_temp1 + 1),
-					"#default_value" => ""
-				);
-			} //$i = 0; $i < $form_state['step1_num_comment']; $i++
-			$form['step5_field1_fieldset']["step5_comment_count"] = array(
-				"#type" => "hidden",
-				"#value" => $step5_temp1
-			);
-			$form['step5_field1_fieldset']['add_comment'] = array(
-				'#type' => 'submit',
-				'#value' => t('Add more comment'),
-				'#limit_validation_errors' => array(),
-				'#submit' => array(
-					'step5_comment_add_more_add_one'
-				),
-				'#ajax' => array(
-					'callback' => 'step5_comment_add_more_callback',
-					'wrapper' => 'step5-field1-fieldset-wrapper'
-				)
-			);
-			if ($form_state['step5_num_comment'] > 1)
-			{
-				$form['step5_field1_fieldset']['remove_comment'] = array(
-					'#type' => 'submit',
-					'#value' => t('Remove comment'),
-					'#limit_validation_errors' => array(),
-					'#submit' => array(
-						'step5_comment_add_more_remove_one'
-					),
-					'#ajax' => array(
-						'callback' => 'step5_comment_add_more_callback',
-						'wrapper' => 'step5-field1-fieldset-wrapper'
-					)
-				);
-			} //$form_state['step1_num_comment'] > 1
-			if ($no_js_use)
-			{
-				if (!empty($form['step5_field1_fieldset']['remove_comment']['#ajax']))
-				{
-					unset($form['step5_field1_fieldset']['remove_comment']['#ajax']);
-				} //!empty($form['step5_field1_fieldset']['remove_comment']['#ajax'])
-				unset($form['step5_field1_fieldset']['add_comment']['#ajax']);
-			} //$no_js_use
-			$form['previous1'] = array(
-				'#type' => 'submit',
-				'#value' => 'Previous',
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_previous_submit'
-				)
-			);
-			$form['next2'] = array(
-				'#type' => 'submit',
-				'#value' => 'Submit',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_next_submit'
-				)
-			);
-			$form['save_submit'] = array(
-				'#type' => 'submit',
-				'#value' => 'Save as draft',
-				'#attributes' => array(
-					"onclick" => "return confirm('Are you sure?')"
-				),
-				'#submit' => array(
-					'ddq_bb_splice_cover_plate_bolted_step5_form_save_submit'
-				)
-			);
-		} //$step5_data = $form_step5_data->fetchObject()
-	} //$form_step5_data
-	return $form;
-}
-function ddq_bb_splice_cover_plate_bolted_step5_form_previous_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step5_field1_fieldset']['step5_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step5_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step5_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step5_data = db_query($query, $args);
-	$form_step5_data_count = $form_step5_data->rowCount();
-	$form_step5_data = $form_step5_data->fetchObject();
-	//var_dump($form_step5_data);die;
-	if ($form_step5_data_count != 0)
-	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step5_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_cover_plate_bolted_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step5_data->id
-		));
-		$form_step5_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step5_data->id,
-					":number" => $i + $form_step5_comment_data->max + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	} //$form_step5_data
-	else
-	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step5_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddq-bb-splice-cover-plate-bolted/form/step4/' . $user->uid;
-}
-function ddq_bb_splice_cover_plate_bolted_step5_form_save_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step5_field1_fieldset']['step5_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step5_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step5_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step5_data = db_query($query, $args);
-	$form_step5_data_count = $form_step5_data->rowCount();
-	$form_step5_data = $form_step5_data->fetchObject();
-	//var_dump($form_step5_data);die;
-	if ($form_step5_data_count != 0)
-	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step5_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_cover_plate_bolted_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step5_data->id
-		));
-		$form_step5_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step5_data->id,
-					":number" => $i + $form_step5_comment_data->max + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	} //$form_step5_data
-	else
-	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step5_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	}
-	drupal_set_message(t('You have successfully saved your feedback. You can anytime edit your feedback form.'), 'status');
-	//drupal_goto('home');
-}
-function ddq_bb_splice_cover_plate_bolted_step5_form_next_submit($form, &$form_state, $no_js_use = FALSE)
-{
-	global $user;
-	$v = $form_state['values'];
-	$v['step5_field1_fieldset']['step5_field1_question1'] = 'other recommendations/ Comments';
-	/*$query = db_select('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->fields('ddq_bb_splice_cover_plate_bolted_form_step5_feedback');
-	$query->condition('uid', $user->uid);
-	$form_step5_data = $query->execute()->fetchObject();
-	*/
-	$query = "SELECT * FROM ddq_bb_splice_cover_plate_bolted_form_step5_feedback WHERE uid=:uid";
-	$args = array(
-		":uid" => $user->uid
-	);
-	$form_step5_data = db_query($query, $args);
-	$form_step5_data_count = $form_step5_data->rowCount();
-	$form_step5_data = $form_step5_data->fetchObject();
-	//var_dump($form_step5_data);die;
-	if ($form_step5_data_count != 0)
-	{
-		$query = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step5_feedback SET question1=:question1, data_relation=:data_relation WHERE uid=:uid ";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5"
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$query = db_query(" SELECT MAX( number ) AS max FROM ddq_bb_splice_cover_plate_bolted_form_comment WHERE step1_form_id = :step1_form_id", array(
-			':step1_form_id' => $form_step5_data->id
-		));
-		$form_step5_comment_data = $query->fetchObject();
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $form_step5_data->id,
-					":number" => $i + $form_step5_comment_data->max + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	} //$form_step5_data
-	else
-	{
-		$query = "INSERT INTO {ddq_bb_splice_cover_plate_bolted_form_step5_feedback} (uid, question1, data_relation,inserted_on) VALUES (:uid,:question1, :data_relation,:inserted_on)";
-		$args = array(
-			":uid" => $user->uid,
-			":question1" => $v['step5_field1_fieldset']['step5_field1_question1'],
-			":data_relation" => "step5",
-			":inserted_on" => date('Y-m-d')
-		);
-		/* storing the row id in $result */
-		$result = db_query($query, $args, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		$queryfinish = "UPDATE ddq_bb_splice_cover_plate_bolted_form_step1_feedback SET submitted=:submitted WHERE uid=:uid ";
-		$args_finish = array(
-			":uid" => $user->uid,
-			":submitted" => 0
-		);
-		/* storing the row id in $result */
-		$resultfinish = db_query($queryfinish, $args_finish, array(
-			'return' => Database::RETURN_INSERT_ID
-		));
-		/* For adding comments */
-		$comments = 0;
-		for ($i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++)
-		{
-			if ($v['step5_field1_fieldset'][$i]["comment"] != "")
-			{
-				$commentquery = "
-	INSERT INTO ddq_bb_splice_cover_plate_bolted_form_comment
-	(step1_form_id, number, comment, data_relation, inserted_on)
-	VALUES
-	(:step1_form_id, :number, :comment, :data_relation, :inserted_on)
-	";
-				$commentargs = array(
-					":step1_form_id" => $result,
-					":number" => $i + 1,
-					":comment" => $v['step5_field1_fieldset'][$i]["comment"],
-					":data_relation" => "step5",
-					":inserted_on" => date('Y-m-d')
-				);
-				/* storing the row id in $result */
-				$commentresult = db_query($commentquery, $commentargs, array(
-					'return' => Database::RETURN_INSERT_ID
-				));
-				if ($commentresult != 0)
-				{
-					$comments++;
-				} //$commentresult != 0
-			} //$v['step5_field1_fieldset'][$i]["comment"] != ""
-		} //$i = 0; $i <= $v['step5_field1_fieldset']["step5_comment_count"]; $i++
-	}
-	$form_state['redirect'] = 'ddq-bb-splice-cover-plate-bolted/success';
-}
-/***************************************/
-function step5_comment_add_more_add_one($form, &$form_state)
-{
-	$form_state['step5_num_comment']++;
-	$form_state['rebuild'] = TRUE;
-	//$form_state['no_redirect'] = TRUE;
-}
-function step5_comment_add_more_remove_one($form, &$form_state)
-{
-	if ($form_state['step5_num_comment'] > 1)
-	{
-		$form_state['step5_num_comment']--;
-	} //$form_state['step5_num_comment'] > 1
-	$form_state['rebuild'] = TRUE;
-}
-function step5_comment_add_more_callback($form, &$form_state)
-{
-	return $form['step5_field1_fieldset'];
 }
 /***************************************/
 /***************************************** step 5 form ends **************************/
@@ -2117,17 +1726,12 @@ step3.question1 as "step3_question1",
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
-step4.question1 as "step4_question1", 
-
-step5.id as "step5_id",
-step5.data_relation as "step5_data_relation",
-step5.question1 as "step5_question1" 
+step4.question1 as "step4_question1"
 
 from ddq_bb_splice_cover_plate_bolted_form_step1_feedback step1
 join ddq_bb_splice_cover_plate_bolted_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_bb_splice_cover_plate_bolted_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_bb_splice_cover_plate_bolted_form_step4_feedback step4 on step3.uid=step4.uid
-join ddq_bb_splice_cover_plate_bolted_form_step5_feedback step5 on step4.uid=step5.uid
 
 
 	');
@@ -2141,10 +1745,8 @@ join ddq_bb_splice_cover_plate_bolted_form_step5_feedback step5 on step4.uid=ste
 			$feedback_data->step2_question1,
 			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step2_id, $feedback_data->step2_data_relation),
 			$feedback_data->step3_question1,
-			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),			
-			$feedback_data->step4_question1,
-			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation),
-			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step5_id, $feedback_data->step5_data_relation)
+			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step3_id, $feedback_data->step3_data_relation),
+			_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result($feedback_data->step4_id, $feedback_data->step4_data_relation)
 		);
 		$i++;
 	} //$pending_data = $pending_q->fetchObject()
@@ -2163,8 +1765,6 @@ join ddq_bb_splice_cover_plate_bolted_form_step5_feedback step5 on step4.uid=ste
 		'step2 ',
 		'comments',
 		'step3 ',
-		'comments',
-		'step4',
 		'comments',
 		'Any other recommendation/ Comments?'
 	);
@@ -2317,17 +1917,12 @@ step3.question1 as "step3_question1",
 
 step4.id as "step4_id",
 step4.data_relation as "step4_data_relation",
-step4.question1 as "step4_question1", 
-
-step5.id as "step5_id",
-step5.data_relation as "step5_data_relation",
-step5.question1 as "step5_question1"
+step4.question1 as "step4_question1"
 
 from ddq_bb_splice_cover_plate_bolted_form_step1_feedback step1
 join ddq_bb_splice_cover_plate_bolted_form_step2_feedback step2 on step1.uid=step2.uid
 join ddq_bb_splice_cover_plate_bolted_form_step3_feedback step3 on step2.uid=step3.uid
 join ddq_bb_splice_cover_plate_bolted_form_step4_feedback step4 on step3.uid=step4.uid
-join ddq_bb_splice_cover_plate_bolted_form_step5_feedback step5 on step4.uid=step5.uid
 
 	';
 // $args = array(');
@@ -2344,10 +1939,8 @@ join ddq_bb_splice_cover_plate_bolted_form_step5_feedback step5 on step4.uid=ste
 				$feedback_data->step2_question1,
 				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step2_id, $feedback_data->step2_data_relation),
 				$feedback_data->step3_question1,
-				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),
-				$feedback_data->step4_question1,
-				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation),				
-				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step5_id, $feedback_data->step5_data_relation)
+				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step3_id, $feedback_data->step3_data_relation),			
+				_fetch_exsiting_ddq_bb_splice_cover_plate_bolted_comments_result_csv($feedback_data->step4_id, $feedback_data->step4_data_relation)
 			);
 			fputcsv($fp, $item);
 		} //$feedback_data = $result->fetchObject()
