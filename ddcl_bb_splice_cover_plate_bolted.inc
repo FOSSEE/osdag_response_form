@@ -7855,6 +7855,7 @@ function ddcl_bb_splice_cover_plate_bolted_step16_form($form, &$form_state, $no_
 	drupal_set_title(t('e. Detailing checks > vi. Web splice plate'));
 	$img_path = $base_url . '/' . drupal_get_path("module", "osdag_response_form") . '/images';
 	$markup_text = '
+	<b> e. Detailing checks </b><br>
 					&emsp; <b> <strong> vi. Web splice plate </strong> </b> <br>
 						
 						&emsp;&emsp;&emsp; <strong> a. Minimum height of web splice plate <math xmlns="http://www.w3.org/1998/Math/MathML" >
